@@ -354,3 +354,36 @@ a:hover {
     padding: 12px 22px;
   }
 }
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Instagram strip fix */
+.insta-mask {
+  width: 100%;
+  overflow: hidden;
+}
+
+.insta-track {
+  display: flex;
+  gap: 30px;
+  width: fit-content;
+  will-change: transform;
+}
+
+/* Square image container remains unchanged */
+.insta-item {
+  width: 220px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+/* Mobile sizing */
+@media (max-width: 768px) {
+  .insta-item {
+    width: 160px;
+  }
+}
+
