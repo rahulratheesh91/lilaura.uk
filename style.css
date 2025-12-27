@@ -1,92 +1,84 @@
 /* =========================
-   LILAURA – LUXURY STYLING
+   LILAURA – DARK LUXURY THEME
    ========================= */
 
-/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ROOT */
 body {
   font-family: 'Playfair Display', serif;
-  background-color: #faf9f7;
-  color: #1c1c1c;
+  background-color: #000000;
+  color: #e6e6e6;
   line-height: 1.6;
 }
 
 /* LINKS */
 a {
-  color: #1c1c1c;
+  color: #d4af37;
   text-decoration: none;
 }
 
 a:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 /* HEADER */
 .site-header {
   text-align: center;
-  padding: 80px 20px 60px;
-  border-bottom: 1px solid #e6e6e6;
-  background: #ffffff;
+  padding: 100px 20px 80px;
+  background: radial-gradient(circle at top, #111 0%, #000 70%);
+  border-bottom: 1px solid #1f1f1f;
 }
 
-.brand-logo {
-  font-size: 3.2rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+.brand-logo-img {
+  max-width: 260px;
+  margin-bottom: 25px;
 }
 
 .brand-tagline {
-  margin-top: 12px;
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  color: #777;
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
+  color: #d4af37;
 }
 
 /* HERO */
 .hero {
   text-align: center;
   padding: 120px 20px;
-  background: linear-gradient(
-    rgba(255,255,255,0.85),
-    rgba(255,255,255,0.85)
-  );
 }
 
 .hero h2 {
   font-size: 2.6rem;
   margin-bottom: 20px;
-  font-weight: 600;
+  color: #ffffff;
 }
 
 .hero p {
   max-width: 600px;
   margin: 0 auto 40px;
-  font-size: 1.1rem;
-  color: #555;
+  font-size: 1.05rem;
+  color: #bbbbbb;
 }
 
 /* CTA BUTTON */
 .cta-button {
   display: inline-block;
-  padding: 14px 40px;
-  border: 1px solid #1c1c1c;
-  letter-spacing: 0.15em;
-  font-size: 0.85rem;
+  padding: 14px 42px;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
 .cta-button:hover {
-  background-color: #1c1c1c;
-  color: #ffffff;
+  background-color: #d4af37;
+  color: #000000;
 }
 
 /* COLLECTION */
@@ -95,58 +87,47 @@ a:hover {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 40px;
   padding: 100px 10%;
-  background: #faf9f7;
 }
 
 .collection-card {
-  background: #ffffff;
+  background: linear-gradient(145deg, #0d0d0d, #000000);
   padding: 60px 40px;
   text-align: center;
-  border: 1px solid #eee;
+  border: 1px solid #1f1f1f;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .collection-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(212, 175, 55, 0.15);
 }
 
 .collection-card h3 {
   font-size: 1.6rem;
   margin-bottom: 15px;
+  color: #ffffff;
 }
 
 .collection-card p {
-  color: #666;
-  font-size: 1rem;
+  color: #aaaaaa;
 }
 
 /* FOOTER */
 .site-footer {
   text-align: center;
   padding: 40px 20px;
-  font-size: 0.85rem;
-  color: #777;
-  border-top: 1px solid #e6e6e6;
-  background: #ffffff;
-}
-
-.site-footer a {
   font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  color: #777;
+  border-top: 1px solid #1f1f1f;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .brand-logo {
-    font-size: 2.4rem;
+  .brand-logo-img {
+    max-width: 200px;
   }
 
   .hero h2 {
     font-size: 2rem;
-  }
-
-  .collection {
-    padding: 80px 5%;
   }
 }
