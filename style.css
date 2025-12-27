@@ -162,3 +162,32 @@ a:hover {
   height: 28px;
   filter: invert(1);
 }
+
+/* =========================
+   WHATSAPP SOFT PULSE
+   ========================= */
+
+.whatsapp-float::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(212, 175, 55, 0.35);
+  animation: whatsappPulse 2.8s infinite ease-out;
+  z-index: -1;
+}
+
+@keyframes whatsappPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
