@@ -257,9 +257,10 @@ a:hover {
 .insta-track {
   display: flex;
   gap: 30px;
-  width: max-content;
-  animation: instaScroll 45s linear infinite;
+  width: fit-content;        /* safer than max-content */
+  will-change: transform;
 }
+
 
 /* Pause animation on hover */
 .insta-mask:hover .insta-track {
