@@ -191,3 +191,113 @@ a:hover {
     opacity: 0;
   }
 }
+
+/* =========================
+   INSTAGRAM LUXURY STRIP
+   ========================= */
+
+.instagram-strip {
+  position: relative;
+  background: #000;
+  padding: 70px 0;
+  overflow: hidden;
+  border-top: 1px solid #1f1f1f;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+/* Centered overlay text */
+.insta-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: #d4af37;
+  font-size: 0.9rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  border: 1px solid #d4af37;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  transition: all 0.4s ease;
+}
+
+.insta-overlay:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* Mask for cinematic fade */
+.insta-mask {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+/* Scrolling track */
+.insta-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: instaScroll 45s linear infinite;
+}
+
+/* Pause animation on hover */
+.insta-mask:hover .insta-track {
+  animation-play-state: paused;
+}
+
+/* Images */
+.instagram-strip img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #1f1f1f;
+  filter: brightness(0.75) contrast(1.05);
+  transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover reveal */
+.instagram-strip img:hover {
+  transform: scale(1.06);
+  filter: brightness(1);
+  box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
+}
+
+/* Animation */
+@keyframes instaScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile optimisation */
+@media (max-width: 768px) {
+  .instagram-strip img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .insta-overlay {
+    font-size: 0.75rem;
+    padding: 12px 22px;
+  }
+}
