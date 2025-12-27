@@ -131,3 +131,34 @@ a:hover {
     font-size: 2rem;
   }
 }
+
+/* =========================
+   FLOATING WHATSAPP BUTTON
+   ========================= */
+
+.whatsapp-float {
+  position: fixed;
+  width: 58px;
+  height: 58px;
+  bottom: 28px;
+  right: 28px;
+  background-color: #d4af37; /* Luxury gold */
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(212, 175, 55, 0.6);
+}
+
+.whatsapp-icon {
+  width: 28px;
+  height: 28px;
+  filter: invert(1);
+}
