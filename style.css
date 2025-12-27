@@ -234,6 +234,12 @@ a:hover {
 }
 
 /* Mask for cinematic fade */
+
+.insta-mask {
+  width: 100%;
+  overflow: hidden;
+}
+
 .insta-mask {
   position: relative;
   overflow: hidden;
