@@ -1,242 +1,152 @@
 /* =========================
-   Google Fonts
-========================= */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap');
+   LILAURA – LUXURY STYLING
+   ========================= */
 
-/* =========================
-   Global Reset
-========================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* ROOT */
 body {
-  font-family: "Playfair Display", serif;
-  background-color: #faf7f2;
-  color: #2c2c2c;
+  font-family: 'Playfair Display', serif;
+  background-color: #faf9f7;
+  color: #1c1c1c;
   line-height: 1.6;
-  padding: 40px;
 }
-h1 {
-  font-size: 3rem;
-  letter-spacing: 0.08em;
+
+/* LINKS */
+a {
+  color: #1c1c1c;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* HEADER */
+.site-header {
+  text-align: center;
+  padding: 80px 20px 60px;
+  border-bottom: 1px solid #e6e6e6;
+  background: #ffffff;
+}
+
+.brand-logo {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
-p {
-  font-size: 1.1rem;
-  max-width: 600px;
+.brand-tagline {
+  margin-top: 12px;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: #777;
+  text-transform: uppercase;
 }
 
-/* =========================
-   Base Styles
-========================= */
-body {
-  font-family: 'Inter', sans-serif;
-  color: #1c1c1c;
-  background-color: #ffffff;
-  line-height: 1.6;
-}
-
-/* =========================
-   Navigation
-========================= */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 8%;
-  border-bottom: 1px solid #eee;
-}
-
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-.navbar nav a {
-  margin-left: 28px;
-  text-decoration: none;
-  color: #1c1c1c;
-  font-size: 14px;
-}
-
-.navbar nav a:hover {
-  opacity: 0.7;
-}
-
-/* =========================
-   Hero Section
-========================= */
+/* HERO */
 .hero {
   text-align: center;
-  padding: 120px 10% 100px;
+  padding: 120px 20px;
+  background: linear-gradient(
+    rgba(255,255,255,0.85),
+    rgba(255,255,255,0.85)
+  );
 }
 
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 48px;
-  margin-bottom: 18px;
+.hero h2 {
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .hero p {
-  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-size: 1.1rem;
   color: #555;
-  margin-bottom: 35px;
 }
 
-/* =========================
-   Buttons
-========================= */
-.btn {
+/* CTA BUTTON */
+.cta-button {
   display: inline-block;
-  text-decoration: none;
-  color: #1c1c1c;
+  padding: 14px 40px;
   border: 1px solid #1c1c1c;
-  padding: 12px 32px;
-  font-size: 14px;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
   transition: all 0.3s ease;
 }
 
-.btn:hover {
+.cta-button:hover {
   background-color: #1c1c1c;
   color: #ffffff;
 }
 
-/* =========================
-   Sections
-========================= */
-.section {
-  padding: 90px 10%;
-  text-align: center;
-}
-
-.section.light {
-  background-color: #fafafa;
-}
-
-.section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 34px;
-  margin-bottom: 40px;
-}
-
-/* =========================
-   Collections Grid
-========================= */
-.grid {
+/* COLLECTION */
+.collection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 40px;
+  padding: 100px 10%;
+  background: #faf9f7;
 }
 
-.card {
-  border: 1px solid #eee;
-  padding: 25px;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 18px;
-}
-
-.card p {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-}
-
-/* =========================
-   Contact Section
-========================= */
-.contact-links a {
-  margin: 0 16px;
-  text-decoration: none;
-  color: #1c1c1c;
-  border-bottom: 1px solid #1c1c1c;
-  font-size: 14px;
-}
-
-.contact-links a:hover {
-  opacity: 0.7;
-}
-
-/* =========================
-   Contact Form
-========================= */
-.contact-form {
-  max-width: 520px;
-  margin: 40px auto 0;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 16px;
-  border: 1px solid #ddd;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-}
-
-.contact-form textarea {
-  min-height: 120px;
-}
-
-.contact-form button {
-  background: none;
-  border: 1px solid #1c1c1c;
-  padding: 12px;
-  width: 100%;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.contact-form button:hover {
-  background-color: #1c1c1c;
-  color: #ffffff;
-}
-
-/* =========================
-   Footer
-========================= */
-footer {
+.collection-card {
+  background: #ffffff;
+  padding: 60px 40px;
   text-align: center;
-  padding: 35px;
-  font-size: 12px;
+  border: 1px solid #eee;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.collection-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+
+.collection-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.collection-card p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* FOOTER */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.85rem;
   color: #777;
+  border-top: 1px solid #e6e6e6;
+  background: #ffffff;
 }
 
-footer a {
-  color: #777;
-  text-decoration: none;
+.site-footer a {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* =========================
-   Responsive Adjustments
-========================= */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 36px;
+  .brand-logo {
+    font-size: 2.4rem;
   }
 
-  .navbar {
-    flex-direction: column;
+  .hero h2 {
+    font-size: 2rem;
   }
 
-  .navbar nav {
-    margin-top: 12px;
-  }
-
-  .navbar nav a {
-    margin-left: 18px;
+  .collection {
+    padding: 80px 5%;
   }
 }
