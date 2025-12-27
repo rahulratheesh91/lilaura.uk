@@ -11,6 +11,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: "Playfair Display", serif;
+  background-color: #faf7f2;
+  color: #2c2c2c;
+  line-height: 1.6;
+  padding: 40px;
+}
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 1.1rem;
+  max-width: 600px;
+}
 
 /* =========================
    Base Styles
