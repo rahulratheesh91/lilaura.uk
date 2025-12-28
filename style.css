@@ -3,6 +3,12 @@ html, body {
   overflow-x: hidden;
 }
 
+.collection-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+
 /* =========================
    LILAURA – DARK LUXURY THEME
    ========================= */
