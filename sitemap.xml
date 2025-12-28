@@ -3,10 +3,27 @@
 
   <url>
     <loc>https://lilaura.uk/</loc>
+    <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://lilaura.uk/privacy.html</loc>
+    <loc>https://lilaura.uk/necklaces.html</loc>
+    <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://lilaura.uk/earrings.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lilaura.uk/bracelets.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+   <url>
+    <loc>https://lilaura.uk/privacy.html</loc>
+     <priority>0.8</priority>
+  </url>
+  
 </urlset>
