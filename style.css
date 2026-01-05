@@ -499,3 +499,32 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+
+.faq-section {
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 0 5%;
+}
+
+.faq-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.faq-item {
+  margin-bottom: 1.8rem;
+}
+
+.faq-item h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+  color: #444;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
