@@ -1,16 +1,5 @@
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-.collection-card {
-  text-decoration: none;
-  color: inherit;
-}
-
-
 /* =========================
-   LILAURA – DARK LUXURY THEME
+   RESET & BASE
    ========================= */
 
 * {
@@ -19,27 +8,38 @@ html, body {
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Playfair Display', serif;
-  background-color: #000000;
+  background: #000;
   color: #e6e6e6;
   line-height: 1.6;
 }
 
-/* LINKS */
+/* =========================
+   LINKS
+   ========================= */
+
 a {
   color: #d4af37;
   text-decoration: none;
 }
 
 a:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
-/* HEADER */
+/* =========================
+   HEADER / HERO
+   ========================= */
+
 .site-header {
   text-align: center;
-  padding: 100px 20px 80px;
+  padding: 90px 20px 70px;
   background: radial-gradient(circle at top, #111 0%, #000 70%);
   border-bottom: 1px solid #1f1f1f;
 }
@@ -50,32 +50,34 @@ a:hover {
 }
 
 .brand-tagline {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: #d4af37;
 }
 
-/* HERO */
 .hero {
   text-align: center;
-  padding: 120px 20px;
+  padding: 110px 20px;
 }
 
 .hero h2 {
   font-size: 2.6rem;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .hero p {
   max-width: 600px;
   margin: 0 auto 40px;
   font-size: 1.05rem;
-  color: #bbbbbb;
+  color: #bbb;
 }
 
-/* CTA BUTTON */
+/* =========================
+   CTA BUTTON
+   ========================= */
+
 .cta-button {
   display: inline-block;
   padding: 14px 42px;
@@ -84,139 +86,61 @@ a:hover {
   letter-spacing: 0.18em;
   font-size: 0.8rem;
   text-transform: uppercase;
-  transition: all 0.35s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #d4af37;
-  color: #000000;
+  background: #d4af37;
+  color: #000;
 }
 
-/* COLLECTION */
+/* =========================
+   COLLECTION GRID
+   ========================= */
+
 .collection {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 40px;
-  padding: 100px 10%;
+  padding: 90px 8%;
 }
 
 .collection-card {
-  background: linear-gradient(145deg, #0d0d0d, #000000);
-  padding: 60px 40px;
+  background: linear-gradient(145deg, #0d0d0d, #000);
+  padding: 55px 40px;
   text-align: center;
   border: 1px solid #1f1f1f;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .collection-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(212, 175, 55, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(212, 175, 55, 0.15);
 }
 
 .collection-card h3 {
   font-size: 1.6rem;
   margin-bottom: 15px;
-  color: #ffffff;
+  color: #fff;
 }
 
 .collection-card p {
-  color: #aaaaaa;
-}
-
-/* FOOTER */
-.site-footer {
-  text-align: center;
-  padding: 40px 20px;
-  font-size: 0.8rem;
-  color: #777;
-  border-top: 1px solid #1f1f1f;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .brand-logo-img {
-    max-width: 200px;
-  }
-
-  .hero h2 {
-    font-size: 2rem;
-  }
+  color: #aaa;
 }
 
 /* =========================
-   FLOATING WHATSAPP BUTTON
-   ========================= */
-
-.whatsapp-float {
-  position: fixed;
-  width: 58px;
-  height: 58px;
-  bottom: 28px;
-  right: 28px;
-  background-color: #d4af37; /* Luxury gold */
-  border-radius: 50%;
-  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.whatsapp-float:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(212, 175, 55, 0.6);
-}
-
-.whatsapp-icon {
-  width: 28px;
-  height: 28px;
-  filter: invert(1);
-}
-
-/* =========================
-   WHATSAPP SOFT PULSE
-   ========================= */
-
-.whatsapp-float::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: rgba(212, 175, 55, 0.35);
-  animation: whatsappPulse 2.8s infinite ease-out;
-  z-index: -1;
-}
-
-@keyframes whatsappPulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  70% {
-    transform: scale(1.7);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-/* =========================
-   INSTAGRAM LUXURY STRIP
+   INSTAGRAM STRIP (OPTIMISED)
    ========================= */
 
 .instagram-strip {
   position: relative;
   background: #000;
   padding: 70px 0;
-  overflow: hidden;
   border-top: 1px solid #1f1f1f;
   border-bottom: 1px solid #1f1f1f;
 }
 
-/* Centered overlay text */
+/* Overlay */
 .insta-overlay {
   position: absolute;
   top: 50%;
@@ -224,194 +148,142 @@ a:hover {
   transform: translate(-50%, -50%);
   z-index: 5;
   color: #d4af37;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  padding: 14px 30px;
+  padding: 14px 28px;
   border: 1px solid #d4af37;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(4px);
-  transition: all 0.4s ease;
+  background: rgba(0,0,0,0.75);
 }
 
-.insta-overlay:hover {
-  background: #d4af37;
-  color: #000;
-}
-
-/* Mask for cinematic fade */
-
-.insta-mask {
-  width: 100%;
-  overflow: hidden;
-}
-
+/* Mask replacement (FAST) */
 .insta-mask {
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 12%,
-    black 88%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 12%,
-    black 88%,
-    transparent 100%
-  );
 }
 
-/* Scrolling track */
+.insta-mask::before,
+.insta-mask::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.insta-mask::before {
+  left: 0;
+  background: linear-gradient(to right, #000, transparent);
+}
+
+.insta-mask::after {
+  right: 0;
+  background: linear-gradient(to left, #000, transparent);
+}
+
+/* Track */
 .insta-track {
   display: flex;
   gap: 30px;
   width: fit-content;
-  animation: instaScroll 45s linear infinite;
-  will-change: transform;
+  animation: instaScroll 60s linear infinite;
 }
 
-/* Pause animation on hover (desktop) */
 .insta-mask:hover .insta-track {
   animation-play-state: paused;
 }
 
-/* Images */
-.instagram-strip img {
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid #1f1f1f;
-  filter: brightness(0.75) contrast(1.05);
-  transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Hover reveal */
-.instagram-strip img:hover {
-  transform: scale(1.06);
-  filter: brightness(1);
-  box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
-}
-
-/* Animation */
-@keyframes instaScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Mobile optimisation */
-@media (max-width: 768px) {
-  .instagram-strip img {
-    width: 160px;
-    height: 160px;
-  }
-
-   /* =========================
-   INSTAGRAM AUTO-SQUARE 1080
-   ========================= */
-
-/* Square container (acts like 1080×1080 frame) */
-.insta-item {
-  width: 220px;
-  aspect-ratio: 1 / 1;          /* forces square */
-  overflow: hidden;
-  border-radius: 6px;
-  border: 1px solid #1f1f1f;
-  background: #000;
-}
-
-/* Image auto-fitted into square */
-.insta-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;            /* center-crop like Instagram */
-  object-position: center;
-  display: block;
-
-  /* luxury consistency */
-  filter: brightness(0.75) contrast(1.05);
-  transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Hover reveal */
-.insta-item img:hover {
-  transform: scale(1.06);
-  filter: brightness(1);
-  box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
-}
-
-/* Mobile sizing */
-@media (max-width: 768px) {
-  .insta-item {
-    width: 160px;
-  }
-}
-
-  .insta-overlay {
-    font-size: 0.75rem;
-    padding: 12px 22px;
-  }
-}
-
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-/* Instagram strip fix */
-.insta-mask {
-  width: 100%;
-  overflow: hidden;
-}
-
-.insta-track {
-  display: flex;
-  gap: 30px;
-  width: fit-content;
-  will-change: transform;
-}
-
-/* Square image container remains unchanged */
+/* Square image container */
 .insta-item {
   width: 220px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid #1f1f1f;
 }
 
-/* Mobile sizing */
-@media (max-width: 768px) {
-  .insta-item {
-    width: 160px;
-  }
+.insta-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75) contrast(1.05);
+  transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
 }
+
+.insta-item img:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25);
+}
+
+/* Animation */
+@keyframes instaScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* =========================
+   WHATSAPP FLOAT
+   ========================= */
+
+.whatsapp-float {
+  position: fixed;
+  width: 56px;
+  height: 56px;
+  bottom: 26px;
+  right: 26px;
+  background: #d4af37;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.whatsapp-icon {
+  width: 26px;
+  height: 26px;
+  filter: invert(1);
+}
+
+/* Pulse (GPU-safe) */
+.whatsapp-float::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.35);
+  animation: pulse 3s infinite ease-out;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); opacity: 0.7; }
+  70%  { transform: scale(1.6); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* =========================
+   PRODUCT GRID
+   ========================= */
 
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2rem;
-  padding: 3rem 5%;
+  padding: 3rem 6%;
 }
 
 .product-card {
   background: #fff;
+  color: #000;
   border-radius: 14px;
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
 }
 
 .product-card img {
@@ -420,32 +292,15 @@ html, body {
   margin-bottom: 1rem;
 }
 
-.product-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-}
-
-.price {
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.4rem;
-  border-radius: 30px;
-  background: #000;
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
+/* =========================
+   PRODUCT PAGE
+   ========================= */
 
 .product-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  padding: 4rem 5%;
+  padding: 4rem 6%;
   max-width: 1200px;
   margin: auto;
 }
@@ -455,76 +310,48 @@ html, body {
   border-radius: 18px;
 }
 
-.product-info h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-}
-
 .product-description {
   margin: 1.5rem 0;
-  line-height: 1.7;
-  color: #444;
+  color: #ccc;
 }
 
-.product-details {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 2rem;
-}
-
-.product-details li {
-  margin-bottom: 0.4rem;
-  font-size: 0.95rem;
-}
-
-.whatsapp-btn {
-  display: inline-block;
-  background: #000;
-  color: #d4af37;
-  padding: 0.9rem 2rem;
-  border-radius: 40px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: transform 0.3s ease;
-}
-
-.whatsapp-btn:hover {
-  transform: scale(1.05);
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .product-page {
-    grid-template-columns: 1fr;
-  }
-}
+/* =========================
+   FAQ
+   ========================= */
 
 .faq-section {
   max-width: 900px;
   margin: 5rem auto;
-  padding: 0 5%;
-}
-
-.faq-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
+  padding: 0 6%;
 }
 
 .faq-item {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.6rem;
 }
 
-.faq-item h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+/* =========================
+   FOOTER
+   ========================= */
+
+.site-footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.8rem;
+  color: #777;
+  border-top: 1px solid #1f1f1f;
 }
 
-.faq-item p {
-  color: #444;
-  line-height: 1.6;
-  font-size: 0.95rem;
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+  .brand-logo-img { max-width: 200px; }
+  .hero h2 { font-size: 2rem; }
+  .insta-item { width: 160px; }
+  .product-page { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .insta-track { animation: none; }
 }
