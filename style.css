@@ -94,6 +94,45 @@ a:hover {
   color: #000;
 }
 
+
+.review-cta {
+  text-align: center;
+  padding: 4rem 6%;
+  background: linear-gradient(180deg, #0a0a0a, #000);
+  border-top: 1px solid #1f1f1f;
+}
+
+.review-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.review-cta p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: #bbb;
+  font-size: 1rem;
+}
+
+.review-whatsapp-btn {
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 40px;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.review-whatsapp-btn:hover {
+  background: #d4af37;
+  color: #000;
+}
+
 /* =========================
    COLLECTION GRID
    ========================= */
