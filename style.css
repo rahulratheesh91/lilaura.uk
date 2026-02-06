@@ -1,9 +1,0 @@
-body{font-family:Arial;margin:0}
-:root{--bg:#fff;--text:#000}
-.dark{--bg:#000;--text:#fff}
-body{background:var(--bg);color:var(--text)}
-.nav{display:flex;justify-content:space-between;padding:1rem}
-.hero{text-align:center;padding:4rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;padding:1rem}
-.card{border:1px solid;padding:1rem}
-.btn{padding:0.7rem 1.2rem;border:1px solid;text-decoration:none}
