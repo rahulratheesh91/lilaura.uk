@@ -12,7 +12,7 @@ const products = [
         price: 120.00,
         image: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?q=80&w=800&auto=format&fit=crop",
         desc: "A timeless Kundan piece treated with our proprietary anti-tarnish coating. Water-resistant and heirloom quality.",
-        instaLink: "https://instagram.com/lilaura.uk/p/1"
+        instaLink: "https://instagram.com/lilaura.uk/"
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ const products = [
         price: 85.00,
         image: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=800&auto=format&fit=crop",
         desc: "Minimalist luxury. Gold vermeil chain with a synthetic emerald stone.",
-        instaLink: "https://instagram.com/lilaura.uk/p/2"
+        instaLink: "https://instagram.com/lilaura.uk/"
     },
     {
         id: 3,
@@ -30,7 +30,7 @@ const products = [
         price: 95.00,
         image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop",
         desc: "Inspired by Southern Indian temple jewelry, reimagined for modern daily wear.",
-        instaLink: "https://instagram.com/lilaura.uk/p/3"
+        instaLink: "https://instagram.com/lilaura.uk/"
     },
 
     // Anti-tarnish Bracelets
@@ -41,7 +41,7 @@ const products = [
         price: 55.00,
         image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop", // Placeholder
         desc: "A dainty bracelet that refuses to fade. Perfect for stacking.",
-        instaLink: "https://instagram.com/lilaura.uk/p/4"
+        instaLink: "https://instagram.com/lilaura.uk/"
     },
     {
         id: 5,
@@ -50,7 +50,7 @@ const products = [
         price: 110.00,
         image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop",
         desc: "Traditional Polki design on a flexible, anti-tarnish open cuff.",
-        instaLink: "https://instagram.com/lilaura.uk/p/5"
+        instaLink: "https://instagram.com/lilaura.uk/"
     },
 
     // Anti-tarnish Kada
@@ -61,7 +61,7 @@ const products = [
         price: 140.00,
         image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?q=80&w=800&auto=format&fit=crop",
         desc: "Heavy look, light weight. 18k Gold plating with guaranteed longevity.",
-        instaLink: "https://instagram.com/lilaura.uk/p/6"
+        instaLink: "https://instagram.com/lilaura.uk/"
     },
     {
         id: 7,
@@ -70,7 +70,7 @@ const products = [
         price: 60.00,
         image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?q=80&w=800&auto=format&fit=crop",
         desc: "For the modern woman. Simple, elegant, and waterproof.",
-        instaLink: "https://instagram.com/lilaura.uk/p/7"
+        instaLink: "https://instagram.com/lilaura.uk/"
     },
 
     // Traditional Jewellery
@@ -81,7 +81,7 @@ const products = [
         price: 45.00,
         image: "https://images.unsplash.com/photo-1617112837568-7c852445657b?q=80&w=800&auto=format&fit=crop",
         desc: "Classic heritage design for weddings and festivals.",
-        instaLink: "https://instagram.com/lilaura.uk/p/8"
+        instaLink: "https://instagram.com/lilaura.uk/"
     },
     {
         id: 9,
@@ -90,7 +90,7 @@ const products = [
         price: 75.00,
         image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop",
         desc: "Oversized Jhumkas with pearl detailing.",
-        instaLink: "https://instagram.com/lilaura.uk/p/9"
+        instaLink: "https://instagram.com/lilaura.uk/"
     },
     {
         id: 10,
@@ -99,7 +99,7 @@ const products = [
         price: 200.00,
         image: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?q=80&w=800&auto=format&fit=crop",
         desc: "The nine gems of royalty. A complete set for the grandest occasions.",
-        instaLink: "https://instagram.com/lilaura.uk/p/10"
+        instaLink: "https://instagram.com/lilaura.uk/"
     }
 ];
 
