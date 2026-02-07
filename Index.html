@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lilaura | Ultra-Luxury Anti-Tarnish & Traditional Jewellery</title>
+    <meta name="description" content="Discover Lilaura. Heritage Indian jewellery meets modern anti-tarnish technology. Handcrafted necklaces, bracelets, and kadas.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lilaura: {
+                            cream: '#F2F0E9',
+                            gold: '#D4AF37',
+                            emerald: '#034938',
+                            text: '#2C2C2C',
+                            subtle: '#6B6B6B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Proza Libre"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-lilaura-cream text-lilaura-text antialiased">
+
+    <nav class="flex justify-between items-center py-6 px-8 md:px-16 sticky top-0 bg-lilaura-cream/95 backdrop-blur-md z-40 border-b border-lilaura-gold/20">
+        <a href="index.html" class="font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald">LILAURA</a>
+        <div class="hidden md:flex space-x-8 font-sans text-sm tracking-widest uppercase">
+            <a href="index.html" class="hover:text-lilaura-gold transition">Home</a>
+            <a href="shop.html" class="hover:text-lilaura-gold transition">Collection</a>
+            <a href="https://instagram.com/lilaura.uk" target="_blank" class="hover:text-lilaura-gold transition">Instagram</a>
+        </div>
+        <div class="cursor-pointer relative" onclick="checkoutWhatsApp()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+            <span class="cart-count absolute -top-2 -right-2 bg-lilaura-emerald text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </div>
+    </nav>
+
+    <header class="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?q=80&w=2000&auto=format&fit=crop" class="absolute w-full h-full object-cover opacity-90" alt="Lilaura Jewellery">
+        <div class="absolute inset-0 bg-black/20"></div>
+        
+        <div class="relative z-10 text-center text-white px-4 animate-fade-in">
+            <h2 class="font-sans text-sm md:text-base tracking-[0.3em] uppercase mb-4 text-lilaura-gold">Heritage Meets Eternity</h2>
+            <h1 class="font-serif text-6xl md:text-8xl mb-8 leading-tight">Lilaura</h1>
+            <a href="shop.html" class="inline-block bg-lilaura-gold hover:bg-white hover:text-lilaura-emerald text-white font-sans text-sm tracking-widest uppercase py-4 px-10 transition duration-300">
+                Explore The Collection
+            </a>
+        </div>
+    </header>
+
+    <section class="py-24 px-8 md:px-32 bg-lilaura-cream text-center">
+        <h2 class="font-serif text-4xl text-lilaura-text mb-6">The Anti-Tarnish Promise</h2>
+        <p class="font-sans text-lilaura-subtle max-w-2xl mx-auto leading-relaxed">
+            Crafted for the modern woman who honors tradition. Our jewelry is treated with advanced protective layers, allowing you to wear your heritage while swimming, showering, or living your life.
+        </p>
+    </section>
+
+    <div id="review-bar" class="review-bar bg-white p-4 shadow-xl border border-lilaura-gold/30 rounded-lg hidden md:block">
+        <div class="flex justify-between items-start mb-2">
+            <div class="flex text-lilaura-gold text-xs">★★★★★</div>
+            <button id="close-review" class="text-lilaura-subtle hover:text-red-500">&times;</button>
+        </div>
+        <p class="font-serif text-sm italic text-lilaura-text mb-3">"The necklace looks even better in person. I wore it to a wedding and haven't taken it off since!"</p>
+        <p class="font-sans text-xs text-lilaura-emerald uppercase tracking-wider">- Priya S.</p>
+        <a href="https://instagram.com/direct/t/lilaura.uk" target="_blank" class="block mt-3 text-xs text-center text-lilaura-subtle underline hover:text-lilaura-emerald">Write a Review on Instagram</a>
+    </div>
+
+    <button onclick="checkoutWhatsApp()" class="floating-cart bg-lilaura-emerald hover:bg-lilaura-gold text-white p-4 rounded-full transition duration-300 flex items-center gap-2 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span class="hidden group-hover:inline font-sans text-sm font-semibold">Checkout</span>
+        <span class="cart-count bg-white text-lilaura-emerald text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1">0</span>
+    </button>
+
+    <footer class="bg-lilaura-text text-lilaura-cream py-12 text-center font-sans text-sm">
+        <p>&copy; 2024 Lilaura. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
