@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Collection | Lilaura</title>
+    <meta name="description" content="Browse Lilaura's exclusive collection of Anti-tarnish Necklaces, Bracelets, Kada and Traditional Indian Jewellery.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lilaura: {
+                            cream: '#F2F0E9',
+                            gold: '#D4AF37',
+                            emerald: '#034938',
+                            text: '#2C2C2C',
+                            subtle: '#6B6B6B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Proza Libre"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-lilaura-cream text-lilaura-text">
+
+    <nav class="flex justify-between items-center py-6 px-8 md:px-16 border-b border-lilaura-gold/20">
+        <a href="index.html" class="font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald">LILAURA</a>
+        <div class="cursor-pointer relative" onclick="checkoutWhatsApp()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+            <span class="cart-count absolute -top-2 -right-2 bg-lilaura-emerald text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </div>
+    </nav>
+
+    <div class="py-16 text-center animate-fade-in">
+        <h1 class="font-serif text-5xl text-lilaura-emerald mb-4">The Collection</h1>
+        <div class="flex flex-wrap justify-center gap-4 font-sans text-xs tracking-widest uppercase">
+            <button onclick="filterCategory('All')" class="hover:text-lilaura-gold">All</button>
+            <button onclick="filterCategory('Anti-tarnish Necklaces')" class="hover:text-lilaura-gold">Necklaces</button>
+            <button onclick="filterCategory('Anti-tarnish Bracelets')" class="hover:text-lilaura-gold">Bracelets</button>
+            <button onclick="filterCategory('Anti-tarnish Kada')" class="hover:text-lilaura-gold">Kada</button>
+            <button onclick="filterCategory('Traditional Jewellery')" class="hover:text-lilaura-gold">Traditional</button>
+        </div>
+    </div>
+
+    <div id="shop-grid" class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16 px-8 md:px-32 pb-24">
+        </div>
+
+    <button onclick="checkoutWhatsApp()" class="floating-cart bg-lilaura-emerald hover:bg-lilaura-gold text-white p-4 rounded-full transition duration-300 flex items-center gap-2 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span class="cart-count bg-white text-lilaura-emerald text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1">0</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
