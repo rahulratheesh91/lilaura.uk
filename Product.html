@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Lilaura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lilaura: {
+                            cream: '#F2F0E9',
+                            gold: '#D4AF37',
+                            emerald: '#034938',
+                            text: '#2C2C2C',
+                            subtle: '#6B6B6B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Proza Libre"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-lilaura-cream text-lilaura-text">
+
+    <nav class="flex justify-between items-center py-6 px-8 md:px-16 border-b border-lilaura-gold/20">
+        <a href="index.html" class="font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald">LILAURA</a>
+        <div class="hidden md:flex space-x-8 font-sans text-sm tracking-widest uppercase">
+            <a href="shop.html" class="text-lilaura-emerald hover:text-lilaura-gold transition">Back to Collection</a>
+        </div>
+        <div class="cursor-pointer relative" onclick="checkoutWhatsApp()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+            <span class="cart-count absolute -top-2 -right-2 bg-lilaura-emerald text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </div>
+    </nav>
+
+    <div id="product-detail-container" class="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-2 gap-16 animate-fade-in">
+        
+        <div class="w-full aspect-square bg-gray-200 overflow-hidden">
+            <img id="p-image" src="" alt="" class="w-full h-full object-cover">
+        </div>
+
+        <div class="flex flex-col justify-center">
+            <span id="p-cat" class="text-xs tracking-[0.2em] uppercase text-lilaura-emerald mb-2">Category</span>
+            <h1 id="p-name" class="font-serif text-5xl text-lilaura-text mb-4">Product Name</h1>
+            <p id="p-price" class="font-serif text-3xl text-lilaura-gold mb-8">£0.00</p>
+            
+            <p id="p-desc" class="font-sans text-lilaura-subtle leading-relaxed mb-10">
+                Description loading...
+            </p>
+
+            <div class="flex flex-col gap-4">
+                <button id="add-to-cart-btn" class="w-full bg-lilaura-emerald hover:bg-lilaura-text text-white font-sans uppercase tracking-widest py-4 transition duration-300">
+                    Add to Cart
+                </button>
+                <a id="p-insta" href="#" target="_blank" class="w-full border border-lilaura-gold text-lilaura-gold hover:bg-lilaura-gold hover:text-white text-center font-sans uppercase tracking-widest py-4 transition duration-300">
+                    View on Instagram
+                </a>
+            </div>
+            
+            <div class="mt-8 text-xs text-lilaura-subtle font-sans">
+                <p>✓ Anti-Tarnish Guarantee</p>
+                <p>✓ Secure WhatsApp Checkout</p>
+                <p>✓ Ships from UK</p>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="checkoutWhatsApp()" class="floating-cart bg-lilaura-emerald hover:bg-lilaura-gold text-white p-4 rounded-full transition duration-300 flex items-center gap-2 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span class="cart-count bg-white text-lilaura-emerald text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1">0</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
