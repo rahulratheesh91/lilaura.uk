@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             reviewBar.style.display = 'none';
         });
     }
-
+  
     // Dynamic Shop Rendering
     const shopGrid = document.getElementById('shop-grid');
     if (shopGrid) {
@@ -217,3 +217,16 @@ function filterCategory(cat) {
         renderShop(filtered);
     }
 }
+// Simple FOMO Notification
+const locations = ["London", "Birmingham", "Manchester", "Leicester", "Leeds"];
+const fomoProducts = products.map(p => p.name);
+
+function showNotification() {
+    const loc = locations[Math.floor(Math.random() * locations.length)];
+    const prod = fomoProducts[Math.floor(Math.random() * fomoProducts.length)];
+    
+    // Create the bubble UI element here (code omitted for brevity but I can provide it)
+    console.log(`Someone in ${loc} purchased ${prod}`); 
+}
+
+// setInterval(showNotification, 30000); // Runs every 30 seconds
