@@ -63,5 +63,20 @@
     </button>
 
     <script src="script.js"></script>
+
+<div id="fomo-popup" class="fixed bottom-8 left-8 z-50 bg-white border border-lilaura-gold/30 shadow-2xl p-4 flex items-center gap-4 opacity-0 pointer-events-none transition-all duration-700 translate-y-10">
+        <div class="w-10 h-10 rounded-full bg-lilaura-cream flex items-center justify-center text-lilaura-gold border border-lilaura-gold/50">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+        </div>
+        <div>
+            <p id="fomo-text" class="font-sans text-xs text-lilaura-subtle mb-1">Someone in London purchased</p>
+            <p id="fomo-product" class="font-serif text-sm text-lilaura-text font-semibold">The Rani Kundan Choker</p>
+            <p class="font-sans text-[10px] text-lilaura-emerald uppercase tracking-widest mt-1">Just now</p>
+        </div>
+        <button onclick="document.getElementById('fomo-popup').classList.remove('show-fomo')" class="absolute top-2 right-2 text-gray-400 hover:text-gray-800">&times;</button>
+    </div>
+    
 </body>
 </html>
