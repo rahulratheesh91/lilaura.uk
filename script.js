@@ -248,16 +248,40 @@ function filterCategory(cat) {
         renderShop(filtered);
     }
 }
-// Simple FOMO Notification
-const locations = ["London", "Birmingham", "Manchester", "Leicester", "Leeds"];
-const fomoProducts = products.map(p => p.name);
+// --- 4. SOCIAL PROOF (FOMO) LOGIC ---
+const ukLocations = [
+    "London", "Birmingham", "Manchester", "Leicester", "Leeds", 
+    "Edinburgh", "Glasgow", "Bristol", "Liverpool", "Nottingham", "Northampton", "Isle of Wight", "Cardiff", "Oxford", "Newcastle upon Tyne"
+];
 
-function showNotification() {
-    const loc = locations[Math.floor(Math.random() * locations.length)];
-    const prod = fomoProducts[Math.floor(Math.random() * fomoProducts.length)];
+function triggerFomoNotification() {
+    const fomoPopup = document.getElementById('fomo-popup');
     
-    // Create the bubble UI element here (code omitted for brevity but I can provide it)
-    console.log(`Someone in ${loc} purchased ${prod}`); 
+    // If the element doesn't exist on this page, stop running
+    if (!fomoPopup) return; 
+
+    // Get a random city
+    const randomCity = ukLocations[Math.floor(Math.random() * ukLocations.length)];
+    
+    // Get a random product from your existing 'products' array
+    const randomProduct = products[Math.floor(Math.random() * products.length)];
+
+    // Update the text in the HTML
+    document.getElementById('fomo-text').innerText = `Someone in ${randomCity} recently purchased`;
+    document.getElementById('fomo-product').innerText = randomProduct.name;
+
+    // Slide it in
+    fomoPopup.classList.add('show-fomo');
+
+    // Slide it out after 6 seconds
+    setTimeout(() => {
+        fomoPopup.classList.remove('show-fomo');
+    }, 6000);
 }
 
-// setInterval(showNotification, 30000); // Runs every 30 seconds
+// Start the cycle: Wait 10 seconds after the page loads to show the first one
+setTimeout(() => {
+    triggerFomoNotification();
+    // Then show a new one every 45 seconds
+    setInterval(triggerFomoNotification, 45000);
+}, 10000);
