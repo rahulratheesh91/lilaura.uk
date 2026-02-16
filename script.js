@@ -196,7 +196,38 @@ function renderShop(items) {
 }
 
 function renderProductDetail(p) {
-    document.getElementById('p-image').src = p.image;
+
+// Add this inside your renderProductDetail function
+const schemaData = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": p.name,
+  "image": [
+    "https://www.lilaura.uk/" + p.image
+  ],
+  "description": p.desc,
+  "sku": "LILAURA-" + p.id,
+  "brand": {
+    "@type": "Brand",
+    "name": "Lilaura"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": window.location.href,
+    "priceCurrency": "GBP",
+    "price": p.price,
+    "priceValidUntil": "2025-11-20",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
+const script = document.createElement('script');
+script.type = "application/ld+json";
+script.text = JSON.stringify(schemaData);
+document.head.appendChild(script);
+  
+  document.getElementById('p-image').src = p.image;
     document.getElementById('p-cat').innerText = p.category;
     document.getElementById('p-name').innerText = p.name;
     document.getElementById('p-price').innerText = `£${p.price.toFixed(2)}`;
