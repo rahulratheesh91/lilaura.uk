@@ -43,3 +43,10 @@ html {
 ::-webkit-scrollbar-thumb {
     background: #D4AF37; 
 }
+
+/* Social Proof Popup Animation */
+.show-fomo {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+}
