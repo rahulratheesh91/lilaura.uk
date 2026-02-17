@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lilaura | Ultra-Luxury Anti-Tarnish & Traditional Jewellery</title>
     <meta name="description" content="Discover Lilaura. Heritage Indian jewellery meets modern anti-tarnish technology. Handcrafted necklaces, bracelets, and kadas.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,16 +13,20 @@
                 extend: {
                     colors: {
                         lilaura: {
-                            cream: '#F2F0E9',
-                            gold: '#D4AF37',
-                            emerald: '#034938',
-                            text: '#2C2C2C',
-                            subtle: '#6B6B6B'
+                            cream: '#F2F0E9',      // Alabaster Background
+                            gold: '#D4AF37',       // Champagne Gold
+                            goldhover: '#B5952F',  // Darker Gold
+                            emerald: '#034938',    // Royal Emerald
+                            text: '#2C2C2C',       // Soft Black
+                            subtle: '#6B6B6B'      // Grey Text
                         }
                     },
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'serif'],
                         sans: ['"Proza Libre"', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'widest-luxury': '0.25em',
                     }
                 }
             }
@@ -29,91 +34,132 @@
     </script>
     <link rel="stylesheet" href="styles.css">
 
-<style>
-    /* Force the animation style to load immediately */
-    .show-fomo {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-        pointer-events: auto !important;
-        visibility: visible !important;
-    }
-</style>
-    
+    <style>
+        /* Slow Zoom Animation for Hero Image */
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* FOMO Popup Animation - Forces visibility */
+        .show-fomo {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            pointer-events: auto !important;
+            visibility: visible !important;
+        }
+
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
 <body class="bg-lilaura-cream text-lilaura-text antialiased">
 
-    <nav class="flex justify-between items-center py-6 px-8 md:px-16 sticky top-0 bg-lilaura-cream/95 backdrop-blur-md z-40 border-b border-lilaura-gold/20">
-        <a href="index.html" class="font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald">LILAURA</a>
-        <div class="hidden md:flex space-x-8 font-sans text-sm tracking-widest uppercase">
-            <a href="index.html" class="hover:text-lilaura-gold transition">Home</a>
-            <a href="shop.html" class="hover:text-lilaura-gold transition">Collection</a>
-            <a href="https://instagram.com/lilaura.uk" target="_blank" class="hover:text-lilaura-gold transition">Instagram</a>
-        </div>
-        <div class="cursor-pointer relative" onclick="checkoutWhatsApp()">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            <span class="cart-count absolute -top-2 -right-2 bg-lilaura-emerald text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-lilaura-cream/90 backdrop-blur-md border-b border-lilaura-gold/20">
+        <div class="flex justify-between items-center py-5 px-6 md:px-16">
+            <a href="index.html" class="font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald hover:text-lilaura-gold transition-colors duration-300">
+                LILAURA
+            </a>
+            
+            <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
+                <a href="index.html" class="text-lilaura-gold">Home</a>
+                <a href="shop.html" class="hover:text-lilaura-gold transition">Collection</a>
+                <a href="https://instagram.com/lilaura.uk" target="_blank" class="hover:text-lilaura-gold transition">Instagram</a>
+            </div>
+
+            <div class="cursor-pointer relative group" onclick="checkoutWhatsApp()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-lilaura-text group-hover:text-lilaura-gold transition">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span class="cart-count absolute -top-2 -right-2 bg-lilaura-emerald text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-sans">0</span>
+            </div>
         </div>
     </nav>
 
-    <header class="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?q=80&w=2000&auto=format&fit=crop" class="absolute w-full h-full object-cover opacity-90" alt="Lilaura Jewellery">
-        <div class="absolute inset-0 bg-black/20"></div>
+    <header class="relative w-full h-[90vh] flex items-center justify-center overflow-hidden bg-black">
+        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=2500&auto=format&fit=crop" 
+             class="absolute w-full h-full object-cover opacity-80" 
+             style="animation: slowZoom 25s infinite alternate ease-in-out;"
+             alt="Lilaura Luxury Jewellery">
         
-        <div class="relative z-10 text-center text-white px-4 animate-fade-in">
-            <h2 class="font-sans text-sm md:text-base tracking-[0.3em] uppercase mb-4 text-lilaura-gold">Heritage Meets Eternity</h2>
-            <h1 class="font-serif text-6xl md:text-8xl mb-8 leading-tight">Lilaura</h1>
-            <a href="shop.html" class="inline-block bg-lilaura-gold hover:bg-white hover:text-lilaura-emerald text-white font-sans text-sm tracking-widest uppercase py-4 px-10 transition duration-300">
-                Explore The Collection
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-lilaura-cream/10"></div>
+        
+        <div class="relative z-10 text-center text-white px-4 mt-16 animate-fade-in">
+            <h2 class="font-sans text-[10px] md:text-xs tracking-[0.4em] uppercase mb-6 text-lilaura-gold drop-shadow-lg">
+                The Heritage Collection
+            </h2>
+            <h1 class="font-serif text-5xl md:text-8xl mb-6 leading-tight drop-shadow-2xl text-white">
+                Lilaura
+            </h1>
+            <p class="font-sans text-xs md:text-sm text-gray-200 mb-10 tracking-widest font-light opacity-90">
+                ANTI-TARNISH &bull; TRADITIONAL &bull; TIMELESS
+            </p>
+            <a href="shop.html" class="inline-block bg-white/10 backdrop-blur-sm border border-white/40 hover:bg-lilaura-gold hover:border-lilaura-gold hover:text-white text-white font-sans text-[10px] md:text-xs tracking-[0.25em] uppercase py-4 px-10 transition duration-500">
+                View Collection
             </a>
         </div>
     </header>
 
-    <section class="py-24 px-8 md:px-32 bg-lilaura-cream text-center">
-        <h2 class="font-serif text-4xl text-lilaura-text mb-6">The Anti-Tarnish Promise</h2>
-        <p class="font-sans text-lilaura-subtle max-w-2xl mx-auto leading-relaxed">
+    <section class="py-24 px-8 md:px-32 bg-lilaura-cream text-center border-b border-lilaura-gold/10">
+        <h2 class="font-serif text-3xl md:text-4xl text-lilaura-text mb-6">The Anti-Tarnish Promise</h2>
+        <div class="w-16 h-0.5 bg-lilaura-gold mx-auto mb-8"></div>
+        <p class="font-sans text-lilaura-subtle max-w-2xl mx-auto leading-loose text-sm md:text-base">
             Crafted for the modern woman who honors tradition. Our jewelry is treated with advanced protective layers, allowing you to wear your heritage while swimming, showering, or living your life.
         </p>
     </section>
 
-    <div id="review-bar" class="review-bar bg-white p-4 shadow-xl border border-lilaura-gold/30 rounded-lg hidden md:block">
+    <div id="review-bar" class="fixed bottom-8 left-8 z-40 bg-white p-5 shadow-2xl border border-lilaura-gold/20 max-w-xs hidden md:block animate-fade-in">
         <div class="flex justify-between items-start mb-2">
-            <div class="flex text-lilaura-gold text-xs">★★★★★</div>
-            <button id="close-review" class="text-lilaura-subtle hover:text-red-500">&times;</button>
+            <div class="flex text-lilaura-gold text-xs space-x-0.5">★★★★★</div>
+            <button id="close-review" class="text-lilaura-subtle hover:text-red-500 text-lg leading-none">&times;</button>
         </div>
-        <p class="font-serif text-sm italic text-lilaura-text mb-3">"The necklace looks even better in person. I wore it to a wedding and haven't taken it off since!"</p>
-        <p class="font-sans text-xs text-lilaura-emerald uppercase tracking-wider">- Priya S.</p>
-        <a href="https://instagram.com/direct/t/lilaura.uk" target="_blank" class="block mt-3 text-xs text-center text-lilaura-subtle underline hover:text-lilaura-emerald">Write a Review on Instagram</a>
+        <p class="font-serif text-sm italic text-lilaura-text mb-3 leading-relaxed">"The necklace looks even better in person. I wore it to a wedding and haven't taken it off since!"</p>
+        <div class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-[8px] text-gray-500">PS</div>
+            <p class="font-sans text-[10px] text-lilaura-emerald uppercase tracking-wider font-bold">Priya S.</p>
+        </div>
+        <a href="https://instagram.com/direct/t/lilaura.uk" target="_blank" class="block mt-4 text-[10px] text-lilaura-subtle underline hover:text-lilaura-emerald transition">Write a Review</a>
     </div>
 
-    <button onclick="checkoutWhatsApp()" class="floating-cart bg-lilaura-emerald hover:bg-lilaura-gold text-white p-4 rounded-full transition duration-300 flex items-center gap-2 group">
+    <button onclick="checkoutWhatsApp()" class="fixed bottom-8 right-8 z-50 bg-lilaura-emerald hover:bg-lilaura-gold text-white p-4 rounded-full shadow-2xl transition duration-300 flex items-center gap-2 group">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
-        <span class="hidden group-hover:inline font-sans text-sm font-semibold">Checkout</span>
-        <span class="cart-count bg-white text-lilaura-emerald text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1">0</span>
+        <span class="hidden group-hover:inline font-sans text-sm font-semibold pr-2">Checkout</span>
+        <span class="cart-count bg-white text-lilaura-emerald text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1 shadow-sm">0</span>
     </button>
 
-    <footer class="bg-lilaura-text text-lilaura-cream py-12 text-center font-sans text-sm">
-        <p>&copy; 2026 Lilaura. All Rights Reserved.</p>
+    <div id="fomo-popup" class="fixed bottom-24 left-8 z-50 bg-white border border-lilaura-gold/30 shadow-2xl p-4 flex items-center gap-4 transition-all duration-700 opacity-0 translate-y-8" style="pointer-events: none;">
+        <div class="w-10 h-10 rounded-full bg-lilaura-cream flex items-center justify-center text-lilaura-gold border border-lilaura-gold/50 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+        </div>
+        <div>
+            <p id="fomo-text" class="font-sans text-xs text-lilaura-subtle mb-0.5">Loading...</p>
+            <p id="fomo-product" class="font-serif text-sm text-lilaura-text font-semibold line-clamp-1 max-w-[180px]">...</p>
+            <p class="font-sans text-[9px] text-lilaura-emerald uppercase tracking-widest mt-1">Just now</p>
+        </div>
+        <button onclick="document.getElementById('fomo-popup').classList.remove('show-fomo')" class="absolute top-2 right-2 text-gray-400 hover:text-gray-800 leading-none text-lg">&times;</button>
+    </div>
+
+    <footer class="bg-lilaura-text text-lilaura-cream py-12 border-t border-lilaura-gold/20">
+        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <h3 class="font-serif text-2xl text-lilaura-gold mb-2">LILAURA</h3>
+                <p class="font-sans text-xs text-gray-400 tracking-widest uppercase">Heritage / Modern / Eternal</p>
+            </div>
+            <div class="flex gap-6 font-sans text-xs uppercase tracking-widest text-gray-400">
+                <a href="shop.html" class="hover:text-white transition">Shop</a>
+                <a href="#" class="hover:text-white transition">About</a>
+                <a href="#" class="hover:text-white transition">Contact</a>
+            </div>
+            <div class="text-xs text-gray-500 font-sans">
+                &copy; 2024 Lilaura UK. All Rights Reserved.
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
-
-    <div id="fomo-popup" class="fixed bottom-8 left-8 z-50 bg-white border border-lilaura-gold/30 shadow-2xl p-4 flex items-center gap-4 transition-all duration-700 opacity-0 translate-y-8" style="pointer-events: none;">
-    <div class="w-10 h-10 rounded-full bg-lilaura-cream flex items-center justify-center text-lilaura-gold border border-lilaura-gold/50">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-        </svg>
-    </div>
-    <div>
-        <p id="fomo-text" class="font-sans text-xs text-lilaura-subtle mb-1">Someone in London purchased</p>
-        <p id="fomo-product" class="font-serif text-sm text-lilaura-text font-semibold">The Rani Kundan Choker</p>
-        <p class="font-sans text-[10px] text-lilaura-emerald uppercase tracking-widest mt-1">Just now</p>
-    </div>
-    <button onclick="document.getElementById('fomo-popup').classList.remove('show-fomo')" class="absolute top-2 right-2 text-gray-400 hover:text-gray-800">&times;</button>
-</div>
-
 </body>
 </html>
