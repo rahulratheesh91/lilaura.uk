@@ -273,9 +273,9 @@ const ukLocations = [
 ];
 
 const customerNames = [
-    "Priya", "Sarah", "Anjali", "Jessica", "Fatima", 
-    "Neha", "Emily", "Aisha", "Chloe", "Riya", 
-    "Sonia", "Zara", "Meera", "Rebecca", "Simran"
+    "Mrs.Wright", "Sarah", "Anjali", "Jessica", "Ms.Bennett", 
+    "Ms.Kensington", "Emily", "Aisha", "Chloe", "Mrs.Caldwell", 
+    "Ms.Sinclair", "Ms.Harrington", "Ms.Ashford", "Rebecca", "Simran"
 ];
 
 function triggerFomoNotification() {
