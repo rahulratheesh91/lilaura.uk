@@ -251,7 +251,13 @@ function filterCategory(cat) {
 // --- 4. SOCIAL PROOF (FOMO) LOGIC ---
 const ukLocations = [
     "London", "Birmingham", "Manchester", "Leicester", "Leeds", 
-    "Edinburgh", "Glasgow", "Bristol", "Liverpool", "Nottingham", "Northampton", "Isle of Wight", "Cardiff", "Oxford", "Newcastle upon Tyne"
+    "Edinburgh", "Glasgow", "Bristol", "Liverpool", "Nottingham", "Bradford"
+];
+
+const customerNames = [
+    "Ms.Bennett", "Sarah", "Anjali", "Jessica", "Mrs.Whitby", 
+    "Neha", "Emily", "Ms.Kensington", "Chloe", "Riya", 
+    "Ms.Fletcher", "Zara", "Mrs.Wright", "Rebecca", "Simran"
 ];
 
 function triggerFomoNotification() {
@@ -263,25 +269,30 @@ function triggerFomoNotification() {
     // Get a random city
     const randomCity = ukLocations[Math.floor(Math.random() * ukLocations.length)];
     
+    // Get a random name
+    const randomName = customerNames[Math.floor(Math.random() * customerNames.length)];
+    
     // Get a random product from your existing 'products' array
     const randomProduct = products[Math.floor(Math.random() * products.length)];
 
     // Update the text in the HTML
-    document.getElementById('fomo-text').innerText = `Someone in ${randomCity} recently purchased`;
+    // It will now say: "Priya in London recently purchased"
+    document.getElementById('fomo-text').innerText = `${randomName} in ${randomCity} purchased`;
     document.getElementById('fomo-product').innerText = randomProduct.name;
 
-    // Slide it in
+    // Slide it in (Make sure CSS class 'show-fomo' is in your styles)
     fomoPopup.classList.add('show-fomo');
 
-    // Slide it out after 6 seconds
+    // Slide it out after 5 seconds
     setTimeout(() => {
         fomoPopup.classList.remove('show-fomo');
-    }, 6000);
+    }, 5000);
 }
 
-// Start the cycle: Wait 10 seconds after the page loads to show the first one
+// Start the cycle
+// First popup appears after 5 seconds
 setTimeout(() => {
     triggerFomoNotification();
-    // Then show a new one every 45 seconds
-    setInterval(triggerFomoNotification, 45000);
-}, 10000);
+    // Then a new one every 25 seconds
+    setInterval(triggerFomoNotification, 25000);
+}, 5000);
