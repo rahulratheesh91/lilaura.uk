@@ -294,5 +294,5 @@ function triggerFomoNotification() {
 setTimeout(() => {
     triggerFomoNotification();
     // Then a new one every 25 seconds
-    setInterval(triggerFomoNotification, 25000);
+    setInterval(triggerFomoNotification, 60000);
 }, 5000);
