@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Lilaura</title>
+    <meta name="description" content="The story of Lilaura. Bridging the gap between Indian Heritage artistry and modern waterproof durability.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lilaura: {
+                            cream: '#F2F0E9',
+                            gold: '#D4AF37',
+                            emerald: '#034938',
+                            text: '#2C2C2C',
+                            subtle: '#6B6B6B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Proza Libre"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .show-fomo { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; visibility: visible !important; }
+    </style>
+</head>
+<body class="bg-lilaura-cream text-lilaura-text antialiased">
 
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-lilaura-cream/90 backdrop-blur-md border-b border-lilaura-gold/20">
+        <div class="flex justify-between items-center py-5 px-6 md:px-16">
+            <a href="index.html" class="font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald hover:text-lilaura-gold transition-colors duration-300">LILAURA</a>
+            <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
+                <a href="index.html" class="hover:text-lilaura-gold transition">Home</a>
+                <a href="shop.html" class="hover:text-lilaura-gold transition">Collection</a>
+                <a href="about.html" class="text-lilaura-gold">Our Story</a>
+            </div>
+            <div class="cursor-pointer relative group" onclick="checkoutWhatsApp()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-lilaura-text group-hover:text-lilaura-gold transition">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span class="cart-count absolute -top-2 -right-2 bg-lilaura-emerald text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-sans">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative w-full h-[60vh] flex items-center justify-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?q=80&w=2000&auto=format&fit=crop" class="absolute w-full h-full object-cover opacity-80" alt="Lilaura Craftsmanship">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative z-10 text-center text-white px-4 animate-fade-in mt-10">
+            <h1 class="font-serif text-5xl md:text-7xl mb-4 leading-tight">Heritage You Can Live In</h1>
+            <p class="font-sans text-xs tracking-[0.3em] uppercase opacity-90">The End of the "Special Occasion"</p>
+        </div>
+    </header>
+
+    <section class="max-w-4xl mx-auto px-8 py-24 text-center">
+        <span class="text-lilaura-emerald font-sans text-xs tracking-[0.2em] uppercase block mb-6">The Origin</span>
+        <h2 class="font-serif text-3xl md:text-4xl text-lilaura-text mb-8 leading-relaxed">
+            "Why must beautiful things be hidden away?"
+        </h2>
+        <div class="font-sans text-lilaura-subtle leading-loose text-sm md:text-base space-y-6">
+            <p>
+                We grew up watching the women in our lives treat their jewellery like fragile secrets. 
+                Beautiful Kundan sets were wrapped in cotton, locked in safe boxes, and only brought out for weddings. 
+                Daily wear was restricted to boring, simple pieces because "real gold is too risky" and "artificial jewellery fades in a week."
+            </p>
+            <p>
+                We believed you shouldn't have to choose between <strong>Tradition</strong> and <strong>Freedom</strong>.
+            </p>
+            <p class="text-lilaura-text font-medium text-lg">
+                Lilaura was born to break the glass case.
+            </p>
+        </div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2">
+        <div class="bg-lilaura-emerald text-white p-16 flex flex-col justify-center items-start">
+            <span class="text-lilaura-gold font-sans text-xs tracking-widest uppercase mb-4">The Innovation</span>
+            <h3 class="font-serif text-4xl mb-6">Not Just Gold Plating. <br>A Golden Shield.</h3>
+            <p class="font-sans text-gray-300 leading-relaxed mb-8">
+                Most fashion jewellery dips their metal once. We engineered a proprietary <strong>Anti-Tarnish Seal</strong> 
+                that bonds with the metal at a molecular level. 
+            </p>
+            <ul class="space-y-4 font-sans text-sm tracking-wide">
+                <li class="flex items-center gap-4">
+                    <span class="w-8 h-px bg-lilaura-gold"></span> Sweat Resistant (Gym Approved)
+                </li>
+                <li class="flex items-center gap-4">
+                    <span class="w-8 h-px bg-lilaura-gold"></span> Water Resistant (Shower Friendly)
+                </li>
+                <li class="flex items-center gap-4">
+                    <span class="w-8 h-px bg-lilaura-gold"></span> Perfume Safe
+                </li>
+            </ul>
+        </div>
+        <div class="h-[500px] md:h-auto bg-gray-200 relative">
+             
+             <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=1000&auto=format&fit=crop" class="absolute w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" alt="Waterproof Jewellery">
+        </div>
+    </section>
+
+    <section class="py-24 px-8 bg-white">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            
+            <div class="group">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full border border-lilaura-gold flex items-center justify-center text-lilaura-gold group-hover:bg-lilaura-gold group-hover:text-white transition duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h4 class="font-serif text-xl mb-3">Hypoallergenic Promise</h4>
+                <p class="font-sans text-xs text-lilaura-subtle leading-relaxed">No nickel. No lead. No itchy skin. Safe for the most sensitive ears and necks.</p>
+            </div>
+
+            <div class="group">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full border border-lilaura-gold flex items-center justify-center text-lilaura-gold group-hover:bg-lilaura-gold group-hover:text-white transition duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h4 class="font-serif text-xl mb-3">Timeless Design</h4>
+                <p class="font-sans text-xs text-lilaura-subtle leading-relaxed">We don't chase trends that die in a month. We curate designs that your daughter will want to steal.</p>
+            </div>
+
+            <div class="group">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full border border-lilaura-gold flex items-center justify-center text-lilaura-gold group-hover:bg-lilaura-gold group-hover:text-white transition duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                    </svg>
+                </div>
+                <h4 class="font-serif text-xl mb-3">Ethically Sourced</h4>
+                <p class="font-sans text-xs text-lilaura-subtle leading-relaxed">Luxury shouldn't cost the earth. We work directly with artisans to ensure fair wages and sustainable sourcing.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="bg-lilaura-cream py-24 px-8 border-t border-lilaura-gold/10">
+        <div class="max-w-2xl mx-auto text-center">
+            <p class="font-serif text-2xl italic text-lilaura-text mb-8">
+                "My vision for Lilaura is simple: To let you carry your culture with you, effortlessly, every single day."
+            </p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Signature_sample.svg/1200px-Signature_sample.svg.png" class="h-16 mx-auto opacity-50 mb-4" alt="Founder Signature">
+            <p class="font-sans text-xs uppercase tracking-widest text-lilaura-emerald">Founder, Lilaura UK</p>
+        </div>
+    </section>
+
+    <div class="bg-black text-white py-16 text-center">
+        <h2 class="font-serif text-3xl mb-6">Ready to find your forever piece?</h2>
+        <a href="shop.html" class="inline-block bg-lilaura-gold text-white font-sans text-xs tracking-[0.2em] uppercase py-4 px-12 hover:bg-white hover:text-black transition duration-300">
+            Explore the Collection
+        </a>
+    </div>
+
+    <footer class="bg-lilaura-text text-lilaura-cream py-12 border-t border-lilaura-gold/20">
+        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <h3 class="font-serif text-2xl text-lilaura-gold mb-2">LILAURA</h3>
+                <p class="font-sans text-xs text-gray-400 tracking-widest uppercase">Heritage / Modern / Eternal</p>
+            </div>
+            <div class="flex gap-6 font-sans text-xs uppercase tracking-widest text-gray-400">
+                <a href="shop.html" class="hover:text-white transition">Shop</a>
+                <a href="about.html" class="hover:text-white transition">Our Story</a>
+                <a href="https://instagram.com/lilaura.uk" target="_blank" class="hover:text-white transition">Contact</a>
+            </div>
+            <div class="text-xs text-gray-500 font-sans">
+                &copy; 2024 Lilaura UK. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
