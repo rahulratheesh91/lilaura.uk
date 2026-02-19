@@ -30,13 +30,6 @@
         }
     </script>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Loading State for Button */
-        button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-    </style>
 </head>
 <body class="bg-lilaura-cream text-lilaura-text antialiased">
 
@@ -44,12 +37,12 @@
         <div class="flex justify-between items-center py-5 px-6 md:px-16">
             <a href="index.html" class="font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald hover:text-lilaura-gold transition-colors duration-300">LILAURA</a>
             
-           <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
-    <a href="index.html" class="hover:text-lilaura-gold transition">Home</a>
-    <a href="shop.html" class="hover:text-lilaura-gold transition">Collection</a>
-    <a href="about.html" class="hover:text-lilaura-gold transition">Our Story</a>
-    <a href="contact.html" class="hover:text-lilaura-gold transition">Contact</a>
-</div>
+            <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
+                <a href="index.html" class="hover:text-lilaura-gold transition">Home</a>
+                <a href="shop.html" class="hover:text-lilaura-gold transition">Collection</a>
+                <a href="about.html" class="hover:text-lilaura-gold transition">Our Story</a>
+                <a href="contact.html" class="text-lilaura-gold border-b border-lilaura-gold">Contact</a>
+            </div>
 
             <div class="cursor-pointer relative group" onclick="checkoutWhatsApp()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-lilaura-text group-hover:text-lilaura-gold transition">
@@ -101,8 +94,12 @@
 
         <div class="bg-white p-8 md:p-12 shadow-xl border border-lilaura-gold/10 relative">
             
-            <form id="form" class="space-y-6">
+            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
                 
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
+                <input type="hidden" name="redirect" value="https://www.lilaura.uk/index.html">
+
                 <input type="hidden" name="subject" value="New Enquiry from Lilaura Website">
 
                 <div>
@@ -146,45 +143,5 @@
     </footer>
 
     <script src="script.js"></script>
-
-    <script>
-        const form = document.getElementById('form');
-        const submitBtn = form.querySelector('button[type="submit"]');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const formData = new FormData(form);
-            // YOUR ACCESS KEY IS HERE
-            formData.append("access_key", "162f1f86-6d0a-44e3-b349-0fbab421efc0");
-
-            const originalText = submitBtn.textContent;
-
-            submitBtn.textContent = "Sending...";
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    body: formData
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    alert("Thank you! Your message has been sent successfully.");
-                    form.reset();
-                } else {
-                    alert("Error: " + data.message);
-                }
-
-            } catch (error) {
-                alert("Something went wrong. Please check your internet connection and try again.");
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-    </script>
 </body>
 </html>
