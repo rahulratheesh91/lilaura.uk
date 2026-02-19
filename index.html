@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lilaura | Ultra-Luxury Anti-Tarnish & Traditional Jewellery</title>
+    <meta name="description" content="Discover Lilaura. Heritage Indian jewellery meets modern anti-tarnish technology. Handcrafted necklaces, bracelets, and kadas.">
+    
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <meta name="description" content="Discover Lilaura. Heritage Indian jewellery meets modern anti-tarnish technology. Handcrafted necklaces, bracelets, and kadas.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -15,12 +16,12 @@
                 extend: {
                     colors: {
                         lilaura: {
-                            cream: '#F2F0E9',      // Alabaster Background
-                            gold: '#D4AF37',       // Champagne Gold
-                            goldhover: '#B5952F',  // Darker Gold
-                            emerald: '#034938',    // Royal Emerald
-                            text: '#2C2C2C',       // Soft Black
-                            subtle: '#6B6B6B'      // Grey Text
+                            cream: '#F2F0E9',
+                            gold: '#D4AF37',
+                            goldhover: '#B5952F',
+                            emerald: '#034938',
+                            text: '#2C2C2C',
+                            subtle: '#6B6B6B'
                         }
                     },
                     fontFamily: {
@@ -42,16 +43,13 @@
             0% { transform: scale(1); }
             100% { transform: scale(1.1); }
         }
-
-        /* FOMO Popup Animation - Forces visibility */
+        /* FOMO Popup Animation */
         .show-fomo {
             opacity: 1 !important;
             transform: translateY(0) !important;
             pointer-events: auto !important;
             visibility: visible !important;
         }
-
-        /* Smooth Scroll */
         html { scroll-behavior: smooth; }
     </style>
 </head>
@@ -64,11 +62,11 @@
             </a>
             
             <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
-    <a href="index.html" class="hover:text-lilaura-gold transition">Home</a>
-    <a href="shop.html" class="hover:text-lilaura-gold transition">Collection</a>
-    <a href="about.html" class="hover:text-lilaura-gold transition">Our Story</a>
-    <a href="contact.html" class="hover:text-lilaura-gold transition">Contact</a>
-</div>
+                <a href="index.html" class="hover:text-lilaura-gold transition text-lilaura-gold">Home</a>
+                <a href="shop.html" class="hover:text-lilaura-gold transition">Collection</a>
+                <a href="about.html" class="hover:text-lilaura-gold transition">Our Story</a>
+                <a href="contact.html" class="hover:text-lilaura-gold transition">Contact</a>
+            </div>
 
             <div class="cursor-pointer relative group" onclick="checkoutWhatsApp()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-lilaura-text group-hover:text-lilaura-gold transition">
@@ -111,19 +109,6 @@
         </p>
     </section>
 
-    <div id="review-bar" class="fixed bottom-8 left-8 z-40 bg-white p-5 shadow-2xl border border-lilaura-gold/20 max-w-xs hidden md:block animate-fade-in">
-        <div class="flex justify-between items-start mb-2">
-            <div class="flex text-lilaura-gold text-xs space-x-0.5">★★★★★</div>
-            <button id="close-review" class="text-lilaura-subtle hover:text-red-500 text-lg leading-none">&times;</button>
-        </div>
-        <p class="font-serif text-sm italic text-lilaura-text mb-3 leading-relaxed">"The necklace looks even better in person. I wore it to a wedding and haven't taken it off since!"</p>
-        <div class="flex items-center gap-2">
-            <div class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-[8px] text-gray-500">PS</div>
-            <p class="font-sans text-[10px] text-lilaura-emerald uppercase tracking-wider font-bold">Priya S.</p>
-        </div>
-        <a href="https://instagram.com/direct/t/lilaura.uk" target="_blank" class="block mt-4 text-[10px] text-lilaura-subtle underline hover:text-lilaura-emerald transition">Write a Review</a>
-    </div>
-
     <button onclick="checkoutWhatsApp()" class="fixed bottom-8 right-8 z-50 bg-lilaura-emerald hover:bg-lilaura-gold text-white p-4 rounded-full shadow-2xl transition duration-300 flex items-center gap-2 group">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -154,8 +139,8 @@
             </div>
             <div class="flex gap-6 font-sans text-xs uppercase tracking-widest text-gray-400">
                 <a href="shop.html" class="hover:text-white transition">Shop</a>
-              <a href="about.html" class="hover:text-white transition">Our Story</a>
-                <a href="#" class="hover:text-white transition">Contact</a>
+                <a href="about.html" class="hover:text-white transition">Our Story</a>
+                <a href="contact.html" class="hover:text-white transition">Contact</a>
             </div>
             <div class="text-xs text-gray-500 font-sans">
                 &copy; 2024 Lilaura UK. All Rights Reserved.
