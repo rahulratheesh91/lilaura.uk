@@ -14,7 +14,7 @@ const products = [
         name: "18K Gold Plated Stainless Steel Cuff Bracelet", 
         category: "Anti-tarnish Kada", 
         price: 45.00, 
-        image: "https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_794xN.8197151304_btta.jpg", 
+        image: "https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_1140xN.8197151304_btta.jpg", 
         desc: "Premium 18K gold plated stainless steel cuff bracelet. Waterproof, sweat-resistant, and guaranteed anti-tarnish for everyday luxury wear.",
         etsyLink: "https://www.etsy.com/uk/listing/4530558606/18k-gold-plated-stainless-steel-cuff"
     },
