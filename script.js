@@ -1,13 +1,10 @@
-/* LILAURA CORE ENGINE - ETSY INTEGRATION EDITION
-   Connects lilaura.uk directly to official Etsy storefront (LilauraElegance)
-   Handles Product Catalog, Etsy Checkout Routing, and Luxury Social Proof
+/* LILAURA CORE ENGINE - PURE ETSY EDITION
+   Contains EXACTLY 9 official Etsy listings (LilauraElegance).
+   No archive items, no placeholders.
 */
 
-// --- 1. PRODUCT DATABASE ---
-// TIP: To show your exact Etsy photo without uploading to GitHub, right-click your photo on Etsy,
-// click "Copy Image Address", and paste the i.etsystatic.com link into the image field below!
+// --- 1. PRODUCT DATABASE (ONLY YOUR 9 ETSY ITEMS) ---
 const products = [
-    // --- FEATURED OFFICIAL ETSY LISTINGS ---
     { 
         id: 1, 
         sku: "ALBR-CUFF-01", 
@@ -97,15 +94,7 @@ const products = [
         image: "https://i.etsystatic.com/40040678/r/il/937cd1/7929099115/il_1140xN.7929099115_91kk.jpg", 
         desc: "Traditional Kasu Mala coin choker featuring Lord Ganesha motifs interlaced with classic Palakka stones. Heirloom craftsmanship.",
         etsyLink: "https://www.etsy.com/uk/listing/4483539459/coin-palakka-choker-traditional-necklace"
-    },
-
-    // --- EXTENDED ARCHIVE (All point to official Etsy Shop fallback) ---
-    { id: 10, sku: "SSNK-SNK-10", name: "18K Gold Liquid Snake Chain", category: "Anti-tarnish Necklaces", price: 40.00, image: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?auto=format&fit=crop&w=800", desc: "Sleek, liquid-gold effect snake chain. Essential daily wear that resists water and sweat.", etsyLink: "https://www.etsy.com/uk/shop/LilauraElegance" },
-    { id: 11, sku: "SSBR-CLV-11", name: "Black Onyx Clover Bracelet", category: "Anti-tarnish Bracelets", price: 48.00, image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=800", desc: "Elegant black clover motifs set in an 18k gold-plated stainless steel chain.", etsyLink: "https://www.etsy.com/uk/shop/LilauraElegance" },
-    { id: 12, sku: "SSFR-TRI-12", name: "Tri-Layered White Diamond Illusion Ring", category: "Finger Rings", price: 38.00, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800", desc: "Statement ring giving the illusion of three stacked diamond bands. Completely waterproof.", etsyLink: "https://www.etsy.com/uk/shop/LilauraElegance" },
-    { id: 13, sku: "TRNK-KASU-13", name: "Three Layered Grand Kasu Mala", category: "Traditional Jewellery", price: 150.00, image: "https://images.unsplash.com/photo-1617112837568-7c852445657b?auto=format&fit=crop&w=800", desc: "Grand three-tier Lakshmi coin necklace designed for bridal elegance and grand festivities.", etsyLink: "https://www.etsy.com/uk/shop/LilauraElegance" },
-    { id: 14, sku: "SSCF-EVL-14", name: "Sapphire Blue Evil Eye Protection Cuff", category: "Anti-tarnish Kada", price: 58.00, image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=800", desc: "Protective Evil Eye open cuff featuring deep blue zirconia accents. Rigid and durable.", etsyLink: "https://www.etsy.com/uk/shop/LilauraElegance" },
-    { id: 15, sku: "SSNK-BUT-15", name: "Golden Butterfly Curb Chain", category: "Anti-tarnish Necklaces", price: 50.00, image: "https://images.unsplash.com/photo-1599643478518-17488fbbcd75?auto=format&fit=crop&w=800", desc: "Bold curb link chain featuring a polished gold butterfly centerpiece.", etsyLink: "https://www.etsy.com/uk/shop/LilauraElegance" }
+    }
 ];
 
 // --- 2. PAGE LOAD & RENDERING LOGIC ---
@@ -130,7 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (productDetail) {
         const urlParams = new URLSearchParams(window.location.search);
         const pid = parseInt(urlParams.get('id'));
-        const product = products.find(p => p.id === pid) || products[0]; // Fallback to item 1 if not found
+        // Find exact product ID, or default to Item 1 if an old ID is visited
+        const product = products.find(p => p.id === pid) || products[0]; 
         renderProductDetail(product);
     }
 });
@@ -139,6 +129,11 @@ function renderShop(items) {
     const container = document.getElementById('shop-grid');
     if (!container) return; 
     
+    if (items.length === 0) {
+        container.innerHTML = `<div class="col-span-full text-center py-12 font-serif text-xl text-lilaura-subtle">No jewelry items found in this category. Explore our "All" collection above.</div>`;
+        return;
+    }
+
     container.innerHTML = items.map(p => `
         <div class="group cursor-pointer flex flex-col justify-between" onclick="window.location.href='product.html?id=${p.id}'">
             <div>
