@@ -3,6 +3,14 @@
    No archive items, no placeholders.
 */
 
+/* --- URL POLISH: Remove .html from Address Bar --- */
+if (window.location.pathname.endsWith('.html') && window.location.pathname !== '/index.html') {
+    const cleanUrl = window.location.pathname.replace(/\.html$/, '') + window.location.search + window.location.hash;
+    window.history.replaceState(null, '', cleanUrl);
+} else if (window.location.pathname === '/index.html') {
+    window.history.replaceState(null, '', '/');
+}
+
 // --- 1. PRODUCT DATABASE (ONLY YOUR 9 ETSY ITEMS) ---
 const products = [
     { 
