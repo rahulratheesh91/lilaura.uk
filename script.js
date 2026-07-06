@@ -13,7 +13,7 @@ const products = [
         sku: "ALBR-CUFF-01", 
         name: "18K Gold Plated Stainless Steel Cuff Bracelet", 
         category: "Anti-tarnish Kada", 
-        price: 45.00, 
+        price: 16.49, 
         image: "https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_1140xN.8197151304_btta.jpg", 
         desc: "Premium 18K gold plated stainless steel cuff bracelet. Waterproof, sweat-resistant, and guaranteed anti-tarnish for everyday luxury wear.",
         etsyLink: "https://www.etsy.com/uk/listing/4530558606/18k-gold-plated-stainless-steel-cuff"
@@ -23,7 +23,7 @@ const products = [
         sku: "SSCF-INF-02", 
         name: "Anti-Tarnish Infinity Cuff with Double Layered Zircon Stones", 
         category: "Anti-tarnish Kada", 
-        price: 55.00, 
+        price: 18.49, 
         image: "https://i.etsystatic.com/40040678/r/il/7a4f17/8197075762/il_1140xN.8197075762_9l3z.jpg", 
         desc: "Stunning infinity motif open cuff embellished with double-layered sparkling zircon stones. 100% waterproof and hypoallergenic.",
         etsyLink: "https://www.etsy.com/uk/listing/4530529391/anti-tarnish-infinity-cuff-with-double"
@@ -33,7 +33,7 @@ const products = [
         sku: "SSBR-CHM-03", 
         name: "Anti-Tarnish Charm Bracelet (Celestial & Floral Motifs)", 
         category: "Anti-tarnish Bracelets", 
-        price: 48.00, 
+        price: 12.99, 
         image: "https://i.etsystatic.com/40040678/r/il/dc3ce4/8237168671/il_1140xN.8237168671_jfzc.jpg", 
         desc: "Delicate charm bracelet featuring intricate celestial and floral motifs on a durable anti-tarnish golden alloy chain.",
         etsyLink: "https://www.etsy.com/uk/listing/4529459089/anti-tarnish-charm-bracelets-with"
@@ -43,7 +43,7 @@ const products = [
         sku: "SSFR-RNG-04", 
         name: "Anti-Tarnish Stainless Steel Statement Ring with Zircon Stones", 
         category: "Finger Rings", 
-        price: 35.00, 
+        price: 12.49, 
         image: "https://i.etsystatic.com/40040678/r/il/8fa288/8237035721/il_1140xN.8237035721_745p.jpg", 
         desc: "Bold statement ring crafted from titanium stainless steel with embedded brilliant-cut zircon stones. Will never turn your finger green.",
         etsyLink: "https://www.etsy.com/uk/listing/4529409433/anti-tarnish-stainless-steel-rings-with"
@@ -53,7 +53,7 @@ const products = [
         sku: "TRNK-PAL-05", 
         name: "Traditional Palakka Choker Necklace Set with Matching Earstuds", 
         category: "Traditional Jewellery", 
-        price: 85.00, 
+        price: 22.99, 
         image: "https://i.etsystatic.com/40040678/r/il/d4f5e2/8188806402/il_1140xN.8188806402_misi.jpg", 
         desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.",
         etsyLink: "https://www.etsy.com/uk/listing/4529392003/traditional-palakka-choker-necklace-set"
@@ -63,7 +63,7 @@ const products = [
         sku: "SSNK-EMR-06", 
         name: "Anti-Tarnish Gold Plated Emerald Pendant Necklace", 
         category: "Anti-tarnish Necklaces", 
-        price: 52.00, 
+        price: 15.49, 
         image: "https://i.etsystatic.com/40040678/r/il/ffa352/8189114976/il_1140xN.8189114976_1kwd.jpg", 
         desc: "Exquisite geometric emerald-cut green stone pendant on an 18k gold vermeil water-resistant chain. Simple, daily luxury.",
         etsyLink: "https://www.etsy.com/uk/listing/4529214581/anti-tarnish-gold-plated-emerald-pendant"
@@ -73,7 +73,7 @@ const products = [
         sku: "SSCF-HPR-07", 
         name: "Gold Plated Stainless Steel Heart Pearl Bangle", 
         category: "Anti-tarnish Kada", 
-        price: 58.00, 
+        price: 17.99, 
         image: "https://i.etsystatic.com/40040678/r/il/8b2186/8160669462/il_1140xN.8160669462_1gej.jpg", 
         desc: "Romantic open cuff bangle featuring twin mother-of-pearl heart accents set in durable gold-plated stainless steel.",
         etsyLink: "https://www.etsy.com/uk/listing/4525317383/gold-plated-stainless-steel-heart-pearl"
@@ -83,7 +83,7 @@ const products = [
         sku: "TRNK-PAL-08", 
         name: "Traditional Kerala Palakka Choker Necklace Set with Jhumka Earrings", 
         category: "Traditional Jewellery", 
-        price: 95.00, 
+        price: 22.79, 
         image: "https://i.etsystatic.com/40040678/r/il/9e8c06/8160739980/il_1140xN.8160739980_sq94.jpg", 
         desc: "Grand Kerala-style green Palakka short choker necklace paired with traditional bell-shaped Jhumka earrings. Classic temple jewelry.",
         etsyLink: "https://www.etsy.com/uk/listing/4525327387/traditional-kerala-palakka-choker"
@@ -93,7 +93,7 @@ const products = [
         sku: "TRNK-COIN-09", 
         name: "Ganapathy Coin Palakka Choker Traditional Heritage Necklace", 
         category: "Traditional Jewellery", 
-        price: 110.00, 
+        price: 20.99, 
         image: "https://i.etsystatic.com/40040678/r/il/937cd1/7929099115/il_1140xN.7929099115_91kk.jpg", 
         desc: "Traditional Kasu Mala coin choker featuring Lord Ganesha motifs interlaced with classic Palakka stones. Heirloom craftsmanship.",
         etsyLink: "https://www.etsy.com/uk/listing/4483539459/coin-palakka-choker-traditional-necklace"
