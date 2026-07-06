@@ -6,6 +6,7 @@
     <title>Our Story | Lilaura</title>
     <meta name="description" content="The story of Lilaura. Bridging the gap between Indian Heritage artistry and modern waterproof durability.">
     
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     
@@ -18,6 +19,7 @@
                         lilaura: {
                             cream: '#F2F0E9',
                             gold: '#D4AF37',
+                            goldhover: '#B5952F',
                             emerald: '#034938',
                             text: '#2C2C2C',
                             subtle: '#6B6B6B'
@@ -26,18 +28,28 @@
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'serif'],
                         sans: ['"Proza Libre"', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'widest-luxury': '0.2em',
                     }
                 }
             }
         }
     </script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .show-fomo { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; visibility: visible !important; }
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
 <body class="bg-lilaura-cream text-lilaura-text antialiased">
 
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-lilaura-cream/90 backdrop-blur-md border-b border-lilaura-gold/20">
-        <div class="flex justify-between items-center py-5 px-6 md:px-16">
-            <a href="index.html" class="font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald hover:text-lilaura-gold transition-colors duration-300">LILAURA</a>
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-lilaura-cream/95 backdrop-blur-md border-b border-lilaura-gold/20">
+        <div class="flex justify-between items-center py-4 px-6 md:px-16">
+            <a href="index.html" class="flex items-center">
+                <img src="logo.png" alt="Lilaura Logo" class="h-8 md:h-10 w-auto hover:opacity-80 transition-opacity" onerror="this.outerHTML='<span class=\'font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald\'>LILAURA</span>'">
+            </a>
             
             <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
                 <a href="index.html" class="hover:text-lilaura-gold transition">Home</a>
@@ -46,15 +58,14 @@
                 <a href="contact.html" class="hover:text-lilaura-gold transition">Contact</a>
             </div>
 
-            <div class="cursor-pointer relative group" onclick="checkoutWhatsApp()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-lilaura-text group-hover:text-lilaura-gold transition">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                </svg>
-                <span class="cart-count absolute -top-2 -right-2 bg-lilaura-emerald text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-sans">0</span>
-            </div>
+            <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="flex items-center gap-2 border border-lilaura-gold/40 hover:bg-lilaura-gold hover:text-white px-4 py-2 text-[10px] tracking-widest uppercase font-sans transition duration-300">
+                <span>Etsy Shop</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
         </div>
     </nav>
 
+    <!-- HEADER IMAGE -->
     <header class="relative w-full h-[60vh] flex items-center justify-center overflow-hidden">
         <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?q=80&w=2000&auto=format&fit=crop" class="absolute w-full h-full object-cover opacity-80" alt="Lilaura Craftsmanship">
         <div class="absolute inset-0 bg-black/40"></div>
@@ -64,6 +75,7 @@
         </div>
     </header>
 
+    <!-- THE STORY ARC -->
     <section class="max-w-4xl mx-auto px-8 py-24 text-center">
         <span class="text-lilaura-emerald font-sans text-xs tracking-[0.2em] uppercase block mb-6">The Origin</span>
         <h2 class="font-serif text-3xl md:text-4xl text-lilaura-text mb-8 leading-relaxed">
@@ -79,11 +91,12 @@
                 We believed you shouldn't have to choose between <strong>Tradition</strong> and <strong>Freedom</strong>.
             </p>
             <p class="text-lilaura-text font-medium text-lg">
-                Lilaura was born to break the glass case.
+                Lilaura was born to break the glass case. Today, as an official Etsy partner, we ship our molecularly sealed, anti-tarnish heritage pieces safely to women across the globe.
             </p>
         </div>
     </section>
 
+    <!-- THE VISUAL SPLIT -->
     <section class="grid grid-cols-1 md:grid-cols-2">
         <div class="bg-lilaura-emerald text-white p-16 flex flex-col justify-center items-start">
             <span class="text-lilaura-gold font-sans text-xs tracking-widest uppercase mb-4">The Innovation</span>
@@ -93,15 +106,9 @@
                 that bonds with the metal at a molecular level. 
             </p>
             <ul class="space-y-4 font-sans text-sm tracking-wide">
-                <li class="flex items-center gap-4">
-                    <span class="w-8 h-px bg-lilaura-gold"></span> Sweat Resistant (Gym Approved)
-                </li>
-                <li class="flex items-center gap-4">
-                    <span class="w-8 h-px bg-lilaura-gold"></span> Water Resistant (Shower Friendly)
-                </li>
-                <li class="flex items-center gap-4">
-                    <span class="w-8 h-px bg-lilaura-gold"></span> Perfume Safe
-                </li>
+                <li class="flex items-center gap-4"><span class="w-8 h-px bg-lilaura-gold"></span> Sweat Resistant (Gym Approved)</li>
+                <li class="flex items-center gap-4"><span class="w-8 h-px bg-lilaura-gold"></span> Water Resistant (Shower Friendly)</li>
+                <li class="flex items-center gap-4"><span class="w-8 h-px bg-lilaura-gold"></span> Perfume Safe</li>
             </ul>
         </div>
         <div class="h-[500px] md:h-auto bg-gray-200 relative">
@@ -109,46 +116,7 @@
         </div>
     </section>
 
-    <section class="py-24 px-8 bg-white">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            
-            <div class="group">
-                <div class="w-16 h-16 mx-auto mb-6 rounded-full border border-lilaura-gold flex items-center justify-center text-lilaura-gold group-hover:bg-lilaura-gold group-hover:text-white transition duration-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                </div>
-                <h4 class="font-serif text-xl mb-3">Hypoallergenic Promise</h4>
-                <p class="font-sans text-xs text-lilaura-subtle leading-relaxed">No nickel. No lead. No itchy skin. Safe for the most sensitive ears and necks.</p>
-            </div>
-
-            <div class="group">
-                <div class="w-16 h-16 mx-auto mb-6 rounded-full border border-lilaura-gold flex items-center justify-center text-lilaura-gold group-hover:bg-lilaura-gold group-hover:text-white transition duration-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                </div>
-                <h4 class="font-serif text-xl mb-3">Timeless Design</h4>
-                <p class="font-sans text-xs text-lilaura-subtle leading-relaxed">We don't chase trends that die in a month. We curate designs that your daughter will want to steal.</p>
-            </div>
-
-            <div class="group">
-                <div class="w-16 h-16 mx-auto mb-6 rounded-full border border-lilaura-gold flex items-center justify-center text-lilaura-gold group-hover:bg-lilaura-gold group-hover:text-white transition duration-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
-                </div>
-                <h4 class="font-serif text-xl mb-3">Ethically Sourced</h4>
-                <p class="font-sans text-xs text-lilaura-subtle leading-relaxed">Luxury shouldn't cost the earth. We work directly with artisans to ensure fair wages and sustainable sourcing.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="bg-lilaura-cream py-24 px-8 border-t border-lilaura-gold/10">
-        <div class="max-w-2xl mx-auto text-center">
-            <p class="font-serif text-2xl italic text-lilaura-text mb-8">
-                "My vision for Lilaura is simple: To let you carry your culture with you, effortlessly, every single day."
-            </p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Signature_sample.svg/1200px-Signature_sample.svg.png" class="h-16 mx-auto opacity-50 mb-4" alt="Founder Signature">
-            <p class="font-sans text-xs uppercase tracking-widest text-lilaura-emerald">Founder, Lilaura UK</p>
-        </div>
-    </section>
-
+    <!-- CALL TO ACTION -->
     <div class="bg-black text-white py-16 text-center">
         <h2 class="font-serif text-3xl mb-6">Ready to find your forever piece?</h2>
         <a href="shop.html" class="inline-block bg-lilaura-gold text-white font-sans text-xs tracking-[0.2em] uppercase py-4 px-12 hover:bg-white hover:text-black transition duration-300">
@@ -156,10 +124,30 @@
         </a>
     </div>
 
+    <!-- FLOATING WHATSAPP CONCIERGE BUTTON -->
+    <a href="https://wa.me/447303179015?text=Hello%20Lilaura!%20I%20have%20a%20question%20about%20your%20jewellery..." target="_blank" class="fixed bottom-8 right-8 z-50 bg-[#25D366] hover:bg-lilaura-emerald text-white p-4 rounded-full shadow-2xl transition duration-300 flex items-center gap-3 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.601.723 4.913 2.034 1.312 1.311 2.033 3.057 2.033 4.912-.001 3.824-3.113 6.934-6.946 6.934z"/></svg>
+        <span class="hidden group-hover:inline font-sans text-xs font-semibold tracking-wider uppercase pr-2">Concierge Support</span>
+    </a>
+
+    <!-- FOMO POPUP -->
+    <div id="fomo-popup" class="fixed bottom-24 left-8 z-50 bg-white border border-lilaura-gold/30 shadow-2xl p-4 flex items-center gap-4 transition-all duration-700 opacity-0 translate-y-8" style="pointer-events: none;">
+        <div class="w-10 h-10 rounded-full bg-lilaura-cream flex items-center justify-center text-lilaura-gold border border-lilaura-gold/50 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+        </div>
+        <div>
+            <p id="fomo-text" class="font-sans text-xs text-lilaura-subtle mb-0.5">Loading...</p>
+            <p id="fomo-product" class="font-serif text-sm text-lilaura-text font-semibold line-clamp-1 max-w-[180px]">...</p>
+            <p class="font-sans text-[9px] text-lilaura-emerald uppercase tracking-widest mt-1">Verified Etsy Purchase</p>
+        </div>
+        <button onclick="document.getElementById('fomo-popup').classList.remove('show-fomo')" class="absolute top-2 right-2 text-gray-400 hover:text-gray-800 leading-none text-lg">&times;</button>
+    </div>
+
+    <!-- FOOTER -->
     <footer class="bg-lilaura-text text-lilaura-cream py-12 border-t border-lilaura-gold/20">
         <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
-                <h3 class="font-serif text-2xl text-lilaura-gold mb-2">LILAURA</h3>
+                <img src="logo.png" alt="Lilaura Logo" class="h-8 md:h-10 mx-auto md:mx-0 mb-4 opacity-90" onerror="this.outerHTML='<h3 class=\'font-serif text-2xl text-lilaura-gold mb-2\'>LILAURA</h3>'">
                 <p class="font-sans text-xs text-gray-400 tracking-widest uppercase">Heritage / Modern / Eternal</p>
             </div>
             <div class="flex gap-6 font-sans text-xs uppercase tracking-widest text-gray-400">
@@ -167,8 +155,9 @@
                 <a href="about.html" class="hover:text-white transition">Our Story</a>
                 <a href="contact.html" class="hover:text-white transition">Contact</a>
             </div>
-            <div class="text-xs text-gray-500 font-sans">
-                &copy; 2024 Lilaura UK. All Rights Reserved.
+            <div class="text-xs text-gray-500 font-sans text-center md:text-right">
+                <p>&copy; 2026 Lilaura UK. All Rights Reserved.</p>
+                <p class="text-[10px] mt-1 text-gray-600">Official Etsy Storefront: LilauraElegance</p>
             </div>
         </div>
     </footer>
