@@ -1,5 +1,5 @@
 /* LILAURA CORE ENGINE - PURE ETSY EDITION
-   Contains EXACTLY 9 official Etsy listings (LilauraElegance).
+   Contains EXACTLY your official Etsy listings (LilauraElegance).
    No archive items, no placeholders.
 */
 
@@ -11,7 +11,7 @@ if (window.location.pathname.endsWith('.html') && window.location.pathname !== '
     window.history.replaceState(null, '', '/');
 }
 
-// --- 1. PRODUCT DATABASE (ONLY YOUR 10 ETSY ITEMS) ---
+// --- 1. PRODUCT DATABASE (ONLY YOUR 11 ETSY ITEMS) ---
 const products = [
     { 
         id: 1, 
@@ -178,7 +178,7 @@ function renderShop(items) {
                 </div>
             </div>
             <div class="mt-2 text-center">
-                <p class="font-serif text-lg text-lilaura-gold font-semibold">£${p.price.toFixed(2)}</p>
+                <p class="font-price text-xl text-lilaura-gold font-normal tracking-widest">£${p.price.toFixed(2)}</p>
             </div>
         </div>
     `).join('');
