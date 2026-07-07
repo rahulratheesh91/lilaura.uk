@@ -11,7 +11,7 @@ if (window.location.pathname.endsWith('.html') && window.location.pathname !== '
     window.history.replaceState(null, '', '/');
 }
 
-// --- 1. PRODUCT DATABASE (ONLY YOUR 9 ETSY ITEMS) ---
+// --- 1. PRODUCT DATABASE (ONLY YOUR 10 ETSY ITEMS) ---
 const products = [
     { 
         id: 1, 
