@@ -102,6 +102,16 @@ const products = [
         image: "https://i.etsystatic.com/40040678/r/il/937cd1/7929099115/il_1140xN.7929099115_91kk.jpg", 
         desc: "Traditional Kasu Mala coin choker featuring Lord Ganesha motifs interlaced with classic Palakka stones. Heirloom craftsmanship.",
         etsyLink: "https://www.etsy.com/uk/listing/4483539459/coin-palakka-choker-traditional-necklace"
+    },
+    { 
+        id: 10, 
+        sku: "SSNK-EMR-10", 
+        name: "Anti-Tarnish Gold Plated Emerald Green Leaf Pendant Necklace", 
+        category: "Anti-tarnish Necklaces", 
+        price: 16.99, 
+        image: "https://i.etsystatic.com/40040678/r/il/e0133d/8235370965/il_1140xN.8235370965_lcqj.jpg", 
+        desc: "Exquisite geometric emerald-cut green stone pendant on an 18k gold vermeil water-resistant chain. Simple, daily luxury.",
+        etsyLink: "https://www.etsy.com/uk/listing/4533568863/anti-tarnish-gold-plated-emerald-green"
     }
 ];
 
