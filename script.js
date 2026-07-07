@@ -112,6 +112,16 @@ const products = [
         image: "https://i.etsystatic.com/40040678/r/il/e0133d/8235370965/il_1140xN.8235370965_lcqj.jpg", 
         desc: "Exquisite geometric emerald-cut green stone pendant on an 18k gold vermeil water-resistant chain. Simple, daily luxury.",
         etsyLink: "https://www.etsy.com/uk/listing/4533568863/anti-tarnish-gold-plated-emerald-green"
+    },
+    { 
+        id: 11, 
+        sku: "TRNK-PAL-11", 
+        name: "Traditional Indian Lakshmi Choker Necklace Set with Matching Ear studs", 
+        category: "Traditional Jewellery", 
+        price: 33.99, 
+        image: "https://i.etsystatic.com/40040678/r/il/2c06b4/8267631719/il_794xN.8267631719_jtvb.jpg", 
+        desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.",
+        etsyLink: "https://www.etsy.com/uk/listing/4533558563/traditional-indian-lakshmi-choker"
     }
 ];
 
