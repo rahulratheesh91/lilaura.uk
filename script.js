@@ -1,6 +1,6 @@
 /* LILAURA CORE ENGINE - PURE ETSY EDITION
    Contains EXACTLY your official Etsy listings (LilauraElegance).
-   No archive items, no placeholders.
+   Includes luxury cross-fade hover engine with smart fallbacks.
 */
 
 /* --- URL POLISH: Remove .html from Address Bar --- */
@@ -11,7 +11,7 @@ if (window.location.pathname.endsWith('.html') && window.location.pathname !== '
     window.history.replaceState(null, '', '/');
 }
 
-// --- 1. PRODUCT DATABASE (ONLY YOUR 11 ETSY ITEMS) ---
+// --- 1. PRODUCT DATABASE (11 ETSY ITEMS) ---
 const products = [
     { 
         id: 1, 
@@ -20,6 +20,8 @@ const products = [
         category: "Anti-tarnish Kada", 
         price: 16.49, 
         image: "https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_1140xN.8197151304_btta.jpg", 
+        // 🟢 PASTE YOUR MODEL PHOTO LINK HERE (If left blank, it auto-defaults to a clean zoom on the main image!)
+        imageHover: "", 
         desc: "Premium 18K gold plated stainless steel cuff bracelet. Waterproof, sweat-resistant, and guaranteed anti-tarnish for everyday luxury wear.",
         etsyLink: "https://www.etsy.com/uk/listing/4530558606/18k-gold-plated-stainless-steel-cuff"
     },
@@ -30,6 +32,7 @@ const products = [
         category: "Anti-tarnish Kada", 
         price: 18.49, 
         image: "https://i.etsystatic.com/40040678/r/il/7a4f17/8197075762/il_1140xN.8197075762_9l3z.jpg", 
+        imageHover: "",
         desc: "Stunning infinity motif open cuff embellished with double-layered sparkling zircon stones. 100% waterproof and hypoallergenic.",
         etsyLink: "https://www.etsy.com/uk/listing/4530529391/anti-tarnish-infinity-cuff-with-double"
     },
@@ -40,6 +43,7 @@ const products = [
         category: "Anti-tarnish Bracelets", 
         price: 12.99, 
         image: "https://i.etsystatic.com/40040678/r/il/dc3ce4/8237168671/il_1140xN.8237168671_jfzc.jpg", 
+        imageHover: "",
         desc: "Delicate charm bracelet featuring intricate celestial and floral motifs on a durable anti-tarnish golden alloy chain.",
         etsyLink: "https://www.etsy.com/uk/listing/4529459089/anti-tarnish-charm-bracelets-with"
     },
@@ -50,6 +54,7 @@ const products = [
         category: "Finger Rings", 
         price: 12.49, 
         image: "https://i.etsystatic.com/40040678/r/il/8fa288/8237035721/il_1140xN.8237035721_745p.jpg", 
+        imageHover: "",
         desc: "Bold statement ring crafted from titanium stainless steel with embedded brilliant-cut zircon stones. Will never turn your finger green.",
         etsyLink: "https://www.etsy.com/uk/listing/4529409433/anti-tarnish-stainless-steel-rings-with"
     },
@@ -60,6 +65,7 @@ const products = [
         category: "Traditional Jewellery", 
         price: 22.99, 
         image: "https://i.etsystatic.com/40040678/r/il/d4f5e2/8188806402/il_1140xN.8188806402_misi.jpg", 
+        imageHover: "",
         desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.",
         etsyLink: "https://www.etsy.com/uk/listing/4529392003/traditional-palakka-choker-necklace-set"
     },
@@ -70,6 +76,7 @@ const products = [
         category: "Anti-tarnish Necklaces", 
         price: 15.49, 
         image: "https://i.etsystatic.com/40040678/r/il/ffa352/8189114976/il_1140xN.8189114976_1kwd.jpg", 
+        imageHover: "",
         desc: "Exquisite geometric emerald-cut green stone pendant on an 18k gold vermeil water-resistant chain. Simple, daily luxury.",
         etsyLink: "https://www.etsy.com/uk/listing/4529214581/anti-tarnish-gold-plated-emerald-pendant"
     },
@@ -80,6 +87,7 @@ const products = [
         category: "Anti-tarnish Kada", 
         price: 17.99, 
         image: "https://i.etsystatic.com/40040678/r/il/8b2186/8160669462/il_1140xN.8160669462_1gej.jpg", 
+        imageHover: "",
         desc: "Romantic open cuff bangle featuring twin mother-of-pearl heart accents set in durable gold-plated stainless steel.",
         etsyLink: "https://www.etsy.com/uk/listing/4525317383/gold-plated-stainless-steel-heart-pearl"
     },
@@ -90,6 +98,7 @@ const products = [
         category: "Traditional Jewellery", 
         price: 22.79, 
         image: "https://i.etsystatic.com/40040678/r/il/9e8c06/8160739980/il_1140xN.8160739980_sq94.jpg", 
+        imageHover: "",
         desc: "Grand Kerala-style green Palakka short choker necklace paired with traditional bell-shaped Jhumka earrings. Classic temple jewelry.",
         etsyLink: "https://www.etsy.com/uk/listing/4525327387/traditional-kerala-palakka-choker"
     },
@@ -100,6 +109,7 @@ const products = [
         category: "Traditional Jewellery", 
         price: 20.99, 
         image: "https://i.etsystatic.com/40040678/r/il/937cd1/7929099115/il_1140xN.7929099115_91kk.jpg", 
+        imageHover: "",
         desc: "Traditional Kasu Mala coin choker featuring Lord Ganesha motifs interlaced with classic Palakka stones. Heirloom craftsmanship.",
         etsyLink: "https://www.etsy.com/uk/listing/4483539459/coin-palakka-choker-traditional-necklace"
     },
@@ -110,6 +120,7 @@ const products = [
         category: "Anti-tarnish Necklaces", 
         price: 16.99, 
         image: "https://i.etsystatic.com/40040678/r/il/e0133d/8235370965/il_1140xN.8235370965_lcqj.jpg", 
+        imageHover: "",
         desc: "Exquisite geometric emerald-cut green stone pendant on an 18k gold vermeil water-resistant chain. Simple, daily luxury.",
         etsyLink: "https://www.etsy.com/uk/listing/4533568863/anti-tarnish-gold-plated-emerald-green"
     },
@@ -120,6 +131,7 @@ const products = [
         category: "Traditional Jewellery", 
         price: 33.99, 
         image: "https://i.etsystatic.com/40040678/r/il/2c06b4/8267631719/il_794xN.8267631719_jtvb.jpg", 
+        imageHover: "",
         desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.",
         etsyLink: "https://www.etsy.com/uk/listing/4533558563/traditional-indian-lakshmi-choker"
     }
@@ -127,7 +139,6 @@ const products = [
 
 // --- 2. PAGE LOAD & RENDERING LOGIC ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Review Bar Dismiss
     const reviewClose = document.getElementById('close-review');
     const reviewBar = document.getElementById('review-bar');
     if(reviewClose && reviewBar) {
@@ -136,18 +147,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Dynamic Shop Grid
     const shopGrid = document.getElementById('shop-grid');
     if (shopGrid) {
         renderShop(products);
     }
 
-    // Dynamic Product Detail
     const productDetail = document.getElementById('product-detail-container');
     if (productDetail) {
         const urlParams = new URLSearchParams(window.location.search);
         const pid = parseInt(urlParams.get('id'));
-        // Find exact product ID, or default to Item 1 if an old ID is visited
         const product = products.find(p => p.id === pid) || products[0]; 
         renderProductDetail(product);
     }
@@ -162,13 +170,20 @@ function renderShop(items) {
         return;
     }
 
+    // 🟢 UPDATED: Shop Grid now uses the Dual-Image Stack for seamless hover cross-fades
     container.innerHTML = items.map(p => `
-        <div class="group cursor-pointer flex flex-col justify-between" onclick="window.location.href='product.html?id=${p.id}'">
+        <div class="group cursor-pointer flex flex-col justify-between" onclick="window.location.href='product?id=${p.id}'">
             <div>
                 <div class="w-full aspect-[3/4] overflow-hidden bg-gray-100 relative border border-lilaura-gold/10">
-                    <img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute top-2 left-2 bg-black/70 backdrop-blur-sm text-lilaura-gold text-[9px] px-2 py-1 tracking-widest uppercase font-sans">Official Etsy Item</div>
-                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
+                    
+                    <img src="${p.image}" alt="${p.name}" loading="lazy" 
+                         class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:opacity-0 group-hover:scale-105 z-10">
+                    
+                    <img src="${p.imageHover ? p.imageHover : p.image}" alt="Model wearing ${p.name}" loading="lazy" 
+                         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-105 z-20">
+                    
+                    <div class="absolute top-2 left-2 bg-black/70 backdrop-blur-sm text-lilaura-gold text-[9px] px-2 py-1 tracking-widest uppercase font-sans z-30">Official Etsy Item</div>
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity flex justify-end z-30">
                         <span class="text-white text-[10px] uppercase tracking-widest bg-lilaura-emerald px-2 py-1">View Details &rarr;</span>
                     </div>
                 </div>
@@ -185,20 +200,27 @@ function renderShop(items) {
 }
 
 function renderProductDetail(p) {
-    document.getElementById('p-image').src = p.image;
+    // Load main text details
     document.getElementById('p-cat').innerText = p.category;
     document.getElementById('p-name').innerText = p.name;
     document.getElementById('p-price').innerText = `£${p.price.toFixed(2)}`;
     document.getElementById('p-desc').innerText = p.desc;
     document.getElementById('p-sku').innerText = `SKU: ${p.sku}`; 
     
-    // Wire Primary Action Button directly to official Etsy Shop Listing
+    // 🟢 UPDATED: Load both images into the detail page stack
+    const baseImg = document.getElementById('p-image');
+    if (baseImg) baseImg.src = p.image;
+    
+    const hoverImg = document.getElementById('p-image-hover');
+    if (hoverImg) hoverImg.src = p.imageHover ? p.imageHover : p.image;
+    
+    // Wire Primary Action Button
     const etsyBtn = document.getElementById('buy-etsy-btn');
     if (etsyBtn) {
         etsyBtn.href = p.etsyLink || "https://www.etsy.com/uk/shop/LilauraElegance";
     }
 
-    // SEO Schema Injection
+    // SEO Schema
     const schemaData = {
       "@context": "https://schema.org/",
       "@type": "Product",
@@ -237,16 +259,8 @@ function filterCategory(cat, event) {
 }
 
 // --- 3. LUXURY SOCIAL PROOF (FOMO) LOGIC ---
-const ukLocations = [
-    "London", "Birmingham", "Manchester", "Leicester", "Leeds", 
-    "Edinburgh", "Glasgow", "Bristol", "Liverpool", "Nottingham", "Bradford"
-];
-
-const customerNames = [
-    "Priya", "Sarah", "Anjali", "Jessica", "Fatima", 
-    "Neha", "Emily", "Aisha", "Chloe", "Riya", 
-    "Sonia", "Zara", "Meera", "Rebecca", "Simran"
-];
+const ukLocations = ["London", "Birmingham", "Manchester", "Leicester", "Leeds", "Edinburgh", "Glasgow", "Bristol", "Liverpool", "Nottingham", "Bradford"];
+const customerNames = ["Priya", "Sarah", "Anjali", "Jessica", "Fatima", "Neha", "Emily", "Aisha", "Chloe", "Riya", "Sonia", "Zara", "Meera", "Rebecca", "Simran"];
 
 function triggerFomoNotification() {
     const fomoPopup = document.getElementById('fomo-popup');
