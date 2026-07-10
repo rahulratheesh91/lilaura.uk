@@ -134,6 +134,17 @@ const products = [
         imageHover: "https://i.etsystatic.com/40040678/r/il/1aa4cf/8219989822/il_1588xN.8219989822_5rkv.jpg",
         desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.",
         etsyLink: "https://www.etsy.com/uk/listing/4533558563/traditional-indian-lakshmi-choker"
+    },
+    { 
+        id: 12, 
+        sku: "TRNK-PAL-12", 
+        name: "Traditional Indian Meenakari Choker Necklace Set with Earrings", 
+        category: "Traditional Jewellery", 
+        price: 17.99, 
+        image: "https://i.etsystatic.com/40040678/r/il/59bf79/8237200950/il_1588xN.8237200950_eiq3.jpg", 
+        imageHover: "https://i.etsystatic.com/40040678/r/il/23e1cb/8285106413/il_1588xN.8285106413_59je.jpg",
+        desc: "Authentic South Indian heritage Meenakari Choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.",
+        etsyLink: "https://www.etsy.com/uk/listing/4535073097/red-lotus-meenakari-necklace-set"
     }
 ];
 
