@@ -218,12 +218,33 @@ function renderProductDetail(p) {
     document.getElementById('p-desc').innerText = p.desc;
     document.getElementById('p-sku').innerText = `SKU: ${p.sku}`; 
     
-    // 🟢 UPDATED: Load both images into the detail page stack
+    // 🟢 1. AUTOMATIC DYNAMIC ALT TEXT
     const baseImg = document.getElementById('p-image');
-    if (baseImg) baseImg.src = p.image;
+    if (baseImg) {
+        baseImg.src = p.image;
+        baseImg.alt = `${p.name} - Anti-tarnish Indian Jewellery UK`; // Tells Google Images what this is
+    }
     
     const hoverImg = document.getElementById('p-image-hover');
-    if (hoverImg) hoverImg.src = p.imageHover ? p.imageHover : p.image;
+    if (hoverImg) {
+        hoverImg.src = p.imageHover ? p.imageHover : p.image;
+        hoverImg.alt = `Model wearing ${p.name}`; // Covers the second image
+    }
+
+    // 🟢 2. AUTOMATIC SEO PAGE TITLE
+    // Changes the browser tab and Google Search blue link
+    document.title = `${p.name} | Lilaura UK`;
+
+    // 🟢 3. AUTOMATIC META DESCRIPTION
+    // Tells Google what text to put under the blue link in search results
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.name = 'description';
+        document.head.appendChild(metaDesc);
+    }
+    // Grabs the first 155 characters of your product description (Google's limit)
+    metaDesc.content = p.desc.substring(0, 155) + "... Buy directly via our official Etsy storefront.";
     
     // Wire Primary Action Button
     const etsyBtn = document.getElementById('buy-etsy-btn');
@@ -231,7 +252,7 @@ function renderProductDetail(p) {
         etsyBtn.href = p.etsyLink || "https://www.etsy.com/uk/shop/LilauraElegance";
     }
 
-    // SEO Schema
+    // SEO Schema (Already handling advanced Google Shopping data!)
     const schemaData = {
       "@context": "https://schema.org/",
       "@type": "Product",
