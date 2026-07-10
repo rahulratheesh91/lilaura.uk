@@ -262,25 +262,46 @@ function filterCategory(cat, event) {
 const ukLocations = ["London", "Birmingham", "Manchester", "Leicester", "Leeds", "Edinburgh", "Glasgow", "Bristol", "Liverpool", "Nottingham", "Bradford"];
 const customerNames = ["Priya", "Sarah", "Anjali", "Jessica", "Fatima", "Neha", "Emily", "Aisha", "Chloe", "Riya", "Sonia", "Zara", "Meera", "Rebecca", "Simran"];
 
+// Configuration for Luxury Pacing
+let notificationCount = 0;
+const MAX_NOTIFICATIONS = 3; // Maximum popups per session to avoid annoying the user
+
 function triggerFomoNotification() {
+    // Abort if we have already shown the maximum number of elegant nudges
+    if (notificationCount >= MAX_NOTIFICATIONS) return;
+
     const fomoPopup = document.getElementById('fomo-popup');
     if (!fomoPopup) return; 
 
+    // Generate random data
     const randomCity = ukLocations[Math.floor(Math.random() * ukLocations.length)];
     const randomName = customerNames[Math.floor(Math.random() * customerNames.length)];
     const randomProduct = products[Math.floor(Math.random() * products.length)];
 
+    // Populate the popup
     document.getElementById('fomo-text').innerText = `${randomName} in ${randomCity} recently ordered via Etsy`;
     document.getElementById('fomo-product').innerText = randomProduct.name;
 
+    // Display the popup
     fomoPopup.classList.add('show-fomo');
+    notificationCount++;
 
+    // Remove the popup after 5 seconds, then schedule the next one (if under cap)
     setTimeout(() => {
         fomoPopup.classList.remove('show-fomo');
+        
+        if (notificationCount < MAX_NOTIFICATIONS) {
+            // Calculate a random delay between 2 to 5 minutes (120,000ms to 300,000ms)
+            const minDelay = 120000;
+            const maxDelay = 300000;
+            const nextDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1) + minDelay);
+            
+            setTimeout(triggerFomoNotification, nextDelay);
+        }
     }, 5000);
 }
 
+// Initial gentle delay: Wait 20 seconds before showing the very first notification
 setTimeout(() => {
     triggerFomoNotification();
-    setInterval(triggerFomoNotification, 60000); 
-}, 8000);
+}, 20000);
