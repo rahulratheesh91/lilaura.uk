@@ -120,7 +120,7 @@ const products = [
         category: "Anti-tarnish Necklaces", 
         price: 16.99, 
         image: "https://i.etsystatic.com/40040678/r/il/e0133d/8235370965/il_1140xN.8235370965_lcqj.jpg", 
-        imageHover: "",
+        imageHover: "https://i.etsystatic.com/40040678/r/il/e076b8/8219789654/il_1588xN.8219789654_ae0q.jpg",
         desc: "Exquisite geometric emerald-cut green stone pendant on an 18k gold vermeil water-resistant chain. Simple, daily luxury.",
         etsyLink: "https://www.etsy.com/uk/listing/4533568863/anti-tarnish-gold-plated-emerald-green"
     },
