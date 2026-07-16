@@ -156,6 +156,17 @@ const products = [
         imageHover: "https://i.etsystatic.com/40040678/r/il/ce93ff/8237233114/il_1588xN.8237233114_26ml.jpg",
         desc: "Authentic South Indian heritage Meenakari Choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.",
         etsyLink: "https://www.etsy.com/uk/listing/4535086033/green-lotus-meenakari-necklace-set"
+    },
+    { 
+        id: 14, 
+        sku: "TRNK-PAL-14", 
+        name: "Ethnic Temple Jewellery Set – Triple Layer Coin Haram with Pearl Jhumkas", 
+        category: "Traditional Jewellery", 
+        price: 21.99, 
+        image: "https://i.etsystatic.com/40040678/r/il/31e969/8300721879/il_1588xN.8300721879_gici.jpg", 
+        imageHover: "https://i.etsystatic.com/40040678/r/il/397d32/8300723191/il_1588xN.8300723191_2fb3.jpg",
+        desc: "AThis exquisite temple jewelry set features a beautifully detailed tri-layer coin necklace paired with classic floral-topped Jhumka earrings, perfect for festive celebrations, weddings, and traditional events.",
+        etsyLink: "https://www.etsy.com/uk/listing/4537960719/tri-layered-traditional-coin-necklace"
     }
 ];
 
