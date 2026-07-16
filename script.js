@@ -178,6 +178,23 @@ document.addEventListener('DOMContentLoaded', () => {
         reviewClose.addEventListener('click', () => {
             reviewBar.style.display = 'none';
         });
+       // --- MOBILE MENU LOGIC ---
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+            // Toggle visibility of the dropdown
+            mobileMenu.classList.toggle('hidden');
+            
+            // Swap the hamburger icon to an 'X' icon
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+            iconClose.classList.toggle('block');
+        });
+    }
     }
 
     const shopGrid = document.getElementById('shop-grid');
