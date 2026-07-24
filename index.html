@@ -65,22 +65,20 @@
             height: 28px;
             pointer-events: none;
             z-index: 20;
-            color: #D4AF37; /* Champagne Gold Sparkle */
+            color: #D4AF37;
         }
 
-        /* Top-Left Diagonal Sparkle - Flashes on even seconds */
         .sparkle-top-left {
             top: -8px;
             left: -20px;
             animation: twinkle 2s infinite ease-in-out;
         }
 
-        /* Bottom-Right Diagonal Sparkle - Flashes on alternate seconds */
         .sparkle-bottom-right {
             bottom: 4px;
             right: -20px;
             animation: twinkle 2s infinite ease-in-out;
-            animation-delay: 1s; /* 1s offset creates the diagonal alternating effect */
+            animation-delay: 1s; 
         }
 
         html { scroll-behavior: smooth; }
@@ -121,7 +119,7 @@
         </div>
 
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-LilAura-text border-t border-LilAura-gold/20 absolute w-full shadow-2xl">
+        <div id="mobile-menu" class="hidden md:hidden bg-LilAura-text border-t border-LilAura-gold/20 absolute left-0 top-[100%] w-full shadow-2xl">
             <div class="flex flex-col items-center py-8 space-y-8 font-sans text-xs tracking-[0.25em] uppercase font-medium">
                 <a href="index.html" class="text-LilAura-gold transition w-full text-center py-2">Home</a>
                 <a href="shop.html" class="text-LilAura-cream hover:text-LilAura-gold transition w-full text-center py-2">Collection</a>
@@ -148,17 +146,13 @@
             </h2>
             
             <h1 class="font-serif text-5xl md:text-8xl mb-6 leading-tight drop-shadow-2xl text-white relative inline-block">
-                
                 <svg class="sparkle-icon sparkle-top-left" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
                 </svg>
-
                 <span>LilAura</span>
-
                 <svg class="sparkle-icon sparkle-bottom-right" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
                 </svg>
-                
             </h1>
 
             <p class="font-sans text-xs md:text-sm text-gray-200 mb-10 tracking-widest font-light opacity-90">
