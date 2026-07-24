@@ -26,7 +26,18 @@ const products = [
         altText: "Close-up of 18K gold plated anti-tarnish cuff bracelet on a neutral background",
         etsyLink: "https://www.etsy.com/uk/listing/4530558606/18k-gold-plated-stainless-steel-cuff"
     },
-    { id: 2, sku: "SSCF-INF-02", name: "Anti-Tarnish Infinity Cuff with Double Layered Zircon Stones", category: "Anti-tarnish Kada", price: 18.49, inStock: false, image: "https://i.etsystatic.com/40040678/r/il/7a4f17/8197075762/il_1140xN.8197075762_9l3z.jpg", imageHover: "", desc: "Stunning infinity motif open cuff embellished with double-layered sparkling zircon stones. 100% waterproof and hypoallergenic.", etsyLink: "https://www.etsy.com/uk/listing/4530529391/anti-tarnish-infinity-cuff-with-double" },
+    { 
+        id: 2, 
+        sku: "SSCF-INF-02", 
+        name: "Anti-Tarnish Infinity Cuff with Double Layered Zircon Stones", 
+        category: "Anti-tarnish Kada", 
+        price: 18.49, 
+        inStock: false, 
+        image: "https://i.etsystatic.com/40040678/r/il/7a4f17/8197075762/il_1140xN.8197075762_9l3z.jpg", 
+        imageHover: "", 
+        desc: "Stunning infinity motif open cuff embellished with double-layered sparkling zircon stones. 100% waterproof and hypoallergenic.", 
+        etsyLink: "https://www.etsy.com/uk/listing/4530529391/anti-tarnish-infinity-cuff-with-double" 
+    },
     { id: 3, sku: "SSBR-CHM-03", name: "Anti-Tarnish Charm Bracelet (Celestial & Floral Motifs)", category: "Anti-tarnish Bracelets", price: 12.99, image: "https://i.etsystatic.com/40040678/r/il/dc3ce4/8237168671/il_1140xN.8237168671_jfzc.jpg", imageHover: "", desc: "Delicate charm bracelet featuring intricate celestial and floral motifs on a durable anti-tarnish golden alloy chain.", etsyLink: "https://www.etsy.com/uk/listing/4529459089/anti-tarnish-charm-bracelets-with" },
     { id: 4, sku: "SSFR-RNG-04", name: "Anti-Tarnish Stainless Steel Statement Ring with Zircon Stones", category: "Finger Rings", price: 12.49, image: "https://i.etsystatic.com/40040678/r/il/8fa288/8237035721/il_1140xN.8237035721_745p.jpg", imageHover: "", desc: "Bold statement ring crafted from titanium stainless steel with embedded brilliant-cut zircon stones. Will never turn your finger green.", etsyLink: "https://www.etsy.com/uk/listing/4529409433/anti-tarnish-stainless-steel-rings-with" },
     { id: 5, sku: "TRNK-PAL-05", name: "Traditional Palakka Choker Necklace Set with Matching Earstuds", category: "Traditional Jewellery", price: 22.99, image: "https://i.etsystatic.com/40040678/r/il/d4f5e2/8188806402/il_1140xN.8188806402_misi.jpg", imageHover: "", desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.", etsyLink: "https://www.etsy.com/uk/listing/4529392003/traditional-palakka-choker-necklace-set" },
@@ -134,8 +145,32 @@ function renderProductDetail(p) {
         hoverImg.alt = `Model wearing ${p.altText || p.name}`;
     }
     
+    // OUT OF STOCK LOGIC
+    const soldOutOverlay = document.getElementById('sold-out-overlay');
     const etsyBtn = document.getElementById('buy-etsy-btn');
-    if (etsyBtn) etsyBtn.href = p.etsyLink || "https://www.etsy.com/uk/shop/LilauraElegance";
+    
+    if (p.inStock === false) {
+        // Show the frosted glass blur over the image
+        if (soldOutOverlay) soldOutOverlay.classList.remove('hidden');
+        
+        // Gray out the buy button and prevent clicking
+        if (etsyBtn) {
+            etsyBtn.innerHTML = `<span>Out of Stock</span>`;
+            etsyBtn.classList.add('bg-gray-300', 'text-gray-500', 'cursor-not-allowed', 'pointer-events-none');
+            etsyBtn.classList.remove('bg-LilAura-emerald', 'hover:bg-LilAura-gold', 'text-white');
+            etsyBtn.href = "#";
+        }
+    } else {
+        // Hide overlay and reset button if product is in stock
+        if (soldOutOverlay) soldOutOverlay.classList.add('hidden');
+        
+        if (etsyBtn) {
+            etsyBtn.innerHTML = `<span>Buy Instantly on Etsy</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>`;
+            etsyBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed', 'pointer-events-none');
+            etsyBtn.classList.add('bg-LilAura-emerald', 'hover:bg-LilAura-gold', 'text-white');
+            etsyBtn.href = p.etsyLink || "https://www.etsy.com/uk/shop/LilauraElegance";
+        }
+    }
 
     // SCHEMA INJECTION
     const schemaData = {
@@ -150,7 +185,7 @@ function renderProductDetail(p) {
         "@type": "Offer",
         "priceCurrency": "GBP",
         "price": p.price,
-        "availability": "https://schema.org/InStock",
+        "availability": p.inStock === false ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
         "url": p.etsyLink || window.location.href
       }
     };
