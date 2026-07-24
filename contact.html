@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Lilaura</title>
-    <meta name="description" content="Get in touch with Lilaura. For enquiries about our Anti-tarnish and Traditional Jewellery collection.">
+    <title>Contact Us | LilAura</title>
+    <meta name="description" content="Get in touch with LilAura. For enquiries about our Anti-tarnish and Traditional Jewellery collection.">
     
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -16,7 +16,7 @@
             theme: {
                 extend: {
                     colors: {
-                        lilaura: {
+                        LilAura: {
                             cream: '#F2F0E9',
                             gold: '#D4AF37',
                             goldhover: '#B5952F',
@@ -28,9 +28,10 @@
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'serif'],
                         sans: ['"Proza Libre"', 'sans-serif'],
+                        price: ['"Bodoni Moda"', 'serif'],
                     },
                     letterSpacing: {
-                        'widest-luxury': '0.2em',
+                        'widest-luxury': '0.25em',
                     }
                 }
             }
@@ -43,33 +44,53 @@
         html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-lilaura-cream text-lilaura-text antialiased">
+<body class="bg-LilAura-cream text-LilAura-text antialiased">
 
-    <!-- NAV -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-lilaura-cream/95 backdrop-blur-md border-b border-lilaura-gold/20">
+    <!-- EMERALD LUXURY NAV WITH MOBILE MENU -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-LilAura-emerald/95 backdrop-blur-md border-b border-LilAura-gold/30">
         <div class="flex justify-between items-center py-4 px-6 md:px-16">
+            
             <a href="index.html" class="flex items-center">
-                <img src="logo.png" alt="Lilaura Logo" class="h-8 md:h-10 w-auto hover:opacity-80 transition-opacity" onerror="this.outerHTML='<span class=\'font-serif text-3xl font-semibold tracking-wide text-lilaura-emerald\'>LILAURA</span>'">
+                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 w-auto hover:opacity-80 transition-opacity" onerror="this.outerHTML='<span class=\'font-serif text-3xl font-semibold tracking-wide text-LilAura-gold\'>LilAura</span>'">
             </a>
             
             <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
-                <a href="index.html" class="hover:text-lilaura-gold transition">Home</a>
-                <a href="shop.html" class="hover:text-lilaura-gold transition">Collection</a>
-                <a href="about.html" class="hover:text-lilaura-gold transition">Our Story</a>
-                <a href="contact.html" class="text-lilaura-gold border-b border-lilaura-gold">Contact</a>
+                <a href="index.html" class="text-LilAura-gold hover:text-white transition pb-1">Home</a>
+                <a href="shop.html" class="text-LilAura-gold hover:text-white transition pb-1">Collection</a>
+                <a href="about.html" class="text-LilAura-gold hover:text-white transition pb-1">Our Story</a>
+                <a href="contact.html" class="text-LilAura-gold border-b border-LilAura-gold pb-1">Contact</a>
             </div>
 
-            <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="flex items-center gap-2 border border-lilaura-gold/40 hover:bg-lilaura-gold hover:text-white px-4 py-2 text-[10px] tracking-widest uppercase font-sans transition duration-300">
-                <span>Etsy Shop</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-            </a>
+            <div class="hidden md:flex items-center">
+                <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="flex items-center gap-2 border border-LilAura-gold hover:bg-LilAura-gold hover:text-LilAura-emerald text-LilAura-gold px-4 py-2 text-[10px] tracking-widest uppercase font-sans transition duration-300">
+                    <span>Etsy Shop</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-LilAura-gold hover:text-white transition focus:outline-none p-2">
+                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 block"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-LilAura-emerald border-t border-LilAura-gold/20 absolute left-0 top-[100%] w-full shadow-2xl">
+            <div class="flex flex-col items-center py-8 space-y-8 font-sans text-xs tracking-[0.25em] uppercase font-medium">
+                <a href="index.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Home</a>
+                <a href="shop.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Collection</a>
+                <a href="about.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Our Story</a>
+                <a href="contact.html" class="text-LilAura-gold transition w-full text-center py-2">Contact</a>
+                <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="mt-4 flex items-center justify-center gap-2 border border-LilAura-gold text-LilAura-gold hover:bg-LilAura-gold hover:text-LilAura-emerald px-8 py-3 w-[80%] mx-auto transition duration-300">
+                    <span>Shop on Etsy</span>
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- HEADER -->
     <div class="pt-32 pb-10 text-center px-4">
-        <h1 class="font-serif text-5xl md:text-6xl text-lilaura-emerald mb-4">Get in Touch</h1>
-        <p class="font-sans text-xs tracking-widest uppercase text-lilaura-subtle">We'd love to hear from you</p>
+        <h1 class="font-serif text-5xl md:text-6xl text-LilAura-emerald mb-4">Get in Touch</h1>
+        <p class="font-sans text-xs tracking-widest uppercase text-LilAura-subtle">We'd love to hear from you</p>
     </div>
 
     <!-- CONTACT SECTION -->
@@ -77,8 +98,8 @@
         
         <div class="flex flex-col justify-center space-y-8 animate-fade-in">
             <div>
-                <h3 class="font-serif text-2xl text-lilaura-gold mb-2">Customer Care</h3>
-                <p class="font-sans text-sm text-lilaura-subtle leading-relaxed">
+                <h3 class="font-serif text-2xl text-LilAura-gold mb-2">Customer Care</h3>
+                <p class="font-sans text-sm text-LilAura-subtle leading-relaxed">
                     Have a question about our Anti-tarnish technology or need help with sizing? 
                     Our team is here to assist you. All payment and shipping inquiries are backed by our Etsy Buyer Protection.
                 </p>
@@ -86,47 +107,47 @@
 
             <div class="space-y-4">
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 border border-lilaura-gold/30 flex items-center justify-center text-lilaura-emerald">
+                    <div class="w-10 h-10 border border-LilAura-gold/30 flex items-center justify-center text-LilAura-emerald">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                     </div>
                     <div>
-                        <p class="font-sans text-[10px] uppercase tracking-widest text-lilaura-subtle">Email Us</p>
-                        <a href="mailto:shop@lilaura.uk" class="font-serif text-xl hover:text-lilaura-gold transition">shop@lilaura.uk</a>
+                        <p class="font-sans text-[10px] uppercase tracking-widest text-LilAura-subtle">Email Us</p>
+                        <a href="mailto:shop@lilaura.uk" class="font-serif text-xl hover:text-LilAura-gold transition">shop@lilaura.uk</a>
                     </div>
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 border border-lilaura-gold/30 flex items-center justify-center text-lilaura-emerald">
+                    <div class="w-10 h-10 border border-LilAura-gold/30 flex items-center justify-center text-LilAura-emerald">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
                     </div>
                     <div>
-                        <p class="font-sans text-[10px] uppercase tracking-widest text-lilaura-subtle">WhatsApp Concierge</p>
-                        <a href="https://wa.me/447303179015" class="font-serif text-xl hover:text-lilaura-gold transition">+44 7303 179015</a>
+                        <p class="font-sans text-[10px] uppercase tracking-widest text-LilAura-subtle">WhatsApp Concierge</p>
+                        <a href="https://wa.me/447303179015" class="font-serif text-xl hover:text-LilAura-gold transition">+44 7303 179015</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white p-8 md:p-12 shadow-xl border border-lilaura-gold/10 relative">
+        <div class="bg-white p-8 md:p-12 shadow-xl border border-LilAura-gold/10 relative">
             <form id="form" class="space-y-6">
-                <input type="hidden" name="subject" value="New Enquiry from Lilaura Website">
+                <input type="hidden" name="subject" value="New Enquiry from LilAura Website">
 
                 <div>
-                    <label class="block font-sans text-xs uppercase tracking-widest text-lilaura-subtle mb-2">Name</label>
-                    <input type="text" name="name" required class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-lilaura-gold transition-colors bg-transparent placeholder-gray-300" placeholder="Your full name">
+                    <label class="block font-sans text-xs uppercase tracking-widest text-LilAura-subtle mb-2">Name</label>
+                    <input type="text" name="name" required class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-LilAura-gold transition-colors bg-transparent placeholder-gray-300" placeholder="Your full name">
                 </div>
 
                 <div>
-                    <label class="block font-sans text-xs uppercase tracking-widest text-lilaura-subtle mb-2">Email</label>
-                    <input type="email" name="email" required class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-lilaura-gold transition-colors bg-transparent placeholder-gray-300" placeholder="email@example.com">
+                    <label class="block font-sans text-xs uppercase tracking-widest text-LilAura-subtle mb-2">Email</label>
+                    <input type="email" name="email" required class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-LilAura-gold transition-colors bg-transparent placeholder-gray-300" placeholder="email@example.com">
                 </div>
 
                 <div>
-                    <label class="block font-sans text-xs uppercase tracking-widest text-lilaura-subtle mb-2">Message</label>
-                    <textarea name="message" required rows="4" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-lilaura-gold transition-colors bg-transparent placeholder-gray-300 resize-none" placeholder="How can we help you?"></textarea>
+                    <label class="block font-sans text-xs uppercase tracking-widest text-LilAura-subtle mb-2">Message</label>
+                    <textarea name="message" required rows="4" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-LilAura-gold transition-colors bg-transparent placeholder-gray-300 resize-none" placeholder="How can we help you?"></textarea>
                 </div>
 
-                <button type="submit" class="w-full bg-lilaura-emerald hover:bg-lilaura-gold text-white font-sans text-xs uppercase tracking-[0.2em] py-4 transition duration-300 mt-4">
+                <button type="submit" class="w-full bg-LilAura-emerald hover:bg-LilAura-gold text-white font-sans text-xs uppercase tracking-[0.2em] py-4 transition duration-300 mt-4">
                     Send Message
                 </button>
             </form>
@@ -134,39 +155,39 @@
     </div>
 
     <!-- FLOATING WHATSAPP CONCIERGE BUTTON -->
-    <a href="https://wa.me/447303179015?text=Hello%20Lilaura!%20I%20have%20a%20question%20about%20your%20jewellery..." target="_blank" class="fixed bottom-8 right-8 z-50 bg-[#25D366] hover:bg-lilaura-emerald text-white p-4 rounded-full shadow-2xl transition duration-300 flex items-center gap-3 group">
+    <a href="https://wa.me/447303179015?text=Hello%20LilAura!%20I%20have%20a%20question%20about%20your%20jewellery..." target="_blank" class="fixed bottom-8 right-8 z-50 bg-[#25D366] hover:bg-LilAura-emerald text-white p-4 rounded-full shadow-2xl transition duration-300 flex items-center gap-3 group">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.601.723 4.913 2.034 1.312 1.311 2.033 3.057 2.033 4.912-.001 3.824-3.113 6.934-6.946 6.934z"/></svg>
         <span class="hidden group-hover:inline font-sans text-xs font-semibold tracking-wider uppercase pr-2">Concierge Support</span>
     </a>
 
     <!-- FOMO POPUP -->
-    <div id="fomo-popup" class="fixed bottom-24 left-8 z-50 bg-white border border-lilaura-gold/30 shadow-2xl p-4 flex items-center gap-4 transition-all duration-700 opacity-0 translate-y-8" style="pointer-events: none;">
-        <div class="w-10 h-10 rounded-full bg-lilaura-cream flex items-center justify-center text-lilaura-gold border border-lilaura-gold/50 shrink-0">
+    <div id="fomo-popup" class="fixed bottom-24 left-8 z-50 bg-white border border-LilAura-gold/30 shadow-2xl p-4 flex items-center gap-4 transition-all duration-700 opacity-0 translate-y-8" style="pointer-events: none;">
+        <div class="w-10 h-10 rounded-full bg-LilAura-cream flex items-center justify-center text-LilAura-gold border border-LilAura-gold/50 shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
         </div>
         <div>
-            <p id="fomo-text" class="font-sans text-xs text-lilaura-subtle mb-0.5">Loading...</p>
-            <p id="fomo-product" class="font-serif text-sm text-lilaura-text font-semibold line-clamp-1 max-w-[180px]">...</p>
-            <p class="font-sans text-[9px] text-lilaura-emerald uppercase tracking-widest mt-1">Verified Etsy Purchase</p>
+            <p id="fomo-text" class="font-sans text-xs text-LilAura-subtle mb-0.5">Loading...</p>
+            <p id="fomo-product" class="font-serif text-sm text-LilAura-text font-semibold line-clamp-1 max-w-[180px]">...</p>
+            <p class="font-sans text-[9px] text-LilAura-emerald uppercase tracking-widest mt-1">Verified Etsy Purchase</p>
         </div>
         <button onclick="document.getElementById('fomo-popup').classList.remove('show-fomo')" class="absolute top-2 right-2 text-gray-400 hover:text-gray-800 leading-none text-lg">&times;</button>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-lilaura-text text-lilaura-cream py-12 border-t border-lilaura-gold/20">
+    <!-- EMERALD LUXURY FOOTER -->
+    <footer class="bg-LilAura-emerald text-LilAura-cream py-12 border-t border-LilAura-gold/20">
         <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
-                <img src="logo.png" alt="Lilaura Logo" class="h-8 md:h-10 mx-auto md:mx-0 mb-4 opacity-90" onerror="this.outerHTML='<h3 class=\'font-serif text-2xl text-lilaura-gold mb-2\'>LILAURA</h3>'">
-                <p class="font-sans text-xs text-gray-400 tracking-widest uppercase">Heritage / Modern / Eternal</p>
+                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 mx-auto md:mx-0 mb-4 opacity-90" onerror="this.outerHTML='<h3 class=\'font-serif text-2xl text-LilAura-gold mb-2\'>LilAura</h3>'">
+                <p class="font-sans text-xs text-LilAura-gold tracking-widest uppercase">Heritage / Modern / Eternal</p>
             </div>
-            <div class="flex gap-6 font-sans text-xs uppercase tracking-widest text-gray-400">
+            <div class="flex gap-6 font-sans text-xs uppercase tracking-widest text-LilAura-gold">
                 <a href="shop.html" class="hover:text-white transition">Shop</a>
                 <a href="about.html" class="hover:text-white transition">Our Story</a>
                 <a href="contact.html" class="hover:text-white transition">Contact</a>
             </div>
-            <div class="text-xs text-gray-500 font-sans text-center md:text-right">
-                <p>&copy; 2026 Lilaura UK. All Rights Reserved.</p>
-                <p class="text-[10px] mt-1 text-gray-600">Official Etsy Storefront: LilauraElegance</p>
+            <div class="text-xs text-LilAura-gold/70 font-sans text-center md:text-right">
+                <p>&copy; 2026 LilAura UK. All Rights Reserved.</p>
+                <p class="text-[10px] mt-1 text-LilAura-gold/50">Official Etsy Storefront: LilAuraElegance</p>
             </div>
         </div>
     </footer>
