@@ -152,9 +152,23 @@ function renderProductDetail(p) {
     }
     
     const hoverImg = document.getElementById('p-image-hover');
-    if (hoverImg) {
-        hoverImg.src = p.imageHover ? p.imageHover : p.image;
-        hoverImg.alt = `Model wearing ${p.altText || p.name}`;
+    const hoverVid = document.getElementById('p-video-hover');
+    
+    // Check if the hover is an mp4 video
+    if (p.imageHover && p.imageHover.endsWith('.mp4')) {
+        if (hoverImg) hoverImg.classList.add('hidden'); // Hide the image tag
+        if (hoverVid) {
+            hoverVid.src = p.imageHover;
+            hoverVid.classList.remove('hidden'); // Show the video tag
+        }
+    } else {
+        // It's a standard image
+        if (hoverVid) hoverVid.classList.add('hidden'); // Hide the video tag
+        if (hoverImg) {
+            hoverImg.src = p.imageHover ? p.imageHover : p.image;
+            hoverImg.alt = `Model wearing ${p.altText || p.name}`;
+            hoverImg.classList.remove('hidden'); // Show the image tag
+        }
     }
     
     // OUT OF STOCK LOGIC
