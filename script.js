@@ -94,14 +94,23 @@ function renderShop(items) {
         return;
     }
 
-    container.innerHTML = items.map(p => `
+    container.innerHTML = items.map(p => {
+        // SMART VIDEO DETECTOR: Check if the hover link is an mp4 video
+        const isVideo = p.imageHover && p.imageHover.endsWith('.mp4');
+        
+        // Output a <video> tag if it's an mp4, otherwise output the standard <img> tag
+        const hoverElement = isVideo 
+            ? `<video src="${p.imageHover}" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-105 z-20"></video>`
+            : `<img src="${p.imageHover ? p.imageHover : p.image}" alt="Model wearing ${p.name}" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-105 z-20">`;
+
+        return `
         <div class="group cursor-pointer flex flex-col justify-between" onclick="window.location.href='product.html?id=${p.id}'">
             <div>
                 <div class="w-full aspect-[3/4] overflow-hidden bg-gray-100 relative border border-LilAura-gold/10">
                     <img src="${p.image}" alt="${p.altText || p.name}" loading="lazy" 
                          class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:opacity-0 group-hover:scale-105 z-10">
-                    <img src="${p.imageHover ? p.imageHover : p.image}" alt="Model wearing ${p.name}" loading="lazy" 
-                         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-105 z-20">
+                    
+                    ${hoverElement}
                     
                     <div class="absolute top-2 left-2 bg-black/70 backdrop-blur-sm text-LilAura-gold text-[9px] px-2 py-1 tracking-widest uppercase font-sans z-30">Official Etsy Item</div>
                     <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity flex justify-end z-30">
@@ -117,7 +126,8 @@ function renderShop(items) {
                 <p class="font-price text-xl text-LilAura-gold font-normal tracking-widest">£${p.price.toFixed(2)}</p>
             </div>
         </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 function renderProductDetail(p) {
