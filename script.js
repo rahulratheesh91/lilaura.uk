@@ -254,12 +254,18 @@ function triggerFomoNotification() {
 
     fomoPopup.classList.add('show-fomo');
 
+    // Record in the browser's short-term memory that the popup has been shown
+    sessionStorage.setItem('fomoShown', 'true');
+
+    // Hide the popup after 5 seconds
     setTimeout(() => {
         fomoPopup.classList.remove('show-fomo');
     }, 5000);
 }
 
-setTimeout(() => {
-    triggerFomoNotification();
-    setInterval(triggerFomoNotification, 60000); 
-}, 8000);
+// Check the browser memory: Only trigger if 'fomoShown' does NOT exist
+if (!sessionStorage.getItem('fomoShown')) {
+    setTimeout(() => {
+        triggerFomoNotification();
+    }, 8000); // Waits 8 seconds on their very first page load before showing
+}
