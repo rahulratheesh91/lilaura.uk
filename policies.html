@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal & Policies | LilAura</title>
+    <meta name="description" content="LilAura Terms & Conditions, Privacy Policy, Returns, and Corporate Responsibility.">
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        LilAura: {
+                            cream: '#F2F0E9',
+                            gold: '#D4AF37',
+                            goldhover: '#B5952F',
+                            emerald: '#034938',
+                            text: '#2C2C2C',
+                            subtle: '#6B6B6B'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Proza Libre"', 'sans-serif'],
+                        price: ['"Bodoni Moda"', 'serif'],
+                    },
+                    letterSpacing: {
+                        'widest-luxury': '0.2em',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        /* Styling for policy sections */
+        .policy-section h2 { font-family: "Cormorant Garamond", serif; font-size: 2rem; color: #034938; margin-bottom: 1rem; margin-top: 3rem; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 0.5rem; }
+        .policy-section h3 { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; color: #2C2C2C; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .policy-section p, .policy-section li { font-family: "Proza Libre", sans-serif; color: #6B6B6B; font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem; }
+        .policy-section ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body class="bg-LilAura-cream text-LilAura-text antialiased">
+
+    <!-- EMERALD LUXURY NAV WITH MOBILE MENU -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-LilAura-emerald/95 backdrop-blur-md border-b border-LilAura-gold/30">
+        <div class="flex justify-between items-center py-4 px-6 md:px-16">
+            
+            <a href="index.html" class="flex items-center">
+                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 w-auto hover:opacity-80 transition-opacity" onerror="this.outerHTML='<span class=\'font-serif text-3xl font-semibold tracking-wide text-LilAura-gold\'>LilAura</span>'">
+            </a>
+            
+            <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
+                <a href="index.html" class="text-LilAura-gold hover:text-white transition pb-1">Home</a>
+                <a href="shop.html" class="text-LilAura-gold hover:text-white transition pb-1">Collection</a>
+                <a href="about.html" class="text-LilAura-gold hover:text-white transition pb-1">Our Story</a>
+                <a href="contact.html" class="text-LilAura-gold hover:text-white transition pb-1">Contact</a>
+            </div>
+
+            <div class="hidden md:flex items-center">
+                <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="flex items-center gap-2 border border-LilAura-gold hover:bg-LilAura-gold hover:text-LilAura-emerald text-LilAura-gold px-4 py-2 text-[10px] tracking-widest uppercase font-sans transition duration-300">
+                    <span>Etsy Shop</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-LilAura-gold hover:text-white transition focus:outline-none p-2">
+                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 block"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-LilAura-emerald border-t border-LilAura-gold/20 absolute left-0 top-[100%] w-full shadow-2xl">
+            <div class="flex flex-col items-center py-8 space-y-8 font-sans text-xs tracking-[0.25em] uppercase font-medium">
+                <a href="index.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Home</a>
+                <a href="shop.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Collection</a>
+                <a href="about.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Our Story</a>
+                <a href="contact.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <div class="pt-32 pb-10 text-center px-4">
+        <h1 class="font-serif text-5xl md:text-6xl text-LilAura-emerald mb-4">Legal & Policies</h1>
+        <p class="font-sans text-xs tracking-widest uppercase text-LilAura-subtle">Everything you need to know</p>
+    </div>
+
+    <!-- MAIN CONTENT GRID -->
+    <div class="max-w-7xl mx-auto px-6 md:px-16 pb-24 grid grid-cols-1 md:grid-cols-4 gap-12 relative">
+        
+        <!-- STICKY SIDEBAR NAVIGATION -->
+        <aside class="md:col-span-1 hidden md:block">
+            <div class="sticky top-32 border-l border-LilAura-gold/30 pl-4 space-y-4 font-sans text-xs uppercase tracking-widest text-LilAura-subtle">
+                <a href="#returns" class="block hover:text-LilAura-gold transition">Returns & Refunds</a>
+                <a href="#terms" class="block hover:text-LilAura-gold transition">Terms & Conditions</a>
+                <a href="#loyalty" class="block hover:text-LilAura-gold transition">Treats Loyalty Scheme</a>
+                <a href="#weee" class="block hover:text-LilAura-gold transition">WEEE Regulations</a>
+                <a href="#giftcards" class="block hover:text-LilAura-gold transition">Gift Cards & Wrap</a>
+                <a href="#responsibility" class="block hover:text-LilAura-gold transition">Corporate Responsibility</a>
+                <a href="#privacy" class="block hover:text-LilAura-gold transition">Privacy Notice</a>
+                <a href="#accessibility" class="block hover:text-LilAura-gold transition">Accessibility</a>
+            </div>
+        </aside>
+
+        <!-- POLICIES CONTENT -->
+        <main class="md:col-span-3 policy-section bg-white p-8 md:p-12 shadow-sm border border-LilAura-gold/10">
+            
+            <!-- RETURNS & REFUNDS -->
+            <section id="returns">
+                <h2 class="mt-0">Returns & Refunds Policy</h2>
+                <p>At LilAura, we want you to be completely satisfied with your ultra-luxury anti-tarnish jewellery. As all our transactions are securely processed through our official Etsy storefront (LilAuraElegance), our returns and refunds are governed by our Etsy shop policies and UK Distance Selling Regulations.</p>
+                <ul>
+                    <li><strong>Returns Window:</strong> You have 14 days from the date of delivery to contact us via Etsy messages to request a return, and 30 days to dispatch the item back to us.</li>
+                    <li><strong>Condition:</strong> Items must be returned unworn, in their original condition, and with all original packaging and tags intact.</li>
+                    <li><strong>Exclusions:</strong> For hygiene reasons, pierced earrings cannot be returned or exchanged unless faulty. Custom or personalized items are also non-refundable.</li>
+                    <li><strong>Process:</strong> Once your return is received and inspected, a refund will automatically be applied to your original method of payment via the Etsy platform.</li>
+                </ul>
+            </section>
+
+            <!-- TERMS & CONDITIONS -->
+            <section id="terms">
+                <h2>Terms & Conditions</h2>
+                
+                <h3>1. Who We Are</h3>
+                <p>We are LilAura UK. We operate lilaura.uk as an online portfolio and storefront linking directly to our verified Etsy marketplace shop (LilAuraElegance), specializing in high-quality, anti-tarnish traditional and modern jewellery.</p>
+                
+                <h3>2. Terms of Use</h3>
+                <p>By accessing lilaura.uk, you agree to use the website only for lawful purposes. You may not use our site to transmit any malicious software or conduct unauthorized data collection.</p>
+
+                <h3>3. Terms of Sale</h3>
+                <p>When you click to purchase an item, you will be redirected to Etsy.com. Your contract of sale is formed upon completion of checkout on the Etsy platform, and is subject to both LilAura's shop policies and Etsy’s overarching Terms of Use.</p>
+
+                <h3>4. Prices and Payment</h3>
+                <p>All prices are quoted in GBP (£). Payments are processed securely via Etsy Payments, which accepts major credit cards, PayPal, Apple Pay, and Google Pay. LilAura does not directly collect or store your payment details.</p>
+
+                <h3>5. Product Reviews</h3>
+                <p>We encourage customer feedback! Verified buyers may leave product reviews directly on our Etsy storefront. We may occasionally highlight these reviews on lilaura.uk for marketing purposes.</p>
+
+                <h3>6. Gift Cards</h3>
+                <p>Currently, any gift cards used to purchase LilAura items must be official Etsy Gift Cards, redeemed through the Etsy checkout system.</p>
+
+                <h3>7. Delivery</h3>
+                <p>We pride ourselves on fast UK shipping. Dispatch times and delivery estimates are provided at the Etsy checkout. We are not responsible for delays caused by postal strikes or customs clearance for international orders.</p>
+
+                <h3>8. Cancelling Your Order</h3>
+                <p>You may request a cancellation within 2 hours of purchase by messaging us directly through the Etsy platform. Once an order has been dispatched, it cannot be cancelled, but it may be returned in accordance with our Returns Policy.</p>
+
+                <h3>9. Products</h3>
+                <p>We strive to accurately display the colours and details of our jewellery. However, variations may occur depending on your device's screen. Our "Anti-Tarnish" guarantee applies to normal wear and tear and adherence to our care instructions.</p>
+
+                <h3>10. Your Personal Information</h3>
+                <p>Your privacy is paramount. Please refer to our Privacy Notice (below) to understand how we use your data via our website inquiries and Etsy integrations.</p>
+
+                <h3>11. Limiting Our Liability</h3>
+                <p>To the fullest extent permitted by law, LilAura shall not be liable for any indirect, incidental, or consequential damages arising from the use of our products or website.</p>
+
+                <h3>12. Disputes</h3>
+                <p>If you have an issue with your order, please contact us first so we can resolve it quickly. Unresolved transactional disputes are mediated through the Etsy Resolution Centre.</p>
+
+                <h3>13. Governing Law</h3>
+                <p>These terms are governed by the laws of England and Wales. Any disputes arising from these terms will be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+                <h3>14. Changes to These Terms</h3>
+                <p>We reserve the right to update these Terms & Conditions at any time. Changes will be posted immediately on this page.</p>
+            </section>
+
+            <!-- LOYALTY SCHEME -->
+            <section id="loyalty">
+                <h2>Treats Loyalty Scheme Terms & Conditions</h2>
+                <h3>Participation & Collection of Points</h3>
+                <p>The LilAura "Treats" program rewards our returning customers. Currently, as our checkout operates via Etsy, loyalty rewards and discount codes are distributed manually to repeat buyers via email or direct Etsy messages following a qualifying purchase.</p>
+                <h3>Exclusions</h3>
+                <p>Points/rewards cannot be earned on shipping costs, gift wrap fees, or the purchase of gift cards. Wholesale or B2B orders are excluded from the consumer Treats scheme.</p>
+                <h3>Treats Vouchers & Redemption</h3>
+                <p>Vouchers issued by LilAura will be provided as unique Etsy Promo Codes. They must be entered at the Etsy checkout prior to payment completion. Vouchers hold no cash value and cannot be applied retroactively to previous orders.</p>
+                <h3>Returns</h3>
+                <p>If an item purchased using a Treats voucher is returned, the refund will equal the actual amount paid. The voucher will not be reissued.</p>
+                <h3>Additional Benefits - Ad Hoc</h3>
+                <p>LilAura reserves the right to offer surprise upgrades, early access to new collections, or free gifts to loyalty members at our sole discretion.</p>
+            </section>
+
+            <!-- WEEE REGULATIONS -->
+            <section id="weee">
+                <h2>WEEE Regulations</h2>
+                <p>The Waste Electrical and Electronic Equipment (WEEE) Directive is UK legislation aimed at reducing the amount of electronic waste going to landfills. While LilAura primarily retails traditional and anti-tarnish metal jewellery, should you purchase any item from us containing electronic components (e.g., LED gift boxes or quartz watches), you can return your old equivalent item to us for safe disposal under the WEEE take-back scheme. Please contact our Customer Care team for a return address.</p>
+            </section>
+
+            <!-- GIFT CARDS & GIFT WRAP -->
+            <section id="giftcards">
+                <h2>Gift Cards, eGift Cards & Giftwrap</h2>
+                <h3>Gift Cards</h3>
+                <p>Because LilAura processes payments exclusively through our Etsy shop, we only accept official Etsy Gift Cards. Please refer to Etsy's specific terms and conditions regarding the purchase, expiry, and redemption of their gift cards.</p>
+                <h3>Giftwrap Terms & Conditions</h3>
+                <p>We offer premium luxury gift wrapping for a small additional fee, selectable at checkout. The gift wrap fee covers the materials and labour required to beautifully package your item. If you return an item, the gift wrap fee is strictly non-refundable.</p>
+            </section>
+
+            <!-- CORPORATE RESPONSIBILITY -->
+            <section id="responsibility">
+                <h2>Corporate Responsibility</h2>
+                <p>At LilAura, we believe that elegance should not come at an ethical cost. We are committed to:</p>
+                <ul>
+                    <li><strong>Sustainable Durability:</strong> By utilizing advanced anti-tarnish technology, our jewellery is designed to last longer, reducing the cycle of "throwaway" fast fashion.</li>
+                    <li><strong>Ethical Sourcing:</strong> We work closely with our artisan partners to ensure fair labor practices and safe working environments that honor traditional Indian craftsmanship.</li>
+                    <li><strong>Packaging:</strong> We are continuously striving to reduce single-use plastics in our shipping materials, moving towards recyclable and reusable premium jewelry boxes.</li>
+                </ul>
+            </section>
+
+            <!-- PRIVACY NOTICE -->
+            <section id="privacy">
+                <h2>Privacy Notice</h2>
+                <p>LilAura respects your privacy. When you contact us via lilaura.uk using our contact forms (powered by Web3Forms) or WhatsApp, we collect your name, email, and message solely to respond to your inquiry. We do not sell or share this data with third-party marketers.</p>
+                <p>When you place an order, your transaction is processed by Etsy. Etsy shares your name, shipping address, and email with us so we can fulfill your order. LilAura acts as a Data Controller for this information under UK GDPR, keeping it secure and using it strictly for order fulfillment, legal tax records, and customer service. For details on how Etsy processes your payment data, please view the Etsy Privacy Policy.</p>
+            </section>
+
+            <!-- ACCESSIBILITY -->
+            <section id="accessibility">
+                <h2>Accessibility</h2>
+                <p>LilAura is committed to making our website accessible to everyone, including people with disabilities. We continually review our site against the Web Content Accessibility Guidelines (WCAG) to ensure our navigation, text contrast, and imagery are clear and usable for all visitors. If you experience any difficulty accessing our website or reading our product descriptions, please reach out to our WhatsApp Concierge or email us at shop@lilaura.uk, and we will happily assist you personally.</p>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- EMERALD LUXURY FOOTER -->
+    <footer class="bg-LilAura-emerald text-LilAura-cream py-12 border-t border-LilAura-gold/20 mt-12">
+        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 mx-auto md:mx-0 mb-4 opacity-90" onerror="this.outerHTML='<h3 class=\'font-serif text-2xl text-LilAura-gold mb-2\'>LilAura</h3>'">
+                <p class="font-sans text-xs text-LilAura-gold tracking-widest uppercase">Heritage / Modern / Eternal</p>
+            </div>
+            <div class="flex gap-6 font-sans text-xs uppercase tracking-widest text-LilAura-gold flex-wrap justify-center">
+                <a href="shop.html" class="hover:text-white transition">Shop</a>
+                <a href="about.html" class="hover:text-white transition">Our Story</a>
+                <a href="contact.html" class="hover:text-white transition">Contact</a>
+                <a href="policies.html" class="hover:text-white transition">Policies</a>
+            </div>
+            <div class="text-xs text-LilAura-gold/70 font-sans text-center md:text-right">
+                <p>&copy; 2026 LilAura UK. All Rights Reserved.</p>
+                <p class="text-[10px] mt-1 text-LilAura-gold/50">Official Etsy Storefront: LilAuraElegance</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('menu-icon-open');
+            const iconClose = document.getElementById('menu-icon-close');
+
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    iconOpen.classList.toggle('hidden');
+                    iconClose.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
