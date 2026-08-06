@@ -53,7 +53,20 @@ const products = [
     { id: 16, sku: "TRNK-TLCN-16", name: "Tri-layered traditional coin necklace set", category: "Traditional Jewellery", price: 21.99, image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.8300843552_1ope.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/4e7dd8/8300843550/il_1588xN.8300843550_t434.jpg", desc: "Elegant Tri-layered traditional coin necklace set perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4537960719/tri-layered-traditional-coin-necklace" },
     { id: 17, sku: "IHNZS-SC-17", name: "Interlocking Heart Necklace with zircon stones and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/22fdf0/8394955889/il_794xN.8394955889_hxeo.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/270fd6/8347068668/il_794xN.8347068668_h0yl.jpg", desc: "Featuring two intertwined hearts one lined with brilliant zircon stones and the other polished in smooth 18K gold—this piece symbolizes everlasting love, unity, and connection.", etsyLink: "https://www.etsy.com/uk/listing/4542359876/18k-gold-plated-interlocking-heart" },
     { id: 18, sku: "KHP-SC-18", name: "Knotted Heart Pendant Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.49, image: "https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/d54fec/8395016175/il_794xN.8395016175_al3i.jpg", desc: "Featuring an intricate, soft-knotted open heart pendant strung on a sleek snake chain, this piece offers a chic, minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4542987137/18k-gold-plated-knotted-heart-pendant" },
-    { id: 19, sku: "PHN-SC-19", name: "Puffy Heart Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 15.99, image: "https://i.etsystatic.com/40040678/r/il/aa1651/8347132378/il_794xN.8347132378_paag.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/6066b0/8347132366/il_794xN.8347132366_hqus.jpg", desc: "Whether you are dressing up for a special evening or adding a touch of romance to your everyday attire, this piece will maintain its brilliant golden luster wear after wear. Minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4536791687/18k-gold-plated-puffy-heart-necklace" }
+    { id: 19, sku: "PHN-SC-19", name: "Puffy Heart Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 15.99, image: "https://i.etsystatic.com/40040678/r/il/aa1651/8347132378/il_794xN.8347132378_paag.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/6066b0/8347132366/il_794xN.8347132366_hqus.jpg", desc: "Whether you are dressing up for a special evening or adding a touch of romance to your everyday attire, this piece will maintain its brilliant golden luster wear after wear. Minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4536791687/18k-gold-plated-puffy-heart-necklace" },
+    { 
+        id: 20, 
+        sku: "SSCF-BCF-20", 
+        name: "Anti-Tarnish Bamboo Cuff", 
+        category: "Anti-tarnish Kada", 
+        price: 15.99, 
+        inStock: True, 
+        image: "https://i.etsystatic.com/40040678/r/il/3ce51c/8299089674/il_794xN.8299089674_1zdo.jpg", 
+        imageHover: "https://i.etsystatic.com/40040678/r/il/cecc15/8346984277/il_794xN.8346984277_j1kv.jpg", 
+        desc: "Featuring an intricate, organic bamboo-inspired joint design, this piece effortlessly blends modern elegance with natural charm. Crafted to be durable and long-lasting, it serves as an anti-tarnish everyday staple that looks luxurious worn on its own or stacked with your favorite pieces.
+", 
+        etsyLink: "https://www.etsy.com/uk/listing/4544247010/18k-gold-plated-anti-tarnish-bamboo-cuff" 
+    }
 ];
 0
 // --- 2. PAGE LOAD & RENDERING LOGIC ---
