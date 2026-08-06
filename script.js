@@ -52,10 +52,10 @@ const products = [
     { id: 14, sku: "SSCF-MSC-14", name: "18K Gold Plated Moving Stone Cuff Bracelet", category: "Anti-tarnish Kada", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/2fbb3e/8346941703/il_1588xN.8346941703_2nlb.jpg", imageHover: "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/jcndfbtklzpickvk6xz3.mp4", desc: "Add a touch of playful elegance to your everyday look with this stunning 18K Gold Plated Moving Stone Cuff. Featuring a modern cutout track design, the three sparkling stone beads inside move and freely roll with the motion of your wrist, creating a dynamic, eye-catching effect that is both chic and fun to wear.", etsyLink: "https://www.etsy.com/uk/listing/4544224715/18k-gold-plated-moving-stone-cuff" },
     { id: 15, sku: "TRNK-TLCN-15", name: "Tri-layered traditional coin necklace set", category: "Traditional Jewellery", price: 21.99, image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.8300843552_1ope.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/4e7dd8/8300843550/il_1588xN.8300843550_t434.jpg", desc: "Elegant Tri-layered traditional coin necklace set perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4537960719/tri-layered-traditional-coin-necklace" },
     { id: 10, sku: "IHNZS-SC-10", name: "Interlocking Heart Necklace with zircon stones and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/22fdf0/8394955889/il_794xN.8394955889_hxeo.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/270fd6/8347068668/il_794xN.8347068668_h0yl.jpg", desc: "Featuring two intertwined hearts one lined with brilliant zircon stones and the other polished in smooth 18K gold—this piece symbolizes everlasting love, unity, and connection.", etsyLink: "https://www.etsy.com/uk/listing/4542359876/18k-gold-plated-interlocking-heart" },
-    { id: 07, sku: "KHP-SC-07", name: "Knotted Heart Pendant Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.49, image: "https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/d54fec/8395016175/il_794xN.8395016175_al3i.jpg", desc: "Featuring an intricate, soft-knotted open heart pendant strung on a sleek snake chain, this piece offers a chic, minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4542987137/18k-gold-plated-knotted-heart-pendant" },
-    { id: 06, sku: "PHN-SC-06", name: "Puffy Heart Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 15.99, image: "https://i.etsystatic.com/40040678/r/il/aa1651/8347132378/il_794xN.8347132378_paag.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/6066b0/8347132366/il_794xN.8347132366_hqus.jpg", desc: "Whether you are dressing up for a special evening or adding a touch of romance to your everyday attire, this piece will maintain its brilliant golden luster wear after wear. Minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4536791687/18k-gold-plated-puffy-heart-necklace" },
+    { id: 7, sku: "KHP-SC-07", name: "Knotted Heart Pendant Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.49, image: "https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/d54fec/8395016175/il_794xN.8395016175_al3i.jpg", desc: "Featuring an intricate, soft-knotted open heart pendant strung on a sleek snake chain, this piece offers a chic, minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4542987137/18k-gold-plated-knotted-heart-pendant" },
+    { id: 6, sku: "PHN-SC-06", name: "Puffy Heart Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 15.99, image: "https://i.etsystatic.com/40040678/r/il/aa1651/8347132378/il_794xN.8347132378_paag.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/6066b0/8347132366/il_794xN.8347132366_hqus.jpg", desc: "Whether you are dressing up for a special evening or adding a touch of romance to your everyday attire, this piece will maintain its brilliant golden luster wear after wear. Minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4536791687/18k-gold-plated-puffy-heart-necklace" },
     { 
-        id: 04, 
+        id: 4, 
         sku: "SSCF-BCF-04", 
         name: "Anti-Tarnish Bamboo Cuff", 
         category: "Anti-tarnish Kada", 
@@ -67,7 +67,7 @@ const products = [
         etsyLink: "https://www.etsy.com/uk/listing/4544247010/18k-gold-plated-anti-tarnish-bamboo-cuff" 
     },
     { 
-        id: 03, 
+        id: 3, 
         sku: "SSCF-OPC-03", 
         name: "Anti tarnish Open Pearl Cuff- 18K Gold Plated", 
         category: "Anti-tarnish Kada", 
@@ -79,7 +79,7 @@ const products = [
         etsyLink: "https://www.etsy.com/uk/listing/4544460683/18k-gold-plated-anti-tarnish-open-pearl" 
     },
     { 
-        id: 02, 
+        id: 2, 
         sku: "SSCF-DFC-02", 
         name: "Anti tarnish Daisy Flower Cuff- 18K Gold Plated", 
         category: "Anti-tarnish Kada", 
@@ -91,7 +91,7 @@ const products = [
         etsyLink: "https://www.etsy.com/uk/listing/4547568348/18k-gold-plated-anti-tarnish-daisy" 
     },
     { 
-        id: 01, 
+        id: 1, 
         sku: "SSCF-GCZ-01", 
         name: "Anti tarnish Geometric bangle with cubic zirconia stones - 18K Gold Plated", 
         category: "Anti-tarnish Kada", 
@@ -146,7 +146,17 @@ function renderShop(items) {
         return;
     }
 
-    container.innerHTML = items.map(p => {
+    // --- NEW SORTING LOGIC: Keep IDs 16 through 22 at the absolute bottom ---
+    const bottomIds = [16, 17, 18, 19, 20, 21, 22];
+    
+    // Split the products into two separate lists
+    const regularItems = items.filter(p => !bottomIds.includes(p.id));
+    const bottomItems = items.filter(p => bottomIds.includes(p.id));
+    
+    // Combine them back together with the bottom items at the end
+    const sortedItems = [...regularItems, ...bottomItems];
+
+    container.innerHTML = sortedItems.map(p => {
         // SMART VIDEO DETECTOR: Check if the hover link is an mp4 video
         const isVideo = p.imageHover && p.imageHover.endsWith('.mp4');
         
