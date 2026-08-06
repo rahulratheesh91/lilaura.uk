@@ -49,7 +49,7 @@ const products = [
     { id: 11, sku: "TRNK-PAL-11", name: "Traditional Indian Lakshmi Choker Necklace Set with Matching Ear studs", category: "Traditional Jewellery", price: 33.99, image: "https://i.etsystatic.com/40040678/r/il/78acc5/8345517199/il_1588xN.8345517199_5d0d.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/398816/8297620094/il_1588xN.8297620094_50p8.jpg", desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.", etsyLink: "https://www.etsy.com/uk/listing/4533558563/traditional-indian-lakshmi-choker" },
     { id: 13, sku: "TRNK-PAL-13", name: "Traditional Indian Green Meenakari Choker Necklace Set", category: "Traditional Jewellery", price: 15.99, image: "https://i.etsystatic.com/40040678/r/il/3bd6bb/8348520825/il_1588xN.8348520825_f3eq.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/ded90e/8348520811/il_1588xN.8348520811_n4rl.jpg", desc: "Elegant green Meenakari lotus design choker perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4535086033/green-lotus-meenakari-necklace-set" },
     { id: 14, sku: "TRNK-PAL-14", name: "Traditional Indian Red Meenakari Choker Necklace Set", category: "Traditional Jewellery", price: 17.99, image: "https://i.etsystatic.com/40040678/r/il/51c271/8348522389/il_1588xN.8348522389_7zme.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/4ba53c/8300627856/il_1588xN.8300627856_qz6y.jpg", desc: "Elegant Red Meenakari lotus design choker perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4535073097/red-lotus-meenakari-necklace-set" },
-    { id: 15, sku: "SSCF-MSC-15", name: "18K Gold Plated Moving Stone Cuff Bracelet", category: "Anti-tarnish Kada", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/2fbb3e/8346941703/il_1588xN.8346941703_2nlb.jpg", imageHover: "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/jcndfbtklzpickvk6xz3.mp4", desc: "Add a touch of playful elegance to your everyday look with this stunning 18K Gold Plated Moving Stone Cuff. Featuring a modern cutout track design, the three sparkling stone beads inside move and freely roll with the motion of your wrist, creating a dynamic, eye-catching effect that is both chic and fun to wear", etsyLink: "https://www.etsy.com/uk/listing/4544224715/18k-gold-plated-moving-stone-cuff" },
+    { id: 15, sku: "SSCF-MSC-15", name: "18K Gold Plated Moving Stone Cuff Bracelet", category: "Anti-tarnish Kada", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/2fbb3e/8346941703/il_1588xN.8346941703_2nlb.jpg", imageHover: "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/jcndfbtklzpickvk6xz3.mp4", desc: "Add a touch of playful elegance to your everyday look with this stunning 18K Gold Plated Moving Stone Cuff. Featuring a modern cutout track design, the three sparkling stone beads inside move and freely roll with the motion of your wrist, creating a dynamic, eye-catching effect that is both chic and fun to wear.", etsyLink: "https://www.etsy.com/uk/listing/4544224715/18k-gold-plated-moving-stone-cuff" },
     { id: 16, sku: "TRNK-TLCN-16", name: "Tri-layered traditional coin necklace set", category: "Traditional Jewellery", price: 21.99, image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.8300843552_1ope.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/4e7dd8/8300843550/il_1588xN.8300843550_t434.jpg", desc: "Elegant Tri-layered traditional coin necklace set perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4537960719/tri-layered-traditional-coin-necklace" },
     { id: 17, sku: "IHNZS-SC-17", name: "Interlocking Heart Necklace with zircon stones and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/22fdf0/8394955889/il_794xN.8394955889_hxeo.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/270fd6/8347068668/il_794xN.8347068668_h0yl.jpg", desc: "Featuring two intertwined hearts one lined with brilliant zircon stones and the other polished in smooth 18K gold—this piece symbolizes everlasting love, unity, and connection.", etsyLink: "https://www.etsy.com/uk/listing/4542359876/18k-gold-plated-interlocking-heart" },
     { id: 18, sku: "KHP-SC-18", name: "Knotted Heart Pendant Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.49, image: "https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/d54fec/8395016175/il_794xN.8395016175_al3i.jpg", desc: "Featuring an intricate, soft-knotted open heart pendant strung on a sleek snake chain, this piece offers a chic, minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4542987137/18k-gold-plated-knotted-heart-pendant" },
@@ -269,18 +269,15 @@ function triggerFomoNotification() {
 
     fomoPopup.classList.add('show-fomo');
 
-    // Record in the browser's short-term memory that the popup has been shown
     sessionStorage.setItem('fomoShown', 'true');
 
-    // Hide the popup after 5 seconds
     setTimeout(() => {
         fomoPopup.classList.remove('show-fomo');
     }, 5000);
 }
 
-// Check the browser memory: Only trigger if 'fomoShown' does NOT exist
 if (!sessionStorage.getItem('fomoShown')) {
     setTimeout(() => {
         triggerFomoNotification();
-    }, 8000); // Waits 8 seconds on their very first page load before showing
+    }, 8000); 
 }
