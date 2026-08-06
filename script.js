@@ -60,7 +60,7 @@ const products = [
         name: "Anti-Tarnish Bamboo Cuff", 
         category: "Anti-tarnish Kada", 
         price: 15.99, 
-        inStock: true, 
+        inStock: True, 
         image: "https://i.etsystatic.com/40040678/r/il/3ce51c/8299089674/il_794xN.8299089674_1zdo.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/cecc15/8346984277/il_794xN.8346984277_j1kv.jpg", 
         desc: "Featuring an intricate, organic bamboo-inspired joint design, this piece effortlessly blends modern elegance with natural charm. Crafted to be durable and long-lasting, it serves as an anti-tarnish everyday staple that looks luxurious worn on its own or stacked with your favorite pieces.", 
