@@ -47,16 +47,16 @@ const products = [
     { id: 9, sku: "TRNK-COIN-09", name: "Ganapathy Coin Palakka Choker Traditional Heritage Necklace", category: "Traditional Jewellery", price: 20.99, image: "https://i.etsystatic.com/40040678/r/il/433e57/8300782474/il_1588xN.8300782474_9tgy.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/07ba53/8348676775/il_1588xN.8348676775_9har.jpg", desc: "Traditional Kasu Mala coin choker featuring Lord Ganesha motifs interlaced with classic Palakka stones. Heirloom craftsmanship.", etsyLink: "https://www.etsy.com/uk/listing/4483539459/coin-palakka-choker-traditional-necklace" },
     { id: 10, sku: "SSNK-EMR-10", name: "Anti-Tarnish Gold Plated Emerald Green Leaf Pendant Necklace", category: "Anti-tarnish Necklaces", price: 16.99, image: "https://i.etsystatic.com/40040678/r/il/e0133d/8235370965/il_1140xN.8235370965_lcqj.jpg", imageHover: "", desc: "Exquisite geometric emerald-cut green stone pendant on an 18k gold vermeil water-resistant chain. Simple, daily luxury.", etsyLink: "https://www.etsy.com/uk/listing/4533568863/anti-tarnish-gold-plated-emerald-green" },
     { id: 11, sku: "TRNK-PAL-11", name: "Traditional Indian Lakshmi Choker Necklace Set with Matching Ear studs", category: "Traditional Jewellery", price: 33.99, image: "https://i.etsystatic.com/40040678/r/il/78acc5/8345517199/il_1588xN.8345517199_5d0d.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/398816/8297620094/il_1588xN.8297620094_50p8.jpg", desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear.", etsyLink: "https://www.etsy.com/uk/listing/4533558563/traditional-indian-lakshmi-choker" },
-    { id: 13, sku: "TRNK-PAL-13", name: "Traditional Indian Green Meenakari Choker Necklace Set", category: "Traditional Jewellery", price: 15.99, image: "https://i.etsystatic.com/40040678/r/il/3bd6bb/8348520825/il_1588xN.8348520825_f3eq.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/ded90e/8348520811/il_1588xN.8348520811_n4rl.jpg", desc: "Elegant green Meenakari lotus design choker perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4535086033/green-lotus-meenakari-necklace-set" },
-    { id: 14, sku: "TRNK-PAL-14", name: "Traditional Indian Red Meenakari Choker Necklace Set", category: "Traditional Jewellery", price: 17.99, image: "https://i.etsystatic.com/40040678/r/il/51c271/8348522389/il_1588xN.8348522389_7zme.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/4ba53c/8300627856/il_1588xN.8300627856_qz6y.jpg", desc: "Elegant Red Meenakari lotus design choker perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4535073097/red-lotus-meenakari-necklace-set" },
-    { id: 15, sku: "SSCF-MSC-15", name: "18K Gold Plated Moving Stone Cuff Bracelet", category: "Anti-tarnish Kada", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/2fbb3e/8346941703/il_1588xN.8346941703_2nlb.jpg", imageHover: "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/jcndfbtklzpickvk6xz3.mp4", desc: "Add a touch of playful elegance to your everyday look with this stunning 18K Gold Plated Moving Stone Cuff. Featuring a modern cutout track design, the three sparkling stone beads inside move and freely roll with the motion of your wrist, creating a dynamic, eye-catching effect that is both chic and fun to wear.", etsyLink: "https://www.etsy.com/uk/listing/4544224715/18k-gold-plated-moving-stone-cuff" },
-    { id: 16, sku: "TRNK-TLCN-16", name: "Tri-layered traditional coin necklace set", category: "Traditional Jewellery", price: 21.99, image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.8300843552_1ope.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/4e7dd8/8300843550/il_1588xN.8300843550_t434.jpg", desc: "Elegant Tri-layered traditional coin necklace set perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4537960719/tri-layered-traditional-coin-necklace" },
-    { id: 17, sku: "IHNZS-SC-17", name: "Interlocking Heart Necklace with zircon stones and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/22fdf0/8394955889/il_794xN.8394955889_hxeo.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/270fd6/8347068668/il_794xN.8347068668_h0yl.jpg", desc: "Featuring two intertwined hearts one lined with brilliant zircon stones and the other polished in smooth 18K gold—this piece symbolizes everlasting love, unity, and connection.", etsyLink: "https://www.etsy.com/uk/listing/4542359876/18k-gold-plated-interlocking-heart" },
-    { id: 18, sku: "KHP-SC-18", name: "Knotted Heart Pendant Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.49, image: "https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/d54fec/8395016175/il_794xN.8395016175_al3i.jpg", desc: "Featuring an intricate, soft-knotted open heart pendant strung on a sleek snake chain, this piece offers a chic, minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4542987137/18k-gold-plated-knotted-heart-pendant" },
-    { id: 19, sku: "PHN-SC-19", name: "Puffy Heart Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 15.99, image: "https://i.etsystatic.com/40040678/r/il/aa1651/8347132378/il_794xN.8347132378_paag.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/6066b0/8347132366/il_794xN.8347132366_hqus.jpg", desc: "Whether you are dressing up for a special evening or adding a touch of romance to your everyday attire, this piece will maintain its brilliant golden luster wear after wear. Minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4536791687/18k-gold-plated-puffy-heart-necklace" },
+    { id: 12, sku: "TRNK-PAL-12", name: "Traditional Indian Green Meenakari Choker Necklace Set", category: "Traditional Jewellery", price: 15.99, image: "https://i.etsystatic.com/40040678/r/il/3bd6bb/8348520825/il_1588xN.8348520825_f3eq.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/ded90e/8348520811/il_1588xN.8348520811_n4rl.jpg", desc: "Elegant green Meenakari lotus design choker perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4535086033/green-lotus-meenakari-necklace-set" },
+    { id: 13, sku: "TRNK-PAL-13", name: "Traditional Indian Red Meenakari Choker Necklace Set", category: "Traditional Jewellery", price: 17.99, image: "https://i.etsystatic.com/40040678/r/il/51c271/8348522389/il_1588xN.8348522389_7zme.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/4ba53c/8300627856/il_1588xN.8300627856_qz6y.jpg", desc: "Elegant Red Meenakari lotus design choker perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4535073097/red-lotus-meenakari-necklace-set" },
+    { id: 14, sku: "SSCF-MSC-14", name: "18K Gold Plated Moving Stone Cuff Bracelet", category: "Anti-tarnish Kada", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/2fbb3e/8346941703/il_1588xN.8346941703_2nlb.jpg", imageHover: "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/jcndfbtklzpickvk6xz3.mp4", desc: "Add a touch of playful elegance to your everyday look with this stunning 18K Gold Plated Moving Stone Cuff. Featuring a modern cutout track design, the three sparkling stone beads inside move and freely roll with the motion of your wrist, creating a dynamic, eye-catching effect that is both chic and fun to wear.", etsyLink: "https://www.etsy.com/uk/listing/4544224715/18k-gold-plated-moving-stone-cuff" },
+    { id: 15, sku: "TRNK-TLCN-15", name: "Tri-layered traditional coin necklace set", category: "Traditional Jewellery", price: 21.99, image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.8300843552_1ope.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/4e7dd8/8300843550/il_1588xN.8300843550_t434.jpg", desc: "Elegant Tri-layered traditional coin necklace set perfect for traditional occasions.", etsyLink: "https://www.etsy.com/uk/listing/4537960719/tri-layered-traditional-coin-necklace" },
+    { id: 16, sku: "IHNZS-SC-16", name: "Interlocking Heart Necklace with zircon stones and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.99, image: "https://i.etsystatic.com/40040678/r/il/22fdf0/8394955889/il_794xN.8394955889_hxeo.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/270fd6/8347068668/il_794xN.8347068668_h0yl.jpg", desc: "Featuring two intertwined hearts one lined with brilliant zircon stones and the other polished in smooth 18K gold—this piece symbolizes everlasting love, unity, and connection.", etsyLink: "https://www.etsy.com/uk/listing/4542359876/18k-gold-plated-interlocking-heart" },
+    { id: 17, sku: "KHP-SC-17", name: "Knotted Heart Pendant Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 14.49, image: "https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/d54fec/8395016175/il_794xN.8395016175_al3i.jpg", desc: "Featuring an intricate, soft-knotted open heart pendant strung on a sleek snake chain, this piece offers a chic, minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4542987137/18k-gold-plated-knotted-heart-pendant" },
+    { id: 18, sku: "PHN-SC-18", name: "Puffy Heart Necklace and Snake Chain", category: "Anti-tarnish Necklaces", price: 15.99, image: "https://i.etsystatic.com/40040678/r/il/aa1651/8347132378/il_794xN.8347132378_paag.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/6066b0/8347132366/il_794xN.8347132366_hqus.jpg", desc: "Whether you are dressing up for a special evening or adding a touch of romance to your everyday attire, this piece will maintain its brilliant golden luster wear after wear. Minimalist silhouette that elevates any outfit.", etsyLink: "https://www.etsy.com/uk/listing/4536791687/18k-gold-plated-puffy-heart-necklace" },
     { 
-        id: 20, 
-        sku: "SSCF-BCF-20", 
+        id: 19, 
+        sku: "SSCF-BCF-19", 
         name: "Anti-Tarnish Bamboo Cuff", 
         category: "Anti-tarnish Kada", 
         price: 15.99, 
@@ -65,6 +65,42 @@ const products = [
         imageHover: "https://i.etsystatic.com/40040678/r/il/cecc15/8346984277/il_794xN.8346984277_j1kv.jpg", 
         desc: "Featuring an intricate, organic bamboo-inspired joint design, this piece effortlessly blends modern elegance with natural charm. Crafted to be durable and long-lasting, it serves as an anti-tarnish everyday staple that looks luxurious worn on its own or stacked with your favorite pieces.", 
         etsyLink: "https://www.etsy.com/uk/listing/4544247010/18k-gold-plated-anti-tarnish-bamboo-cuff" 
+    },
+    { 
+        id: 20, 
+        sku: "SSCF-OPC-20", 
+        name: "Anti tarnish Open Pearl Cuff- 18K Gold Plated", 
+        category: "Anti-tarnish Kada", 
+        price: 16.00, 
+        inStock: true, 
+        image: "https://i.etsystatic.com/40040678/r/il/7f3803/8348706407/il_1588xN.8348706407_c8gw.jpg", 
+        imageHover: "https://i.etsystatic.com/40040678/r/il/a7d942/8300811782/il_1588xN.8300811782_jtsa.jpg", 
+        desc: "Featuring an artistic, wavy melted-metal silhouette accented with lustrous white pearls, this piece effortlessly blends contemporary sculptural design with classic sophistication.", 
+        etsyLink: "https://www.etsy.com/uk/listing/4544460683/18k-gold-plated-anti-tarnish-open-pearl" 
+    },
+    { 
+        id: 21, 
+        sku: "SSCF-DFC-21", 
+        name: "Anti tarnish Daisy Flower Cuff- 18K Gold Plated", 
+        category: "Anti-tarnish Kada", 
+        price: 14.99, 
+        inStock: true, 
+        image: "https://i.etsystatic.com/40040678/r/il/fffc67/8370637995/il_1588xN.8370637995_7884.jpg", 
+        imageHover: "https://i.etsystatic.com/40040678/r/il/6b9b2e/8370637991/il_1588xN.8370637991_m4fb.jpg", 
+        desc: "Whether you're dressing up for a special occasion or looking for a chic, low-maintenance accessory for daily wear, this waterproof and tarnish-resistant cuff is the ultimate addition to your jewelry collection.", 
+        etsyLink: "https://www.etsy.com/uk/listing/4547568348/18k-gold-plated-anti-tarnish-daisy" 
+    },
+    { 
+        id: 22, 
+        sku: "SSCF-GCZ-22", 
+        name: "Anti tarnish Geometric bangle with cubic zirconia stones - 18K Gold Plated", 
+        category: "Anti-tarnish Kada", 
+        price: 16.99, 
+        inStock: true, 
+        image: "https://i.etsystatic.com/40040678/r/il/f01e22/8362594725/il_1588xN.8362594725_a8hd.jpg", 
+        imageHover: "https://i.etsystatic.com/40040678/r/il/81a7f0/8314706242/il_1588xN.8314706242_9r93.jpg", 
+        desc: "Elevate your everyday style with this stunning 18K Gold Plated Geometric Cuff Bangle. Featuring a sophisticated textured pattern accented with sparkling cubic zirconia stones, this statement bangle strikes the perfect balance between modern edge and timeless elegance.", 
+        etsyLink: "https://www.etsy.com/uk/listing/4546445474/18k-gold-plated-anti-tarnish-geometric" 
     }
 ];
 
