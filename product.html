@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details | LilAura</title>
+    <!-- TITLE & DESC WILL BE DYNAMICALLY INJECTED BY SCRIPT.JS, BUT FALLBACKS ARE INCLUDED -->
+    <title>Product Details | LilAura Anti-Tarnish Jewellery UK</title>
+    <meta name="description" content="View product details, care instructions, and buy instantly via Etsy. Explore LilAura's collection of waterproof 18K gold plated and traditional brass jewellery.">
     
-   <!-- FAVICON FOR BROWSER & GOOGLE SEARCH -->
+    <!-- FAVICON FOR BROWSER & GOOGLE SEARCH -->
     <link rel="icon" type="image/png" sizes="96x96" href="https://www.lilaura.uk/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://www.lilaura.uk/favicon.png">
     
@@ -40,6 +42,9 @@
     <style>
         .show-fomo { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; visibility: visible !important; }
         html { scroll-behavior: smooth; }
+        /* FAQ ACCORDION STYLES */
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
     </style>
 </head>
 <body class="bg-LilAura-cream text-LilAura-text antialiased">
@@ -49,7 +54,7 @@
         <div class="flex justify-between items-center py-4 px-6 md:px-16">
             
             <a href="index.html" class="flex items-center">
-                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 w-auto hover:opacity-80 transition-opacity" onerror="this.outerHTML='<span class=\'font-serif text-3xl font-semibold tracking-wide text-LilAura-gold\'>LilAura</span>'">
+                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 w-auto hover:opacity-80 transition-opacity" onerror="this.outerHTML='<span class='font-serif text-3xl font-semibold tracking-wide text-LilAura-gold'>LilAura</span>'">
             </a>
             
             <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
@@ -87,10 +92,10 @@
     </nav>
 
     <!-- PRODUCT DETAIL CONTAINER -->
-    <div id="product-detail-container" class="max-w-7xl mx-auto px-6 md:px-16 pt-32 pb-24 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 animate-fade-in">
+    <div id="product-detail-container" class="max-w-7xl mx-auto px-6 md:px-16 pt-32 pb-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 animate-fade-in">
         
         <div class="w-full relative">
-            <div class="sticky top-32 aspect-square bg-gray-100 overflow-hidden shadow-sm border border-LilAura-gold/10 group cursor-crosshair relative">
+            <div class="sticky top-32 aspect-[4/5] md:aspect-square bg-gray-100 overflow-hidden shadow-sm border border-LilAura-gold/10 group cursor-crosshair relative">
                 
                 <img id="p-image" src="" alt="LilAura Jewellery" 
                      class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:opacity-0 group-hover:scale-105 z-10">
@@ -98,64 +103,99 @@
                 <img id="p-image-hover" src="" alt="Model wearing LilAura Jewellery" 
                      class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-105 z-20">
                 
-                <!-- NEW: Video Hover element (Hidden by default) -->
                 <video id="p-video-hover" src="" autoplay loop muted playsinline 
                        class="hidden absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-105 z-20"></video>
                      
-                <!-- SOLD OUT OVERLAY (Hidden by default, triggered by script.js) -->
                 <div id="sold-out-overlay" class="hidden absolute inset-0 bg-white/40 backdrop-blur-[4px] z-30 flex items-center justify-center">
                     <span class="bg-LilAura-text text-LilAura-gold font-sans text-sm md:text-base tracking-[0.3em] uppercase py-3 px-10 shadow-2xl border border-LilAura-gold/30">
                         Sold Out
                     </span>
                 </div>
-                     
             </div>
         </div>
 
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col justify-start pt-4">
             <div class="flex justify-between items-start border-b border-LilAura-gold/20 pb-4 mb-6">
                 <span id="p-cat" class="text-[10px] tracking-[0.25em] uppercase text-LilAura-emerald font-medium">Category</span>
                 <span id="p-sku" class="text-[10px] tracking-widest text-gray-400">SKU: ---</span>
             </div>
             
+            <!-- H1 ensures Google knows exactly what this page is about -->
             <h1 id="p-name" class="font-serif text-3xl md:text-5xl text-LilAura-text mb-6 leading-tight">Product Name</h1>
-            <p id="p-price" class="font-price text-4xl text-LilAura-gold mb-8 tracking-widest font-normal">£0.00</p>
+            <p id="p-price" class="font-price text-3xl md:text-4xl text-LilAura-gold mb-8 tracking-widest font-normal">£0.00</p>
             
             <p id="p-desc" class="font-sans text-LilAura-subtle leading-loose text-sm md:text-base mb-10">
                 Description loading...
             </p>
 
             <div class="flex flex-col gap-4">
-                <a id="buy-etsy-btn" href="#" target="_blank" class="w-full bg-LilAura-emerald hover:bg-LilAura-gold text-white font-sans text-xs uppercase tracking-[0.2em] py-5 transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group">
+                <a id="buy-etsy-btn" href="#" target="_blank" class="w-full bg-LilAura-emerald hover:bg-LilAura-gold text-white font-sans text-xs md:text-sm uppercase tracking-[0.2em] py-5 transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group">
                     <span>Buy Instantly on Etsy</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                 </a>
-
-                <a id="p-insta" href="https://instagram.com/lilaura.uk" target="_blank" class="w-full border border-LilAura-gold text-LilAura-gold hover:bg-LilAura-gold hover:text-white text-center font-sans text-xs uppercase tracking-[0.2em] py-4 transition duration-300">
-                    View on Instagram
-                </a>
             </div>
             
-            <div class="mt-12 pt-8 border-t border-LilAura-gold/10 grid grid-cols-3 gap-4 text-center">
+            <!-- TRUST SIGNALS -->
+            <div class="mt-8 pt-8 border-t border-LilAura-gold/10 grid grid-cols-3 gap-2 md:gap-4 text-center">
                 <div>
-                    <div class="w-8 h-8 mx-auto mb-2 text-LilAura-gold">
+                    <div class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-LilAura-gold">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     </div>
-                    <p class="font-sans text-[9px] uppercase tracking-widest text-LilAura-subtle">Anti-Tarnish</p>
+                    <p class="font-sans text-[8px] md:text-[9px] uppercase tracking-widest text-LilAura-subtle">Anti-Tarnish</p>
                 </div>
                 <div>
-                    <div class="w-8 h-8 mx-auto mb-2 text-LilAura-gold">
+                    <div class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-LilAura-gold">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     </div>
-                    <p class="font-sans text-[9px] uppercase tracking-widest text-LilAura-subtle">Etsy Protected</p>
+                    <p class="font-sans text-[8px] md:text-[9px] uppercase tracking-widest text-LilAura-subtle">Etsy Protected</p>
                 </div>
                 <div>
-                    <div class="w-8 h-8 mx-auto mb-2 text-LilAura-gold">
+                    <div class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-LilAura-gold">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>
                     </div>
-                    <p class="font-sans text-[9px] uppercase tracking-widest text-LilAura-subtle">UK Fast Ship</p>
+                    <p class="font-sans text-[8px] md:text-[9px] uppercase tracking-widest text-LilAura-subtle">UK Fast Ship</p>
                 </div>
             </div>
+
+            <!-- SEO FAQ & CARE GUIDE SECTION -->
+            <div class="mt-12 space-y-4">
+                <details class="group border-b border-LilAura-gold/20 pb-4">
+                    <summary class="flex justify-between items-center font-serif text-lg md:text-xl text-LilAura-emerald font-medium">
+                        Materials & Anti-Tarnish Guarantee
+                        <span class="transition group-open:rotate-180 text-LilAura-gold">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </summary>
+                    <div class="font-sans text-sm text-LilAura-subtle leading-loose mt-4">
+                        Our modern pieces are expertly crafted from high-grade <strong>stainless steel</strong> and finished with highly durable <strong>18K gold PVD plating</strong>. This advanced bonding process ensures the jewelry is 100% waterproof, sweat-resistant, and hypoallergenic, meaning it will never tarnish or turn your skin green. <br><br>Our heritage collections are forged in authentic <strong>traditional brass</strong> to honor classic Indian craftsmanship.
+                    </div>
+                </details>
+                
+                <details class="group border-b border-LilAura-gold/20 pb-4">
+                    <summary class="flex justify-between items-center font-serif text-lg md:text-xl text-LilAura-emerald font-medium">
+                        Jewellery Care Guide
+                        <span class="transition group-open:rotate-180 text-LilAura-gold">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </summary>
+                    <div class="font-sans text-sm text-LilAura-subtle leading-loose mt-4">
+                        While our stainless steel pieces are designed for 24/7 wear (including in the shower), we recommend keeping all traditional brass pieces dry to preserve their intricate hand-painted finishes. Gently wipe your jewelry with a soft cloth after wearing, and store it in a dry, cool place to maintain its eternal shine.
+                    </div>
+                </details>
+
+                <details class="group border-b border-LilAura-gold/20 pb-4">
+                    <summary class="flex justify-between items-center font-serif text-lg md:text-xl text-LilAura-emerald font-medium">
+                        Delivery & Returns
+                        <span class="transition group-open:rotate-180 text-LilAura-gold">
+                            <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </summary>
+                    <div class="font-sans text-sm text-LilAura-subtle leading-loose mt-4">
+                        We dispatch all orders swiftly from the UK. Because all transactions are securely handled through our official Etsy storefront, you are fully covered by Etsy's buyer protection program. You have 14 days to request a return if you are not completely satisfied with your purchase.
+                    </div>
+                </details>
+            </div>
+
         </div>
     </div>
 
@@ -180,7 +220,7 @@
     <footer class="bg-LilAura-emerald text-LilAura-cream py-12 border-t border-LilAura-gold/20">
         <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
-                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 mx-auto md:mx-0 mb-4 opacity-90" onerror="this.outerHTML='<h3 class=\'font-serif text-2xl text-LilAura-gold mb-2\'>LilAura</h3>'">
+                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 mx-auto md:mx-0 mb-4 opacity-90" onerror="this.outerHTML='<h3 class='font-serif text-2xl text-LilAura-gold mb-2'>LilAura</h3>'">
                 <p class="font-sans text-xs text-LilAura-gold tracking-widest uppercase">Heritage / Modern / Eternal</p>
             </div>
             <div class="flex gap-6 font-sans text-xs uppercase tracking-widest text-LilAura-gold flex-wrap justify-center">
