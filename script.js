@@ -37,7 +37,7 @@ const products = [
         imageHover: "", 
         desc: "Stunning infinity motif open cuff embellished with double-layered sparkling zircon stones. Crafted from premium anti-tarnish stainless steel, this 18K gold plated bracelet is 100% waterproof, hypoallergenic, and perfect for everyday wear in the UK.",
         seoTitle: "18K Gold Plated Infinity Cuff | Anti-Tarnish Stainless Steel Jewellery UK",
-        metaDesc: "Discover our stunning 18K gold plated infinity cuff with zircon stones. Waterproof, hypoallergenic, and anti-tarnish stainless steel jewelry by LilAura.",
+        metaDesc: "Discover our stunning 18K gold plated infinity cuff with zircon stones. Waterproof, hypoallergenic, and anti-tarnish stainless jewelry by LilAura.",
         altText: "18K Gold Plated Anti-Tarnish Infinity Cuff Bracelet with Zircon Stones",
         etsyLink: "https://www.etsy.com/uk/listing/4530529391/anti-tarnish-infinity-cuff-with-double" 
     },
@@ -496,6 +496,42 @@ function renderProductDetail(p) {
     script.type = "application/ld+json";
     script.text = JSON.stringify(schemaData);
     document.head.appendChild(script);
+
+    // DYNAMIC MATERIALS & BADGE LOGIC
+    const badge1 = document.getElementById('dynamic-badge-1');
+    const faqMatTitle = document.getElementById('faq-materials-title');
+    const faqMatContent = document.getElementById('faq-materials-content');
+    const faqCareContent = document.getElementById('faq-care-content');
+
+    if (p.category.includes('Traditional')) {
+        if (badge1) {
+            badge1.innerHTML = `
+                <div class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-LilAura-gold">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
+                </div>
+                <p class="font-sans text-[8px] md:text-[9px] uppercase tracking-widest text-LilAura-subtle">Premium Brass</p>
+            `;
+        }
+        if (faqMatTitle && faqMatContent && faqCareContent) {
+            faqMatTitle.innerHTML = `Materials & Finish <span class="transition group-open:rotate-180 text-LilAura-gold"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span>`;
+            faqMatContent.innerHTML = `Our heritage collections are forged in authentic <strong>traditional brass</strong> with a classic gold coating to honor timeless Indian craftsmanship.`;
+            faqCareContent.innerHTML = `To preserve the intricate finish and gold coating, please keep these traditional pieces dry and away from water, perfumes, and harsh chemicals. Gently wipe with a soft cloth after wearing.`;
+        }
+    } else {
+        if (badge1) {
+            badge1.innerHTML = `
+                <div class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-LilAura-gold">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <p class="font-sans text-[8px] md:text-[9px] uppercase tracking-widest text-LilAura-subtle">Anti-Tarnish</p>
+            `;
+        }
+        if (faqMatTitle && faqMatContent && faqCareContent) {
+            faqMatTitle.innerHTML = `Materials & Anti-Tarnish Guarantee <span class="transition group-open:rotate-180 text-LilAura-gold"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span>`;
+            faqMatContent.innerHTML = `Our modern pieces are expertly crafted from high-grade <strong>stainless steel</strong> and finished with highly durable <strong>18K gold PVD plating</strong>. This advanced bonding process ensures the jewelry is 100% waterproof, sweat-resistant, and hypoallergenic, meaning it will never tarnish or turn your skin green.`;
+            faqCareContent.innerHTML = `Our stainless steel pieces are designed for 24/7 wear, meaning you can swim, shower, and exercise in them without worry. Gently wipe your jewelry with a soft cloth occasionally to restore its eternal shine.`;
+        }
+    }
 }
 
 function filterCategory(cat, event) {
