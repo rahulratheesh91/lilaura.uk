@@ -14,7 +14,7 @@ if (window.location.pathname.endsWith('.html') && window.location.pathname !== '
 const products = [
     { 
         id: 16, 
-        sku: "ALBR-CUFF-16", 
+        sku: "SSCF-ALBR-16", 
         name: "18K Gold Plated Stainless Steel Cuff Bracelet", 
         category: "Anti-tarnish Kada", 
         price: 16.49, 
@@ -225,7 +225,7 @@ const products = [
     },
     { 
         id: 10, 
-        sku: "IHNZS-SC-10", 
+        sku: "SSNK-HNS-SC-10", 
         name: "Interlocking Heart Necklace with zircon stones and Snake Chain", 
         category: "Anti-tarnish Necklaces", 
         price: 14.99, 
@@ -239,7 +239,7 @@ const products = [
     },
     { 
         id: 7, 
-        sku: "KHP-SC-07", 
+        sku: "SSNK-KHP-SC-07", 
         name: "Knotted Heart Pendant Necklace and Snake Chain", 
         category: "Anti-tarnish Necklaces", 
         price: 14.49, 
@@ -253,7 +253,7 @@ const products = [
     },
     { 
         id: 6, 
-        sku: "PHN-SC-06", 
+        sku: "SSNK-PHN-SC-06", 
         name: "Puffy Heart Necklace and Snake Chain", 
         category: "Anti-tarnish Necklaces", 
         price: 15.99, 
@@ -324,6 +324,20 @@ const products = [
         metaDesc: "Sophisticated textured geometric bangle with cubic zirconia. 18K gold plated anti-tarnish stainless steel jewellery for timeless elegance.",
         altText: "18K Gold Plated Anti-Tarnish Geometric Zircon Bangle",
         etsyLink: "https://www.etsy.com/uk/listing/4546445474/18k-gold-plated-anti-tarnish-geometric" 
+    },
+    { 
+        id: 23, 
+        sku: "TRNK-CHK-23", 
+        name: "Heart Motif Blue Choker Necklace Set", 
+        category: "Traditional Jewellery", 
+        price: 20.99, 
+        image: "https://i.etsystatic.com/40040678/r/il/14ccbd/8411663121/il_1140xN.8411663121_cjfe.jpg", 
+        imageHover: "https://i.etsystatic.com/40040678/r/il/904348/8363781070/il_1140xN.8363781070_k57g.jpg", 
+        desc: "Discover the perfect blend of tradition and contemporary flair with this stunning Blue Heart Motif Choker Set from LilAura. Inspired by timeless South Indian craftsmanship, this multi-layered necklace features rich, cobalt-blue stones set against radiant gold-plated brass, accented with delicate ruby-red and emerald-green micro-stones.",
+        seoTitle: "Blue Indian Choker Necklace Set | Traditional Gold Plated Heart Motif Jewellery",
+        metaDesc: "Blue Heart Motif Choker Set from LilAura. Inspired by timeless South Indian craftsmanship, this multi-layered necklace features rich, cobalt-blue stones set against radiant gold-plated brass, accented with delicate ruby-red and emerald-green micro-stones.",
+        altText: "Blue Indian Choker Necklace Set Traditional Gold Plated Heart Motif Jewellery",
+        etsyLink: "https://www.etsy.com/uk/listing/4553285308/blue-choker-necklace-set-traditional" 
     }
 ];
 
