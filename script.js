@@ -567,7 +567,7 @@ function filterCategory(cat, event) {
 
 // --- 3. LUXURY SOCIAL PROOF (FOMO) LOGIC ---
 const ukLocations = ["London", "Birmingham", "Manchester", "Leicester", "Leeds", "Edinburgh", "Glasgow", "Bristol", "Liverpool", "Nottingham", "Bradford"];
-const customerNames = ["Priya", "Sarah", "Anjali", "Jessica", "Fatima", "Neha", "Emily", "Aisha", "Chloe", "Riya", "Sonia", "Zara", "Meera", "Rebecca", "Simran"];
+const customerNames = ["P***a", "S****h", "A***li", "Je***ca", "F***a", "N**a", "E***y", "A**a", "C***e", "R**a", "S***a", "Z**a", "M**a", "R*****a", "S***(n"];
 
 function triggerFomoNotification() {
     const fomoPopup = document.getElementById('fomo-popup');
