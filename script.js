@@ -340,6 +340,20 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         metaDesc: "Blue Heart Motif Choker Set from LilAura. Inspired by timeless South Indian craftsmanship, this multi-layered necklace features rich, cobalt-blue stones set against radiant gold-plated brass, accented with delicate ruby-red and emerald-green micro-stones.",
         altText: "Blue Indian Choker Necklace Set Traditional Gold Plated Heart Motif Jewellery",
         etsyLink: "https://www.etsy.com/uk/listing/4553285308/blue-choker-necklace-set-traditional" 
+    },
+    { 
+        id: 24, 
+        sku: "TRNK-CHK-24", 
+        name: "Ganesh Lakshmi Coin Choker with Earrings", 
+        category: "Traditional Jewellery", 
+        price: 23.99, 
+        image: "https://i.etsystatic.com/40040678/r/il/e50271/8363857578/il_1588xN.8363857578_n8gm.jpg", 
+        imageHover: "https://i.etsystatic.com/40040678/r/il/19135a/8411740379/il_1588xN.8411740379_qzoo.jpg", 
+        desc: "Embrace the rich heritage of South Indian craftsmanship with the LilAura Temple Coin Choker Set. Inspired by royal antique designs, this stunning 'Kasumala' necklace features intricately embossed Ganesha motifs andGoddess Lakshmi coins, a timeless symbol of grace and fortune.",
+        seoTitle: "Temple Coin Necklace Set - Traditional Gold Lakshmi Kasumala - Ruby Emerald Ethnic Choker with Earrings",
+        metaDesc: "Traditional gold Lakshmi Kasumala with earrings, Ruby and emerald ethnic wedding jewellery",
+        altText: "Traditional Lakshmi Kasumala with earrings, Ruby and emerald ethnic wedding jewellery",
+        etsyLink: "https://www.etsy.com/uk/listing/4553282701/antique-matte-gold-plated-temple" 
     }
 ];
 
