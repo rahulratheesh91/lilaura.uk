@@ -20,53 +20,53 @@ const products = [
         price: 16.49, 
         image: "https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_1140xN.8197151304_btta.jpg", 
         imageHover: "", 
-        desc: "Premium 18K gold plated stainless steel cuff bracelet. Waterproof, sweat-resistant, and guaranteed anti-tarnish for everyday luxury wear.",
-        seoTitle: "18K Gold Plated Cuff Bracelet | Waterproof Anti-Tarnish Kada | LilAura UK",
-        metaDesc: "Shop the premium 18K gold plated stainless steel cuff bracelet by LilAura. 100% waterproof, sweat-resistant, and anti-tarnish Indian heritage jewelry in the UK.",
-        altText: "Close-up of 18K gold plated anti-tarnish cuff bracelet on a neutral background",
+        desc: "Premium 18K PVD gold-plated stainless steel cuff bracelet. Waterproof, sweat-resistant, and highly resistant to tarnishing for everyday luxury wear.",
+        seoTitle: "18K Gold Plated Cuff Bracelet | Waterproof Stainless Steel Kada | LilAura UK",
+        metaDesc: "Shop the premium 18K PVD gold-plated stainless steel cuff bracelet by LilAura. Waterproof, sweat-resistant, and tarnish-resistant jewelry in the UK.",
+        altText: "Close-up of 18K gold plated stainless steel cuff bracelet on a neutral background",
         etsyLink: "https://www.etsy.com/uk/listing/4530558606/18k-gold-plated-stainless-steel-cuff"
     },
     { 
         id: 17, 
         sku: "SSCF-INF-17", 
-        name: "Anti-Tarnish Infinity Cuff with Double Layered Zircon Stones", 
+        name: "Infinity Cuff with Double Layered Zircon Stones", 
         category: "Anti-tarnish Kada", 
         price: 18.49, 
         inStock: false, 
         image: "https://i.etsystatic.com/40040678/r/il/7a4f17/8197075762/il_1140xN.8197075762_9l3z.jpg", 
         imageHover: "", 
-        desc: "Stunning infinity motif open cuff embellished with double-layered sparkling zircon stones. Crafted from premium anti-tarnish stainless steel, this 18K gold plated bracelet is 100% waterproof, hypoallergenic, and perfect for everyday wear in the UK.",
-        seoTitle: "18K Gold Plated Infinity Cuff | Anti-Tarnish Stainless Steel Jewellery UK",
-        metaDesc: "Discover our stunning 18K gold plated infinity cuff with zircon stones. Waterproof, hypoallergenic, and anti-tarnish stainless jewelry by LilAura.",
-        altText: "18K Gold Plated Anti-Tarnish Infinity Cuff Bracelet with Zircon Stones",
+        desc: "Stunning infinity motif open cuff embellished with double-layered sparkling zircon stones. Crafted from premium stainless steel, this 18K PVD gold-plated bracelet is water-resistant and perfect for everyday wear in the UK.",
+        seoTitle: "18K Gold Plated Infinity Cuff | Stainless Steel Jewellery UK",
+        metaDesc: "Discover our stunning 18K PVD gold-plated infinity cuff with zircon stones. Water-resistant stainless steel jewelry by LilAura.",
+        altText: "18K Gold Plated Infinity Cuff Bracelet with Zircon Stones",
         etsyLink: "https://www.etsy.com/uk/listing/4530529391/anti-tarnish-infinity-cuff-with-double" 
     },
     { 
         id: 18, 
         sku: "SSBR-CHM-18", 
-        name: "Anti-Tarnish Charm Bracelet (Celestial & Floral Motifs)", 
+        name: "Charm Bracelet (Celestial & Floral Motifs)", 
         category: "Anti-tarnish Bracelets", 
         price: 12.99, 
         image: "https://i.etsystatic.com/40040678/r/il/dc3ce4/8237168671/il_1140xN.8237168671_jfzc.jpg", 
         imageHover: "", 
-        desc: "Delicate charm bracelet featuring intricate celestial and floral motifs on a durable anti-tarnish golden alloy chain. 18K gold plated and highly resistant to water and sweat.",
-        seoTitle: "Gold Plated Charm Bracelet | Anti-Tarnish Stainless Steel Jewellery | LilAura",
-        metaDesc: "Shop delicate celestial and floral charm bracelets. 18K gold plated, anti-tarnish stainless steel jewellery designed for everyday waterproof wear in the UK.",
-        altText: "Gold Plated Anti-Tarnish Stainless Steel Charm Bracelet",
+        desc: "Delicate charm bracelet featuring intricate celestial and floral motifs on a durable stainless steel chain. 18K PVD gold-plated and highly resistant to water and sweat.",
+        seoTitle: "Gold Plated Charm Bracelet | Stainless Steel Jewellery | LilAura",
+        metaDesc: "Shop delicate celestial and floral charm bracelets. 18K PVD gold-plated stainless steel jewellery designed for everyday wear in the UK.",
+        altText: "Gold Plated Stainless Steel Charm Bracelet",
         etsyLink: "https://www.etsy.com/uk/listing/4529459089/anti-tarnish-charm-bracelets-with" 
     },
     { 
         id: 19, 
         sku: "SSFR-RNG-19", 
-        name: "Anti-Tarnish Stainless Steel Statement Ring with Zircon Stones", 
+        name: "Stainless Steel Statement Ring with Zircon Stones", 
         category: "Finger Rings", 
         price: 12.49, 
         image: "https://i.etsystatic.com/40040678/r/il/8fa288/8237035721/il_1140xN.8237035721_745p.jpg", 
         imageHover: "", 
-        desc: "Bold statement ring crafted from titanium stainless steel with embedded brilliant-cut zircon stones. Will never turn your finger green due to the high-grade 18K gold plated anti-tarnish finish.",
-        seoTitle: "Gold Plated Zircon Statement Ring | Anti-Tarnish Stainless Steel | LilAura UK",
-        metaDesc: "Bold 18K gold plated statement ring with brilliant zircon stones. Crafted from anti-tarnish stainless steel for waterproof, long-lasting luxury.",
-        altText: "18K Gold Plated Anti-Tarnish Statement Ring with Zircon Stones",
+        desc: "Bold statement ring crafted from durable stainless steel with embedded brilliant-cut zircon stones. Finished with a high-grade 18K PVD gold plating for long-lasting wear.",
+        seoTitle: "Gold Plated Zircon Statement Ring | Stainless Steel | LilAura UK",
+        metaDesc: "Bold 18K PVD gold-plated statement ring with brilliant zircon stones. Crafted from stainless steel for water-resistant, long-lasting luxury.",
+        altText: "18K Gold Plated Statement Ring with Zircon Stones",
         etsyLink: "https://www.etsy.com/uk/listing/4529409433/anti-tarnish-stainless-steel-rings-with" 
     },
     { 
@@ -77,24 +77,24 @@ const products = [
         price: 22.99, 
         image: "https://i.etsystatic.com/40040678/r/il/a1210d/8348817959/il_1588xN.8348817959_chs4.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/0f7782/8300923278/il_1588xN.8300923278_m5s3.jpg", 
-        desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear, crafted beautifully in traditional brass.",
+        desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear, crafted beautifully in traditional gold-coated brass.",
         seoTitle: "Traditional Indian Palakka Choker Set | Brass Heritage Jewellery UK | LilAura",
-        metaDesc: "Authentic South Indian Palakka choker set with matching earstuds. Premium traditional brass jewellery perfect for weddings and cultural events.",
+        metaDesc: "Authentic South Indian Palakka choker set with matching earstuds. Premium traditional gold-coated brass jewellery perfect for weddings and cultural events.",
         altText: "Traditional Indian Brass Palakka Choker Necklace Set",
         etsyLink: "https://www.etsy.com/uk/listing/4529392003/traditional-palakka-choker-necklace-set" 
     },
     { 
         id: 20, 
         sku: "SSNK-EMR-20", 
-        name: "Anti-Tarnish Gold Plated Emerald Pendant Necklace", 
+        name: "Gold Plated Emerald Pendant Necklace", 
         category: "Anti-tarnish Necklaces", 
         price: 15.49, 
         image: "https://i.etsystatic.com/40040678/r/il/ffa352/8189114976/il_1140xN.8189114976_1kwd.jpg", 
         imageHover: "", 
-        desc: "Exquisite geometric emerald-cut green stone pendant on an 18k gold vermeil water-resistant chain. Simple, daily luxury made from robust anti-tarnish stainless steel.",
-        seoTitle: "Gold Plated Emerald Pendant | Anti-Tarnish Stainless Steel Necklace | LilAura",
-        metaDesc: "Exquisite 18K gold plated emerald-cut pendant necklace. Waterproof, anti-tarnish stainless steel jewellery perfect for everyday luxury in the UK.",
-        altText: "18K Gold Plated Anti-Tarnish Emerald Pendant Necklace",
+        desc: "Exquisite geometric emerald-cut green stone pendant on an 18K PVD gold-plated chain. Simple, daily luxury made from robust stainless steel.",
+        seoTitle: "Gold Plated Emerald Pendant | Stainless Steel Necklace | LilAura",
+        metaDesc: "Exquisite 18K PVD gold-plated emerald-cut pendant necklace. Water-resistant stainless steel jewellery perfect for everyday luxury in the UK.",
+        altText: "18K Gold Plated Emerald Pendant Necklace",
         etsyLink: "https://www.etsy.com/uk/listing/4529214581/anti-tarnish-gold-plated-emerald-pendant" 
     },
     { 
@@ -105,9 +105,9 @@ const products = [
         price: 17.99, 
         image: "https://i.etsystatic.com/40040678/r/il/8b2186/8160669462/il_1140xN.8160669462_1gej.jpg", 
         imageHover: "", 
-        desc: "Romantic open cuff bangle featuring twin mother-of-pearl heart accents set in durable 18K gold-plated stainless steel. Guaranteed anti-tarnish and completely waterproof.",
-        seoTitle: "Gold Plated Pearl Bangle | Anti-Tarnish Stainless Steel Jewellery UK",
-        metaDesc: "Romantic open cuff bangle with twin mother-of-pearl hearts. 18K gold plated anti-tarnish stainless steel jewellery that is completely waterproof.",
+        desc: "Romantic open cuff bangle featuring twin mother-of-pearl heart accents set in durable 18K PVD gold-plated stainless steel. Highly resistant to tarnishing.",
+        seoTitle: "Gold Plated Pearl Bangle | Stainless Steel Jewellery UK",
+        metaDesc: "Romantic open cuff bangle with twin mother-of-pearl hearts. 18K PVD gold-plated stainless steel jewellery for daily wear.",
         altText: "18K Gold Plated Stainless Steel Heart Pearl Bangle",
         etsyLink: "https://www.etsy.com/uk/listing/4525317383/gold-plated-stainless-steel-heart-pearl" 
     },
@@ -119,9 +119,9 @@ const products = [
         price: 22.79, 
         image: "https://i.etsystatic.com/40040678/r/il/344f38/8294466386/il_1588xN.8294466386_g100.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/febf4b/8342363125/il_1588xN.8342363125_44u7.jpg", 
-        desc: "Grand Kerala-style green Palakka short choker necklace paired with traditional bell-shaped Jhumka earrings. Classic temple jewelry cast in durable traditional brass.",
+        desc: "Grand Kerala-style green Palakka short choker necklace paired with traditional bell-shaped Jhumka earrings. Classic temple jewelry cast in traditional gold-coated brass.",
         seoTitle: "Kerala Palakka Choker & Jhumka Set | Traditional Indian Brass Jewellery",
-        metaDesc: "Grand Kerala-style green Palakka choker with traditional Jhumka earrings. Authentic traditional brass jewellery crafted for Indian heritage aesthetics.",
+        metaDesc: "Grand Kerala-style green Palakka choker with traditional Jhumka earrings. Authentic traditional gold-coated brass jewellery crafted for Indian heritage aesthetics.",
         altText: "Traditional Indian Brass Kerala Palakka Choker with Jhumka Earrings",
         etsyLink: "https://www.etsy.com/uk/listing/4525327387/traditional-kerala-palakka-choker" 
     },
@@ -134,24 +134,24 @@ const products = [
         inStock: false,
         image: "https://i.etsystatic.com/40040678/r/il/433e57/8300782474/il_1588xN.8300782474_9tgy.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/07ba53/8348676775/il_1588xN.8348676775_9har.jpg", 
-        desc: "Traditional Kasu Mala coin choker featuring Lord Ganesha motifs interlaced with classic Palakka stones. Heirloom craftsmanship utilizing premium traditional brass.",
+        desc: "Traditional Kasu Mala coin choker featuring Lord Ganesha motifs interlaced with classic Palakka stones. Heirloom craftsmanship utilizing traditional gold-coated brass.",
         seoTitle: "Ganapathy Coin Kasu Mala | Traditional Indian Brass Jewellery UK | LilAura",
-        metaDesc: "Traditional Kasu Mala coin choker featuring Lord Ganesha. Premium traditional brass heritage jewellery perfect for South Indian weddings.",
+        metaDesc: "Traditional Kasu Mala coin choker featuring Lord Ganesha. Premium traditional gold-coated brass heritage jewellery perfect for South Indian weddings.",
         altText: "Traditional Indian Brass Ganapathy Coin Palakka Choker",
         etsyLink: "https://www.etsy.com/uk/listing/4483539459/coin-palakka-choker-traditional-necklace" 
     },
     { 
         id: 22, 
         sku: "SSNK-EMR-22", 
-        name: "Anti-Tarnish Gold Plated Emerald Green Leaf Pendant Necklace", 
+        name: "Gold Plated Emerald Green Leaf Pendant Necklace", 
         category: "Anti-tarnish Necklaces", 
         price: 16.99, 
         image: "https://i.etsystatic.com/40040678/r/il/e0133d/8235370965/il_1140xN.8235370965_lcqj.jpg", 
         imageHover: "", 
-        desc: "Exquisite geometric emerald-cut green stone pendant on an 18k gold vermeil water-resistant chain. Made of solid stainless steel to guarantee anti-tarnish wear.",
-        seoTitle: "Gold Plated Emerald Leaf Pendant | Anti-Tarnish Stainless Steel Jewellery",
-        metaDesc: "Geometric emerald green leaf pendant on an 18k gold plated chain. Waterproof, anti-tarnish stainless steel necklace for daily wear.",
-        altText: "18K Gold Plated Anti-Tarnish Emerald Green Leaf Pendant",
+        desc: "Exquisite geometric emerald-cut green stone pendant on an 18K PVD gold-plated chain. Made of solid stainless steel to guarantee durable daily wear.",
+        seoTitle: "Gold Plated Emerald Leaf Pendant | Stainless Steel Jewellery",
+        metaDesc: "Geometric emerald green leaf pendant on an 18K PVD gold-plated chain. Water-resistant stainless steel necklace for daily wear.",
+        altText: "18K Gold Plated Emerald Green Leaf Pendant",
         etsyLink: "https://www.etsy.com/uk/listing/4533568863/anti-tarnish-gold-plated-emerald-green" 
     },
     { 
@@ -162,9 +162,9 @@ const products = [
         price: 33.99, 
         image: "https://i.etsystatic.com/40040678/r/il/78acc5/8345517199/il_1588xN.8345517199_5d0d.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/398816/8297620094/il_1588xN.8297620094_50p8.jpg", 
-        desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Beautifully forged in traditional brass, perfect for weddings and festive wear.",
+        desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Beautifully forged in traditional gold-coated brass, perfect for weddings and festive wear.",
         seoTitle: "Lakshmi Choker Necklace Set | Traditional Indian Brass Jewellery | LilAura",
-        metaDesc: "Authentic South Indian Lakshmi temple choker set. Crafted in traditional brass, this heritage jewellery is ideal for bridal and festive wear.",
+        metaDesc: "Authentic South Indian Lakshmi temple choker set. Crafted in traditional gold-coated brass, this heritage jewellery is ideal for bridal and festive wear.",
         altText: "Traditional Indian Brass Lakshmi Choker Necklace Set",
         etsyLink: "https://www.etsy.com/uk/listing/4533558563/traditional-indian-lakshmi-choker" 
     },
@@ -176,9 +176,9 @@ const products = [
         price: 15.99, 
         image: "https://i.etsystatic.com/40040678/r/il/3bd6bb/8348520825/il_1588xN.8348520825_f3eq.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/ded90e/8348520811/il_1588xN.8348520811_n4rl.jpg", 
-        desc: "Elegant green Meenakari lotus design choker set. Exquisite traditional brass handiwork that perfects any traditional Indian occasion.",
+        desc: "Elegant green Meenakari lotus design choker set. Exquisite traditional gold-coated brass handiwork that perfects any traditional Indian occasion.",
         seoTitle: "Green Meenakari Choker Set | Traditional Indian Brass Jewellery UK",
-        metaDesc: "Elegant green Meenakari lotus design choker set. Premium traditional brass jewellery that adds a touch of heritage elegance to any occasion.",
+        metaDesc: "Elegant green Meenakari lotus design choker set. Premium traditional gold-coated brass jewellery that adds a touch of heritage elegance to any occasion.",
         altText: "Traditional Indian Brass Green Meenakari Choker Necklace Set",
         etsyLink: "https://www.etsy.com/uk/listing/4535086033/green-lotus-meenakari-necklace-set" 
     },
@@ -190,9 +190,9 @@ const products = [
         price: 17.99, 
         image: "https://i.etsystatic.com/40040678/r/il/51c271/8348522389/il_1588xN.8348522389_7zme.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/4ba53c/8300627856/il_1588xN.8300627856_qz6y.jpg", 
-        desc: "Elegant Red Meenakari lotus design choker. Sculpted in traditional brass to showcase vibrant Indian heritage colors for cultural celebrations.",
+        desc: "Elegant Red Meenakari lotus design choker. Sculpted in traditional gold-coated brass to showcase vibrant Indian heritage colors for cultural celebrations.",
         seoTitle: "Red Meenakari Choker Necklace Set | Traditional Indian Brass Jewellery",
-        metaDesc: "Stunning red Meenakari lotus choker set. Discover authentic traditional brass jewellery perfect for cultural celebrations and Indian weddings.",
+        metaDesc: "Stunning red Meenakari lotus choker set. Discover authentic traditional gold-coated brass jewellery perfect for cultural celebrations and Indian weddings.",
         altText: "Traditional Indian Brass Red Meenakari Choker Necklace Set",
         etsyLink: "https://www.etsy.com/uk/listing/4535073097/red-lotus-meenakari-necklace-set" 
     },
@@ -204,10 +204,10 @@ const products = [
         price: 14.99, 
         image: "https://i.etsystatic.com/40040678/r/il/2fbb3e/8346941703/il_1588xN.8346941703_2nlb.jpg", 
         imageHover: "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/jcndfbtklzpickvk6xz3.mp4", 
-        desc: "Add a touch of playful elegance to your everyday look with this stunning 18K Gold Plated Moving Stone Cuff. Crafted from anti-tarnish stainless steel, the three sparkling stone beads inside move freely.",
-        seoTitle: "Moving Stone Cuff Bracelet | Anti-Tarnish Gold Plated Stainless Steel",
-        metaDesc: "Playful 18K gold plated moving stone cuff. Waterproof, anti-tarnish stainless steel jewellery featuring a dynamic rolling bead design.",
-        altText: "18K Gold Plated Anti-Tarnish Moving Stone Cuff Bracelet",
+        desc: "Add a touch of playful elegance to your everyday look with this stunning 18K PVD Gold Plated Moving Stone Cuff. Crafted from durable stainless steel, the three sparkling stone beads inside move freely.",
+        seoTitle: "Moving Stone Cuff Bracelet | Gold Plated Stainless Steel",
+        metaDesc: "Playful 18K PVD gold-plated moving stone cuff. Water-resistant stainless steel jewellery featuring a dynamic rolling bead design.",
+        altText: "18K Gold Plated Moving Stone Cuff Bracelet",
         etsyLink: "https://www.etsy.com/uk/listing/4544224715/18k-gold-plated-moving-stone-cuff" 
     },
     { 
@@ -219,9 +219,9 @@ const products = [
         inStock: false,
 image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.8300843552_1ope.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/4e7dd8/8300843550/il_1588xN.8300843550_t434.jpg", 
-        desc: "Elegant Tri-layered traditional coin necklace set perfect for traditional occasions. Designed with premium traditional brass for long-lasting luster.",
+        desc: "Elegant Tri-layered traditional coin necklace set perfect for traditional occasions. Designed with premium gold-coated traditional brass.",
         seoTitle: "Tri-Layered Coin Necklace Set | Traditional Indian Brass Jewellery UK",
-        metaDesc: "Elegant tri-layered traditional coin necklace set. Authentic traditional brass jewellery crafted for stunning heritage style.",
+        metaDesc: "Elegant tri-layered traditional coin necklace set. Authentic traditional gold-coated brass jewellery crafted for stunning heritage style.",
         altText: "Traditional Indian Brass Tri-Layered Coin Necklace Set",
         etsyLink: "https://www.etsy.com/uk/listing/4537960719/tri-layered-traditional-coin-necklace" 
     },
@@ -233,10 +233,10 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         price: 14.99, 
         image: "https://i.etsystatic.com/40040678/r/il/22fdf0/8394955889/il_794xN.8394955889_hxeo.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/270fd6/8347068668/il_794xN.8347068668_h0yl.jpg", 
-        desc: "Featuring two intertwined hearts one lined with brilliant zircon stones and the other polished in smooth 18K gold. Premium anti-tarnish stainless steel ensures everlasting quality.",
-        seoTitle: "Gold Plated Interlocking Heart Necklace | Anti-Tarnish Stainless Steel",
-        metaDesc: "18K gold plated interlocking heart necklace with zircon stones. Premium anti-tarnish stainless steel jewellery that won't fade or rust.",
-        altText: "18K Gold Plated Anti-Tarnish Interlocking Heart Necklace",
+        desc: "Featuring two intertwined hearts one lined with brilliant zircon stones and the other finished in smooth 18K PVD gold plating. Premium stainless steel ensures long-lasting quality.",
+        seoTitle: "Gold Plated Interlocking Heart Necklace | Stainless Steel",
+        metaDesc: "18K PVD gold-plated interlocking heart necklace with zircon stones. Premium stainless steel jewellery for everyday wear.",
+        altText: "18K Gold Plated Interlocking Heart Necklace",
         etsyLink: "https://www.etsy.com/uk/listing/4542359876/18k-gold-plated-interlocking-heart" 
     },
     { 
@@ -247,10 +247,10 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         price: 14.49, 
         image: "https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/d54fec/8395016175/il_794xN.8395016175_al3i.jpg", 
-        desc: "Featuring an intricate, soft-knotted open heart pendant strung on a sleek snake chain. Made from 18K gold plated anti-tarnish stainless steel for waterproof durability.",
-        seoTitle: "Gold Plated Knotted Heart Pendant | Anti-Tarnish Stainless Steel Jewellery",
-        metaDesc: "Chic soft-knotted open heart pendant on a snake chain. 18K gold plated, anti-tarnish stainless steel necklace for modern everyday elegance.",
-        altText: "18K Gold Plated Anti-Tarnish Knotted Heart Pendant Necklace",
+        desc: "Featuring an intricate, soft-knotted open heart pendant strung on a sleek snake chain. Made from 18K PVD gold-plated stainless steel for water-resistant durability.",
+        seoTitle: "Gold Plated Knotted Heart Pendant | Stainless Steel Jewellery",
+        metaDesc: "Chic soft-knotted open heart pendant on a snake chain. 18K PVD gold-plated stainless steel necklace for modern everyday elegance.",
+        altText: "18K Gold Plated Knotted Heart Pendant Necklace",
         etsyLink: "https://www.etsy.com/uk/listing/4542987137/18k-gold-plated-knotted-heart-pendant" 
     },
     { 
@@ -261,70 +261,70 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         price: 15.99, 
         image: "https://i.etsystatic.com/40040678/r/il/aa1651/8347132378/il_794xN.8347132378_paag.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/6066b0/8347132366/il_794xN.8347132366_hqus.jpg", 
-        desc: "Whether you are dressing up for a special evening or adding a touch of romance to your everyday attire, this 18K gold plated anti-tarnish stainless steel piece will maintain its luster wear after wear.",
-        seoTitle: "Gold Plated Puffy Heart Necklace | Anti-Tarnish Stainless Steel | LilAura",
-        metaDesc: "Romantic puffy heart necklace on a durable snake chain. 18K gold plated anti-tarnish stainless steel jewellery crafted for waterproof wear.",
-        altText: "18K Gold Plated Anti-Tarnish Puffy Heart Necklace",
+        desc: "Whether you are dressing up for a special evening or adding a touch of romance to your everyday attire, this 18K PVD gold-plated stainless steel piece provides a durable luster wear after wear.",
+        seoTitle: "Gold Plated Puffy Heart Necklace | Stainless Steel | LilAura",
+        metaDesc: "Romantic puffy heart necklace on a durable snake chain. 18K PVD gold-plated stainless steel jewellery crafted for everyday wear.",
+        altText: "18K Gold Plated Puffy Heart Necklace",
         etsyLink: "https://www.etsy.com/uk/listing/4536791687/18k-gold-plated-puffy-heart-necklace" 
     },
     { 
         id: 4, 
         sku: "SSCF-BCF-04", 
-        name: "Anti-Tarnish Bamboo Cuff", 
+        name: "Bamboo Cuff", 
         category: "Anti-tarnish Kada", 
         price: 15.99, 
         inStock: true, 
         image: "https://i.etsystatic.com/40040678/r/il/3ce51c/8299089674/il_794xN.8299089674_1zdo.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/cecc15/8346984277/il_794xN.8346984277_j1kv.jpg", 
-        desc: "Featuring an intricate, organic bamboo-inspired joint design, this piece effortlessly blends modern elegance with natural charm. Crafted from 18K gold plated stainless steel, it serves as a waterproof, anti-tarnish everyday staple.",
-        seoTitle: "Gold Plated Bamboo Cuff Bracelet | Anti-Tarnish Stainless Steel Jewellery",
-        metaDesc: "Organic bamboo-inspired open cuff bracelet. 18K gold plated, anti-tarnish stainless steel jewellery designed to be completely waterproof.",
-        altText: "18K Gold Plated Anti-Tarnish Bamboo Cuff Bracelet",
+        desc: "Featuring an intricate, organic bamboo-inspired joint design, this piece effortlessly blends modern elegance with natural charm. Crafted from 18K PVD gold-plated stainless steel, it serves as a water-resistant everyday staple.",
+        seoTitle: "Gold Plated Bamboo Cuff Bracelet | Stainless Steel Jewellery",
+        metaDesc: "Organic bamboo-inspired open cuff bracelet. 18K PVD gold-plated stainless steel jewellery designed for everyday durability.",
+        altText: "18K Gold Plated Bamboo Cuff Bracelet",
         etsyLink: "https://www.etsy.com/uk/listing/4544247010/18k-gold-plated-anti-tarnish-bamboo-cuff" 
     },
     { 
         id: 3, 
         sku: "SSCF-OPC-03", 
-        name: "Anti tarnish Open Pearl Cuff- 18K Gold Plated", 
+        name: "Open Pearl Cuff - 18K Gold Plated", 
         category: "Anti-tarnish Kada", 
         price: 16.00, 
         inStock: true, 
         image: "https://i.etsystatic.com/40040678/r/il/7f3803/8348706407/il_1588xN.8348706407_c8gw.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/a7d942/8300811782/il_1588xN.8300811782_jtsa.jpg", 
-        desc: "Featuring an artistic, wavy melted-metal silhouette accented with lustrous white pearls. This 18K gold plated anti-tarnish stainless steel cuff blends contemporary sculptural design with classic sophistication.",
-        seoTitle: "Gold Plated Open Pearl Cuff | Anti-Tarnish Stainless Steel | LilAura UK",
-        metaDesc: "Wavy melted-metal silhouette cuff accented with lustrous pearls. 18K gold plated anti-tarnish stainless steel jewellery.",
-        altText: "18K Gold Plated Anti-Tarnish Open Pearl Cuff",
+        desc: "Featuring an artistic, wavy melted-metal silhouette accented with lustrous white pearls. This 18K PVD gold-plated stainless steel cuff blends contemporary sculptural design with classic sophistication.",
+        seoTitle: "Gold Plated Open Pearl Cuff | Stainless Steel | LilAura UK",
+        metaDesc: "Wavy melted-metal silhouette cuff accented with lustrous pearls. 18K PVD gold-plated stainless steel jewellery.",
+        altText: "18K Gold Plated Open Pearl Cuff",
         etsyLink: "https://www.etsy.com/uk/listing/4544460683/18k-gold-plated-anti-tarnish-open-pearl" 
     },
     { 
         id: 2, 
         sku: "SSCF-DFC-02", 
-        name: "Anti tarnish Daisy Flower Cuff- 18K Gold Plated", 
+        name: "Daisy Flower Cuff - 18K Gold Plated", 
         category: "Anti-tarnish Kada", 
         price: 14.99, 
         inStock: true, 
         image: "https://i.etsystatic.com/40040678/r/il/fffc67/8370637995/il_1588xN.8370637995_7884.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/6b9b2e/8370637991/il_1588xN.8370637991_m4fb.jpg", 
-        desc: "Whether you're dressing up for a special occasion or looking for a chic accessory for daily wear, this waterproof, 18K gold plated anti-tarnish stainless steel cuff is the ultimate addition to your collection.",
-        seoTitle: "Gold Plated Daisy Flower Cuff | Anti-Tarnish Stainless Steel Jewellery",
-        metaDesc: "Chic daisy flower open cuff. 18K gold plated, waterproof, and anti-tarnish stainless steel jewellery that is perfect for everyday stacking.",
-        altText: "18K Gold Plated Anti-Tarnish Daisy Flower Cuff",
+        desc: "Whether you're dressing up for a special occasion or looking for a chic accessory for daily wear, this water-resistant, 18K PVD gold-plated stainless steel cuff is the ultimate addition to your collection.",
+        seoTitle: "Gold Plated Daisy Flower Cuff | Stainless Steel Jewellery",
+        metaDesc: "Chic daisy flower open cuff. 18K PVD gold-plated stainless steel jewellery that is perfect for everyday stacking.",
+        altText: "18K Gold Plated Daisy Flower Cuff",
         etsyLink: "https://www.etsy.com/uk/listing/4547568348/18k-gold-plated-anti-tarnish-daisy" 
     },
     { 
         id: 1, 
         sku: "SSCF-GCZ-01", 
-        name: "Anti tarnish Geometric bangle with cubic zirconia stones - 18K Gold Plated", 
+        name: "Geometric bangle with cubic zirconia stones - 18K Gold Plated", 
         category: "Anti-tarnish Kada", 
         price: 16.99, 
         inStock: true, 
         image: "https://i.etsystatic.com/40040678/r/il/f01e22/8362594725/il_1588xN.8362594725_a8hd.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/81a7f0/8314706242/il_1588xN.8314706242_9r93.jpg", 
-        desc: "Elevate your everyday style with this stunning 18K Gold Plated Geometric Cuff Bangle. Forged in solid anti-tarnish stainless steel, this statement bangle strikes the perfect balance between modern edge and timeless elegance.",
-        seoTitle: "Gold Plated Geometric Zircon Bangle | Anti-Tarnish Stainless Steel",
-        metaDesc: "Sophisticated textured geometric bangle with cubic zirconia. 18K gold plated anti-tarnish stainless steel jewellery for timeless elegance.",
-        altText: "18K Gold Plated Anti-Tarnish Geometric Zircon Bangle",
+        desc: "Elevate your everyday style with this stunning 18K PVD Gold Plated Geometric Cuff Bangle. Forged in solid stainless steel, this statement bangle strikes the perfect balance between modern edge and timeless elegance.",
+        seoTitle: "Gold Plated Geometric Zircon Bangle | Stainless Steel",
+        metaDesc: "Sophisticated textured geometric bangle with cubic zirconia. 18K PVD gold-plated stainless steel jewellery for timeless elegance.",
+        altText: "18K Gold Plated Geometric Zircon Bangle",
         etsyLink: "https://www.etsy.com/uk/listing/4546445474/18k-gold-plated-anti-tarnish-geometric" 
     },
     { 
@@ -335,10 +335,10 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         price: 20.99, 
         image: "https://i.etsystatic.com/40040678/r/il/14ccbd/8411663121/il_1140xN.8411663121_cjfe.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/904348/8363781070/il_1140xN.8363781070_k57g.jpg", 
-        desc: "Discover the perfect blend of tradition and contemporary flair with this stunning Blue Heart Motif Choker Set from LilAura. Inspired by timeless South Indian craftsmanship, this multi-layered necklace features rich, cobalt-blue stones set against radiant gold-plated brass, accented with delicate ruby-red and emerald-green micro-stones.",
-        seoTitle: "Blue Indian Choker Necklace Set | Traditional Gold Plated Heart Motif Jewellery",
-        metaDesc: "Blue Heart Motif Choker Set from LilAura. Inspired by timeless South Indian craftsmanship, this multi-layered necklace features rich, cobalt-blue stones set against radiant gold-plated brass, accented with delicate ruby-red and emerald-green micro-stones.",
-        altText: "Blue Indian Choker Necklace Set Traditional Gold Plated Heart Motif Jewellery",
+        desc: "Discover the perfect blend of tradition and contemporary flair with this stunning Blue Heart Motif Choker Set from LilAura. Inspired by timeless South Indian craftsmanship, this multi-layered necklace features rich, cobalt-blue stones set against radiant gold-coated traditional brass, accented with delicate ruby-red and emerald-green micro-stones.",
+        seoTitle: "Blue Indian Choker Necklace Set | Traditional Gold Coated Brass Jewellery",
+        metaDesc: "Blue Heart Motif Choker Set from LilAura. Inspired by timeless South Indian craftsmanship, this piece features cobalt-blue stones set against traditional gold-coated brass.",
+        altText: "Blue Indian Choker Necklace Set Traditional Gold Coated Brass Heart Motif Jewellery",
         etsyLink: "https://www.etsy.com/uk/listing/4553285308/blue-choker-necklace-set-traditional" 
     },
     { 
@@ -349,9 +349,9 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         price: 23.99, 
         image: "https://i.etsystatic.com/40040678/r/il/e50271/8363857578/il_1588xN.8363857578_n8gm.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/19135a/8411740379/il_1588xN.8411740379_qzoo.jpg", 
-        desc: "Embrace the rich heritage of South Indian craftsmanship with the LilAura Temple Coin Choker Set. Inspired by royal antique designs, this stunning 'Kasumala' necklace features intricately embossed Ganesha motifs andGoddess Lakshmi coins, a timeless symbol of grace and fortune.",
-        seoTitle: "Temple Coin Necklace Set - Traditional Gold Lakshmi Kasumala - Ruby Emerald Ethnic Choker with Earrings",
-        metaDesc: "Traditional gold Lakshmi Kasumala with earrings, Ruby and emerald ethnic wedding jewellery",
+        desc: "Embrace the rich heritage of South Indian craftsmanship with the LilAura Temple Coin Choker Set. Inspired by royal antique designs, this stunning 'Kasumala' necklace features intricately embossed Ganesha motifs and Goddess Lakshmi coins upon traditional gold-coated brass.",
+        seoTitle: "Temple Coin Necklace Set - Traditional Gold Coated Brass - Ruby Emerald Ethnic Choker with Earrings",
+        metaDesc: "Traditional gold-coated brass Lakshmi Kasumala with earrings, Ruby and emerald ethnic wedding jewellery",
         altText: "Traditional Lakshmi Kasumala with earrings, Ruby and emerald ethnic wedding jewellery",
         etsyLink: "https://www.etsy.com/uk/listing/4553282701/antique-matte-gold-plated-temple" 
     }
@@ -490,7 +490,7 @@ function renderProductDetail(p) {
     } else {
         if (soldOutOverlay) soldOutOverlay.classList.add('hidden');
         if (etsyBtn) {
-            etsyBtn.innerHTML = `<span>Buy Instantly on Etsy</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>`;
+            etsyBtn.innerHTML = `<span>Secure Checkout via Etsy</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>`;
             etsyBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed', 'pointer-events-none');
             etsyBtn.classList.add('bg-LilAura-emerald', 'hover:bg-LilAura-gold', 'text-white');
             etsyBtn.href = p.etsyLink || "https://www.etsy.com/uk/shop/LilauraElegance";
@@ -543,9 +543,9 @@ function renderProductDetail(p) {
             `;
         }
         if (faqMatTitle && faqMatContent && faqCareContent) {
-            faqMatTitle.innerHTML = `Materials & Finish <span class="transition group-open:rotate-180 text-LilAura-gold"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span>`;
-            faqMatContent.innerHTML = `Our heritage collections are forged in authentic <strong>traditional brass</strong> with a classic gold coating to honor timeless Indian craftsmanship.`;
-            faqCareContent.innerHTML = `To preserve the intricate finish and gold coating, please keep these traditional pieces dry and away from water, perfumes, and harsh chemicals. Gently wipe with a soft cloth after wearing.`;
+            faqMatTitle.innerHTML = `Material & Finish <span class="transition group-open:rotate-180 text-LilAura-gold"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span>`;
+            faqMatContent.innerHTML = `Our heritage collections are forged in authentic <strong>traditional brass</strong> and finished with a classic gold coating to honor timeless Indian craftsmanship.`;
+            faqCareContent.innerHTML = `Because this item features a standard gold coating over brass, it requires careful handling. To preserve the finish, keep the jewellery dry and away from water, perfumes, and harsh chemicals. Gently wipe with a soft cloth after wearing.`;
         }
     } else {
         if (badge1) {
@@ -553,13 +553,13 @@ function renderProductDetail(p) {
                 <div class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-LilAura-gold">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <p class="font-sans text-[8px] md:text-[9px] uppercase tracking-widest text-LilAura-subtle">Anti-Tarnish</p>
+                <p class="font-sans text-[8px] md:text-[9px] uppercase tracking-widest text-LilAura-subtle">Anti-Tarnish PVD</p>
             `;
         }
         if (faqMatTitle && faqMatContent && faqCareContent) {
             faqMatTitle.innerHTML = `Materials & Anti-Tarnish Guarantee <span class="transition group-open:rotate-180 text-LilAura-gold"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span>`;
-            faqMatContent.innerHTML = `Our modern pieces are expertly crafted from high-grade <strong>stainless steel</strong> and finished with highly durable <strong>18K gold PVD plating</strong>. This advanced bonding process ensures the jewelry is 100% waterproof, sweat-resistant, and hypoallergenic, meaning it will never tarnish or turn your skin green.`;
-            faqCareContent.innerHTML = `Our stainless steel pieces are designed for 24/7 wear, meaning you can swim, shower, and exercise in them without worry. Gently wipe your jewelry with a soft cloth occasionally to restore its eternal shine.`;
+            faqMatContent.innerHTML = `Our modern everyday pieces are expertly crafted from high-grade <strong>stainless steel</strong> and finished with highly durable <strong>18K PVD gold plating</strong>. This advanced bonding process ensures the jewelry is highly resistant to tarnishing.`;
+            faqCareContent.innerHTML = `Designed for everyday wear, our PVD gold-plated stainless steel pieces are highly water and sweat-resistant. You can comfortably wear them during your daily routines. Gently wipe your jewelry with a soft cloth occasionally to maintain its luster.`;
         }
     }
 }
@@ -581,7 +581,7 @@ function filterCategory(cat, event) {
 
 // --- 3. LUXURY SOCIAL PROOF (FOMO) LOGIC ---
 const ukLocations = ["London", "Birmingham", "Manchester", "Leicester", "Leeds", "Edinburgh", "Glasgow", "Bristol", "Liverpool", "Nottingham", "Bradford"];
-const customerNames = ["P***a", "S****h", "A***li", "Je***ca", "F***a", "N**a", "E***y", "A**a", "C***e", "R**a", "S***a", "Z**a", "M**a", "R*****a", "S***(n"];
+const customerNames = ["P***a", "S****h", "A***li", "Je***ca", "F***a", "N**a", "E***y", "A**a", "C***e", "R**a", "S***a", "Z**a", "M**a", "R*****a", "S***n"];
 
 function triggerFomoNotification() {
     const fomoPopup = document.getElementById('fomo-popup');
