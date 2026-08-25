@@ -3,36 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Story | LilAura</title>
-    <meta name="description" content="The story of LilAura. Bridging the gap between Indian Heritage artistry and modern waterproof durability.">
+    <title>Heritage Soul. Modern Endurance. | LilAura Story</title>
+    <meta name="description" content="Discover the LilAura story. We engineer 18K PVD gold-plated everyday jewellery and curate authentic gold-coated traditional brass pieces for the modern wardrobe.">
     
-  <!-- FAVICON FOR BROWSER & GOOGLE SEARCH -->
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        LilAura: {
-                            cream: '#F2F0E9',
-                            gold: '#D4AF37',
-                            goldhover: '#B5952F',
-                            emerald: '#034938',
-                            text: '#2C2C2C',
-                            subtle: '#6B6B6B'
-                        }
+                        LilAura: { cream: '#F2F0E9', gold: '#D4AF37', goldhover: '#B5952F', emerald: '#034938', text: '#2C2C2C', subtle: '#6B6B6B' }
                     },
                     fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Proza Libre"', 'sans-serif'],
-                        price: ['"Bodoni Moda"', 'serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Proza Libre"', 'sans-serif'], price: ['"Bodoni Moda"', 'serif'],
                     },
-                    letterSpacing: {
-                        'widest-luxury': '0.2em',
-                    }
+                    letterSpacing: { 'widest-luxury': '0.2em' }
                 }
             }
         }
@@ -45,94 +32,75 @@
 </head>
 <body class="bg-LilAura-cream text-LilAura-text antialiased">
 
-    <!-- EMERALD LUXURY NAV WITH MOBILE MENU -->
     <nav class="fixed w-full z-50 transition-all duration-300 bg-LilAura-emerald/95 backdrop-blur-md border-b border-LilAura-gold/30">
         <div class="flex justify-between items-center py-4 px-6 md:px-16">
-            
             <a href="index.html" class="flex items-center">
                 <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 w-auto hover:opacity-80 transition-opacity" onerror="this.outerHTML='<span class=\'font-serif text-3xl font-semibold tracking-wide text-LilAura-gold\'>LilAura</span>'">
             </a>
-            
             <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
                 <a href="index.html" class="text-LilAura-gold hover:text-white transition pb-1">Home</a>
                 <a href="shop.html" class="text-LilAura-gold hover:text-white transition pb-1">Collection</a>
                 <a href="about.html" class="text-LilAura-gold border-b border-LilAura-gold pb-1">Our Story</a>
                 <a href="contact.html" class="text-LilAura-gold hover:text-white transition pb-1">Contact</a>
             </div>
-
             <div class="hidden md:flex items-center">
                 <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="flex items-center gap-2 border border-LilAura-gold hover:bg-LilAura-gold hover:text-LilAura-emerald text-LilAura-gold px-4 py-2 text-[10px] tracking-widest uppercase font-sans transition duration-300">
                     <span>Etsy Shop</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                 </a>
             </div>
-
             <button id="mobile-menu-btn" class="md:hidden text-LilAura-gold hover:text-white transition focus:outline-none p-2">
                 <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 block"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
         </div>
-
         <div id="mobile-menu" class="hidden md:hidden bg-LilAura-emerald border-t border-LilAura-gold/20 absolute left-0 top-[100%] w-full shadow-2xl">
             <div class="flex flex-col items-center py-8 space-y-8 font-sans text-xs tracking-[0.25em] uppercase font-medium">
                 <a href="index.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Home</a>
                 <a href="shop.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Collection</a>
                 <a href="about.html" class="text-LilAura-gold transition w-full text-center py-2">Our Story</a>
                 <a href="contact.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Contact</a>
-                <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="mt-4 flex items-center justify-center gap-2 border border-LilAura-gold text-LilAura-gold hover:bg-LilAura-gold hover:text-LilAura-emerald px-8 py-3 w-[80%] mx-auto transition duration-300">
-                    <span>Shop on Etsy</span>
-                </a>
             </div>
         </div>
     </nav>
 
-    <!-- HEADER IMAGE -->
     <header class="relative w-full h-[60vh] flex items-center justify-center overflow-hidden">
-        
-        <!-- FIX: Added the absolute and object-cover classes back to the image -->
         <img src="https://houseofcharvi.com/cdn/shop/files/Collections_banner.png?v=1769838806&width=3840" class="absolute w-full h-full object-cover opacity-80" alt="LilAura Collection">
-        
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="relative z-10 text-center text-white px-4 animate-fade-in mt-10">
-            <h1 class="font-serif text-5xl md:text-7xl mb-4 leading-tight">Heritage You Can Live In</h1>
-            <p class="font-sans text-xs tracking-[0.3em] uppercase opacity-90">The End of the "Special Occasion"</p>
+            <h1 class="font-serif text-5xl md:text-7xl mb-4 leading-tight">Heritage Soul.<br>Modern Endurance.</h1>
+            <p class="font-sans text-xs tracking-[0.3em] uppercase opacity-90">Adornment for the life you actually live</p>
         </div>
     </header>
 
-    <!-- THE STORY ARC -->
     <section class="max-w-4xl mx-auto px-8 py-24 text-center">
-        <span class="text-LilAura-emerald font-sans text-xs tracking-[0.2em] uppercase block mb-6">The Origin</span>
+        <span class="text-LilAura-emerald font-sans text-xs tracking-[0.2em] uppercase block mb-6">The Philosophy</span>
         <h2 class="font-serif text-3xl md:text-4xl text-LilAura-text mb-8 leading-relaxed">
-            "Why must beautiful things be hidden away?"
+            "Cultural expression shouldn't require a compromise on durability."
         </h2>
         <div class="font-sans text-LilAura-subtle leading-loose text-sm md:text-base space-y-6">
             <p>
-                We grew up watching the women in our lives treat their jewellery like fragile secrets. 
-                Beautiful Kundan sets were wrapped in cotton, locked in safe boxes, and only brought out for weddings. 
-                Daily wear was restricted to boring, simple pieces because "real gold is too risky" and "artificial jewellery fades in a week."
+                For too long, heritage jewellery has been treated as a fragile secret—locked away in safe boxes and reserved strictly for special occasions. Meanwhile, everyday wear was restricted to pieces that lacked cultural resonance.
             </p>
             <p>
-                We believed you shouldn't have to choose between <strong>Tradition</strong> and <strong>Freedom</strong>.
+                LilAura was founded to bridge this divide. We believe your jewellery should honor your roots while effortlessly withstanding the demands of your daily routine. 
             </p>
             <p class="text-LilAura-text font-medium text-lg">
-                LilAura was born to break the glass case. Today, as an official Etsy partner, we ship our molecularly sealed, anti-tarnish heritage pieces safely to women across the globe.
+                By pairing advanced 18K PVD gold-plated stainless steel for daily resilience with authentically crafted gold-coated traditional brass for celebratory wear, we offer uncompromising luxury designed for the modern wardrobe.
             </p>
         </div>
     </section>
 
-    <!-- THE VISUAL SPLIT -->
     <section class="grid grid-cols-1 md:grid-cols-2">
         <div class="bg-LilAura-emerald text-white p-16 flex flex-col justify-center items-start">
-            <span class="text-LilAura-gold font-sans text-xs tracking-widest uppercase mb-4">The Innovation</span>
-            <h3 class="font-serif text-4xl mb-6">Not Just Gold Plating. <br>A Golden Shield.</h3>
+            <span class="text-LilAura-gold font-sans text-xs tracking-widest uppercase mb-4">Material Transparency</span>
+            <h3 class="font-serif text-4xl mb-6">Engineered to Last. <br>Crafted to Honor.</h3>
             <p class="font-sans text-gray-300 leading-relaxed mb-8">
-                Most fashion jewellery dips their metal once. We engineered a proprietary <strong>Anti-Tarnish Seal</strong> 
-                that bonds with the metal at a molecular level. 
+                We maintain a strict dual-tier approach to our collections to ensure complete clarity on performance and care.
             </p>
             <ul class="space-y-4 font-sans text-sm tracking-wide">
-                <li class="flex items-center gap-4"><span class="w-8 h-px bg-LilAura-gold"></span> Sweat Resistant (Gym Approved)</li>
-                <li class="flex items-center gap-4"><span class="w-8 h-px bg-LilAura-gold"></span> Water Resistant (Shower Friendly)</li>
-                <li class="flex items-center gap-4"><span class="w-8 h-px bg-LilAura-gold"></span> Perfume Safe</li>
+                <li class="flex items-center gap-4"><span class="w-8 h-px bg-LilAura-gold"></span> <strong>Everyday Wear:</strong> 18K PVD Gold-Plated Stainless Steel. Water and sweat resistant.</li>
+                <li class="flex items-center gap-4"><span class="w-8 h-px bg-LilAura-gold"></span> <strong>Heritage Wear:</strong> Gold-Coated Traditional Brass. Authentic craftsmanship requiring gentle care.</li>
             </ul>
         </div>
         <div class="h-[500px] md:h-auto bg-gray-200 relative">
@@ -140,7 +108,6 @@
         </div>
     </section>
 
-    <!-- CALL TO ACTION -->
     <div class="bg-black text-white py-16 text-center">
         <h2 class="font-serif text-3xl mb-6">Ready to find your forever piece?</h2>
         <a href="shop.html" class="inline-block bg-LilAura-gold text-white font-sans text-xs tracking-[0.2em] uppercase py-4 px-12 hover:bg-white hover:text-black transition duration-300">
