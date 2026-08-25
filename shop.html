@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO OPTIMIZED TITLE & DESCRIPTION -->
-    <title>Anti-Tarnish & Traditional Indian Jewellery UK | LilAura</title>
-    <meta name="description" content="Discover LilAura's exclusive collection of waterproof 18K gold plated anti-tarnish stainless steel jewelry and authentic traditional brass Indian heritage pieces. UK dispatched.">
+    <title>18K Gold Plated & Traditional Indian Jewellery UK | LilAura</title>
+    <meta name="description" content="Discover LilAura's exclusive collection of waterproof 18K PVD gold-plated stainless steel jewellery and authentic gold-coated traditional Indian brass heritage pieces. UK dispatched.">
     
-    <!-- FAVICON FOR BROWSER & GOOGLE SEARCH -->
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
     
@@ -17,23 +15,12 @@
             theme: {
                 extend: {
                     colors: {
-                        LilAura: {
-                            cream: '#F2F0E9',
-                            gold: '#D4AF37',
-                            goldhover: '#B5952F',
-                            emerald: '#034938',
-                            text: '#2C2C2C',
-                            subtle: '#6B6B6B'
-                        }
+                        LilAura: { cream: '#F2F0E9', gold: '#D4AF37', goldhover: '#B5952F', emerald: '#034938', text: '#2C2C2C', subtle: '#6B6B6B' }
                     },
                     fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Proza Libre"', 'sans-serif'],
-                        price: ['"Bodoni Moda"', 'serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Proza Libre"', 'sans-serif'], price: ['"Bodoni Moda"', 'serif'],
                     },
-                    letterSpacing: {
-                        'widest-luxury': '0.2em',
-                    }
+                    letterSpacing: { 'widest-luxury': '0.2em' }
                 }
             }
         }
@@ -46,70 +33,58 @@
 </head>
 <body class="bg-LilAura-cream text-LilAura-text antialiased">
 
-    <!-- EMERALD LUXURY NAV WITH MOBILE MENU -->
     <nav class="fixed w-full z-50 transition-all duration-300 bg-LilAura-emerald/95 backdrop-blur-md border-b border-LilAura-gold/30">
         <div class="flex justify-between items-center py-4 px-6 md:px-16">
-            
             <a href="index.html" class="flex items-center">
                 <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 w-auto hover:opacity-80 transition-opacity" onerror="this.outerHTML='<span class=\'font-serif text-3xl font-semibold tracking-wide text-LilAura-gold\'>LilAura</span>'">
             </a>
-            
             <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
                 <a href="index.html" class="text-LilAura-gold hover:text-white transition pb-1">Home</a>
                 <a href="shop.html" class="text-LilAura-gold border-b border-LilAura-gold pb-1">Collection</a>
                 <a href="about.html" class="text-LilAura-gold hover:text-white transition pb-1">Our Story</a>
                 <a href="contact.html" class="text-LilAura-gold hover:text-white transition pb-1">Contact</a>
             </div>
-
             <div class="hidden md:flex items-center">
                 <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="flex items-center gap-2 border border-LilAura-gold hover:bg-LilAura-gold hover:text-LilAura-emerald text-LilAura-gold px-4 py-2 text-[10px] tracking-widest uppercase font-sans transition duration-300">
                     <span>Etsy Shop</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                 </a>
             </div>
-
             <button id="mobile-menu-btn" class="md:hidden text-LilAura-gold hover:text-white transition focus:outline-none p-2">
                 <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 block"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
                 <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
         </div>
-
         <div id="mobile-menu" class="hidden md:hidden bg-LilAura-emerald border-t border-LilAura-gold/20 absolute left-0 top-[100%] w-full shadow-2xl">
             <div class="flex flex-col items-center py-8 space-y-8 font-sans text-xs tracking-[0.25em] uppercase font-medium">
                 <a href="index.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Home</a>
                 <a href="shop.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Collection</a>
                 <a href="about.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Our Story</a>
                 <a href="contact.html" class="text-LilAura-gold hover:text-white transition w-full text-center py-2">Contact</a>
-                <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="mt-4 flex items-center justify-center gap-2 border border-LilAura-gold text-LilAura-gold hover:bg-LilAura-gold hover:text-LilAura-emerald px-8 py-3 w-[80%] mx-auto transition duration-300">
-                    <span>Shop on Etsy</span>
-                </a>
             </div>
         </div>
     </nav>
 
-    <!-- HEADER & FILTERS WITH SEO INTRO -->
     <div class="pt-32 pb-16 text-center animate-fade-in px-4">
         <h1 class="font-serif text-5xl md:text-6xl text-LilAura-emerald mb-4 drop-shadow-sm">The Collection</h1>
-        <p class="font-sans text-[10px] md:text-xs tracking-widest uppercase text-LilAura-emerald/70 mb-6">All items link directly to our verified Etsy checkout</p>
+        <p class="font-sans text-[10px] md:text-xs tracking-widest uppercase text-LilAura-emerald/70 mb-6">Secure transactions via our verified Etsy storefront</p>
         
-        <!-- NEW: SEO OPTIMIZED CATEGORY DESCRIPTION -->
         <div class="max-w-2xl mx-auto mb-10">
             <p class="font-sans text-sm leading-relaxed text-LilAura-subtle">
-                Explore our curated selection of <span class="text-LilAura-emerald font-medium">waterproof 18K gold plated pieces</span> and authentic <span class="text-LilAura-emerald font-medium">traditional Indian brass jewellery</span>. From everyday anti-tarnish stainless steel cuffs to heirloom heritage chokers, discover long-lasting, sweat-resistant luxury designed for the modern wardrobe.
+                Explore our curated selection of <span class="text-LilAura-emerald font-medium">waterproof 18K PVD gold-plated stainless steel pieces</span> and authentic <span class="text-LilAura-emerald font-medium">gold-coated traditional brass jewellery</span>. From sweat-resistant everyday cuffs to heirloom-inspired occasion wear, discover luxury designed for the modern wardrobe.
             </p>
         </div>
         
         <div class="flex flex-wrap justify-center gap-3 md:gap-8 font-sans text-[10px] md:text-xs tracking-widest uppercase text-LilAura-subtle">
             <button onclick="filterCategory('All', event)" class="filter-btn text-LilAura-gold border-b border-LilAura-gold pb-1 transition">All</button>
-            <button onclick="filterCategory('Anti-tarnish Necklaces', event)" class="filter-btn hover:text-LilAura-gold transition border-b border-transparent hover:border-LilAura-gold pb-1">Necklaces</button>
-            <button onclick="filterCategory('Anti-tarnish Bracelets', event)" class="filter-btn hover:text-LilAura-gold transition border-b border-transparent hover:border-LilAura-gold pb-1">Bracelets</button>
-            <button onclick="filterCategory('Anti-tarnish Kada', event)" class="filter-btn hover:text-LilAura-gold transition border-b border-transparent hover:border-LilAura-gold pb-1">Kadas & Cuffs</button>
+            <button onclick="filterCategory('Anti-tarnish Necklaces', event)" class="filter-btn hover:text-LilAura-gold transition border-b border-transparent hover:border-LilAura-gold pb-1">Everyday Necklaces</button>
+            <button onclick="filterCategory('Anti-tarnish Bracelets', event)" class="filter-btn hover:text-LilAura-gold transition border-b border-transparent hover:border-LilAura-gold pb-1">Everyday Bracelets</button>
+            <button onclick="filterCategory('Anti-tarnish Kada', event)" class="filter-btn hover:text-LilAura-gold transition border-b border-transparent hover:border-LilAura-gold pb-1">Cuffs & Kadas</button>
             <button onclick="filterCategory('Finger Rings', event)" class="filter-btn hover:text-LilAura-gold transition border-b border-transparent hover:border-LilAura-gold pb-1">Rings</button>
-            <button onclick="filterCategory('Traditional Jewellery', event)" class="filter-btn hover:text-LilAura-gold transition border-b border-transparent hover:border-LilAura-gold pb-1">Traditional</button>
+            <button onclick="filterCategory('Traditional Jewellery', event)" class="filter-btn hover:text-LilAura-gold transition border-b border-transparent hover:border-LilAura-gold pb-1">Traditional Brass</button>
         </div>
     </div>
 
-    <!-- GRID -->
     <div id="shop-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-8 md:gap-y-16 px-4 md:px-16 pb-32">
         <!-- Products injected by script.js -->
     </div>
@@ -119,6 +94,7 @@
         <span class="hidden group-hover:inline font-sans text-xs font-semibold tracking-wider uppercase pr-2">Concierge Support</span>
     </a>
 
+    <!-- FOMO POPUP -->
     <div id="fomo-popup" class="fixed bottom-24 left-8 z-50 bg-white border border-LilAura-gold/30 shadow-2xl p-4 flex items-center gap-4 transition-all duration-700 opacity-0 translate-y-8" style="pointer-events: none;">
         <div class="w-10 h-10 rounded-full bg-LilAura-cream flex items-center justify-center text-LilAura-gold border border-LilAura-gold/50 shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
