@@ -354,6 +354,21 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         metaDesc: "Traditional gold-coated brass Lakshmi Kasumala with earrings, Ruby and emerald ethnic wedding jewellery",
         altText: "Traditional Lakshmi Kasumala with earrings, Ruby and emerald ethnic wedding jewellery",
         etsyLink: "https://www.etsy.com/uk/listing/4553282701/antique-matte-gold-plated-temple" 
+    },
+    { 
+        id: 25, 
+        sku: "SSCF-BNC-25", 
+        name: "Nail Cuff - 18K Gold Plated", 
+        category: "Anti-tarnish Kada", 
+        price: 13.99, 
+        inStock: true, 
+        image: "https://i.etsystatic.com/40040678/r/il/ba2a6f/8462317781/il_794xN.8462317781_jom8.jpg", 
+        imageHover: "https://v.etsystatic.com/e/videos/5f67/b72e32d9-0511-4c51-bce5-7bcf769d3abd/vid_v1.mp4", 
+        desc: "Featuring an artistic, wavy melted-metal silhouette accented with lustrous white pearls. This 18K PVD gold-plated stainless steel cuff blends contemporary sculptural design with classic sophistication.",
+        seoTitle: "Gold Plated nail Cuff | Stainless Steel | LilAura UK",
+        metaDesc: "Bent Nail-metal silhouette cuff. 18K PVD gold-plated stainless steel jewellery.",
+        altText: "18K Gold Plated Nail Cuff",
+        etsyLink: "https://www.etsy.com/uk/listing/4560286618/18k-gold-plated-anti-tarnish-minimalist" 
     }
 ];
 
