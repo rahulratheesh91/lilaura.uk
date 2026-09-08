@@ -124,6 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 p.name.toLowerCase().includes('bangle')
             );
             renderShop(wristwear);
+        } else if (f === 'rings') {
+            // FIX: Prevents "Earrings" from appearing under the "Rings" tab
+            const pureRings = products.filter(p => 
+                p.category.toLowerCase().includes('finger rings') || 
+                (p.name.toLowerCase().includes('ring') && !p.name.toLowerCase().includes('earring'))
+            );
+            renderShop(pureRings);
         } else {
             renderShop(products.filter(p => 
                 p.category.toLowerCase().includes(f) ||
