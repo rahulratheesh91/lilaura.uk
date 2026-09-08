@@ -1,236 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO OPTIMIZED TITLE & DESCRIPTION -->
-    <title>Waterproof Anti-Tarnish & Traditional Indian Jewellery UK | LilAura</title>
-    <meta name="description" content="Shop LilAura for premium 18K gold plated anti-tarnish stainless steel and authentic traditional brass Indian heritage jewellery. Dispatched securely from the UK via Etsy.">
-    
-    <!-- FAVICON FOR BROWSER & GOOGLE SEARCH -->
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
-    
-    <!-- ORGANIZATION SCHEMA FOR GOOGLE KNOWLEDGE GRAPH -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "LilAura UK",
-      "url": "https://www.lilaura.uk/",
-      "logo": "https://www.lilaura.uk/logo.png",
-      "description": "Premium 18K gold plated anti-tarnish and traditional Indian brass jewellery based in the UK.",
-      "sameAs": [
-        "https://instagram.com/lilaura.uk",
-        "https://www.etsy.com/uk/shop/LilauraElegance"
-      ]
-    }
-    </script>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        LilAura: {
-                            cream: '#F2F0E9',
-                            gold: '#D4AF37',
-                            goldhover: '#B5952F',
-                            emerald: '#034938',
-                            text: '#2C2C2C',
-                            subtle: '#6B6B6B'
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Proza Libre"', 'sans-serif'],
-                        price: ['"Bodoni Moda"', 'serif'],
-                    },
-                    letterSpacing: {
-                        'widest-luxury': '0.25em',
-                    }
-                }
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- SEO OPTIMIZED TITLE & DESCRIPTION -->
+<title>Waterproof Anti-Tarnish & Traditional Indian Jewellery UK | LilAura</title>
+<meta name="description" content="Shop LilAura for premium 18K gold plated anti-tarnish stainless steel and authentic traditional brass Indian heritage jewellery. Dispatched securely from the UK via Etsy.">
 
-    <style>
-        /* Slow Zoom Animation for Hero Image */
-        @keyframes slowZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Cormorant+Garamond:wght@400;600&family=Proza+Libre:wght@400;600&display=swap" rel="stylesheet">
 
-        /* FOMO Popup Animation */
-        .show-fomo {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-            pointer-events: auto !important;
-            visibility: visible !important;
-        }
+<!-- FAVICON -->
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
 
-        /* Luxury Diagonal Sparkle Animations */
-        @keyframes twinkle {
-            0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
-            50% { transform: scale(1) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 8px #D4AF37); }
-        }
+<!-- ORGANIZATION SCHEMA FOR GOOGLE KNOWLEDGE GRAPH -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "LilAura UK",
+  "url": "https://www.lilaura.uk/",
+  "logo": "https://www.lilaura.uk/logo.png",
+  "description": "Premium 18K gold plated anti-tarnish and traditional Indian brass jewellery based in the UK.",
+  "sameAs": [
+    "https://instagram.com/lilaura.uk",
+    "https://www.etsy.com/uk/shop/LilauraElegance"
+  ]
+}
+</script>
 
-        .sparkle-icon {
-            position: absolute;
-            width: 28px;
-            height: 28px;
-            pointer-events: none;
-            z-index: 20;
-            color: #D4AF37;
-        }
-
-        .sparkle-top-left {
-            top: -8px;
-            left: -20px;
-            animation: twinkle 2s infinite ease-in-out;
-        }
-
-        .sparkle-bottom-right {
-            bottom: 4px;
-            right: -20px;
-            animation: twinkle 2s infinite ease-in-out;
-            animation-delay: 1s; 
-        }
-
-        html { scroll-behavior: smooth; }
-    </style>
+<link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-LilAura-cream text-LilAura-text antialiased">
+<body>
+<div class="announce">Autumn Edit · <b>20% OFF</b> selected anti-tarnish jewellery · Ends in <span id="miniTimer">--:--:--</span></div>
 
-   <!-- ONYX LUXURY NAV WITH MOBILE MENU -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-LilAura-text/95 backdrop-blur-md border-b border-LilAura-gold/30">
-        <div class="flex justify-between items-center py-4 px-6 md:px-16">
-            
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center">
-                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 w-auto hover:opacity-80 transition-opacity" onerror="this.outerHTML='<span class=\'font-serif text-3xl font-semibold tracking-wide text-LilAura-gold\'>LilAura</span>'">
-            </a>
-            
-            <!-- Desktop Links -->
-            <div class="hidden md:flex space-x-10 font-sans text-xs tracking-widest uppercase font-medium">
-                <a href="index.html" class="text-LilAura-gold border-b border-LilAura-gold pb-1">Home</a>
-                <a href="shop.html" class="text-LilAura-cream hover:text-LilAura-gold transition pb-1">Collection</a>
-                <a href="about.html" class="text-LilAura-cream hover:text-LilAura-gold transition pb-1">Our Story</a>
-                <a href="contact.html" class="text-LilAura-cream hover:text-LilAura-gold transition pb-1">Contact</a>
-            </div>
+<header class="header">
+<nav class="nav">
+  <div class="nav-left"><a href="shop.html">Shop</a><a href="shop.html">Collections</a><a href="about.html">Our Story</a></div>
+  <a class="logo" href="index.html">LILAURA<small>MODERN HERITAGE JEWELLERY</small></a>
+  <div class="nav-right">
+      <button class="wish" onclick="window.location.href='shop.html'">♡</button>
+      <button class="cart" id="cartBtn">Bag <span class="bubble" id="cartCount">0</span></button>
+  </div>
+</nav>
+<div class="mega" id="mega">
+ <div class="mega-grid">
+  <a class="mega-feature" href="shop.html"><span>New Season →</span></a>
+  <div><h4>Shop</h4><a href="shop.html">New Arrivals</a><a href="shop.html">Bestsellers</a><a href="shop.html">Gift Edit</a><a href="shop.html">Under £35</a></div>
+  <div><h4>Jewellery</h4><a href="shop.html">Necklaces</a><a href="shop.html">Earrings</a><a href="shop.html">Bracelets</a><a href="shop.html">Kadas & Cuffs</a></div>
+  <div><h4>Collections</h4><a href="shop.html">Heritage Brass</a><a href="shop.html">Anti-Tarnish</a><a href="shop.html">Statement</a><a href="shop.html">Everyday</a></div>
+  <div><h4>Discover</h4><a href="about.html">Our Story</a><a href="product.html?id=16">Jewellery Care</a><a href="#reviews">Reviews</a><a href="#concierge">Concierge</a></div>
+ </div>
+</div>
+</header>
 
-            <div class="hidden md:flex items-center">
-                <!-- Etsy Button -->
-                <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="flex items-center gap-2 border border-LilAura-gold hover:bg-LilAura-gold hover:text-LilAura-text text-LilAura-gold px-4 py-2 text-[10px] tracking-widest uppercase font-sans transition duration-300">
-                    <span>Etsy Shop</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-                </a>
-            </div>
+<main>
+<section class="hero">
+ <div class="hero-video"></div>
+ <div class="hero-content">
+  <!-- SEO H1: Keyword Rich but styled perfectly to look like a subtitle -->
+  <h1 class="eyebrow" style="margin-bottom: 24px; color: var(--gold); drop-shadow: 0 4px 6px rgba(0,0,0,0.5);">Waterproof Anti-Tarnish & Heritage Indian Jewellery</h1>
+  
+  <h2 style="font-size:clamp(52px,7vw,100px); line-height:.88; margin:18px 0; color: #fff; position: relative; display: inline-block;">
+      <svg class="sparkle-icon sparkle-top-left" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+      </svg>
+      <span>Jewellery<br>worth living in.</span>
+      <svg class="sparkle-icon sparkle-bottom-right" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+      </svg>
+  </h2>
+  
+  <p>Traditional soul. Contemporary attitude. Discover LilAura pieces designed to become part of your everyday ritual.</p>
+  <div class="buttons"><a class="btn" href="shop.html">Shop the edit</a><a class="btn light" href="about.html">Discover LilAura</a></div>
+ </div>
+ <div class="scroll">Scroll to explore ↓</div>
+</section>
 
-            <!-- Mobile Hamburger Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-LilAura-gold hover:text-LilAura-cream transition focus:outline-none p-2">
-                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 block"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
-                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-        </div>
+<div class="promise"><div>Anti-tarnish finishes</div><div>Designed for everyday</div><div>Premium gift packaging</div><div>UK-based jewellery studio</div></div>
 
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-LilAura-text border-t border-LilAura-gold/20 absolute left-0 top-[100%] w-full shadow-2xl">
-            <div class="flex flex-col items-center py-8 space-y-8 font-sans text-xs tracking-[0.25em] uppercase font-medium">
-                <a href="index.html" class="text-LilAura-gold transition w-full text-center py-2">Home</a>
-                <a href="shop.html" class="text-LilAura-cream hover:text-LilAura-gold transition w-full text-center py-2">Collection</a>
-                <a href="about.html" class="text-LilAura-cream hover:text-LilAura-gold transition w-full text-center py-2">Our Story</a>
-                <a href="contact.html" class="text-LilAura-cream hover:text-LilAura-gold transition w-full text-center py-2">Contact</a>
-                <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="mt-4 flex items-center justify-center gap-2 border border-LilAura-gold text-LilAura-gold hover:bg-LilAura-gold hover:text-LilAura-text px-8 py-3 w-[80%] mx-auto transition duration-300">
-                    <span>Shop on Etsy</span>
-                </a>
-            </div>
-        </div>
-    </nav>
+<section class="section" id="collections">
+ <div class="section-head"><div><div class="eyebrow">Curated worlds</div><h2>Find your signature.</h2></div><a class="under" href="shop.html">Explore all collections</a></div>
+ <div class="editorial">
+  <a class="ed-card" href="shop.html"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1400&q=90" alt="Traditional Brass"><div class="ed-copy"><span>01 · Modern Heritage</span><h3>Pieces with a story.</h3></div></a>
+  <a class="ed-card" href="shop.html"><img src="https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=1000&q=90" alt="Anti-Tarnish Wear"><div class="ed-copy"><span>02 · Everyday Icons</span><h3>Wear. Layer. Repeat.</h3></div></a>
+ </div>
+</section>
 
-    <header class="relative w-full h-[90vh] flex items-center justify-center overflow-hidden bg-black">
-        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=2500&auto=format&fit=crop" 
-             class="absolute w-full h-full object-cover opacity-80" 
-             style="animation: slowZoom 25s infinite alternate ease-in-out;"
-             alt="LilAura Luxury Anti-Tarnish Jewellery">
-        
-        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-LilAura-cream/10"></div>
-        
-        <div class="relative z-10 text-center text-white px-4 mt-16 animate-fade-in">
-            <!-- SEO H1: Keyword Rich but styled perfectly to look like a subtitle -->
-            <h1 class="font-sans text-[10px] md:text-xs tracking-[0.4em] uppercase mb-6 text-LilAura-gold drop-shadow-lg">
-                Waterproof Anti-Tarnish & Heritage Indian Jewellery
-            </h1>
-            
-            <!-- Brand Name shifted to H2 to preserve visual hierarchy without sacrificing SEO -->
-            <h2 class="font-serif text-5xl md:text-8xl mb-6 leading-tight drop-shadow-2xl text-white relative inline-block">
-                <svg class="sparkle-icon sparkle-top-left" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
-                </svg>
-                <span>LilAura</span>
-                <svg class="sparkle-icon sparkle-bottom-right" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
-                </svg>
-            </h2>
+<section class="section" id="shop">
+ <div class="section-head"><div><div class="eyebrow">The LilAura edit</div><h2>New & noteworthy.</h2></div><a class="under" href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank">Shop on Etsy</a></div>
+ <div class="tabs">
+    <button class="tab active" onclick="window.location.href='shop.html'">View All</button>
+    <button class="tab" onclick="window.location.href='shop.html'">Kadas & Cuffs</button>
+    <button class="tab" onclick="window.location.href='shop.html'">Necklaces</button>
+    <button class="tab" onclick="window.location.href='shop.html'">Traditional</button>
+ </div>
+ <div class="product-grid">
+  
+  <!-- PRODUCT 1: NEW NAIL CUFF (ID 25) -->
+  <article class="product" data-cat="bracelets" data-name="Nail Cuff - 18K Gold Plated" data-price="13.99" data-img="https://i.etsystatic.com/40040678/r/il/ba2a6f/8462317781/il_794xN.8462317781_jom8.jpg" onclick="window.location.href='product.html?id=25'">
+   <div class="media">
+    <span class="tag">New Arrival</span><button class="heart" onclick="toggleWish(event, 25)">♡</button>
+    <img src="https://i.etsystatic.com/40040678/r/il/ba2a6f/8462317781/il_794xN.8462317781_jom8.jpg" class="base-img" alt="18K Gold Plated Nail Cuff">
+    <video src="https://v.etsystatic.com/e/videos/5f67/b72e32d9-0511-4c51-bce5-7bcf769d3abd/vid_v1.mp4" class="hover-visual" autoplay loop muted playsinline></video>
+    <div class="quickbar"><button class="quick" onclick="event.stopPropagation(); window.location.href='product.html?id=25'">Quick view</button><button class="add" onclick="event.stopPropagation(); addToCart(25)">Add to bag</button></div>
+   </div>
+   <div class="pinfo">
+    <div class="pmeta">Anti-Tarnish Kada</div>
+    <div class="pname">18K Gold Plated Nail Cuff</div>
+    <div class="price">£13.99</div>
+   </div>
+  </article>
 
-            <p class="font-sans text-xs md:text-sm text-gray-200 mb-10 tracking-widest font-light opacity-90">
-                18K GOLD PLATED &bull; TRADITIONAL BRASS &bull; OFFICIAL ETSY PARTNER
-            </p>
-            <a href="shop.html" class="inline-block bg-white/10 backdrop-blur-sm border border-white/40 hover:bg-LilAura-gold hover:border-LilAura-gold hover:text-white text-white font-sans text-[10px] md:text-xs tracking-[0.25em] uppercase py-4 px-10 transition duration-500 shadow-xl">
-                Explore The Catalog
-            </a>
-        </div>
-    </header>
+  <!-- PRODUCT 2: NEW BLUE CHOKER (ID 23) -->
+  <article class="product" data-cat="traditional" data-name="Heart Motif Blue Choker Necklace Set" data-price="20.99" data-img="https://i.etsystatic.com/40040678/r/il/14ccbd/8411663121/il_1140xN.8411663121_cjfe.jpg" onclick="window.location.href='product.html?id=23'">
+   <div class="media">
+    <span class="tag">Heritage</span><button class="heart" onclick="toggleWish(event, 23)">♡</button>
+    <img src="https://i.etsystatic.com/40040678/r/il/14ccbd/8411663121/il_1140xN.8411663121_cjfe.jpg" class="base-img" alt="Blue Indian Choker Necklace Set">
+    <img src="https://i.etsystatic.com/40040678/r/il/904348/8363781070/il_1140xN.8363781070_k57g.jpg" class="hover-img" alt="Model Wearing Blue Choker">
+    <div class="quickbar"><button class="quick" onclick="event.stopPropagation(); window.location.href='product.html?id=23'">Quick view</button><button class="add" onclick="event.stopPropagation(); addToCart(23)">Add to bag</button></div>
+   </div>
+   <div class="pinfo">
+    <div class="pmeta">Traditional Jewellery</div>
+    <div class="pname">Heart Motif Blue Choker Set</div>
+    <div class="price">£20.99</div>
+   </div>
+  </article>
 
-    <!-- SEO OPTIMIZED SECTION -->
-    <section class="py-24 px-8 md:px-32 bg-LilAura-cream text-center border-b border-LilAura-gold/10">
-        <h2 class="font-serif text-3xl md:text-4xl text-LilAura-text mb-6">The Anti-Tarnish Promise</h2>
-        <div class="w-16 h-0.5 bg-LilAura-gold mx-auto mb-8"></div>
-        <p class="font-sans text-LilAura-subtle max-w-2xl mx-auto leading-loose text-sm md:text-base">
-            Crafted for the modern woman who honors tradition. Our <strong>18K gold plated stainless steel jewelry</strong> is treated with advanced protective layers, allowing you to wear your heritage while swimming, showering, or living your life worry-free. Experience completely waterproof, sweat-resistant luxury, alongside our authentic <strong>traditional brass</strong> Indian pieces. All orders process securely via our official Etsy storefront.
-        </p>
-    </section>
+  <!-- PRODUCT 3: BESTSELLER KADA (ID 16) -->
+  <article class="product" data-cat="cuffs" data-name="18K Gold Plated Stainless Steel Cuff Bracelet" data-price="16.49" data-img="https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_1140xN.8197151304_btta.jpg" onclick="window.location.href='product.html?id=16'">
+   <div class="media">
+    <span class="tag">Bestseller</span><button class="heart" onclick="toggleWish(event, 16)">♡</button>
+    <img src="https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_1140xN.8197151304_btta.jpg" class="base-img" alt="18K Gold Plated Cuff Bracelet">
+    <div class="quickbar"><button class="quick" onclick="event.stopPropagation(); window.location.href='product.html?id=16'">Quick view</button><button class="add" onclick="event.stopPropagation(); addToCart(16)">Add to bag</button></div>
+   </div>
+   <div class="pinfo">
+    <div class="pmeta">Anti-Tarnish Kada</div>
+    <div class="pname">18K Gold Plated Cuff</div>
+    <div class="price">£16.49</div>
+   </div>
+  </article>
 
-    <a href="https://wa.me/447303179015?text=Hello%20LilAura!%20I%20have%20a%20question%20about%20your%20jewellery..." target="_blank" class="fixed bottom-8 right-8 z-50 bg-[#25D366] hover:bg-LilAura-emerald text-white p-4 rounded-full shadow-2xl transition duration-300 flex items-center gap-3 group">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.601.723 4.913 2.034 1.312 1.311 2.033 3.057 2.033 4.912-.001 3.824-3.113 6.934-6.946 6.934z"/>
-        </svg>
-        <span class="hidden group-hover:inline font-sans text-xs font-semibold tracking-wider uppercase pr-2">Concierge Support</span>
-    </a>
+  <!-- PRODUCT 4: WATERPROOF NECKLACE (ID 7) -->
+  <article class="product" data-cat="necklaces" data-name="Knotted Heart Pendant Necklace" data-price="14.49" data-img="https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg" onclick="window.location.href='product.html?id=7'">
+   <div class="media">
+    <button class="heart" onclick="toggleWish(event, 7)">♡</button>
+    <img src="https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg" class="base-img" alt="Knotted Heart Pendant Necklace">
+    <img src="https://i.etsystatic.com/40040678/r/il/d54fec/8395016175/il_794xN.8395016175_al3i.jpg" class="hover-img" alt="Model wearing Knotted Heart Necklace">
+    <div class="quickbar"><button class="quick" onclick="event.stopPropagation(); window.location.href='product.html?id=7'">Quick view</button><button class="add" onclick="event.stopPropagation(); addToCart(7)">Add to bag</button></div>
+   </div>
+   <div class="pinfo">
+    <div class="pmeta">Anti-Tarnish Necklaces</div>
+    <div class="pname">Knotted Heart Pendant</div>
+    <div class="price">£14.49</div>
+   </div>
+  </article>
 
-    <div id="fomo-popup" class="fixed bottom-24 left-8 z-50 bg-white border border-LilAura-gold/30 shadow-2xl p-4 flex items-center gap-4 transition-all duration-700 opacity-0 translate-y-8" style="pointer-events: none;">
-        <div class="w-10 h-10 rounded-full bg-LilAura-cream flex items-center justify-center text-LilAura-gold border border-LilAura-gold/50 shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
-        </div>
-        <div>
-            <p id="fomo-text" class="font-sans text-xs text-LilAura-subtle mb-0.5">Loading...</p>
-            <p id="fomo-product" class="font-serif text-sm text-LilAura-text font-semibold line-clamp-1 max-w-[180px]">...</p>
-            <p class="font-sans text-[9px] text-LilAura-emerald uppercase tracking-widest mt-1">Verified Etsy Purchase</p>
-        </div>
-        <button onclick="document.getElementById('fomo-popup').classList.remove('show-fomo')" class="absolute top-2 right-2 text-gray-400 hover:text-gray-800 leading-none text-lg">&times;</button>
+ </div>
+</section>
+
+<section class="cinema" id="about">
+ <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1800&q=90" alt="LilAura Philosophy">
+ <div class="cinema-content"><div><div class="eyebrow">The LilAura philosophy</div><h2>Heritage,<br>reimagined.</h2><p>We create jewellery with the richness of tradition and the ease of modern life — made to be worn, layered and remembered.</p><a class="btn" href="product.html?id=16">The LilAura promise</a></div></div>
+</section>
+
+<section class="countdown" id="care">
+ <div class="countdown-copy"><div class="eyebrow">The Autumn Edit</div><h3>20% off selected anti-tarnish pieces.</h3><div style="font-family:'Proza Libre', sans-serif; font-size:11px;color:var(--emerald); letter-spacing:.1em; text-transform:uppercase; margin-top:8px">Your seasonal window closes soon.</div></div>
+ <div class="timer"><div class="time"><b id="days">00</b><small>Days</small></div><div class="time"><b id="hours">00</b><small>Hours</small></div><div class="time"><b id="mins">00</b><small>Minutes</small></div><div class="time"><b id="secs">00</b><small>Seconds</small></div></div>
+ <a class="btn" href="shop.html">Shop 20% off</a>
+</section>
+
+<section class="section reviews" id="reviews">
+ <div class="section-head"><div><div class="eyebrow">Loved by our community</div><h2>What they’re saying.</h2></div><a class="under" href="shop.html">Shop highly rated items</a></div>
+ <div class="review-grid">
+  <article class="review"><div class="stars">★★★★★</div><p>“Beautiful, elegant and even better in person. The waterproof 18K plating means it has quickly become one of my everyday pieces.”</p><small>Verified LilAura customer</small></article>
+  <article class="review"><div class="stars">★★★★★</div><p>“The packaging feels so special and the traditional brass detailing is exactly the understated statement I wanted.”</p><small>Verified LilAura customer</small></article>
+  <article class="review"><div class="stars">★★★★★</div><p>“I bought the anti-tarnish cuff as a gift and ended up wanting one for myself. Effortlessly beautiful and truly sweat-proof.”</p><small>Verified LilAura customer</small></article>
+ </div>
+</section>
+
+<section class="section recent" id="recent">
+ <div class="section-head"><div><div class="eyebrow">Picked up where you left off</div><h2>Recently viewed.</h2></div></div><div class="recent-grid" id="recentGrid"></div>
+</section>
+
+<section class="concierge" id="concierge">
+ <div class="concierge-copy"><div class="eyebrow" style="color:var(--gold)">Private styling service</div><h2>Your jewellery,<br>your way.</h2><p>Not sure what to choose? Speak to LilAura on WhatsApp for personal recommendations, gifting help, styling ideas or guidance on your next traditional or anti-tarnish piece.</p><a class="wa" href="https://wa.me/447303179015?text=Hello%20LilAura!%20I%20have%20a%20question%20about%20your%20jewellery..." target="_blank">WhatsApp Concierge →</a></div>
+ <div class="concierge-image"></div>
+</section>
+
+<section class="news"><div class="eyebrow">The LilAura letter</div><h2>Be first to know.</h2><p style="color:var(--muted)">New drops, private offers, styling stories and the occasional little secret.</p><form class="form" id="newsletter"><input type="email" required placeholder="Your email address"><button>Join the list</button></form></section>
+</main>
+
+<footer>
+ <div class="foot"><div><div class="foot-logo">LILAURA</div><p style="max-width:300px;color:var(--soft); margin-top:8px; line-height: 1.8">Modern heritage jewellery. Designed to be lived in.</p></div>
+ <div><h4>Shop</h4><a href="shop.html">New arrivals</a><a href="shop.html">Bestsellers</a><a href="shop.html">Anti-tarnish</a><a href="shop.html">Gift edit</a></div>
+ <div><h4>Discover</h4><a href="about.html">Our story</a><a href="product.html?id=16">Jewellery care</a><a href="#reviews">Reviews</a><a href="#concierge">Concierge</a></div>
+ <div><h4>Connect</h4><a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank">Etsy Shop</a><a href="https://instagram.com/lilaura.uk" target="_blank">Instagram</a><a href="https://wa.me/447303179015" target="_blank">WhatsApp</a></div></div>
+ <div class="copy"><span>© 2026 LilAura UK. All rights reserved.</span><span>Modern heritage. Made to be worn.</span></div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer"><div class="drawer-head"><h3>Your bag</h3><button class="close" id="closeDrawer">×</button></div><div id="cartItems"></div><div id="cartBottom"></div></aside>
+<div class="toast" id="toast"></div>
+
+<!-- FOMO POPUP -->
+<div id="fomo-popup" class="toast" style="bottom: 80px; background: white; color: var(--ink); border: 1px solid var(--line); display: flex; align-items: center; gap: 15px; padding: 15px; max-width: 320px; transition: all 0.5s ease-out; transform: translateY(150px); opacity: 0; pointer-events: none;">
+    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; color: var(--gold); border: 1px solid var(--line); flex-shrink: 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
     </div>
+    <div>
+        <p id="fomo-text" style="font-family: 'Proza Libre', sans-serif; font-size: 10px; color: var(--muted); margin: 0 0 4px 0; text-transform: none; letter-spacing: normal;">Loading...</p>
+        <p id="fomo-product" style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--ink); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">...</p>
+        <p style="font-family: 'Proza Libre', sans-serif; font-size: 8px; color: var(--emerald); text-transform: uppercase; letter-spacing: 0.2em; margin: 6px 0 0 0;">Verified Etsy Purchase</p>
+    </div>
+</div>
 
-   <footer class="bg-LilAura-text text-LilAura-cream py-12 border-t border-LilAura-gold/20">
-        <div class="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-center md:text-left">
-                <img src="logo.png" alt="LilAura Logo" class="h-8 md:h-10 mx-auto md:mx-0 mb-4 opacity-90" onerror="this.outerHTML='<h3 class=\'font-serif text-2xl text-LilAura-gold mb-2\'>LilAura</h3>'">
-                <p class="font-sans text-xs text-gray-400 tracking-widest uppercase">Heritage / Modern / Eternal</p>
-            </div>
-            <div class="flex gap-6 font-sans text-xs uppercase tracking-widest text-gray-400 flex-wrap justify-center">
-                <a href="shop.html" class="hover:text-white transition">Shop</a>
-                <a href="about.html" class="hover:text-white transition">Our Story</a>
-                <a href="contact.html" class="hover:text-white transition">Contact</a>
-                <a href="policies.html" class="hover:text-white transition">Policies</a>
-            </div>
-            <div class="text-xs text-gray-500 font-sans text-center md:text-right">
-                <p>&copy; 2026 LilAura UK. All Rights Reserved.</p>
-                <p class="text-[10px] mt-1 text-gray-600">Official Etsy Storefront: LilAuraElegance</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
