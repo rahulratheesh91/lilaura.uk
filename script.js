@@ -1,166 +1,3 @@
-/* LILAURA CORE ENGINE
-   Includes: SEO Injection, Dual-Image Stacking, FOMO Popup, and Mobile Menu Logic
-*/
-
-/* --- URL POLISH: Remove .html from Address Bar --- */
-if (window.location.pathname.endsWith('.html') && window.location.pathname !== '/index.html') {
-    const cleanUrl = window.location.pathname.replace(/\.html$/, '') + window.location.search + window.location.hash;
-    window.history.replaceState(null, '', cleanUrl);
-} else if (window.location.pathname === '/index.html') {
-    window.history.replaceState(null, '', '/');
-}
-
-// --- 1. PRODUCT DATABASE (SEO OPTIMIZED) ---
-const products = [
-    { 
-        id: 16, 
-        sku: "SSCF-ALBR-16", 
-        name: "18K Gold Plated Stainless Steel Cuff Bracelet", 
-        category: "Anti-tarnish Kada", 
-        price: 16.49, 
-        image: "https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_1140xN.8197151304_btta.jpg", 
-        imageHover: "", 
-        desc: "Premium 18K PVD gold-plated stainless steel cuff bracelet. Waterproof, sweat-resistant, and highly resistant to tarnishing for everyday luxury wear.",
-        seoTitle: "18K Gold Plated Cuff Bracelet | Waterproof Stainless Steel Kada | LilAura UK",
-        metaDesc: "Shop the premium 18K PVD gold-plated stainless steel cuff bracelet by LilAura. Waterproof, sweat-resistant, and tarnish-resistant jewelry in the UK.",
-        altText: "Close-up of 18K gold plated stainless steel cuff bracelet on a neutral background",
-        etsyLink: "https://www.etsy.com/uk/listing/4530558606/18k-gold-plated-stainless-steel-cuff"
-    },
-    { 
-        id: 17, 
-        sku: "SSCF-INF-17", 
-        name: "Infinity Cuff with Double Layered Zircon Stones", 
-        category: "Anti-tarnish Kada", 
-        price: 18.49, 
-        inStock: false, 
-        image: "https://i.etsystatic.com/40040678/r/il/7a4f17/8197075762/il_1140xN.8197075762_9l3z.jpg", 
-        imageHover: "", 
-        desc: "Stunning infinity motif open cuff embellished with double-layered sparkling zircon stones. Crafted from premium stainless steel, this 18K PVD gold-plated bracelet is water-resistant and perfect for everyday wear in the UK.",
-        seoTitle: "18K Gold Plated Infinity Cuff | Stainless Steel Jewellery UK",
-        metaDesc: "Discover our stunning 18K PVD gold-plated infinity cuff with zircon stones. Water-resistant stainless steel jewelry by LilAura.",
-        altText: "18K Gold Plated Infinity Cuff Bracelet with Zircon Stones",
-        etsyLink: "https://www.etsy.com/uk/listing/4530529391/anti-tarnish-infinity-cuff-with-double" 
-    },
-    { 
-        id: 18, 
-        sku: "SSBR-CHM-18", 
-        name: "Charm Bracelet (Celestial & Floral Motifs)", 
-        category: "Anti-tarnish Bracelets", 
-        price: 12.99, 
-        image: "https://i.etsystatic.com/40040678/r/il/dc3ce4/8237168671/il_1140xN.8237168671_jfzc.jpg", 
-        imageHover: "", 
-        desc: "Delicate charm bracelet featuring intricate celestial and floral motifs on a durable stainless steel chain. 18K PVD gold-plated and highly resistant to water and sweat.",
-        seoTitle: "Gold Plated Charm Bracelet | Stainless Steel Jewellery | LilAura",
-        metaDesc: "Shop delicate celestial and floral charm bracelets. 18K PVD gold-plated stainless steel jewellery designed for everyday wear in the UK.",
-        altText: "Gold Plated Stainless Steel Charm Bracelet",
-        etsyLink: "https://www.etsy.com/uk/listing/4529459089/anti-tarnish-charm-bracelets-with" 
-    },
-    { 
-        id: 19, 
-        sku: "SSFR-RNG-19", 
-        name: "Stainless Steel Statement Ring with Zircon Stones", 
-        category: "Finger Rings", 
-        price: 12.49, 
-        image: "https://i.etsystatic.com/40040678/r/il/8fa288/8237035721/il_1140xN.8237035721_745p.jpg", 
-        imageHover: "", 
-        desc: "Bold statement ring crafted from durable stainless steel with embedded brilliant-cut zircon stones. Finished with a high-grade 18K PVD gold plating for long-lasting wear.",
-        seoTitle: "Gold Plated Zircon Statement Ring | Stainless Steel | LilAura UK",
-        metaDesc: "Bold 18K PVD gold-plated statement ring with brilliant zircon stones. Crafted from stainless steel for water-resistant, long-lasting luxury.",
-        altText: "18K Gold Plated Statement Ring with Zircon Stones",
-        etsyLink: "https://www.etsy.com/uk/listing/4529409433/anti-tarnish-stainless-steel-rings-with" 
-    },
-    { 
-        id: 5, 
-        sku: "TRNK-PAL-05", 
-        name: "Traditional Palakka Choker Necklace Set with Matching Earstuds", 
-        category: "Traditional Jewellery", 
-        price: 22.99, 
-        image: "https://i.etsystatic.com/40040678/r/il/a1210d/8348817959/il_1588xN.8348817959_chs4.jpg", 
-        imageHover: "https://i.etsystatic.com/40040678/r/il/0f7782/8300923278/il_1588xN.8300923278_m5s3.jpg", 
-        desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear, crafted beautifully in traditional gold-coated brass.",
-        seoTitle: "Traditional Indian Palakka Choker Set | Brass Heritage Jewellery UK | LilAura",
-        metaDesc: "Authentic South Indian Palakka choker set with matching earstuds. Premium traditional gold-coated brass jewellery perfect for weddings and cultural events.",
-        altText: "Traditional Indian Brass Palakka Choker Necklace Set",
-        etsyLink: "https://www.etsy.com/uk/listing/4529392003/traditional-palakka-choker-necklace-set" 
-    },
-    { 
-        id: 20, 
-        sku: "SSNK-EMR-20", 
-        name: "Gold Plated Emerald Pendant Necklace", 
-        category: "Anti-tarnish Necklaces", 
-        price: 15.49, 
-        image: "https://i.etsystatic.com/40040678/r/il/ffa352/8189114976/il_1140xN.8189114976_1kwd.jpg", 
-        imageHover: "", 
-        desc: "Exquisite geometric emerald-cut green stone pendant on an 18K PVD gold-plated chain. Simple, daily luxury made from robust stainless steel.",
-        seoTitle: "Gold Plated Emerald Pendant | Stainless Steel Necklace | LilAura",
-        metaDesc: "Exquisite 18K PVD gold-plated emerald-cut pendant necklace. Water-resistant stainless steel jewellery perfect for everyday luxury in the UK.",
-        altText: "18K Gold Plated Emerald Pendant Necklace",
-        etsyLink: "https://www.etsy.com/uk/listing/4529214581/anti-tarnish-gold-plated-emerald-pendant" 
-    },
-    { 
-        id: 21, 
-        sku: "SSCF-HPR-21", 
-        name: "Gold Plated Stainless Steel Heart Pearl Bangle", 
-        category: "Anti-tarnish Kada", 
-        price: 17.99, 
-        image: "https://i.etsystatic.com/40040678/r/il/8b2186/8160669462/il_1140xN.8160669462_1gej.jpg", 
-        imageHover: "", 
-        desc: "Romantic open cuff bangle featuring twin mother-of-pearl heart accents set in durable 18K PVD gold-plated stainless steel. Highly resistant to tarnishing.",
-        seoTitle: "Gold Plated Pearl Bangle | Stainless Steel Jewellery UK",
-        metaDesc: "Romantic open cuff bangle with twin mother-of-pearl hearts. 18K PVD gold-plated stainless steel jewellery for daily wear.",
-        altText: "18K Gold Plated Stainless Steel Heart Pearl Bangle",
-        etsyLink: "https://www.etsy.com/uk/listing/4525317383/gold-plated-stainless-steel-heart-pearl" 
-    },
-    { 
-        id: 8, 
-        sku: "TRNK-PAL-08", 
-        name: "Traditional Kerala Palakka Choker Necklace Set with Jhumka Earrings", 
-        category: "Traditional Jewellery", 
-        price: 22.79, 
-        image: "https://i.etsystatic.com/40040678/r/il/344f38/8294466386/il_1588xN.8294466386_g100.jpg", 
-        imageHover: "https://i.etsystatic.com/40040678/r/il/febf4b/8342363125/il_1588xN.8342363125_44u7.jpg", 
-        desc: "Grand Kerala-style green Palakka short choker necklace paired with traditional bell-shaped Jhumka earrings. Classic temple jewelry cast in traditional gold-coated brass.",
-        seoTitle: "Kerala Palakka Choker & Jhumka Set | Traditional Indian Brass Jewellery",
-        metaDesc: "Grand Kerala-style green Palakka choker with traditional Jhumka earrings. Authentic traditional gold-coated brass jewellery crafted for Indian heritage aesthetics.",
-        altText: "Traditional Indian Brass Kerala Palakka Choker with Jhumka Earrings",
-        etsyLink: "https://www.etsy.com/uk/listing/4525327387/traditional-kerala-palakka-choker" 
-    },
-    { 
-        id: 9, 
-        sku: "TRNK-COIN-09", 
-        name: "Ganapathy Coin Palakka Choker Traditional Heritage Necklace", 
-        category: "Traditional Jewellery", 
-        price: 20.99, 
-        inStock: false,
-        image: "https://i.etsystatic.com/40040678/r/il/433e57/8300782474/il_1588xN.8300782474_9tgy.jpg", 
-        imageHover: "https://i.etsystatic.com/40040678/r/il/07ba53/8348676775/il_1588xN.8348676775_9har.jpg", 
-        desc: "Traditional Kasu Mala coin choker featuring Lord Ganesha motifs interlaced with classic Palakka stones. Heirloom craftsmanship utilizing traditional gold-coated brass.",
-        seoTitle: "Ganapathy Coin Kasu Mala | Traditional Indian Brass Jewellery UK | LilAura",
-        metaDesc: "Traditional Kasu Mala coin choker featuring Lord Ganesha. Premium traditional gold-coated brass heritage jewellery perfect for South Indian weddings.",
-        altText: "Traditional Indian Brass Ganapathy Coin Palakka Choker",
-        etsyLink: "https://www.etsy.com/uk/listing/4483539459/coin-palakka-choker-traditional-necklace" 
-    },
-    { 
-        id: 22, 
-        sku: "SSNK-EMR-22", 
-        name: "Gold Plated Emerald Green Leaf Pendant Necklace", 
-        category: "Anti-tarnish Necklaces", 
-        price: 16.99, 
-        image: "https://i.etsystatic.com/40040678/r/il/e0133d/8235370965/il_1140xN.8235370965_lcqj.jpg", 
-        imageHover: "", 
-        desc: "Exquisite geometric emerald-cut green stone pendant on an 18K PVD gold-plated chain. Made of solid stainless steel to guarantee durable daily wear.",
-        seoTitle: "Gold Plated Emerald Leaf Pendant | Stainless Steel Jewellery",
-        metaDesc: "Geometric emerald green leaf pendant on an 18K PVD gold-plated chain. Water-resistant stainless steel necklace for daily wear.",
-        altText: "18K Gold Plated Emerald Green Leaf Pendant",
-        etsyLink: "https://www.etsy.com/uk/listing/4533568863/anti-tarnish-gold-plated-emerald-green" 
-    },
-    { 
-        id: 11, 
-        sku: "TRNK-PAL-11", 
-        name: "Traditional Indian Lakshmi Choker Necklace Set with Matching Ear studs", 
-        category: "Traditional Jewellery", 
-        price: 33.99, 
-        image: "https://i.etsystatic.com/40040678/r/il/78acc5/8345517199/il_1588xN.8345517199_5d0d.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/398816/8297620094/il_1588xN.8297620094_50p8.jpg", 
         desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Beautifully forged in traditional gold-coated brass, perfect for weddings and festive wear.",
         seoTitle: "Lakshmi Choker Necklace Set | Traditional Indian Brass Jewellery | LilAura",
@@ -174,6 +11,7 @@ const products = [
         name: "Traditional Indian Green Meenakari Choker Necklace Set", 
         category: "Traditional Jewellery", 
         price: 15.99, 
+        inStock: true,
         image: "https://i.etsystatic.com/40040678/r/il/3bd6bb/8348520825/il_1588xN.8348520825_f3eq.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/ded90e/8348520811/il_1588xN.8348520811_n4rl.jpg", 
         desc: "Elegant green Meenakari lotus design choker set. Exquisite traditional gold-coated brass handiwork that perfects any traditional Indian occasion.",
@@ -188,6 +26,7 @@ const products = [
         name: "Traditional Indian Red Meenakari Choker Necklace Set", 
         category: "Traditional Jewellery", 
         price: 17.99, 
+        inStock: true,
         image: "https://i.etsystatic.com/40040678/r/il/51c271/8348522389/il_1588xN.8348522389_7zme.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/4ba53c/8300627856/il_1588xN.8300627856_qz6y.jpg", 
         desc: "Elegant Red Meenakari lotus design choker. Sculpted in traditional gold-coated brass to showcase vibrant Indian heritage colors for cultural celebrations.",
@@ -202,6 +41,7 @@ const products = [
         name: "18K Gold Plated Moving Stone Cuff Bracelet", 
         category: "Anti-tarnish Kada", 
         price: 14.99, 
+        inStock: true,
         image: "https://i.etsystatic.com/40040678/r/il/2fbb3e/8346941703/il_1588xN.8346941703_2nlb.jpg", 
         imageHover: "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/jcndfbtklzpickvk6xz3.mp4", 
         desc: "Add a touch of playful elegance to your everyday look with this stunning 18K PVD Gold Plated Moving Stone Cuff. Crafted from durable stainless steel, the three sparkling stone beads inside move freely.",
@@ -217,7 +57,7 @@ const products = [
         category: "Traditional Jewellery", 
         price: 21.99, 
         inStock: false,
-image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.8300843552_1ope.jpg", 
+        image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.8300843552_1ope.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/4e7dd8/8300843550/il_1588xN.8300843550_t434.jpg", 
         desc: "Elegant Tri-layered traditional coin necklace set perfect for traditional occasions. Designed with premium gold-coated traditional brass.",
         seoTitle: "Tri-Layered Coin Necklace Set | Traditional Indian Brass Jewellery UK",
@@ -231,6 +71,7 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         name: "Interlocking Heart Necklace with zircon stones and Snake Chain", 
         category: "Anti-tarnish Necklaces", 
         price: 14.99, 
+        inStock: true,
         image: "https://i.etsystatic.com/40040678/r/il/22fdf0/8394955889/il_794xN.8394955889_hxeo.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/270fd6/8347068668/il_794xN.8347068668_h0yl.jpg", 
         desc: "Featuring two intertwined hearts one lined with brilliant zircon stones and the other finished in smooth 18K PVD gold plating. Premium stainless steel ensures long-lasting quality.",
@@ -245,6 +86,7 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         name: "Knotted Heart Pendant Necklace and Snake Chain", 
         category: "Anti-tarnish Necklaces", 
         price: 14.49, 
+        inStock: true,
         image: "https://i.etsystatic.com/40040678/r/il/cbe8d1/8395016183/il_794xN.8395016183_6r2h.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/d54fec/8395016175/il_794xN.8395016175_al3i.jpg", 
         desc: "Featuring an intricate, soft-knotted open heart pendant strung on a sleek snake chain. Made from 18K PVD gold-plated stainless steel for water-resistant durability.",
@@ -259,6 +101,7 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         name: "Puffy Heart Necklace and Snake Chain", 
         category: "Anti-tarnish Necklaces", 
         price: 15.99, 
+        inStock: true,
         image: "https://i.etsystatic.com/40040678/r/il/aa1651/8347132378/il_794xN.8347132378_paag.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/6066b0/8347132366/il_794xN.8347132366_hqus.jpg", 
         desc: "Whether you are dressing up for a special evening or adding a touch of romance to your everyday attire, this 18K PVD gold-plated stainless steel piece provides a durable luster wear after wear.",
@@ -333,6 +176,7 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         name: "Heart Motif Blue Choker Necklace Set", 
         category: "Traditional Jewellery", 
         price: 20.99, 
+        inStock: true,
         image: "https://i.etsystatic.com/40040678/r/il/14ccbd/8411663121/il_1140xN.8411663121_cjfe.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/904348/8363781070/il_1140xN.8363781070_k57g.jpg", 
         desc: "Discover the perfect blend of tradition and contemporary flair with this stunning Blue Heart Motif Choker Set from LilAura. Inspired by timeless South Indian craftsmanship, this multi-layered necklace features rich, cobalt-blue stones set against radiant gold-coated traditional brass, accented with delicate ruby-red and emerald-green micro-stones.",
@@ -347,6 +191,7 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
         name: "Ganesh Lakshmi Coin Choker with Earrings", 
         category: "Traditional Jewellery", 
         price: 23.99, 
+        inStock: true,
         image: "https://i.etsystatic.com/40040678/r/il/e50271/8363857578/il_1588xN.8363857578_n8gm.jpg", 
         imageHover: "https://i.etsystatic.com/40040678/r/il/19135a/8411740379/il_1588xN.8411740379_qzoo.jpg", 
         desc: "Embrace the rich heritage of South Indian craftsmanship with the LilAura Temple Coin Choker Set. Inspired by royal antique designs, this stunning 'Kasumala' necklace features intricately embossed Ganesha motifs and Goddess Lakshmi coins upon traditional gold-coated brass.",
@@ -372,254 +217,166 @@ image: "https://i.etsystatic.com/40040678/r/il/92675a/8300843552/il_1588xN.83008
     }
 ];
 
-// --- 2. PAGE LOAD & RENDERING LOGIC ---
+// 3. CART & UI LOGIC
+const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+let cart = JSON.parse(localStorage.getItem('lilauraCart') || '[]');
+let wishes = JSON.parse(localStorage.getItem('lilauraWish') || '[]');
+
+function toast(m) {
+    let t = $('#toast'); if(!t) return;
+    t.textContent = m; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+function saveCart() {
+    localStorage.setItem('lilauraCart', JSON.stringify(cart));
+    localStorage.setItem('lilauraWish', JSON.stringify(wishes));
+    renderCart();
+    const countEl = $('#cartCount');
+    if(countEl) countEl.textContent = cart.reduce((a, x) => a + x.qty, 0);
+}
+
+function renderCart() {
+    let box = $('#cartItems'), bottom = $('#cartBottom');
+    if(!box || !bottom) return;
+    if(!cart.length){
+        box.innerHTML = `<div class="cart-empty">Your bag is waiting.<br><br><a class="under" href="shop.html" onclick="closeDrawer()">Discover the edit</a></div>`;
+        bottom.innerHTML = ''; return;
+    }
+    box.innerHTML = cart.map((x, i) => `
+        <div class="cart-item">
+            <img src="${x.img}">
+            <div style="flex:1">
+                <h4>${x.name}</h4>
+                <small class="price-mod">£${x.price.toFixed(2)}</small><small style="letter-spacing:0.1em; color:var(--gold); text-transform:uppercase; margin-left:8px">· Qty ${x.qty}</small><br>
+                <button onclick="removeItem(${i})" style="border:0;background:none;padding:10px 0 0;text-decoration:underline;font-size:10px; color:var(--muted); cursor:pointer">Remove</button>
+            </div>
+        </div>`).join('');
+    let total = cart.reduce((a, x) => a + x.price * x.qty, 0);
+    bottom.innerHTML = `
+        <div class="cart-total"><span>Total</span><span class="price-mod">£${total.toFixed(2)}</span></div>
+        <button class="checkout" onclick="window.open('https://www.etsy.com/uk/shop/LilauraElegance', '_blank')">Checkout securely on Etsy</button>`;
+}
+
+function removeItem(i) { cart.splice(i, 1); saveCart(); }
+function openDrawer() { $('#drawer')?.classList.add('open'); $('#overlay')?.classList.add('open'); document.body.classList.add('lock'); }
+function closeDrawer() { $('#drawer')?.classList.remove('open'); $('#overlay')?.classList.remove('open'); document.body.classList.remove('lock'); }
+
+function addToCart(id) {
+    const p = products.find(x => x.id === id); if(!p) return;
+    let item = cart.find(x => x.name === p.name);
+    if(item) item.qty++; else cart.push({name: p.name, price: p.price, img: p.image, qty: 1});
+    saveCart(); toast(p.name + ' added to bag'); openDrawer();
+}
+
+function toggleWish(event, id) {
+    event.stopPropagation(); const p = products.find(x => x.id === id); if(!p) return;
+    if(wishes.includes(p.name)) { wishes = wishes.filter(x => x !== p.name); toast('Removed from wishlist'); event.target.classList.remove('active'); } 
+    else { wishes.push(p.name); toast('Added to wishlist'); event.target.classList.add('active'); }
+    saveCart();
+}
+
+// 4. RENDERING ENGINES
 document.addEventListener('DOMContentLoaded', () => {
+    // Nav Bindings
+    if($('#cartBtn')) $('#cartBtn').onclick = openDrawer;
+    if($('#closeDrawer')) $('#closeDrawer').onclick = closeDrawer;
+    if($('#overlay')) $('#overlay').onclick = closeDrawer;
+    if($('#menuBtn')) $('#menuBtn').onclick = () => $('#mega').classList.toggle('open');
+    saveCart();
 
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const iconOpen = document.getElementById('menu-icon-open');
-    const iconClose = document.getElementById('menu-icon-close');
-
-    if (mobileBtn && mobileMenu) {
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            iconOpen.classList.toggle('hidden');
-            iconClose.classList.toggle('hidden');
-        });
-    }
-
+    // Shop Grid
     const shopGrid = document.getElementById('shop-grid');
-    if (shopGrid) {
-        renderShop(products);
-    }
+    if (shopGrid) renderShop(products);
 
-    const productDetail = document.getElementById('product-detail-container');
-    if (productDetail) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const pid = parseInt(urlParams.get('id'));
-        const product = products.find(p => p.id === pid) || products[0]; 
-        renderProductDetail(product);
+    // Filter Logic
+    $$('.tab').forEach(b => b.onclick = () => {
+        $$('.tab').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        const f = b.dataset.filter;
+        if(shopGrid) renderShop(f === 'all' ? products : products.filter(p => p.category.toLowerCase().includes(f.toLowerCase())));
+    });
+
+    // Product Detail
+    const detailContainer = document.getElementById('product-detail-container');
+    if (detailContainer) {
+        const params = new URLSearchParams(window.location.search);
+        const p = products.find(x => x.id === parseInt(params.get('id'))) || products[0];
+        renderDetail(p);
     }
+    
+    // FOMO & Timers
+    if(!sessionStorage.getItem('fomoShown')) setTimeout(triggerFomo, 8000);
+    setInterval(updateTimer, 1000); updateTimer();
 });
 
 function renderShop(items) {
     const container = document.getElementById('shop-grid');
-    if (!container) return; 
-    
-    if (items.length === 0) {
-        container.innerHTML = `<div class="col-span-full text-center py-12 font-serif text-xl text-LilAura-subtle">No jewelry items found in this category.</div>`;
-        return;
-    }
+    if (!container) return;
+    if (!items.length) { container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px 0;">No items found.</div>`; return; }
 
-    // --- SORTING LOGIC: Keep IDs 16 through 22 at the absolute bottom ---
-    const bottomIds = [16, 17, 18, 19, 20, 21, 22];
-    
-    const regularItems = items.filter(p => !bottomIds.includes(p.id));
-    const bottomItems = items.filter(p => bottomIds.includes(p.id));
-    const sortedItems = [...regularItems, ...bottomItems];
-
-    container.innerHTML = sortedItems.map(p => {
-        const isVideo = p.imageHover && p.imageHover.endsWith('.mp4');
-        const hoverElement = isVideo 
-            ? `<video src="${p.imageHover}" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-105 z-20"></video>`
-            : `<img src="${p.imageHover ? p.imageHover : p.image}" alt="${p.altText || p.name}" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 ease-out group-hover:opacity-100 group-hover:scale-105 z-20">`;
+    container.innerHTML = items.map(p => {
+        const isVid = p.imageHover && p.imageHover.endsWith('.mp4');
+        const hoverHTML = isVid ? `<video src="${p.imageHover}" autoplay loop muted class="hover-visual"></video>` : `<img src="${p.imageHover || p.image}" class="hover-img">`;
+        const tag = p.inStock ? '' : `<span class="tag" style="background:#2C2C2C">Sold Out</span>`;
+        const activeWish = wishes.includes(p.name) ? 'active' : '';
 
         return `
-        <div class="group cursor-pointer flex flex-col justify-between" onclick="window.location.href='product.html?id=${p.id}'">
-            <div>
-                <div class="w-full aspect-[3/4] overflow-hidden bg-gray-100 relative border border-LilAura-gold/10">
-                    <img src="${p.image}" alt="${p.altText || p.name}" loading="lazy" 
-                         class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out group-hover:opacity-0 group-hover:scale-105 z-10">
-                    
-                    ${hoverElement}
-                    
-                    <div class="absolute top-2 left-2 bg-black/70 backdrop-blur-sm text-LilAura-gold text-[9px] px-2 py-1 tracking-widest uppercase font-sans z-30">Official Etsy Item</div>
-                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity flex justify-end z-30">
-                        <span class="text-white text-[10px] uppercase tracking-widest bg-LilAura-emerald px-2 py-1">View Details &rarr;</span>
-                    </div>
-                </div>
-                <div class="mt-4 text-center">
-                    <p class="text-[9px] tracking-[0.2em] uppercase text-LilAura-emerald mb-1">${p.category}</p>
-                    <h3 class="font-serif text-base md:text-lg text-LilAura-text leading-snug group-hover:text-LilAura-gold transition-colors line-clamp-2">${p.name}</h3>
+        <article class="product" onclick="window.location.href='product.html?id=${p.id}'">
+            <div class="media">
+                ${tag}
+                <button class="heart ${activeWish}" onclick="toggleWish(event, ${p.id})">♡</button>
+                <img src="${p.image}" class="base-img">
+                ${hoverHTML}
+                <div class="quickbar">
+                    <button class="quick" onclick="event.stopPropagation(); window.location.href='product.html?id=${p.id}'">Quick view</button>
+                    <button class="add" onclick="event.stopPropagation(); addToCart(${p.id})">Add to bag</button>
                 </div>
             </div>
-            <div class="mt-2 text-center">
-                <p class="font-price text-xl text-LilAura-gold font-normal tracking-widest">£${p.price.toFixed(2)}</p>
+            <div class="pinfo">
+                <div class="pmeta">${p.category}</div>
+                <div class="pname">${p.name}</div>
+                <div class="price">£${p.price.toFixed(2)}</div>
             </div>
-        </div>
-        `;
+        </article>`;
     }).join('');
 }
 
-function renderProductDetail(p) {
-    document.getElementById('p-cat').innerText = p.category;
-    document.getElementById('p-name').innerText = p.name;
-    document.getElementById('p-price').innerText = `£${p.price.toFixed(2)}`;
-    document.getElementById('p-desc').innerText = p.desc;
-    document.getElementById('p-sku').innerText = `SKU: ${p.sku}`; 
-    
-    // SEO INJECTION
+function renderDetail(p) {
     document.title = p.seoTitle || `${p.name} | LilAura UK`;
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-        metaDescription.setAttribute('content', p.metaDesc || p.desc);
-    }
+    $('#p-cat').innerText = p.category; $('#p-sku').innerText = `SKU: ${p.sku}`;
+    $('#p-name').innerText = p.name; $('#p-price').innerText = `£${p.price.toFixed(2)}`;
+    $('#p-desc').innerText = p.desc;
     
-    // IMAGE & ALT TEXT INJECTION
-    const baseImg = document.getElementById('p-image');
-    if (baseImg) {
-        baseImg.src = p.image;
-        baseImg.alt = p.altText || p.name;
-    }
-    
-    const hoverImg = document.getElementById('p-image-hover');
-    const hoverVid = document.getElementById('p-video-hover');
-    
-    if (p.imageHover && p.imageHover.endsWith('.mp4')) {
-        if (hoverImg) hoverImg.classList.add('hidden');
-        if (hoverVid) {
-            hoverVid.src = p.imageHover;
-            hoverVid.classList.remove('hidden'); 
-        }
-    } else {
-        if (hoverVid) hoverVid.classList.add('hidden'); 
-        if (hoverImg) {
-            hoverImg.src = p.imageHover ? p.imageHover : p.image;
-            hoverImg.alt = p.altText || p.name;
-            hoverImg.classList.remove('hidden'); 
-        }
-    }
-    
-    // OUT OF STOCK LOGIC
-    const soldOutOverlay = document.getElementById('sold-out-overlay');
-    const etsyBtn = document.getElementById('buy-etsy-btn');
-    
-    if (p.inStock === false) {
-        if (soldOutOverlay) soldOutOverlay.classList.remove('hidden');
-        if (etsyBtn) {
-            etsyBtn.innerHTML = `<span>Out of Stock</span>`;
-            etsyBtn.classList.add('bg-gray-300', 'text-gray-500', 'cursor-not-allowed', 'pointer-events-none');
-            etsyBtn.classList.remove('bg-LilAura-emerald', 'hover:bg-LilAura-gold', 'text-white');
-            etsyBtn.href = "#";
-        }
-    } else {
-        if (soldOutOverlay) soldOutOverlay.classList.add('hidden');
-        if (etsyBtn) {
-            etsyBtn.innerHTML = `<span>Secure Checkout via Etsy</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>`;
-            etsyBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed', 'pointer-events-none');
-            etsyBtn.classList.add('bg-LilAura-emerald', 'hover:bg-LilAura-gold', 'text-white');
-            etsyBtn.href = p.etsyLink || "https://www.etsy.com/uk/shop/LilauraElegance";
-        }
-    }
+    $('#p-image').src = p.image;
+    if (p.imageHover.endsWith('.mp4')) { $('#p-video-hover').src = p.imageHover; $('#p-video-hover').style.display = 'block'; } 
+    else { $('#p-image-hover').src = p.imageHover || p.image; }
 
-    // SEO SCHEMA INJECTION (Enriched for Google Rich Results)
-    const schemaData = {
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      "name": p.seoTitle || p.name,
-      "image": [p.image],
-      "description": p.metaDesc || p.desc,
-      "sku": p.sku,
-      "brand": { "@type": "Brand", "name": "LilAura" },
-      "material": p.category.includes("Traditional") ? "Traditional Brass" : "18K Gold Plated Stainless Steel",
-      "color": "Gold",
-      "category": p.category,
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "GBP",
-        "price": p.price,
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": p.inStock === false ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
-        "url": p.etsyLink || window.location.href,
-        "seller": {
-            "@type": "Organization",
-            "name": "LilAura UK"
-        }
-      }
-    };
-    const script = document.createElement('script');
-    script.type = "application/ld+json";
-    script.text = JSON.stringify(schemaData);
-    document.head.appendChild(script);
+    $('#buy-btn').onclick = () => { addToCart(p.id); if(!p.inStock) toast('Item is currently out of stock.'); };
+    if(!p.inStock) { $('#buy-btn').innerText = "Out of Stock"; $('#buy-btn').style.background = "#ddd"; $('#buy-btn').style.color = "#666"; }
 
-    // DYNAMIC MATERIALS & BADGE LOGIC
-    const badge1 = document.getElementById('dynamic-badge-1');
-    const faqMatTitle = document.getElementById('faq-materials-title');
-    const faqMatContent = document.getElementById('faq-materials-content');
-    const faqCareContent = document.getElementById('faq-care-content');
-
+    // Dynamic FAQ
     if (p.category.includes('Traditional')) {
-        if (badge1) {
-            badge1.innerHTML = `
-                <div class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-LilAura-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>
-                </div>
-                <p class="font-sans text-[8px] md:text-[9px] uppercase tracking-widest text-LilAura-subtle">Premium Brass</p>
-            `;
-        }
-        if (faqMatTitle && faqMatContent && faqCareContent) {
-            faqMatTitle.innerHTML = `Material & Finish <span class="transition group-open:rotate-180 text-LilAura-gold"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span>`;
-            faqMatContent.innerHTML = `Our heritage collections are forged in authentic <strong>traditional brass</strong> and finished with a classic gold coating to honor timeless Indian craftsmanship.`;
-            faqCareContent.innerHTML = `Because this item features a standard gold coating over brass, it requires careful handling. To preserve the finish, keep the jewellery dry and away from water, perfumes, and harsh chemicals. Gently wipe with a soft cloth after wearing.`;
-        }
+        $('#faq-mat-title').innerHTML = `Materials & Finish <span>+</span>`;
+        $('#faq-mat-content').innerHTML = `Forged in authentic traditional brass with a classic gold coating.`;
     } else {
-        if (badge1) {
-            badge1.innerHTML = `
-                <div class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-LilAura-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                </div>
-                <p class="font-sans text-[8px] md:text-[9px] uppercase tracking-widest text-LilAura-subtle">Anti-Tarnish PVD</p>
-            `;
-        }
-        if (faqMatTitle && faqMatContent && faqCareContent) {
-            faqMatTitle.innerHTML = `Materials & Anti-Tarnish Guarantee <span class="transition group-open:rotate-180 text-LilAura-gold"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"></polyline></svg></span>`;
-            faqMatContent.innerHTML = `Our modern everyday pieces are expertly crafted from high-grade <strong>stainless steel</strong> and finished with highly durable <strong>18K PVD gold plating</strong>. This advanced bonding process ensures the jewelry is highly resistant to tarnishing.`;
-            faqCareContent.innerHTML = `Designed for everyday wear, our PVD gold-plated stainless steel pieces are highly water and sweat-resistant. You can comfortably wear them during your daily routines. Gently wipe your jewelry with a soft cloth occasionally to maintain its luster.`;
-        }
+        $('#faq-mat-title').innerHTML = `Anti-Tarnish Guarantee <span>+</span>`;
+        $('#faq-mat-content').innerHTML = `Crafted from high-grade stainless steel with 18K gold PVD plating. 100% waterproof.`;
     }
+
+    $$('.accordion').forEach(el => el.onclick = () => el.classList.toggle('active'));
 }
 
-function filterCategory(cat, event) {
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => btn.classList.remove('text-LilAura-gold', 'border-LilAura-gold'));
-    if (event && event.target) {
-        event.target.classList.add('text-LilAura-gold', 'border-LilAura-gold');
-    }
-
-    if(cat === 'All') {
-        renderShop(products);
-    } else {
-        const filtered = products.filter(p => p.category === cat);
-        renderShop(filtered);
-    }
+// 5. TIMERS & POPUPS
+function updateTimer() {
+    const end = new Date(Date.now() + 72*60*60*1000); // Demo timer
+    let d = Math.max(0, end - Date.now()), s = Math.floor(d/1000), days = Math.floor(s/86400); s %= 86400;
+    let h = Math.floor(s/3600); s %= 3600; let m = Math.floor(s/60), sec = s%60;
+    if($('#miniTimer')) $('#miniTimer').textContent = `${String(h+days*24).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+    if($('#days')) { $('#days').textContent = String(days).padStart(2,'0'); $('#hours').textContent = String(h).padStart(2,'0'); $('#mins').textContent = String(m).padStart(2,'0'); $('#secs').textContent = String(sec).padStart(2,'0'); }
 }
 
-// --- 3. LUXURY SOCIAL PROOF (FOMO) LOGIC ---
-const ukLocations = ["London", "Birmingham", "Manchester", "Leicester", "Leeds", "Edinburgh", "Glasgow", "Bristol", "Liverpool", "Nottingham", "Bradford"];
-const customerNames = ["P***a", "S****h", "A***li", "Je***ca", "F***a", "N**a", "E***y", "A**a", "C***e", "R**a", "S***a", "Z**a", "M**a", "R*****a", "S***n"];
-
-function triggerFomoNotification() {
-    const fomoPopup = document.getElementById('fomo-popup');
-    if (!fomoPopup) return; 
-
-    const randomCity = ukLocations[Math.floor(Math.random() * ukLocations.length)];
-    const randomName = customerNames[Math.floor(Math.random() * customerNames.length)];
-    const randomProduct = products[Math.floor(Math.random() * products.length)];
-
-    document.getElementById('fomo-text').innerText = `${randomName} in ${randomCity} recently ordered via Etsy`;
-    document.getElementById('fomo-product').innerText = randomProduct.name;
-
-    fomoPopup.classList.add('show-fomo');
-
+function triggerFomo() {
+    toast('P***a in London recently ordered via Etsy.');
     sessionStorage.setItem('fomoShown', 'true');
-
-    setTimeout(() => {
-        fomoPopup.classList.remove('show-fomo');
-    }, 5000);
-}
-
-if (!sessionStorage.getItem('fomoShown')) {
-    setTimeout(() => {
-        triggerFomoNotification();
-    }, 8000); 
 }
