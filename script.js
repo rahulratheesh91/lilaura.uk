@@ -106,17 +106,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const shopGrid = document.getElementById('shop-grid');
     if (shopGrid) renderShop(products);
 
-    // Enhanced Filter Logic (Handles Kadas, Cuffs & Bracelets together)
+    // Filter Logic with Smart Mapping
     $$('.tab').forEach(b => b.onclick = () => {
         $$('.tab').forEach(x => x.classList.remove('active'));
         b.classList.add('active');
         const f = b.dataset.filter.toLowerCase();
-
+        
         if (!shopGrid) return;
 
         if (f === 'all') {
             renderShop(products);
-        } else if (f === 'kadas' || f === 'bracelets' || f === 'cuffs') {
+        } else if (f === 'kadas') {
             const wristwear = products.filter(p => 
                 p.category.toLowerCase().includes('kada') || 
                 p.category.toLowerCase().includes('bracelet') ||
