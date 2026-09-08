@@ -214,34 +214,34 @@ function renderDetail(p) {
 }
 
 // 5. TIMERS & RECENT VIEWS & POPUPS
-function remember(p){
-    let r = JSON.parse(localStorage.getItem('lilauraRecent')||'[]').filter(x => x.name !== p.name);
-    r.unshift({name: p.name, img: p.image, price: p.price, id: p.id});
-    localStorage.setItem('lilauraRecent', JSON.stringify(r.slice(0,6)));
-}
-
-function renderRecent(){
-    let r = JSON.parse(localStorage.getItem('lilauraRecent')||'[]');
-    if(!r.length) return;
-    const recentSection = $('#recent');
-    const recentGrid = $('#recentGrid');
-    
-    if (recentSection && recentGrid) {
-        recentSection.classList.add('show');
-        recentGrid.innerHTML = r.map(x => `
-        <div class="recent-card" style="cursor:pointer" onclick="window.location.href='product.html?id=${x.id}'">
-            <img src="${x.img}">
-            <p>${x.name}<br><small style="font-family:'Bodoni Moda', serif; font-size:14px; color:var(--gold)">£${(+x.price).toFixed(2)}</small></p>
-        </div>`).join('');
-    }
-}
-
 function updateTimer() {
-    const end = new Date(Date.now() + 72*60*60*1000); 
-    let d = Math.max(0, end - Date.now()), s = Math.floor(d/1000), days = Math.floor(s/86400); s %= 86400;
-    let h = Math.floor(s/3600); s %= 3600; let m = Math.floor(s/60), sec = s%60;
-    if($('#miniTimer')) $('#miniTimer').textContent = `${String(h+days*24).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
-    if($('#days')) { $('#days').textContent = String(days).padStart(2,'0'); $('#hours').textContent = String(h).padStart(2,'0'); $('#mins').textContent = String(m).padStart(2,'0'); $('#secs').textContent = String(sec).padStart(2,'0'); }
+    // Set a target end time (e.g., 72 hours from now, or store it in localStorage so it persists per user session)
+    let endTime = localStorage.getItem('lilauraTimerEnd');
+    if (!endTime) {
+        endTime = Date.now() + (536 * 60 * 60 * 1000); // 72 hours
+        localStorage.setItem('lilauraTimerEnd', endTime);
+    }
+
+    let d = Math.max(0, parseInt(endTime) - Date.now());
+    let s = Math.floor(d / 1000);
+    
+    let days = Math.floor(s / 86400); 
+    s %= 86400;
+    let h = Math.floor(s / 3600); 
+    s %= 3600; 
+    let m = Math.floor(s / 60); 
+    let sec = s % 60;
+
+    // Update mini-timer in the top announcement bar
+    if($('#miniTimer')) {
+        $('#miniTimer').textContent = `${String(h + days * 24).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+    }
+
+    // Update main section countdown boxes
+    if($('#days')) $('#days').textContent = String(days).padStart(2,'0');
+    if($('#hours')) $('#hours').textContent = String(h).padStart(2,'0');
+    if($('#mins')) $('#mins').textContent = String(m).padStart(2,'0');
+    if($('#secs')) $('#secs').textContent = String(sec).padStart(2,'0');
 }
 
 function triggerFomo() {
