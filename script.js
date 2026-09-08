@@ -97,18 +97,15 @@ function toggleWish(event, id) {
 
 // 4. RENDERING ENGINES
 document.addEventListener('DOMContentLoaded', () => {
-    // Nav Bindings
     if($('#cartBtn')) $('#cartBtn').onclick = openDrawer;
     if($('#closeDrawer')) $('#closeDrawer').onclick = closeDrawer;
     if($('#overlay')) $('#overlay').onclick = closeDrawer;
     if($('#menuBtn')) $('#menuBtn').onclick = () => $('#mega').classList.toggle('open');
     saveCart();
 
-    // Shop Grid
     const shopGrid = document.getElementById('shop-grid');
     if (shopGrid) renderShop(products);
 
-    // Filter Logic
     $$('.tab').forEach(b => b.onclick = () => {
         $$('.tab').forEach(x => x.classList.remove('active'));
         b.classList.add('active');
@@ -116,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(shopGrid) renderShop(f === 'all' ? products : products.filter(p => p.category.toLowerCase().includes(f.toLowerCase())));
     });
 
-    // Product Detail
     const detailContainer = document.getElementById('product-detail-container');
     if (detailContainer) {
         const params = new URLSearchParams(window.location.search);
@@ -124,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDetail(p);
     }
     
-    // FOMO & Timers
     if(!sessionStorage.getItem('fomoShown')) setTimeout(triggerFomo, 8000);
     setInterval(updateTimer, 1000); updateTimer(); renderRecent();
 });
@@ -134,7 +129,13 @@ function renderShop(items) {
     if (!container) return;
     if (!items.length) { container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px 0;">No items found.</div>`; return; }
 
-    container.innerHTML = items.map(p => {
+    // --- SORTING LOGIC: Keep specific IDs at the bottom ---
+    const bottomIds = [16, 17, 18, 19, 20, 21, 22];
+    const regularItems = items.filter(p => !bottomIds.includes(p.id));
+    const bottomItems = items.filter(p => bottomIds.includes(p.id));
+    const sortedItems = [...regularItems, ...bottomItems];
+
+    container.innerHTML = sortedItems.map(p => {
         const isVid = p.imageHover && p.imageHover.endsWith('.mp4');
         const hoverHTML = isVid ? `<video src="${p.imageHover}" autoplay loop muted class="hover-visual"></video>` : `<img src="${p.imageHover || p.image}" class="hover-img">`;
         const tag = p.inStock ? '' : `<span class="tag" style="background:#2C2C2C">Sold Out</span>`;
@@ -174,7 +175,6 @@ function renderDetail(p) {
     $('#buy-btn').onclick = () => { addToCart(p.id); if(!p.inStock) toast('Item is currently out of stock.'); };
     if(!p.inStock) { $('#buy-btn').innerText = "Out of Stock"; $('#buy-btn').style.background = "#ddd"; $('#buy-btn').style.color = "#666"; }
 
-    // Dynamic FAQ
     if (p.category.includes('Traditional')) {
         $('#faq-mat-title').innerHTML = `Materials & Finish <span>+</span>`;
         $('#faq-mat-content').innerHTML = `Forged in authentic traditional brass with a classic gold coating.`;
@@ -200,7 +200,6 @@ function renderRecent(){
     const recentSection = $('#recent');
     const recentGrid = $('#recentGrid');
     
-    // SAFETY CHECK: Only run if the page actually has a #recent section
     if (recentSection && recentGrid) {
         recentSection.classList.add('show');
         recentGrid.innerHTML = r.map(x => `
