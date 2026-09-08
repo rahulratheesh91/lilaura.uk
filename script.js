@@ -46,6 +46,21 @@ function toast(m) {
     t.textContent = m; t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2000);
 }
+function renderRecent(){
+    let r = JSON.parse(localStorage.getItem('lilauraRecent')||'[]');
+    if(!r.length) return;
+    const recentSection = $('#recent');
+    const recentGrid = $('#recentGrid');
+    
+    if (recentSection && recentGrid) {
+        recentSection.classList.add('show');
+        recentGrid.innerHTML = r.map(x => `
+        <div class="recent-card" onclick="window.location.href='product.html?id=${x.id}'">
+            <img src="${x.img}" alt="${x.name}">
+            <p>${x.name}<br><small style="font-family:'Bodoni Moda', serif; font-size:15px; color:var(--gold); letter-spacing:0.05em;">£${(+x.price).toFixed(2)}</small></p>
+        </div>`).join('');
+    }
+}
 
 function saveCart() {
     localStorage.setItem('lilauraCart', JSON.stringify(cart));
