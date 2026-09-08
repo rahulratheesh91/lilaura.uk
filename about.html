@@ -11,45 +11,12 @@
     <link rel="stylesheet" href="styles.css?v=luxe">
     
     <style>
-        .story-hero {
-            height: 70vh;
-            min-height: 500px;
-            background: linear-gradient(rgba(3, 73, 56, 0.4), rgba(3, 73, 56, 0.7)), url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=2000&q=80') center/cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
-        }
-        .story-hero h1 {
-            font-size: clamp(40px, 6vw, 72px);
-            margin: 15px 0;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .story-hero .eyebrow {
-            color: var(--gold);
-            letter-spacing: 0.3em;
-        }
-        .origin-section {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 100px 5vw;
-            text-align: center;
-        }
-        .origin-section h2 {
-            font-size: clamp(28px, 4vw, 42px);
-            color: var(--ink);
-            margin-bottom: 30px;
-            line-height: 1.3;
-        }
-        .origin-section p {
-            font-size: 16px;
-            color: var(--muted);
-            line-height: 2;
-            margin-bottom: 25px;
-        }
+        .story-hero { height: 70vh; min-height: 500px; background: linear-gradient(rgba(3, 73, 56, 0.4), rgba(3, 73, 56, 0.7)), url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=2000&q=80') center/cover; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--white); padding: 0 20px; }
+        .story-hero h1 { font-size: clamp(40px, 6vw, 72px); margin: 15px 0; text-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        .story-hero .eyebrow { color: var(--gold); letter-spacing: 0.3em; }
+        .origin-section { max-width: 800px; margin: 0 auto; padding: 100px 5vw; text-align: center; }
+        .origin-section h2 { font-size: clamp(28px, 4vw, 42px); color: var(--ink); margin-bottom: 30px; line-height: 1.3; }
+        .origin-section p { font-size: 16px; color: var(--muted); line-height: 2; margin-bottom: 25px; }
     </style>
 </head>
 <body>
@@ -59,14 +26,13 @@
             <a class="logo" href="index.html">LILAURA<small>MODERN HERITAGE JEWELLERY</small></a>
             <div class="nav-right"><button class="wish" onclick="window.location.href='shop.html'">♡</button><button class="cart" id="cartBtn">Bag <span class="bubble" id="cartCount">0</span></button></div>
         </nav>
-        <!-- Mega Menu -->
         <div class="mega" id="mega">
             <div class="mega-grid">
                 <a class="mega-feature" href="shop.html"><span>New Season →</span></a>
                 <div><h4>Shop</h4><a href="shop.html">New Arrivals</a><a href="shop.html">Bestsellers</a><a href="shop.html">Gift Edit</a><a href="shop.html">Under £35</a></div>
                 <div><h4>Jewellery</h4><a href="shop.html">Necklaces</a><a href="shop.html">Earrings</a><a href="shop.html">Bracelets</a><a href="shop.html">Kadas & Cuffs</a></div>
                 <div><h4>Collections</h4><a href="shop.html">Heritage Brass</a><a href="shop.html">Anti-Tarnish</a><a href="shop.html">Statement</a><a href="shop.html">Everyday</a></div>
-                <div><h4>Discover</h4><a href="about.html">Our Story</a><a href="product.html?id=16">Jewellery Care</a><a href="index.html#reviews">Reviews</a><a href="index.html#concierge">Concierge</a></div>
+                <div><h4>Discover</h4><a href="about.html">Our Story</a><a href="care.html">Jewellery Care</a><a href="reviews.html">Reviews</a><a href="concierge.html">Concierge</a></div>
             </div>
         </div>
     </header>
@@ -79,13 +45,9 @@
     <main class="origin-section">
         <div class="eyebrow" style="color:var(--emerald); margin-bottom:20px;">The Origin</div>
         <h2>"Why must beautiful things be hidden away?"</h2>
-        
         <p>We grew up watching the women in our lives treat their jewellery like fragile secrets. Beautiful Kundan sets were wrapped in cotton, locked in safe boxes, and only brought out for weddings. Daily wear was restricted to boring, simple pieces because "real gold is too risky" and "artificial jewellery fades in a week."</p>
-        
         <p>LilAura was born from a desire to break this cycle. We believe that your heritage shouldn't be reserved for special occasions, and your everyday style shouldn't mean compromising on quality or elegance.</p>
-        
         <p>By marrying timeless Indian craftsmanship with modern 18K gold PVD anti-tarnish technology, we create pieces that offer the richness of tradition and the ease of modern life. Waterproof, sweat-resistant, and unapologetically bold.</p>
-        
         <div style="margin-top: 50px;">
             <a href="shop.html" class="btn" style="background:var(--emerald); border-color:var(--emerald);">Explore The Collections</a>
         </div>
@@ -118,9 +80,9 @@
             <div>
                 <h4>Discover</h4>
                 <a href="about.html">Our story</a>
-                <a href="product.html?id=16">Jewellery care</a>
-                <a href="index.html#reviews">Reviews</a>
-                <a href="index.html#concierge">Concierge</a>
+                <a href="care.html">Jewellery care</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="concierge.html">Concierge</a>
             </div>
             <div>
                 <h4>Connect</h4>
@@ -138,18 +100,6 @@
     <div class="overlay" id="overlay"></div>
     <aside class="drawer" id="drawer"><div class="drawer-head"><h3>Your bag</h3><button class="close" id="closeDrawer">×</button></div><div id="cartItems"></div><div id="cartBottom"></div></aside>
     <div class="toast" id="toast"></div>
-
-    <!-- FOMO POPUP -->
-    <div id="fomo-popup" class="toast" style="bottom: 80px; background: white; color: var(--ink); border: 1px solid var(--line); display: flex; align-items: center; gap: 15px; padding: 15px; max-width: 320px; transition: all 0.5s ease-out; transform: translateY(150px); opacity: 0; pointer-events: none;">
-        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; color: var(--gold); border: 1px solid var(--line); flex-shrink: 0;">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
-        </div>
-        <div>
-            <p id="fomo-text" style="font-family: 'Proza Libre', sans-serif; font-size: 10px; color: var(--muted); margin: 0 0 4px 0; text-transform: none; letter-spacing: normal;">Loading...</p>
-            <p id="fomo-product" style="font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--ink); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">...</p>
-            <p style="font-family: 'Proza Libre', sans-serif; font-size: 8px; color: var(--emerald); text-transform: uppercase; letter-spacing: 0.2em; margin: 6px 0 0 0;">Verified Etsy Purchase</p>
-        </div>
-    </div>
 
     <script src="script.js?v=luxe"></script>
 </body>
