@@ -230,36 +230,33 @@ function renderDetail(p) {
 
 // 5. TIMERS & RECENT VIEWS & POPUPS
 function updateTimer() {
-    // Set a target end time (e.g., 72 hours from now, or store it in localStorage so it persists per user session)
+    // Set or retrieve target end time (e.g., 72 hours from now)
     let endTime = localStorage.getItem('lilauraTimerEnd');
     if (!endTime) {
-        endTime = Date.now() + (536 * 60 * 60 * 1000); // 72 hours
+        endTime = Date.now() + (72 * 60 * 60 * 1000); // 72 hours
         localStorage.setItem('lilauraTimerEnd', endTime);
     }
 
     let d = Math.max(0, parseInt(endTime) - Date.now());
     let s = Math.floor(d / 1000);
     
-    let days = Math.floor(s / 86400); 
-    s %= 86400;
-    let h = Math.floor(s / 3600); 
-    s %= 3600; 
-    let m = Math.floor(s / 60); 
+    // Explicitly calculate days, hours, minutes, and seconds
+    let days = Math.floor(s / (3600 * 24));
+    s %= (3600 * 24);
+    let h = Math.floor(s / 3600);
+    s %= 3600;
+    let m = Math.floor(s / 60);
     let sec = s % 60;
 
-    // Update mini-timer in the top announcement bar
+    // Update mini-timer in the top announcement bar (shows hours:mins:secs, or includes days if needed)
     if($('#miniTimer')) {
-        $('#miniTimer').textContent = `${String(h + days * 24).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+        let totalHours = h + (days * 24);
+        $('#miniTimer').textContent = `${String(totalHours).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
     }
 
-    // Update main section countdown boxes
+    // Update main section countdown boxes dynamically
     if($('#days')) $('#days').textContent = String(days).padStart(2,'0');
     if($('#hours')) $('#hours').textContent = String(h).padStart(2,'0');
     if($('#mins')) $('#mins').textContent = String(m).padStart(2,'0');
     if($('#secs')) $('#secs').textContent = String(sec).padStart(2,'0');
-}
-
-function triggerFomo() {
-    toast('P***a in London recently ordered via Etsy.');
-    sessionStorage.setItem('fomoShown', 'true');
 }
