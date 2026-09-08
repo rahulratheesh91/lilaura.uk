@@ -248,10 +248,9 @@ function updateTimer() {
     let m = Math.floor(s / 60);
     let sec = s % 60;
 
-    // Update mini-timer in the top announcement bar (shows hours:mins:secs, or includes days if needed)
+    // Update mini-timer in the top announcement bar to show Days : Hours : Mins : Secs
     if($('#miniTimer')) {
-        let totalHours = h + (days * 24);
-        $('#miniTimer').textContent = `${String(totalHours).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+        $('#miniTimer').textContent = `${days}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(sec).padStart(2,'0')}s`;
     }
 
     // Update main section countdown boxes dynamically
