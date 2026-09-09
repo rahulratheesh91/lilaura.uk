@@ -5,7 +5,7 @@ const LILAURA_UI = {
         <header class="header">
             <nav class="nav">
                 <div class="nav-left"><a href="index.html">Home</a><a href="shop.html">Collections</a><a href="about.html">Our Story</a></div>
-                <a class="logo" href="index.html">LilAura<small>MODERN HERITAGE JEWELLERY</small></a>
+                <a class="logo" href="index.html">LilAura<small>Elegance Made Eternal</small></a>
                 <div class="nav-right"><button class="wish" onclick="window.location.href='shop.html'">♡</button><button class="cart" id="cartBtn">Bag <span class="bubble" id="cartCount">0</span></button></div>
             </nav>
             <div class="mega" id="mega">
