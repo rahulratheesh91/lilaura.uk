@@ -73,10 +73,12 @@ function saveCart() {
 function renderCart() {
     let box = $('#cartItems'), bottom = $('#cartBottom');
     if(!box || !bottom) return;
+    
     if(!cart.length){
-        box.innerHTML = `<div class="cart-empty">Your bag is waiting.<br><br><a class="under" href="shop.html" onclick="closeDrawer()">Discover the edit</a></div>`;
+        box.innerHTML = `<div class="cart-empty" style="text-align:center; padding:40px 0; color:var(--muted);">Your bag is waiting.<br><br><a class="under" href="shop.html" onclick="closeDrawer()">Discover the edit</a></div>`;
         bottom.innerHTML = ''; return;
     }
+    
     box.innerHTML = cart.map((x, i) => `
         <div class="cart-item">
             <img src="${x.img}">
@@ -86,10 +88,24 @@ function renderCart() {
                 <button onclick="removeItem(${i})" style="border:0;background:none;padding:10px 0 0;text-decoration:underline;font-size:10px; color:var(--muted); cursor:pointer">Remove</button>
             </div>
         </div>`).join('');
+        
     let total = cart.reduce((a, x) => a + x.price * x.qty, 0);
+    
+    // --- APEX X™: SMART CART ROUTING ---
+    // Default to main shop URL
+    let checkoutLink = 'https://www.etsy.com/uk/shop/LilauraElegance';
+    
+    // If there is exactly 1 unique item in the cart, route directly to that specific product page
+    if (cart.length === 1) {
+        const matchedProduct = products.find(p => p.name === cart[0].name);
+        if (matchedProduct && matchedProduct.etsyLink) {
+            checkoutLink = matchedProduct.etsyLink;
+        }
+    }
+
     bottom.innerHTML = `
         <div class="cart-total"><span>Total</span><span class="price-mod">£${total.toFixed(2)}</span></div>
-        <button class="checkout" onclick="window.open('https://www.etsy.com/uk/shop/LilauraElegance', '_blank')">Checkout securely on Etsy</button>`;
+        <button class="checkout" onclick="window.open('${checkoutLink}', '_blank')">Checkout securely on Etsy</button>`;
 }
 
 function removeItem(i) { cart.splice(i, 1); saveCart(); }
@@ -218,8 +234,25 @@ function renderDetail(p) {
         $('#p-image-hover').src = p.imageHover || p.image; 
     }
 
-    $('#buy-btn').onclick = () => { addToCart(p.id); if(!p.inStock) toast('Item is currently out of stock.'); };
-    if(!p.inStock) { $('#buy-btn').innerText = "Out of Stock"; $('#buy-btn').style.background = "#ddd"; $('#buy-btn').style.color = "#666"; }
+    // --- APEX X™: DIRECT ETSY CHECKOUT ROUTING ---
+    const buyBtn = $('#buy-btn');
+    buyBtn.innerText = "Proceed to Checkout"; // Dynamically rename the button
+    
+    buyBtn.onclick = () => { 
+        if(!p.inStock) {
+            toast('Item is currently out of stock.'); 
+        } else {
+            // Bypass local cart and go directly to the exact Etsy listing
+            window.open(p.etsyLink, '_blank'); 
+        }
+    };
+
+    if(!p.inStock) { 
+        buyBtn.innerText = "Out of Stock"; 
+        buyBtn.style.background = "#ddd"; 
+        buyBtn.style.color = "#666"; 
+    }
+    // ----------------------------------------------
 
     if (p.category.includes('Traditional')) {
         $('#faq-mat-title').innerHTML = `Materials & Finish <span>+</span>`;
