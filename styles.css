@@ -431,3 +431,16 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
     .contact-grid { grid-template-columns: 1fr; gap: 60px; }
     .contact-form-box { padding: 30px; }
 }
+
+/* LILAURA APEX X™: MOBILE FOOTER RESPONSIVE FIX */
+@media (max-width: 900px) {
+    footer .foot {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 40px !important;
+        padding: 60px 24px !important;
+    }
+    footer .foot > div {
+        width: 100% !important;
+    }
+}
