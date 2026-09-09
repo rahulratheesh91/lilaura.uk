@@ -30,7 +30,7 @@ const LILAURA_UI = {
         <footer>
             <div class="foot" style="grid-template-columns: 1.5fr repeat(4, 1fr);">
                 <div>
-                    <div class="foot-logo">LILAURA</div>
+                    <div class="foot-logo">LilAura</div>
                     <p style="max-width:300px;color:var(--soft); margin-top:15px; line-height: 1.8; font-size:14px;">Modern heritage jewellery. Designed to be lived in.</p>
                 </div>
                 <div>
