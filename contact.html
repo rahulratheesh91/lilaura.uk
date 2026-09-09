@@ -6,55 +6,42 @@
     <title>Contact Us | LilAura UK</title>
     <meta name="description" content="Get in touch with LilAura. Speak to our WhatsApp concierge, email us, or send a message for order inquiries and styling advice.">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
     <link rel="stylesheet" href="styles.css?v=luxe">
-    <style>
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1000px; margin: 0 auto; padding: 0 5vw 100px; }
-        .contact-form-box { background: var(--white); padding: 40px; border: 1px solid var(--line); }
-        .contact-input { padding: 15px; border: 1px solid var(--line); outline: 0; background: var(--soft); font-family: 'Proza Libre', sans-serif; width: 100%; margin-bottom: 15px; box-sizing: border-box; }
-        .contact-btn { background: var(--ink); color: var(--white); border: 1px solid var(--ink); padding: 15px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: 0.3s; width: 100%; }
-        .contact-btn:hover { background: var(--emerald); border-color: var(--emerald); }
-        .contact-label { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--ink); margin-bottom: 5px; display: block; }
-        .contact-link { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); transition: 0.3s; border-bottom: 1px solid var(--ink); padding-bottom:2px; }
-        .contact-link:hover { color: var(--gold); border-color: var(--gold); }
-        @media(max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-            .contact-form-box { padding: 25px; }
-        }
-    </style>
 </head>
 <body>
-    <!-- LILAURA APEX X™: HEADER MOUNT -->
     <div id="lilaura-header-mount"></div>
     <div class="announce">Autumn Edit · <b>20% OFF</b> selected anti-tarnish jewellery · Ends in <span id="miniTimer">--:--:--</span></div>
 
     <div class="page-header">
-        <div class="eyebrow" style="color:var(--emerald); margin-bottom:15px">At Your Service</div>
+        <div class="eyebrow">At Your Service</div>
         <h1>Get in Touch</h1>
-        <p style="font-family:'Proza Libre', sans-serif; font-size:14px; color:var(--muted); max-width:600px; margin:0 auto">Have a question about a piece, need styling advice, or require help with an order? We are here to assist you.</p>
+        <p>Have a question about a piece, need styling advice, or require help with an order? We are here to assist you.</p>
     </div>
 
     <main class="contact-grid">
-        <div>
-            <h2 style="font-size: 32px; color: var(--ink); margin-top: 0; margin-bottom: 20px;">Concierge Services</h2>
-            <p style="color: var(--muted); line-height: 1.8; margin-bottom: 40px;">For the fastest response, reach out to our WhatsApp Concierge. We typically reply within a few hours during standard business days.</p>
-            <div style="margin-bottom: 35px;">
+        <div class="contact-info">
+            <h2>Concierge Services</h2>
+            <p>For the fastest response, reach out to our WhatsApp Concierge. We typically reply within a few hours during standard business days.</p>
+            
+            <div class="contact-block">
                 <span class="contact-label">WhatsApp Concierge</span>
                 <a href="https://wa.me/447303179015?text=Hello%20LilAura!%20I%20have%20an%20inquiry..." target="_blank" class="contact-link">Message Us &rarr;</a>
             </div>
-            <div style="margin-bottom: 35px;">
+            
+            <div class="contact-block">
                 <span class="contact-label">Email Support</span>
                 <a href="mailto:shop@lilaura.uk" class="contact-link">shop@lilaura.uk</a>
             </div>
-            <div style="margin-bottom: 35px;">
+            
+            <div class="contact-block">
                 <span class="contact-label">Etsy Storefront</span>
-                <p style="font-size: 13px; color: var(--muted); margin: 5px 0 10px 0;">All transactions and official returns are processed via our verified Etsy shop.</p>
+                <p style="margin-bottom: 12px;">All transactions and official returns are processed via our verified Etsy shop.</p>
                 <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="contact-link">Visit Shop &rarr;</a>
             </div>
         </div>
 
         <div class="contact-form-box">
-            <h2 style="font-size: 28px; color: var(--ink); margin-top: 0; margin-bottom: 25px;">Send a Message</h2>
+            <h2>Send a Message</h2>
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
                 <input type="text" name="name" placeholder="Your Name" required class="contact-input">
@@ -66,7 +53,6 @@
         </div>
     </main>
 
-    <!-- LILAURA APEX X™: FOOTER MOUNT -->
     <div id="lilaura-footer-mount"></div>
     <script src="components.js"></script>
     <script src="script.js?v=luxe"></script>
