@@ -16,7 +16,7 @@ const products = [
     { id: 5, sku: "TRNK-PAL-05", name: "Traditional Palakka Choker Necklace Set with Matching Earstuds", category: "Traditional Jewellery", price: 22.99, inStock: true, image: "https://i.etsystatic.com/40040678/r/il/a1210d/8348817959/il_1588xN.8348817959_chs4.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/0f7782/8300923278/il_1588xN.8300923278_m5s3.jpg", desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Perfect for weddings and festive wear, crafted beautifully in traditional gold-coated brass.", seoTitle: "Traditional Indian Palakka Choker Set | Brass Heritage Jewellery UK | LilAura", metaDesc: "Authentic South Indian Palakka choker set with matching earstuds. Premium traditional gold-coated brass jewellery perfect for weddings and cultural events.", altText: "Traditional Indian Brass Palakka Choker Necklace Set", etsyLink: "https://www.etsy.com/uk/listing/4529392003/traditional-palakka-choker-necklace-set" },
     { id: 20, sku: "SSNK-EMR-20", name: "Gold Plated Emerald Pendant Necklace", category: "Anti-tarnish Necklaces", price: 15.49, inStock: true, image: "https://i.etsystatic.com/40040678/r/il/ffa352/8189114976/il_1140xN.8189114976_1kwd.jpg", imageHover: "", desc: "Exquisite geometric emerald-cut green stone pendant on an 18K PVD gold-plated chain. Simple, daily luxury made from robust stainless steel.", seoTitle: "Gold Plated Emerald Pendant | Stainless Steel Necklace | LilAura", metaDesc: "Exquisite 18K PVD gold-plated emerald-cut pendant necklace. Water-resistant stainless steel jewellery perfect for everyday luxury in the UK.", altText: "18K Gold Plated Emerald Pendant Necklace", etsyLink: "https://www.etsy.com/uk/listing/4529214581/anti-tarnish-gold-plated-emerald-pendant" },
     { id: 21, sku: "SSCF-HPR-21", name: "Gold Plated Stainless Steel Heart Pearl Bangle", category: "Anti-tarnish Kada", price: 17.99, inStock: true, image: "https://i.etsystatic.com/40040678/r/il/8b2186/8160669462/il_1140xN.8160669462_1gej.jpg", imageHover: "", desc: "Romantic open cuff bangle featuring twin mother-of-pearl heart accents set in durable 18K PVD gold-plated stainless steel. Highly resistant to tarnishing.", seoTitle: "Gold Plated Pearl Bangle | Stainless Steel Jewellery UK", metaDesc: "Romantic open cuff bangle with twin mother-of-pearl hearts. 18K PVD gold-plated stainless steel jewellery for daily wear.", altText: "18K Gold Plated Stainless Steel Heart Pearl Bangle", etsyLink: "https://www.etsy.com/uk/listing/4525317383/gold-plated-stainless-steel-heart-pearl" },
-    { id: 8, sku: "TRNK-PAL-08", name: "Traditional Kerala Palakka Choker Necklace Set with Jhumka Earrings", category: "Traditional Jewellery", price: 22.79, inStock: true, image: "https://i.etsystatic.com/40040678/r/il/344f38/8294466386/il_1588xN.8294466386_g100.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/febf4b/8342363125/il_1588xN.8342363125_44u7.jpg", desc: "Grand Kerala-style green Palakka short choker necklace paired with traditional bell-shaped Jhumka earrings. Classic temple jewelry cast in traditional gold-coated brass.", seoTitle: "Kerala Palakka Choker & Jhumka Set | Traditional Indian Brass Jewellery", metaDesc: "Grand Kerala-style green Palakka choker with traditional Jhumka earrings. Authentic traditional gold-coated brass jewellery crafted for Indian heritage aesthetics.", altText: "Traditional Indian Brass Kerala Palakka Choker with Jhumka Earrings", etsyLink: "https://www.etsy.com/uk/listing/4525327387/traditional-kerala-palakka-choker" },
+    { id: 8, sku: "TRNK-PAL-08", name: "Traditional Kerala Palakka Choker Necklace Set with Jhumka Earrings", category: "Traditional Jewellery", price: 22.79, inStock: true, image: "https://i.etsystatic.com/40040678/r/il/344f38/8294466386/il_1588xN.8294466386_g100.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/febf4b/8342363125/il_1588xN.8342363125_44u7.jpg", desc: "Grand Kerala-style green Palakka short choker necklace paired with traditional bell-shaped Jhumka Earrings. Classic temple jewelry cast in traditional gold-coated brass.", seoTitle: "Kerala Palakka Choker & Jhumka Set | Traditional Indian Brass Jewellery", metaDesc: "Grand Kerala-style green Palakka choker with traditional Jhumka earrings. Authentic traditional gold-coated brass jewellery crafted for Indian heritage aesthetics.", altText: "Traditional Indian Brass Kerala Palakka Choker with Jhumka Earrings", etsyLink: "https://www.etsy.com/uk/listing/4525327387/traditional-kerala-palakka-choker" },
     { id: 9, sku: "TRNK-COIN-09", name: "Ganapathy Coin Palakka Choker Traditional Heritage Necklace", category: "Traditional Jewellery", price: 20.99, inStock: false, image: "https://i.etsystatic.com/40040678/r/il/433e57/8300782474/il_1588xN.8300782474_9tgy.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/07ba53/8348676775/il_1588xN.8348676775_9har.jpg", desc: "Traditional Kasu Mala coin choker featuring Lord Ganesha motifs interlaced with classic Palakka stones. Heirloom craftsmanship utilizing traditional gold-coated brass.", seoTitle: "Ganapathy Coin Kasu Mala | Traditional Indian Brass Jewellery UK | LilAura", metaDesc: "Traditional Kasu Mala coin choker featuring Lord Ganesha. Premium traditional gold-coated brass heritage jewellery perfect for South Indian weddings.", altText: "Traditional Indian Brass Ganapathy Coin Palakka Choker", etsyLink: "https://www.etsy.com/uk/listing/4483539459/coin-palakka-choker-traditional-necklace" },
     { id: 22, sku: "SSNK-EMR-22", name: "Gold Plated Emerald Green Leaf Pendant Necklace", category: "Anti-tarnish Necklaces", price: 16.99, inStock: true, image: "https://i.etsystatic.com/40040678/r/il/e0133d/8235370965/il_1140xN.8235370965_lcqj.jpg", imageHover: "", desc: "Exquisite geometric emerald-cut green stone pendant on an 18K PVD gold-plated chain. Made of solid stainless steel to guarantee durable daily wear.", seoTitle: "Gold Plated Emerald Leaf Pendant | Stainless Steel Jewellery", metaDesc: "Geometric emerald green leaf pendant on an 18K PVD gold-plated chain. Water-resistant stainless steel necklace for daily wear.", altText: "18K Gold Plated Emerald Green Leaf Pendant", etsyLink: "https://www.etsy.com/uk/listing/4533568863/anti-tarnish-gold-plated-emerald-green" },
     { id: 11, sku: "TRNK-PAL-11", name: "Traditional Indian Lakshmi Choker Necklace Set with Matching Ear studs", category: "Traditional Jewellery", price: 33.99, inStock: true, image: "https://i.etsystatic.com/40040678/r/il/78acc5/8345517199/il_1588xN.8345517199_5d0d.jpg", imageHover: "https://i.etsystatic.com/40040678/r/il/398816/8297620094/il_1588xN.8297620094_50p8.jpg", desc: "Authentic South Indian heritage Palakka choker set. Includes matching traditional earstuds. Beautifully forged in traditional gold-coated brass, perfect for weddings and festive wear.", seoTitle: "Lakshmi Choker Necklace Set | Traditional Indian Brass Jewellery | LilAura", metaDesc: "Authentic South Indian Lakshmi temple choker set. Crafted in traditional gold-coated brass, this heritage jewellery is ideal for bridal and festive wear.", altText: "Traditional Indian Brass Lakshmi Choker Necklace Set", etsyLink: "https://www.etsy.com/uk/listing/4533558563/traditional-indian-lakshmi-choker" },
@@ -82,11 +82,11 @@ function renderCart() {
     
     box.innerHTML = cart.map((x, i) => `
         <div class="cart-item">
-            <img src="${x.img}">
+            <img src="${x.img}" alt="${x.name}">
             <div style="flex:1">
                 <h4>${x.name}</h4>
                 <small class="price-mod">£${x.price.toFixed(2)}</small><small style="letter-spacing:0.1em; color:var(--gold); text-transform:uppercase; margin-left:8px">· Qty ${x.qty}</small><br>
-                <button onclick="removeItem(${i})" style="border:0;background:none;padding:10px 0 0;text-decoration:underline;font-size:10px; color:var(--muted); cursor:pointer">Remove</button>
+                <button aria-label="Remove item" onclick="removeItem(${i})" style="border:0;background:none;padding:12px 0 0;text-decoration:underline;font-size:10px; color:var(--muted); cursor:pointer; transition:color 0.3s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Remove Item</button>
             </div>
         </div>`).join('');
         
@@ -104,10 +104,25 @@ function renderCart() {
 
     bottom.innerHTML = `
         <div class="cart-total"><span>Total</span><span class="price-mod">£${total.toFixed(2)}</span></div>
-        <button class="checkout" onclick="window.open('${checkoutLink}', '_blank')">Checkout securely on Etsy</button>`;
+        <button class="checkout" onclick="window.open('${checkoutLink}', '_blank')">Checkout securely on Etsy</button>
+        <!-- LILAURA APEX X™: CLEAR BAG BUTTON -->
+        <button onclick="clearCart()" style="width:100%; border:0; background:none; padding:20px 0 0; font-family:'Proza Libre', sans-serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); cursor:pointer; text-decoration:underline; transition:color 0.3s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Empty Bag</button>`;
 }
 
-function removeItem(i) { cart.splice(i, 1); saveCart(); }
+function removeItem(i) { 
+    cart.splice(i, 1); 
+    saveCart(); 
+    toast('Item removed from bag'); 
+}
+
+function clearCart() {
+    if (confirm("Are you sure you want to empty your bag?")) {
+        cart = [];
+        saveCart();
+        toast('Bag has been emptied');
+    }
+}
+
 function openDrawer() { $('#drawer')?.classList.add('open'); $('#overlay')?.classList.add('open'); document.body.classList.add('lock'); }
 function closeDrawer() { $('#drawer')?.classList.remove('open'); $('#overlay')?.classList.remove('open'); document.body.classList.remove('lock'); }
 
