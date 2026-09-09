@@ -27,23 +27,7 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-left"><a href="index.html">Home</a><a href="shop.html">Collections</a><a href="about.html">Our Story</a></div>
-            <a class="logo" href="index.html">LILAURA<small>MODERN HERITAGE JEWELLERY</small></a>
-            <div class="nav-right"><button class="wish" onclick="window.location.href='shop.html'">♡</button><button class="cart" id="cartBtn">Bag <span class="bubble" id="cartCount">0</span></button></div>
-        </nav>
-        <div class="mega" id="mega">
-            <div class="mega-grid">
-                <a class="mega-feature" href="shop.html"><span>New Season →</span></a>
-                <div><h4>Shop</h4><a href="shop.html">New Arrivals</a><a href="shop.html">Bestsellers</a><a href="shop.html">Gift Edit</a><a href="shop.html">Under £35</a></div>
-                <div><h4>Jewellery</h4><a href="shop.html">Necklaces</a><a href="shop.html">Earrings</a><a href="shop.html">Bracelets</a><a href="shop.html">Kadas & Cuffs</a></div>
-                <div><h4>Collections</h4><a href="shop.html">Heritage Brass</a><a href="shop.html">Anti-Tarnish</a><a href="shop.html">Statement</a><a href="shop.html">Everyday</a></div>
-                <div><h4>Discover</h4><a href="about.html">Our Story</a><a href="care.html">Jewellery Care</a><a href="reviews.html">Reviews</a><a href="concierge.html">Concierge</a></div>
-            </div>
-        </div>
-    </header>
-
+    <div id="lilaura-header-mount"></div>
     <div class="page-header">
         <div class="eyebrow" style="color:var(--emerald); margin-bottom:15px">At Your Service</div>
         <h1>Get in Touch</h1>
@@ -84,44 +68,12 @@
             </form>
         </div>
     </main>
-
-    <footer>
-        <div class="foot">
-            <div>
-                <div class="foot-logo">LILAURA</div>
-                <p style="max-width:300px;color:var(--soft); margin-top:15px; line-height: 1.8; font-size:14px;">Modern heritage jewellery. Designed to be lived in.</p>
-            </div>
-            <div>
-                <h4>Shop</h4>
-                <a href="shop.html">New arrivals</a>
-                <a href="shop.html">Bestsellers</a>
-                <a href="shop.html">Anti-tarnish</a>
-                <a href="shop.html">Gift edit</a>
-            </div>
-            <div>
-                <h4>Discover</h4>
-                <a href="about.html">Our story</a>
-                <a href="care.html">Jewellery care</a>
-                <a href="reviews.html">Reviews</a>
-                <a href="concierge.html">Concierge</a>
-            </div>
-            <div>
-                <h4>Connect</h4>
-                <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank">Etsy Shop</a>
-                <a href="https://instagram.com/lilaura.uk" target="_blank">Instagram</a>
-                <a href="https://wa.me/447303179015" target="_blank">WhatsApp</a>
-            </div>
-        </div>
-        <div class="copy">
-            <span>© 2026 LilAura UK. All rights reserved.</span>
-            <span>Modern heritage. Made to be worn.</span>
-        </div>
-    </footer>
-
+    
     <div class="overlay" id="overlay"></div>
-    <aside class="drawer" id="drawer"><div class="drawer-head"><h3>Your bag</h3><button class="close" id="closeDrawer">×</button></div><div id="cartItems"></div><div id="cartBottom"></div></aside>
     <div class="toast" id="toast"></div>
 
-    <script src="script.js?v=luxe"></script>
+    <div id="lilaura-footer-mount"></div>
+<script src="components.js"></script>
+<script src="script.js?v=luxe"></script>
 </body>
 </html>
