@@ -1,4 +1,4 @@
-/* LILAURA UNIFIED ENGINE (Design + SEO) */
+/* LILAURA APEX X™ UNIFIED ENGINE (Design, SEO & Conversion) */
 
 // 1. URL POLISH
 if (window.location.pathname.endsWith('.html') && window.location.pathname !== '/index.html') {
@@ -46,6 +46,7 @@ function toast(m) {
     t.textContent = m; t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2000);
 }
+
 function renderRecent(){
     let r = JSON.parse(localStorage.getItem('lilauraRecent')||'[]');
     if(!r.length) return;
@@ -92,10 +93,8 @@ function renderCart() {
     let total = cart.reduce((a, x) => a + x.price * x.qty, 0);
     
     // --- APEX X™: SMART CART ROUTING ---
-    // Default to main shop URL
     let checkoutLink = 'https://www.etsy.com/uk/shop/LilauraElegance';
     
-    // If there is exactly 1 unique item in the cart, route directly to that specific product page
     if (cart.length === 1) {
         const matchedProduct = products.find(p => p.name === cart[0].name);
         if (matchedProduct && matchedProduct.etsyLink) {
@@ -126,7 +125,7 @@ function toggleWish(event, id) {
     saveCart();
 }
 
-// 4. RENDERING ENGINES
+// 4. RENDERING ENGINES & FOMO LOGIC
 document.addEventListener('DOMContentLoaded', () => {
     if($('#cartBtn')) $('#cartBtn').onclick = openDrawer;
     if($('#closeDrawer')) $('#closeDrawer').onclick = closeDrawer;
@@ -137,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const shopGrid = document.getElementById('shop-grid');
     if (shopGrid) renderShop(products);
 
-    // Filter Logic with Smart Mapping
+    // Filter Logic
     $$('.tab').forEach(b => b.onclick = () => {
         $$('.tab').forEach(x => x.classList.remove('active'));
         b.classList.add('active');
@@ -176,8 +175,19 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDetail(p);
     }
     
-    // Safely check if triggerFomo exists before calling it
-    if(!sessionStorage.getItem('fomoShown') && typeof triggerFomo === 'function') setTimeout(triggerFomo, 8000);
+    // --- APEX X™: TEMPORAL FOMO ENGINE LOGIC ---
+    const fomoLastShown = localStorage.getItem('lilauraFomoLastShown');
+    const now = Date.now();
+    const cooldownPeriod = 1.5 * 60 * 60 * 1000; // 1.5 hours in milliseconds
+    
+    // Only trigger if it has never been shown OR if 1.5 hours have passed
+    if (!fomoLastShown || now - parseInt(fomoLastShown) > cooldownPeriod) {
+        if (typeof triggerFomo === 'function') {
+            setTimeout(triggerFomo, 43000); // 43 seconds exactly
+        }
+    }
+    // --------------------------------------------
+    
     setInterval(updateTimer, 1000); updateTimer(); renderRecent();
 });
 
@@ -186,7 +196,6 @@ function renderShop(items) {
     if (!container) return;
     if (!items.length) { container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px 0;">No items found.</div>`; return; }
 
-    // --- SORTING LOGIC: Keep specific IDs at the bottom ---
     const bottomIds = [16, 17, 18, 19, 20, 21, 22];
     const regularItems = items.filter(p => !bottomIds.includes(p.id));
     const bottomItems = items.filter(p => bottomIds.includes(p.id));
@@ -202,8 +211,8 @@ function renderShop(items) {
         <article class="product" onclick="window.location.href='product.html?id=${p.id}'">
             <div class="media">
                 ${tag}
-                <button class="heart ${activeWish}" onclick="toggleWish(event, ${p.id})">♡</button>
-                <img src="${p.image}" class="base-img">
+                <button class="heart ${activeWish}" aria-label="Add to wishlist" onclick="toggleWish(event, ${p.id})">♡</button>
+                <img src="${p.image}" class="base-img" loading="lazy" alt="${p.name}">
                 ${hoverHTML}
                 <div class="quickbar">
                     <button class="quick" onclick="event.stopPropagation(); window.location.href='product.html?id=${p.id}'">Quick view</button>
@@ -219,7 +228,7 @@ function renderShop(items) {
     }).join('');
 }
 
-// 5. LILAURA APEX X™: UPDATED PDP RENDERING
+// 5. PDP RENDERING & ROUTING
 function renderDetail(p) {
     document.title = p.seoTitle || `${p.name} | LilAura UK`;
     $('#p-cat').innerText = p.category; $('#p-sku').innerText = `SKU: ${p.sku}`;
@@ -234,15 +243,13 @@ function renderDetail(p) {
         $('#p-image-hover').src = p.imageHover || p.image; 
     }
 
-    // --- APEX X™: DIRECT ETSY CHECKOUT ROUTING ---
     const buyBtn = $('#buy-btn');
-    buyBtn.innerText = "Proceed to Checkout"; // Dynamically rename the button
+    buyBtn.innerText = "Proceed to Checkout";
     
     buyBtn.onclick = () => { 
         if(!p.inStock) {
             toast('Item is currently out of stock.'); 
         } else {
-            // Bypass local cart and go directly to the exact Etsy listing
             window.open(p.etsyLink, '_blank'); 
         }
     };
@@ -252,7 +259,6 @@ function renderDetail(p) {
         buyBtn.style.background = "#ddd"; 
         buyBtn.style.color = "#666"; 
     }
-    // ----------------------------------------------
 
     if (p.category.includes('Traditional')) {
         $('#faq-mat-title').innerHTML = `Materials & Finish <span>+</span>`;
@@ -268,12 +274,12 @@ function renderDetail(p) {
     remember(p);
 }
 
-// 6. LILAURA APEX X™: RECENTLY VIEWED MEMORY
+// 6. RECENTLY VIEWED MEMORY
 function remember(p) {
     let r = JSON.parse(localStorage.getItem('lilauraRecent') || '[]');
-    r = r.filter(x => x.id !== p.id); // Prevent duplicates
-    r.unshift({ id: p.id, name: p.name, price: p.price, img: p.image }); // Add to front
-    if (r.length > 4) r.pop(); // Keep only the 4 most recent
+    r = r.filter(x => x.id !== p.id);
+    r.unshift({ id: p.id, name: p.name, price: p.price, img: p.image });
+    if (r.length > 4) r.pop();
     localStorage.setItem('lilauraRecent', JSON.stringify(r));
 }
 
@@ -305,7 +311,7 @@ function updateTimer() {
     if($('#secs')) $('#secs').textContent = String(sec).padStart(2,'0');
 }
 
-// 8. LILAURA APEX X™: DYNAMIC SEO & METADATA INJECTION
+// 8. DYNAMIC SEO & METADATA INJECTION
 function injectProductSEO(p) {
     document.title = p.seoTitle || `${p.name} | LilAura UK`;
 
@@ -368,4 +374,48 @@ function injectProductSEO(p) {
     script.id = 'lilaura-product-schema';
     script.text = JSON.stringify(schema);
     document.head.appendChild(script);
+}
+
+// 9. LILAURA APEX X™: SOCIAL PROOF ENGINE (FOMO)
+function triggerFomo() {
+    const fomoPopup = document.getElementById('fomo-popup');
+    const fomoText = document.getElementById('fomo-text');
+    const fomoProduct = document.getElementById('fomo-product');
+    
+    if (!fomoPopup || !fomoText || !fomoProduct) return;
+
+    // Filter to only show in-stock items
+    const availableProducts = products.filter(p => p.inStock);
+    if (availableProducts.length === 0) return;
+
+    // Pick a random product
+    const randomProduct = availableProducts[Math.floor(Math.random() * availableProducts.length)];
+    
+    // Pick a random UK location and time
+    const locations = ['London', 'Manchester', 'Birmingham', 'Surrey', 'Edinburgh', 'Bristol', 'Kent', 'Essex'];
+    const times = ['2 minutes ago', '14 minutes ago', '1 hour ago', 'Just now'];
+    const randomLoc = locations[Math.floor(Math.random() * locations.length)];
+    const randomTime = times[Math.floor(Math.random() * times.length)];
+
+    fomoText.textContent = `Someone in ${randomLoc} bought this ${randomTime}`;
+    fomoProduct.textContent = randomProduct.name;
+    
+    // Animate In
+    fomoPopup.style.opacity = '1';
+    fomoPopup.style.transform = 'translateY(0)';
+    fomoPopup.style.pointerEvents = 'auto';
+
+    // Click to view product
+    fomoPopup.onclick = () => window.location.href = `product.html?id=${randomProduct.id}`;
+    fomoPopup.style.cursor = 'pointer';
+
+    // Log the interaction time to enforce the 1.5 hour cooldown
+    localStorage.setItem('lilauraFomoLastShown', Date.now().toString());
+
+    // Auto-hide after 6 seconds
+    setTimeout(() => {
+        fomoPopup.style.opacity = '0';
+        fomoPopup.style.transform = 'translateY(150px)';
+        fomoPopup.style.pointerEvents = 'none';
+    }, 6000);
 }
