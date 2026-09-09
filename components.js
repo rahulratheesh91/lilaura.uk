@@ -14,21 +14,52 @@ const LILAURA_UI = {
                     <div><h4>Shop</h4><a href="shop.html">New Arrivals</a><a href="shop.html">Bestsellers</a><a href="shop.html">Gift Edit</a><a href="shop.html">Under £35</a></div>
                     <div><h4>Jewellery</h4><a href="shop.html">Necklaces</a><a href="shop.html">Earrings</a><a href="shop.html">Bracelets</a><a href="shop.html">Kadas & Cuffs</a></div>
                     <div><h4>Collections</h4><a href="shop.html">Heritage Brass</a><a href="shop.html">Anti-Tarnish</a><a href="shop.html">Statement</a><a href="shop.html">Everyday</a></div>
-                    <div><h4>Discover</h4><a href="about.html">Our Story</a><a href="care.html">Jewellery Care</a><a href="reviews.html">Reviews</a><a href="concierge.html">Concierge</a></div>
+                    <div>
+                        <h4>Discover</h4>
+                        <a href="about.html">Our Story</a>
+                        <a href="care.html">Jewellery Care</a>
+                        <a href="reviews.html">Reviews</a>
+                        <a href="concierge.html">Concierge</a>
+                        <a href="policies.html">Legal & Policies</a>
+                    </div>
                 </div>
             </div>
         </header>
     `,
     renderFooter: () => `
         <footer>
-            <div class="foot">
+            <div class="foot" style="grid-template-columns: 1.5fr repeat(4, 1fr);">
                 <div>
                     <div class="foot-logo">LILAURA</div>
                     <p style="max-width:300px;color:var(--soft); margin-top:15px; line-height: 1.8; font-size:14px;">Modern heritage jewellery. Designed to be lived in.</p>
                 </div>
-                <div><h4>Shop</h4><a href="shop.html">New arrivals</a><a href="shop.html">Bestsellers</a><a href="shop.html">Anti-tarnish</a><a href="shop.html">Gift edit</a></div>
-                <div><h4>Discover</h4><a href="about.html">Our story</a><a href="care.html">Jewellery care</a><a href="reviews.html">Reviews</a><a href="concierge.html">Concierge</a></div>
-                <div><h4>Connect</h4><a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank">Etsy Shop</a><a href="https://instagram.com/lilaura.uk" target="_blank">Instagram</a><a href="https://wa.me/447303179015" target="_blank">WhatsApp</a></div>
+                <div>
+                    <h4>Shop</h4>
+                    <a href="shop.html">New arrivals</a>
+                    <a href="shop.html">Bestsellers</a>
+                    <a href="shop.html">Anti-tarnish</a>
+                    <a href="shop.html">Gift edit</a>
+                </div>
+                <div>
+                    <h4>Discover</h4>
+                    <a href="about.html">Our story</a>
+                    <a href="care.html">Jewellery care</a>
+                    <a href="reviews.html">Reviews</a>
+                    <a href="concierge.html">Concierge</a>
+                </div>
+                <div>
+                    <h4>Help & Legal</h4>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="policies.html#returns">Returns Policy</a>
+                    <a href="policies.html#terms">Terms of Service</a>
+                    <a href="policies.html#privacy">Privacy Notice</a>
+                </div>
+                <div>
+                    <h4>Connect</h4>
+                    <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank">Etsy Shop</a>
+                    <a href="https://instagram.com/lilaura.uk" target="_blank">Instagram</a>
+                    <a href="https://wa.me/447303179015" target="_blank">WhatsApp</a>
+                </div>
             </div>
             <div class="copy">
                 <span>© ${new Date().getFullYear()} LilAura UK. All rights reserved.</span>
