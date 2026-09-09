@@ -219,3 +219,29 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
     .quickbar button { padding: 10px; font-size: 8px; }
     .quickbar button:first-child { display: none; }
 }
+
+/* LILAURA APEX X™: MOBILE HEADER & NAVIGATION PATCH */
+@media(max-width: 560px) {
+    .nav { height: 68px; padding: 0 20px; }
+    .logo { font-size: 24px; }
+    .logo small { display: none; } /* Suppresses sub-logo to prevent visual clutter */
+    
+    /* Condenses navigation gap for narrow screens */
+    .nav-left, .nav-right { gap: 16px; }
+    
+    /* Transforms text links into clean, touch-friendly UI icons */
+    .nav-left button, .nav-left a, .nav-right button { font-size: 0; }
+    
+    /* Injects Hamburger & Icons via pseudo-elements */
+    .nav-left a[href="shop.html"]::after { content: '☰'; font-size: 22px; }
+    .nav-right button.wish::after { content: '♡'; font-size: 22px; }
+    .nav-right button.cart::after { content: 'Bag'; font-size: 11px; letter-spacing: 0.1em; }
+    
+    .mega { top: 68px; padding: 30px 20px; }
+    .hero h1 { font-size: 48px; }
+    
+    /* Rebalances PDP header spacing for mobile readability */
+    .page-header { padding: 90px 20px 40px; }
+    .page-header h1 { font-size: 40px; }
+    .p-title { font-size: 32px; }
+}
