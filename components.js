@@ -6,7 +6,11 @@ const LILAURA_UI = {
             <nav class="nav">
                 <div class="nav-left"><a href="index.html">Home</a><a href="shop.html">Collections</a><a href="about.html">Our Story</a></div>
                 <a class="logo" href="index.html">LilAura<small>Elegance Made Eternal</small></a>
-                <div class="nav-right"><button class="wish" onclick="window.location.href='shop.html'">♡</button><button class="cart" id="cartBtn">Bag <span class="bubble" id="cartCount">0</span></button></div>
+                <div class="nav-right">
+                    <!-- ACCESSIBILITY FIX: Added aria-label to the wish button -->
+                    <button class="wish" aria-label="Wishlist" onclick="window.location.href='shop.html'">♡</button>
+                    <button class="cart" id="cartBtn">Bag <span class="bubble" id="cartCount">0</span></button>
+                </div>
             </nav>
             <div class="mega" id="mega">
                 <div class="mega-grid">
@@ -52,7 +56,7 @@ const LILAURA_UI = {
                     <a href="contact.html">Contact Us</a>
                     <a href="policies.html#returns">Returns Policy</a>
                     <a href="policies.html#terms">Terms of Service</a>
-                    <a href="privacy.html">Privacy Notice</a> <!-- UPDATED ROUTING -->
+                    <a href="privacy.html">Privacy Notice</a>
                 </div>
                 <div>
                     <h4>Connect</h4>
@@ -70,7 +74,8 @@ const LILAURA_UI = {
     renderDrawer: () => `
         <div class="overlay" id="overlay"></div>
         <aside class="drawer" id="drawer">
-            <div class="drawer-head"><h3>Your bag</h3><button class="close" id="closeDrawer">×</button></div>
+            <!-- ACCESSIBILITY FIX: Added aria-label to the close button -->
+            <div class="drawer-head"><h3>Your bag</h3><button class="close" id="closeDrawer" aria-label="Close cart">×</button></div>
             <div id="cartItems"></div>
             <div id="cartBottom"></div>
         </aside>
