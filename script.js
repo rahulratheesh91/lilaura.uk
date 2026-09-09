@@ -248,7 +248,7 @@ function remember(p) {
 function updateTimer() {
     let endTime = localStorage.getItem('lilauraTimerEnd');
     if (!endTime) {
-        endTime = Date.now() + (72 * 60 * 60 * 1000); 
+        endTime = Date.now() + (511 * 60 * 60 * 1000); 
         localStorage.setItem('lilauraTimerEnd', endTime);
     }
 
