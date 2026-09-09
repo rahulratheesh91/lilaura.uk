@@ -52,7 +52,7 @@ const LILAURA_UI = {
                     <a href="contact.html">Contact Us</a>
                     <a href="policies.html#returns">Returns Policy</a>
                     <a href="policies.html#terms">Terms of Service</a>
-                    <a href="policies.html#privacy">Privacy Notice</a>
+                    <a href="privacy.html">Privacy Notice</a> <!-- UPDATED ROUTING -->
                 </div>
                 <div>
                     <h4>Connect</h4>
