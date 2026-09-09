@@ -294,3 +294,82 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
     .timer { justify-content: center; }
     .review-grid { grid-template-columns: 1fr; gap: 16px; }
 }
+
+/* LILAURA APEX X™: CONCIERGE & NEWSLETTER RESTORATION */
+
+.concierge {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--emerald);
+    color: var(--white);
+    min-height: 520px;
+}
+.concierge-copy {
+    padding: 80px 6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.concierge-copy .eyebrow { color: var(--gold); margin-bottom: 16px; }
+.concierge-copy h2 { font-size: 46px; margin: 0 0 20px 0; color: var(--white); line-height: 1.1; }
+.concierge-copy p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.85); margin-bottom: 36px; max-width: 440px; }
+.concierge-link { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 6px; transition: var(--transition-fast); }
+.concierge-link:hover { color: var(--white); border-color: var(--white); }
+.concierge-image {
+    background: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85') center/cover;
+    min-height: 400px;
+}
+
+.news {
+    padding: 100px 5vw;
+    text-align: center;
+    background: var(--paper);
+    max-width: 700px;
+    margin: 0 auto;
+}
+.news .eyebrow { color: var(--muted); margin-bottom: 16px; }
+.news h2 { font-size: 42px; color: var(--ink); margin: 0 0 20px 0; }
+.news p { font-size: 15px; color: var(--muted); margin-bottom: 40px; line-height: 1.6; }
+
+/* NEWSLETTER FORM STYLING */
+.form {
+    display: flex;
+    gap: 12px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.form input {
+    flex: 1;
+    padding: 16px 20px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    outline: none;
+    font-size: 13px;
+    font-family: 'Proza Libre', sans-serif;
+    color: var(--ink);
+    transition: border var(--transition-fast);
+}
+.form input:focus { border-color: var(--ink); }
+.form button {
+    background: var(--ink);
+    color: var(--white);
+    border: 1px solid var(--ink);
+    padding: 16px 32px;
+    font-size: 9.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.form button:hover {
+    background: var(--emerald);
+    border-color: var(--emerald);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media(max-width: 900px) {
+    .concierge { grid-template-columns: 1fr; }
+    .concierge-copy { padding: 80px 24px; text-align: center; align-items: center; }
+    .form { flex-direction: column; }
+}
