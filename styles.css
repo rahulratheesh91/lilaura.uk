@@ -317,7 +317,7 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
 .concierge-link { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 6px; transition: var(--transition-fast); }
 .concierge-link:hover { color: var(--white); border-color: var(--white); }
 .concierge-image {
-    background: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85') center/cover;
+    background: url('https://i.etsystatic.com/40040678/r/il/ad1bb8/8468834626/il_1588xN.8468834626_t6lh.jpg') center/cover;
     min-height: 400px;
 }
 
