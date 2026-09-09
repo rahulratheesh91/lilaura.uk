@@ -259,3 +259,71 @@ function updateTimer() {
     if($('#mins')) $('#mins').textContent = String(m).padStart(2,'0');
     if($('#secs')) $('#secs').textContent = String(sec).padStart(2,'0');
 }
+// 6. LILAURA APEX X™: DYNAMIC SEO & METADATA INJECTION
+function injectProductSEO(p) {
+    // 1. Update Document Title
+    document.title = p.seoTitle || `${p.name} | LilAura UK`;
+
+    // 2. Update or Create Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+        metaDesc = document.createElement('meta');
+        metaDesc.name = "description";
+        document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute("content", p.metaDesc || p.desc);
+
+    // 3. Inject Open Graph Tags (Fixes WhatsApp/Instagram Link Previews)
+    const ogTags = {
+        "og:title": p.name,
+        "og:description": p.metaDesc || p.desc,
+        "og:image": p.image,
+        "og:url": window.location.href,
+        "og:type": "product"
+    };
+    
+    Object.entries(ogTags).forEach(([property, content]) => {
+        let tag = document.querySelector(`meta[property="${property}"]`);
+        if (!tag) {
+            tag = document.createElement('meta');
+            tag.setAttribute("property", property);
+            document.head.appendChild(tag);
+        }
+        tag.setAttribute("content", content);
+    });
+
+    // 4. Inject Google JSON-LD Product Schema
+    const existingSchema = document.getElementById('lilaura-product-schema');
+    if (existingSchema) existingSchema.remove();
+
+    const schema = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": p.name,
+        "image": [p.image, p.imageHover].filter(Boolean),
+        "description": p.desc,
+        "sku": p.sku,
+        "brand": {
+            "@type": "Brand",
+            "name": "LilAura"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": window.location.href,
+            "priceCurrency": "GBP",
+            "price": p.price.toFixed(2),
+            "availability": p.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+                "@type": "Organization",
+                "name": "LilAura Elegance"
+            }
+        }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'lilaura-product-schema';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+}
