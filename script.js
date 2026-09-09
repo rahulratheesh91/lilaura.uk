@@ -204,7 +204,7 @@ function renderShop(items) {
     container.innerHTML = sortedItems.map(p => {
         const isVid = p.imageHover && p.imageHover.endsWith('.mp4');
         const hoverHTML = isVid ? `<video src="${p.imageHover}" autoplay loop muted class="hover-visual"></video>` : `<img src="${p.imageHover || p.image}" class="hover-img">`;
-        const tag = p.inStock ? '' : `<span class="tag" style="background:#2C2C2C">Sold Out</span>`;
+        const tag = p.inStock ? '' : `<span class="tag" style="background:var(--ink); color:var(--white);">Sold Out</span>`;
         const activeWish = wishes.includes(p.name) ? 'active' : '';
 
         return `
