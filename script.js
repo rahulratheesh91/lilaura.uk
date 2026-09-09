@@ -140,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             renderShop(wristwear);
         } else if (f === 'rings') {
-            // FIX: Prevents "Earrings" from appearing under the "Rings" tab
             const pureRings = products.filter(p => 
                 p.category.toLowerCase().includes('finger rings') || 
                 (p.name.toLowerCase().includes('ring') && !p.name.toLowerCase().includes('earring'))
@@ -161,7 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDetail(p);
     }
     
-    if(!sessionStorage.getItem('fomoShown')) setTimeout(triggerFomo, 8000);
+    // Safely check if triggerFomo exists before calling it
+    if(!sessionStorage.getItem('fomoShown') && typeof triggerFomo === 'function') setTimeout(triggerFomo, 8000);
     setInterval(updateTimer, 1000); updateTimer(); renderRecent();
 });
 
@@ -203,6 +203,7 @@ function renderShop(items) {
     }).join('');
 }
 
+// 5. LILAURA APEX X™: UPDATED PDP RENDERING
 function renderDetail(p) {
     document.title = p.seoTitle || `${p.name} | LilAura UK`;
     $('#p-cat').innerText = p.category; $('#p-sku').innerText = `SKU: ${p.sku}`;
@@ -210,8 +211,12 @@ function renderDetail(p) {
     $('#p-desc').innerText = p.desc;
     
     $('#p-image').src = p.image;
-    if (p.imageHover.endsWith('.mp4')) { $('#p-video-hover').src = p.imageHover; $('#p-video-hover').style.display = 'block'; } 
-    else { $('#p-image-hover').src = p.imageHover || p.image; }
+    if (p.imageHover && p.imageHover.endsWith('.mp4')) { 
+        $('#p-video-hover').src = p.imageHover; 
+        $('#p-video-hover').style.display = 'block'; 
+    } else { 
+        $('#p-image-hover').src = p.imageHover || p.image; 
+    }
 
     $('#buy-btn').onclick = () => { addToCart(p.id); if(!p.inStock) toast('Item is currently out of stock.'); };
     if(!p.inStock) { $('#buy-btn').innerText = "Out of Stock"; $('#buy-btn').style.background = "#ddd"; $('#buy-btn').style.color = "#666"; }
@@ -225,22 +230,31 @@ function renderDetail(p) {
     }
 
     $$('.accordion').forEach(el => el.onclick = () => el.classList.toggle('active'));
+    
+    if (typeof injectProductSEO === 'function') injectProductSEO(p);
     remember(p);
 }
 
-// 5. TIMERS & RECENT VIEWS & POPUPS
+// 6. LILAURA APEX X™: RECENTLY VIEWED MEMORY
+function remember(p) {
+    let r = JSON.parse(localStorage.getItem('lilauraRecent') || '[]');
+    r = r.filter(x => x.id !== p.id); // Prevent duplicates
+    r.unshift({ id: p.id, name: p.name, price: p.price, img: p.image }); // Add to front
+    if (r.length > 4) r.pop(); // Keep only the 4 most recent
+    localStorage.setItem('lilauraRecent', JSON.stringify(r));
+}
+
+// 7. TIMERS
 function updateTimer() {
-    // Set or retrieve target end time (e.g., 72 hours from now)
     let endTime = localStorage.getItem('lilauraTimerEnd');
     if (!endTime) {
-        endTime = Date.now() + (72 * 60 * 60 * 1000); // 72 hours
+        endTime = Date.now() + (72 * 60 * 60 * 1000); 
         localStorage.setItem('lilauraTimerEnd', endTime);
     }
 
     let d = Math.max(0, parseInt(endTime) - Date.now());
     let s = Math.floor(d / 1000);
     
-    // Explicitly calculate days, hours, minutes, and seconds
     let days = Math.floor(s / (3600 * 24));
     s %= (3600 * 24);
     let h = Math.floor(s / 3600);
@@ -248,23 +262,20 @@ function updateTimer() {
     let m = Math.floor(s / 60);
     let sec = s % 60;
 
-    // Update mini-timer in the top announcement bar to show Days : Hours : Mins : Secs
     if($('#miniTimer')) {
         $('#miniTimer').textContent = `${days}d ${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(sec).padStart(2,'0')}s`;
     }
 
-    // Update main section countdown boxes dynamically
     if($('#days')) $('#days').textContent = String(days).padStart(2,'0');
     if($('#hours')) $('#hours').textContent = String(h).padStart(2,'0');
     if($('#mins')) $('#mins').textContent = String(m).padStart(2,'0');
     if($('#secs')) $('#secs').textContent = String(sec).padStart(2,'0');
 }
-// 6. LILAURA APEX X™: DYNAMIC SEO & METADATA INJECTION
+
+// 8. LILAURA APEX X™: DYNAMIC SEO & METADATA INJECTION
 function injectProductSEO(p) {
-    // 1. Update Document Title
     document.title = p.seoTitle || `${p.name} | LilAura UK`;
 
-    // 2. Update or Create Meta Description
     let metaDesc = document.querySelector('meta[name="description"]');
     if (!metaDesc) {
         metaDesc = document.createElement('meta');
@@ -273,7 +284,6 @@ function injectProductSEO(p) {
     }
     metaDesc.setAttribute("content", p.metaDesc || p.desc);
 
-    // 3. Inject Open Graph Tags (Fixes WhatsApp/Instagram Link Previews)
     const ogTags = {
         "og:title": p.name,
         "og:description": p.metaDesc || p.desc,
@@ -292,7 +302,6 @@ function injectProductSEO(p) {
         tag.setAttribute("content", content);
     });
 
-    // 4. Inject Google JSON-LD Product Schema
     const existingSchema = document.getElementById('lilaura-product-schema');
     if (existingSchema) existingSchema.remove();
 
