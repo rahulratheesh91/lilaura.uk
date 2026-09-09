@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details | LilAura</title>
+    
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
     <link rel="stylesheet" href="styles.css?v=luxe">
 </head>
 <body>
-   <div id="lilaura-header-mount"></div>
+    <!-- LILAURA APEX X™: GLOBAL HEADER COMPONENT -->
+    <div id="lilaura-header-mount"></div>
+    <div class="announce">Autumn Edit · <b>20% OFF</b> selected anti-tarnish jewellery · Ends in <span id="miniTimer">--:--:--</span></div>
 
     <div class="product-detail-layout" id="product-detail-container" style="padding-top:80px">
         <div class="p-image-wrap">
@@ -25,7 +29,8 @@
             <div id="p-price" class="p-cost price">£0.00</div>
             <p id="p-desc" class="p-desc">Description loading...</p>
 
-            <button id="buy-btn" class="checkout" style="font-size:12px; padding:20px; width:100%; margin-bottom:40px">Add to Bag</button>
+            <!-- LILAURA APEX X™: CRO OPTIMIZED CTA -->
+            <button id="buy-btn" class="checkout" style="font-size:10px; padding:20px; width:100%; margin-bottom:40px">Add to Bag</button>
 
             <div style="border-top:1px solid var(--line)">
                 <div class="accordion">
@@ -41,14 +46,18 @@
     </div>
     
     <section class="section recent" id="recent" style="padding-top: 40px; border-top: 1px solid var(--line)">
-        <div class="section-head"><div><div class="eyebrow">Continue browsing</div><h2>Recently viewed.</h2></div></div><div class="recent-grid" id="recentGrid"></div>
+        <div class="section-head">
+            <div>
+                <div class="eyebrow">Continue browsing</div>
+                <h2>Recently viewed.</h2>
+            </div>
+        </div>
+        <div class="recent-grid" id="recentGrid"></div>
     </section>
-    
-    <div class="overlay" id="overlay"></div>
-        <div class="toast" id="toast"></div>
 
+    <!-- LILAURA APEX X™: GLOBAL FOOTER & CART DRAWER COMPONENTS -->
     <div id="lilaura-footer-mount"></div>
-<script src="components.js"></script>
-<script src="script.js?v=luxe"></script>
+    <script src="components.js"></script>
+    <script src="script.js?v=luxe"></script>
 </body>
 </html>
