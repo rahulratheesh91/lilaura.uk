@@ -4,36 +4,413 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Story | LilAura UK</title>
-    <meta name="description" content="Discover the origin of LilAura. We create jewellery with the richness of tradition and the ease of modern life.">
+    <meta name="description" content="Discover the story of LilAura. Modern British minimalism meets traditional Indian heritage jewellery, crafted for everyday life.">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <link rel="stylesheet" href="styles.css?v=luxe">
+    <style>
+        .story-hero {
+            height: 75vh;
+            min-height: 520px;
+            background: linear-gradient(rgba(2, 58, 42, 0.45), rgba(2, 58, 42, 0.75)), url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=2000&q=85') center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 24px;
+        }
+        .story-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(42px, 6vw, 76px);
+            font-weight: 400;
+            line-height: 1.05;
+            margin: 18px 0;
+            text-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        .story-hero .eyebrow {
+            color: var(--gold);
+            letter-spacing: 0.25em;
+        }
+        .story-lead {
+            font-family: 'Proza Libre', sans-serif;
+            font-size: clamp(14px, 1.8vw, 17px);
+            max-width: 620px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            margin: 0 auto;
+        }
+
+        .story-prose {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 90px 5vw;
+            color: var(--ink);
+        }
+        .story-prose .eyebrow {
+            color: var(--emerald);
+            margin-bottom: 14px;
+        }
+        .story-prose h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4vw, 46px);
+            line-height: 1.2;
+            margin: 0 0 24px 0;
+            font-weight: 400;
+            color: var(--ink);
+        }
+        .story-prose p {
+            font-size: 15px;
+            line-height: 2;
+            color: var(--muted);
+            margin-bottom: 22px;
+        }
+        .story-pullquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(24px, 3.2vw, 36px);
+            line-height: 1.35;
+            color: var(--ink);
+            text-align: center;
+            padding: 40px 0;
+            margin: 30px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .story-breakout {
+            position: relative;
+            height: 480px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            background: var(--emerald);
+        }
+        .story-breakout img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.55;
+        }
+        .story-breakout-inner {
+            position: relative;
+            z-index: 2;
+            padding: 0 24px;
+            max-width: 760px;
+        }
+        .story-breakout h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 4.5vw, 54px);
+            font-weight: 400;
+            margin: 12px 0;
+            line-height: 1.15;
+        }
+        .story-breakout p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            margin: 0 auto;
+        }
+
+        .story-diptych {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 5vw;
+        }
+        .story-diptych-card {
+            position: relative;
+            height: 520px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 44px;
+            color: var(--white);
+            background: var(--ink);
+            text-decoration: none;
+        }
+        .story-diptych-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: transform var(--transition-slow);
+        }
+        .story-diptych-card:hover img {
+            transform: scale(1.03);
+        }
+        .story-diptych-card .inner {
+            position: relative;
+            z-index: 2;
+        }
+        .story-diptych-card span {
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 8px;
+        }
+        .story-diptych-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin: 0 0 10px 0;
+            line-height: 1.2;
+        }
+        .story-diptych-card p {
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.85);
+            margin: 0;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 30px auto 0;
+            text-align: left;
+        }
+        .pillar-box {
+            background: var(--white);
+            border: 1px solid var(--line);
+            padding: 40px 32px;
+        }
+        .pillar-box h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: var(--ink);
+            margin: 0 0 8px 0;
+            font-weight: 400;
+        }
+        .pillar-box .sub {
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            display: block;
+        }
+        .pillar-box p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .lifestyle-ribbon {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px 28px;
+            padding: 24px 0;
+            margin: 20px 0 30px;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+        .lifestyle-ribbon span::after {
+            content: "·";
+            margin-left: 28px;
+            color: var(--gold);
+        }
+        .lifestyle-ribbon span:last-child::after {
+            content: "";
+            margin-left: 0;
+        }
+
+        .story-finale {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 100px 5vw 120px;
+        }
+        .story-finale h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 400;
+            margin: 16px 0 20px;
+            color: var(--ink);
+            line-height: 1.15;
+        }
+        .story-finale p {
+            font-size: 15.5px;
+            line-height: 2;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .story-diptych {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .story-diptych-card {
+                height: 420px;
+                padding: 30px;
+            }
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            .story-breakout {
+                height: 420px;
+            }
+            .lifestyle-ribbon span::after {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="lilaura-header-mount"></div>
     <div class="announce">Autumn Edit · <b>20% OFF</b> selected anti-tarnish jewellery · Ends in <span id="miniTimer">--:--:--</span></div>
 
-    <div class="story-hero">
-        <div class="eyebrow">The End of the "Special Occasion"</div>
-        <h1>Heritage You Can Live In</h1>
-    </div>
+    <header class="story-hero">
+        <div class="eyebrow">About LilAura</div>
+        <h1>Everyday luxury,<br>with an aura of its own.</h1>
+        <p class="story-lead">Jewellery shaped by the ease of modern British life and the enduring soul of Indian craftsmanship.</p>
+    </header>
 
-    <main class="origin-section">
-        <div class="eyebrow">The Origin</div>
-        <h2>"Why must beautiful things be hidden away?"</h2>
-        <p>We grew up watching the women in our lives treat their jewellery like fragile secrets. Beautiful Kundan sets were wrapped in cotton, locked in safe boxes, and only brought out for weddings. Daily wear was restricted to boring, simple pieces because "real gold is too risky" and "artificial jewellery fades in a week."</p>
-        <p>LilAura was born from a desire to break this cycle. We believe that your heritage shouldn't be reserved for special occasions, and your everyday style shouldn't mean compromising on quality or elegance.</p>
-        <p>By marrying timeless Indian craftsmanship with modern 18K gold PVD anti-tarnish technology, we create pieces that offer the richness of tradition and the ease of modern life. Waterproof, sweat-resistant, and unapologetically bold.</p>
-        
-        <br><br>
-        <a href="shop.html" class="btn">Explore The Collections</a>
+    <main class="story-prose">
+        <div class="eyebrow">The Heart of LilAura</div>
+        <h2>"Why should everyday luxury feel so out of reach?"</h2>
+        <p>For as long as I can remember, jewellery was never about grandiosity to me. It was the quiet magic of a subtle sparkle. The elegance of clean, minimalist lines. The feeling of finding a piece that somehow makes everything you wear feel a little more complete. And perhaps most importantly, it was the joy of discovering something beautiful and sharing it with the people I love.</p>
+        <p>I always believed that looking effortlessly put-together shouldn't have to come with an extraordinary price tag. But as the price of gold continued to rise, finding jewellery that combined beautiful design, lasting quality and everyday wearability began to feel increasingly difficult.</p>
+        <p>My husband, Rahul, and I kept returning to the same question during our late-night conversations: why should everyday luxury feel so out of reach? That simple question became the beginning of LilAura.</p>
+
+        <div class="story-pullquote">
+            "A shared idea. A shared passion. A jewellery house built together."
+        </div>
+
+        <p>LilAura began with two people who shared a love for beautiful jewellery and a belief that modern luxury could be approached differently. We wanted to create an online destination where design, quality and accessibility could exist together.</p>
+        <p>Not jewellery designed simply to follow a fleeting trend. Not pieces that required constant worry and delicate handling. And not luxury that felt unnecessarily distant. We imagined something more personal: a collection designed for real women, real wardrobes and real lives — with the refinement, attention to detail and feeling we associate with luxury.</p>
+        <p>Two partners in life. Two partners in business. One shared vision.</p>
     </main>
 
-    <section class="promise-hero">
-        <img src="https://i.etsystatic.com/40040678/r/il/7f3803/8348706407/il_1588xN.8348706407_c8gw.jpg" alt="LilAura Philosophy">
-        <div class="promise-hero-content">
-            <div class="eyebrow" style="color:var(--gold);">The LilAura Promise</div>
-            <h2>Made to be worn.</h2>
-            <a class="btn light" href="shop.html" style="margin-top:16px;">Shop Everyday Essentials</a>
+    <section class="story-breakout">
+        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1900&q=85" alt="LilAura Anti-Tarnish Essentials">
+        <div class="story-breakout-inner">
+            <div class="eyebrow" style="color:var(--gold);">The LilAura Signature</div>
+            <h3>Modern jewellery, made for real life.</h3>
+            <p>Our journey began with what has become the foundation of our house: premium-quality anti-tarnish stainless steel jewellery. Refined gold finishes crafted to accompany your daily rituals without the worry of delicate upkeep.</p>
+        </div>
+    </section>
+
+    <section class="story-prose">
+        <p>We were drawn to stainless steel because it offered an exceptional combination of durability, versatility and contemporary design. Coated in 18K gold via physical vapor deposition, our pieces are engineered to be water-resistant and resilient enough for the rhythm of everyday life, while preserving the radiant luster expected of fine adornment.</p>
+
+        <div class="lifestyle-ribbon">
+            <span>Morning coffee</span>
+            <span>A day at work</span>
+            <span>A workout</span>
+            <span>A weekend away</span>
+            <span>Dinner with friends</span>
+            <span>An evening out</span>
+        </div>
+
+        <p>We wanted jewellery that could move through all of these moments with you. Pieces that never have to be saved away in a box for an elusive special occasion. Because every day deserves a little luxury.</p>
+
+        <div class="story-pullquote">
+            "Minimalism, elevated. Jewellery that complements you — never competes with you."
+        </div>
+
+        <p>There is something powerful about jewellery that doesn't try too hard. A fine chain resting against the collarbone. A sculptural silhouette catching the light. A pair of elegant earrings completing an otherwise effortless look.</p>
+        <p>At LilAura, we are drawn to this understated sophistication. Our contemporary collections explore clean forms, modern proportions and timeless silhouettes, creating pieces that can be worn individually or layered together to express your personal story. Quietly distinctive. Effortlessly wearable. Beautifully considered.</p>
+    </section>
+
+    <section class="story-diptych">
+        <div class="story-diptych-card">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=85" alt="Modern British Minimalism">
+            <div class="inner">
+                <span>The Modern World</span>
+                <h4>Clean British Minimalism</h4>
+                <p>Refined lines, understated cuffs, and sleek snake chains designed for effortless everyday layering.</p>
+            </div>
+        </div>
+        <div class="story-diptych-card">
+            <img src="https://i.etsystatic.com/40040678/r/il/51c271/8348522389/il_1588xN.8348522389_7zme.jpg" alt="Traditional Indian Heritage Jewellery">
+            <div class="inner">
+                <span>The Heritage World</span>
+                <h4>Authentic Indian Craft</h4>
+                <p>Intricate temple brass, vibrant Meenakari enameling, and celebratory Palakka stones honouring our roots.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-prose">
+        <div class="eyebrow">Two Worlds. One Aura.</div>
+        <h2>Modern British style meets Indian heritage.</h2>
+        <p>Although LilAura was born in the UK, our story reaches much further. As Indians living in Britain, our identity has always been shaped by two worlds: the contemporary energy of life in the UK, and the extraordinary heritage of India.</p>
+        <p>India has given us an enduring appreciation for ornamentation, craftsmanship, colour, symbolism and intricate artistry. Jewellery in Indian culture has never simply been an accessory — it represents celebration, identity, tradition, family and heritage.</p>
+        <p>We wanted that spirit to have a rightful place within LilAura. And so, alongside our contemporary collections, we curate traditional Indian brass jewellery inspired by the artistic richness and vibrant character of our heritage. These pieces are intentionally different — more expressive, more intricate, and more celebratory. They bring the warmth and visual richness of Indian adornment to modern wardrobes across the UK.</p>
+
+        <div class="story-pullquote">
+            "Different expressions. The same philosophy."
+        </div>
+
+        <p>LilAura isn't defined by a single aesthetic, because neither are the women who wear jewellery. Some days call for a barely-there gold-toned necklace. Some call for sculptural earrings and a little more presence. Some moments belong to minimalism; others deserve colour, detail and the grandeur of heritage.</p>
+
+        <div class="pillars-grid">
+            <div class="pillar-box">
+                <span class="sub">01 · Essential</span>
+                <h4>Contemporary</h4>
+                <p>Clean. Refined. Minimal. Designed for daily layering and effortless modern styling.</p>
+            </div>
+            <div class="pillar-box">
+                <span class="sub">02 · Resilient</span>
+                <h4>Anti-Tarnish</h4>
+                <p>Practical. Durable. 18K gold-bonded stainless steel made for the shower, gym, and life on the go.</p>
+            </div>
+            <div class="pillar-box">
+                <span class="sub">03 · Celebratory</span>
+                <h4>Heritage</h4>
+                <p>Expressive. Intricate. Traditional Indian brass carrying the spirit of a culture we are proud to call our own.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-breakout" style="background:var(--ink);">
+        <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1900&q=85" alt="LilAura Packaging and Unboxing">
+        <div class="story-breakout-inner">
+            <div class="eyebrow" style="color:var(--gold);">More Than Jewellery</div>
+            <h3>It’s about how it makes you feel.</h3>
+            <p>From our hands to your jewellery box, we believe luxury isn't only what you buy — it is how the entire experience makes you feel.</p>
+        </div>
+    </section>
+
+    <section class="story-prose">
+        <p>We believe the value of jewellery isn't measured only by the material from which it is made. It is measured by the feeling it creates. The confidence of putting on your favourite necklace before leaving the house. The excitement of opening a beautifully chosen gift. The memory attached to a pair of earrings worn at an unforgettable celebration. The familiar piece you reach for so often that it becomes part of you.</p>
+        <p>Jewellery can mark beginnings, celebrate milestones, carry memories, connect generations, or simply make an ordinary Tuesday feel a little more special. That is the magic we see in jewellery, and that is the feeling we want LilAura to create.</p>
+
+        <div class="eyebrow" style="margin-top:50px;">Our Approach to Quality</div>
+        <h2>Beauty should be built for life.</h2>
+        <p>We believe beautiful design and practical living shouldn't have to exist at opposite ends of the spectrum. That's why we carefully consider the materials, finish, design and wearability of the pieces we bring into our collections.</p>
+        <p>We look beyond the first impression. We ask how a piece feels, how it wears, how it styles, how easily it becomes part of a wardrobe, and whether we would genuinely want to wear it ourselves. At LilAura, curation is part of our craftsmanship. We don't believe in filling a collection simply for the sake of having more — we believe in finding pieces worth discovering.</p>
+    </section>
+
+    <section class="story-finale">
+        <div class="eyebrow" style="color:var(--emerald);">Our Promise</div>
+        <h2>Jewellery that feels like you.</h2>
+        <p>We don't want LilAura to be the jewellery you wear once. We want it to become the jewellery you reach for. The necklace that becomes part of your signature look. The earrings you pack for every trip. The bracelet that reminds you of someone special. The heritage piece you wear when you want to celebrate where you come from. And the little piece of sparkle that makes an ordinary day feel extraordinary.</p>
+        <p>Thoughtfully chosen. Beautifully designed. Made for your world.</p>
+        <p style="font-family:'Cormorant Garamond', serif; font-size:24px; color:var(--ink); margin:36px 0 10px;">Modern heritage. Made to be worn.</p>
+        <div class="eyebrow" style="color:var(--gold); margin-bottom:36px;">Wear your aura.</div>
+        <div>
+            <a href="shop.html" class="btn" style="padding: 18px 42px;">Explore The Collection</a>
         </div>
     </section>
 
