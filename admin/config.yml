@@ -1,1 +1,46 @@
+backend:
+  name: github
+  repo: rahulratheesh91/lilaura.uk
+  branch: main
 
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "store_data"
+    label: "Store Catalog"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "catalog"
+        label: "Products & Categories Database"
+        file: "products.json"
+        fields:
+          # CATEGORY BUILDER: Add, Edit, Delete categories
+          - label: "Product Categories"
+            name: "categories"
+            widget: "list"
+            summary: "{{fields.title}} (Slug: {{fields.id}})"
+            fields:
+              - { label: "Category Key / Slug", name: "id", widget: "string", hint: "e.g. kadas, necklaces, rings, traditional" }
+              - { label: "Display Title", name: "title", widget: "string", hint: "e.g. Kadas & Cuffs" }
+
+          # PRODUCT LIST: Add, Edit, Delete, Reorder, Stock toggle
+          - label: "Products"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — £{{fields.price}} [{{fields.category}}]"
+            fields:
+              - { label: "Product ID (Unique Integer)", name: "id", widget: "number", value_type: "int" }
+              - { label: "SKU", name: "sku", widget: "string" }
+              - { label: "Product Name", name: "name", widget: "string" }
+              - { label: "Category Tag", name: "category", widget: "string", hint: "Must match category slug or display name" }
+              - { label: "Price (£ GBP)", name: "price", widget: "number", value_type: "float", min: 0, step: 0.01 }
+              - { label: "In Stock?", name: "inStock", widget: "boolean", default: true }
+              - { label: "Image (Upload to GitHub or Etsy CDN URL)", name: "image", widget: "image", hint: "Upload image file directly OR enter image URL" }
+              - { label: "Hover Visual (Upload image/video or URL)", name: "imageHover", widget: "file", required: false, hint: "Upload image / MP4 or paste URL" }
+              - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Etsy Checkout Listing URL", name: "etsyLink", widget: "string" }
+              - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
+              - { label: "SEO Meta Description", name: "metaDesc", widget: "text", required: false }
