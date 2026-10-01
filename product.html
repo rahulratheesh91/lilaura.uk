@@ -8,13 +8,95 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
     <link rel="stylesheet" href="styles.css?v=luxe">
+
+    <style>
+        /* =========================================================
+           LILAURA APEX X™: PDP LAYOUT & MOBILE SCROLL NORMALIZATION
+           ========================================================= */
+        .product-detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5vw 60px;
+            align-items: start;
+        }
+
+        .p-image-wrap {
+            position: sticky;
+            top: 100px;
+            width: 100%;
+            background: var(--paper, #FBF9F5);
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .p-image-wrap img,
+        .p-image-wrap video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hover-visual {
+            display: none;
+        }
+
+        /* MOBILE OVERRIDE: Disable sticky and let image scroll naturally */
+        @media (max-width: 900px) {
+            .product-detail-layout {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 24px !important;
+                padding: 20px 20px 40px !important;
+                width: 100% !important;
+            }
+
+            .p-image-wrap {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                transform: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                aspect-ratio: 1 / 1 !important;
+                margin: 0 0 16px 0 !important;
+            }
+
+            .p-image-wrap img,
+            .p-image-wrap video,
+            #p-image,
+            #p-image-hover,
+            #p-video-hover {
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                transform: none !important;
+            }
+
+            .p-info-wrap {
+                position: relative !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- LILAURA APEX X™: GLOBAL HEADER COMPONENT -->
     <div id="lilaura-header-mount"></div>
     <div class="announce">Autumn Edit · <b>20% OFF</b> selected anti-tarnish jewellery · Ends in <span id="miniTimer">--:--:--</span></div>
 
-    <div class="product-detail-layout" id="product-detail-container" style="padding-top:80px">
+    <div class="product-detail-layout" id="product-detail-container">
         <div class="p-image-wrap">
             <img id="p-image" class="main-visual" src="" alt="Jewellery">
             <img id="p-image-hover" class="hover-visual" src="" alt="Model Wearing">
