@@ -12,7 +12,7 @@ let products = [];
 let categories = [];
 
 // 3. CART & UI LOGIC
-const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+const $= s => document.querySelector(s),$$ = s => document.querySelectorAll(s);
 let cart = JSON.parse(localStorage.getItem('lilauraCart') || '[]');
 let wishes = JSON.parse(localStorage.getItem('lilauraWish') || '[]');
 
@@ -67,7 +67,6 @@ function renderCart() {
         
     let total = cart.reduce((a, x) => a + x.price * x.qty, 0);
     
-    // --- APEX X™: SMART CART ROUTING ---
     let checkoutLink = 'https://www.etsy.com/uk/shop/LilauraElegance';
     
     if (cart.length === 1) {
@@ -80,7 +79,6 @@ function renderCart() {
     bottom.innerHTML = `
         <div class="cart-total"><span>Total</span><span class="price-mod">£${total.toFixed(2)}</span></div>
         <button class="checkout" onclick="window.open('${checkoutLink}', '_blank')">Checkout securely on Etsy</button>
-        <!-- LILAURA APEX X™: CLEAR BAG BUTTON -->
         <button onclick="clearCart()" style="width:100%; border:0; background:none; padding:20px 0 0; font-family:'Proza Libre', sans-serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); cursor:pointer; text-decoration:underline; transition:color 0.3s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Empty Bag</button>`;
 }
 
@@ -148,9 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initStore();
 
-    // Filter Logic with Smart Mapping
-    $$('.tab').forEach(b => b.onclick = () => {
-        $$('.tab').forEach(x => x.classList.remove('active'));
+    $$('.tab').forEach(b => b.onclick = () => {$$
+('.tab').forEach(x => x.classList.remove('active'));
         b.classList.add('active');
         const f = (b.dataset.filter || '').toLowerCase();
         
@@ -181,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Temporal FOMO Engine (43s delay, 1.5h cooldown)
     const fomoLastShown = localStorage.getItem('lilauraFomoLastShown');
     const now = Date.now();
     const cooldownPeriod = 1.5 * 60 * 60 * 1000;
@@ -233,19 +229,72 @@ function renderShop(items) {
     }).join('');
 }
 
-// 5. PDP RENDERING & DIRECT ROUTING
+// 5. MOBILE IMAGE GALLERY TOGGLE STATE
+let currentMobileImageIndex = 0;
+
+function toggleMobileImage() {
+    if (window.innerWidth > 900) return;
+
+    const mainImg = document.getElementById('p-image');
+    const hoverImg = document.getElementById('p-image-hover');
+    const videoHover = document.getElementById('p-video-hover');
+    const indicator = document.getElementById('photoIndicator');
+
+    const hasHoverVisual = (hoverImg && hoverImg.getAttribute('src')) || 
+                           (videoHover && videoHover.getAttribute('src'));
+
+    if (!hasHoverVisual) return;
+
+    if (currentMobileImageIndex === 0) {
+        mainImg.classList.remove('active-img');
+        if (videoHover && videoHover.getAttribute('src')) {
+            videoHover.style.display = 'block';
+            videoHover.classList.add('active-img');
+        } else if (hoverImg) {
+            hoverImg.classList.add('active-img');
+        }
+        currentMobileImageIndex = 1;
+        if (indicator) indicator.textContent = '2 / 2 (Tap for main view)';
+    } else {
+        if (hoverImg) hoverImg.classList.remove('active-img');
+        if (videoHover) {
+            videoHover.classList.remove('active-img');
+            videoHover.style.display = 'none';
+        }
+        mainImg.classList.add('active-img');
+        currentMobileImageIndex = 0;
+        if (indicator) indicator.textContent = '1 / 2 (Tap to view detail)';
+    }
+}
+
+// 6. PDP RENDERING & DIRECT ROUTING
 function renderDetail(p) {
     document.title = p.seoTitle || `${p.name} | LilAura UK`;
     $('#p-cat').innerText = p.category; $('#p-sku').innerText = `SKU: ${p.sku}`;
     $('#p-name').innerText = p.name; $('#p-price').innerText = `£${p.price.toFixed(2)}`;
     $('#p-desc').innerText = p.desc;
     
-    $('#p-image').src = p.image;
+    // Reset index on render
+    currentMobileImageIndex = 0;
+    const indicator = document.getElementById('photoIndicator');
+    if(indicator) indicator.textContent = '1 / 2 (Tap to view detail)';
+
+    const mainImg = $('#p-image');
+    const hoverImg = $('#p-image-hover');
+    const videoHover = $('#p-video-hover');
+
+    mainImg.src = p.image;
+    mainImg.classList.add('active-img');
+
     if (p.imageHover && p.imageHover.endsWith('.mp4')) { 
-        $('#p-video-hover').src = p.imageHover; 
-        $('#p-video-hover').style.display = 'block'; 
-    } else { 
-        $('#p-image-hover').src = p.imageHover || p.image; 
+        videoHover.src = p.imageHover; 
+        videoHover.classList.remove('active-img');
+        videoHover.style.display = 'none';
+    } else if (p.imageHover) { 
+        hoverImg.src = p.imageHover; 
+        hoverImg.classList.remove('active-img');
+    } else {
+        if(indicator) indicator.style.display = 'none'; // Hide indicator if no second image
     }
 
     const buyBtn = $('#buy-btn');
@@ -279,7 +328,7 @@ function renderDetail(p) {
     remember(p);
 }
 
-// 6. RECENTLY VIEWED MEMORY
+// 7. RECENTLY VIEWED MEMORY
 function remember(p) {
     let r = JSON.parse(localStorage.getItem('lilauraRecent') || '[]');
     r = r.filter(x => x.id !== p.id);
@@ -288,7 +337,7 @@ function remember(p) {
     localStorage.setItem('lilauraRecent', JSON.stringify(r));
 }
 
-// 7. TIMERS
+// 8. TIMERS
 function updateTimer() {
     let endTime = localStorage.getItem('lilauraTimerEnd');
     if (!endTime) {
@@ -316,7 +365,7 @@ function updateTimer() {
     if($('#secs')) $('#secs').textContent = String(sec).padStart(2,'0');
 }
 
-// 8. DYNAMIC SEO & METADATA INJECTION
+// 9. DYNAMIC SEO & METADATA INJECTION
 function injectProductSEO(p) {
     document.title = p.seoTitle || `${p.name} | LilAura UK`;
 
@@ -381,7 +430,7 @@ function injectProductSEO(p) {
     document.head.appendChild(script);
 }
 
-// 9. LILAURA APEX X™: SOCIAL PROOF ENGINE (FOMO)
+// 10. LILAURA APEX X™: SOCIAL PROOF ENGINE (FOMO)
 function triggerFomo() {
     const fomoPopup = document.getElementById('fomo-popup');
     const fomoText = document.getElementById('fomo-text');
