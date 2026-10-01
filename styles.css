@@ -444,3 +444,46 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
         width: 100% !important;
     }
 }
+
+/* =========================================================
+   LILAURA APEX X™: MOBILE SCROLL LOCK & FIXED BACKGROUND FIX
+   ========================================================= */
+
+@media (max-width: 900px) {
+  /* 1. Prevent background images from sticking to the center */
+  .hero,
+  .hero-video,
+  .story-hero,
+  .story-breakout,
+  .promise-hero,
+  .concierge,
+  .concierge-image {
+    background-attachment: scroll !important;
+    transform: translateZ(0); /* Drops onto separate GPU layer to stop stutter */
+  }
+
+  /* 2. Ensure media breakout images are anchored strictly to their parent cards */
+  .story-breakout img,
+  .promise-hero img,
+  .story-diptych-card img,
+  .hero-video video,
+  .hero-video iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* 3. Keep section containers positioned relatively */
+  .story-breakout,
+  .promise-hero,
+  .story-diptych-card,
+  .hero {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+}
