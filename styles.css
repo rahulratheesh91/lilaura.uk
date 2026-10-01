@@ -464,7 +464,7 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
         overflow: hidden !important;
     }
 
-    /* 3. PDP Mobile Architecture & Sticky Image Release */
+    /* 3. PDP Mobile Architecture & Single Image Focus */
     .product-detail-layout {
         display: flex !important;
         flex-direction: column !important;
@@ -483,13 +483,13 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
         height: auto !important;
         aspect-ratio: 1 / 1 !important;
         margin: 0 0 16px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
-    .p-image-wrap img,
-    .p-image-wrap video,
-    #p-image,
-    #p-image-hover,
-    #p-video-hover {
+    /* Force Main Image to Fill and Center Properly */
+    #p-image {
         position: relative !important;
         top: auto !important;
         left: auto !important;
@@ -498,9 +498,13 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
         object-fit: cover !important;
         transform: none !important;
         display: block !important;
+        opacity: 1 !important;
     }
 
-    .p-image-wrap .hover-visual {
+    /* STRICTLY HIDE HOVER IMAGES/VIDEOS ON MOBILE TOUCH SCREENS */
+    #p-image-hover,
+    #p-video-hover,
+    .hover-visual {
         display: none !important;
     }
 
