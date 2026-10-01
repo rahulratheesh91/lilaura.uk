@@ -67,20 +67,7 @@
                 height: auto !important;
                 aspect-ratio: 1 / 1 !important;
                 margin: 0 0 16px 0 !important;
-            }
-
-            .p-image-wrap img,
-            .p-image-wrap video,
-            #p-image,
-            #p-image-hover,
-            #p-video-hover {
-                position: relative !important;
-                top: auto !important;
-                left: auto !important;
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: cover !important;
-                transform: none !important;
+                cursor: pointer;
             }
 
             .p-info-wrap {
@@ -97,10 +84,14 @@
     <div class="announce">Autumn Edit · <b>20% OFF</b> selected anti-tarnish jewellery · Ends in <span id="miniTimer">--:--:--</span></div>
 
     <div class="product-detail-layout" id="product-detail-container">
-        <div class="p-image-wrap">
-            <img id="p-image" class="main-visual" src="" alt="Jewellery">
+        <!-- Added click trigger for mobile gallery toggle -->
+        <div class="p-image-wrap" id="imageGalleryWrapper" onclick="toggleMobileImage()">
+            <img id="p-image" class="main-visual active-img" src="" alt="Jewellery">
             <img id="p-image-hover" class="hover-visual" src="" alt="Model Wearing">
             <video id="p-video-hover" class="hover-visual" src="" style="display:none" autoplay loop muted playsinline></video>
+            
+            <!-- Mobile photo status badge -->
+            <div class="mobile-photo-indicator" id="photoIndicator">1 / 2 (Tap to view detail)</div>
         </div>
 
         <div class="p-info-wrap">
