@@ -487,3 +487,60 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
     overflow: hidden !important;
   }
 }
+
+/* =========================================================
+   LILAURA APEX X™: MOBILE PDP STICKY IMAGE RELEASE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  /* 1. Release sticky lock on product detail page layout */
+  .pdetail,
+  .pdetail-layout,
+  .product-detail,
+  .p-grid,
+  .product-page-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+
+  /* 2. Unstick the image gallery/column completely */
+  .pmedia,
+  .p-media,
+  .pdetail-media,
+  .product-gallery,
+  .product-media,
+  .pdetail .media,
+  #product-detail-container .media {
+    position: static !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 0 20px 0 !important;
+  }
+
+  /* 3. Ensure the active image flows naturally in document order */
+  .pmedia img,
+  .p-media img,
+  .pdetail-media img,
+  #p-image,
+  #p-image-hover,
+  #p-video-hover {
+    position: static !important;
+    width: 100% !important;
+    max-height: 480px !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  /* 4. Release the text/info column */
+  .pdetail-info,
+  .p-info,
+  .pinfo-detail {
+    position: static !important;
+    width: 100% !important;
+  }
+}
