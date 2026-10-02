@@ -413,7 +413,7 @@
     {
       "imageHover": "/images/uploads/picsart_26-09-02_21-08-59-688.jpg",
       "price": 17,
-      "name": "8K PVD Gold CZ Hinged Bangle, Stainless Steel Waterproof Cuff",
+      "name": "18K PVD Gold CZ Hinged Bangle, Stainless Steel Waterproof Cuff",
       "etsyLink": "https://www.etsy.com/uk/listing/4553290440/floral-kundan-choker-set-red-green",
       "inStock": true,
       "desc": "Elevate your bracelet stack with this timeless bezel-set cubic zirconia hinged bangle. Crafted with a premium stainless steel core and finished with high-grade 18K PVD gold plating, this piece delivers maximum brilliance with ultimate durability—designed to never tarnish or lose its shine.\n\nProduct Details\n Base Metal: Premium quality Stainless Steel (Hypoallergenic, Lead & Nickel-Free)\n Finish: 18K PVD Gold Plating (Waterproof, Sweatproof, Anti-Tarnish)\n Stone: Round Cut Sparkling Clear Cubic Zirconia\n Closure: Side hinge push-clasp mechanism for secure everyday wear\nSizing & Specs\n Inner Diameter: 6 cm (2.36 inches) — fits small to medium wrists standardly\n Fit: Rigid oval shape designed to sit comfortably without turning upside down",
@@ -433,6 +433,18 @@
       "image": "/images/uploads/picsart_26-09-02_20-37-51-178.jpg",
       "sku": "SSCF-BEE-30",
       "category": "Kadas & Cuffs (Slug: kadas)"
+    },
+    {
+      "imageHover": "/images/uploads/picsart_26-09-03_10-22-43-220.jpg",
+      "price": 17.99,
+      "name": "18K PVD Gold Hummingbird Necklace, Anti-Tarnish Stainless Steel Jewellery",
+      "etsyLink": "https://www.etsy.com/uk/listing/4569225682/18k-pvd-gold-plated-hummingbird",
+      "inStock": true,
+      "desc": "Embrace the beauty of nature with this elegant hummingbird pendant necklace. Delicately crafted with soft pastel accents along the wings and suspended on a luxurious, fluid gold snake\nchain, this piece perfectly balances whimsical charm with modern sophistication. Hummingbirds are timeless symbols of joy and positive energy, making this necklace a deeply meaningful accessory or a heartfelt gift.\n\n Product Details:\nMaterial: Hypoallergenic Stainless Steel with premium 18K Gold PVD Plating.\nDesign: Detailed hummingbird pendant with pastel accents on a smooth gold snake chain.\nDurability: 100% Waterproof, Sweat-proof, and Tarnish-Resistant.\nFit: Adjustable chain length to sit perfectly on the collarbone.",
+      "id": 31,
+      "image": "/images/uploads/picsart_26-09-03_10-21-39-659.jpg",
+      "sku": "SSNK-HBN-31",
+      "category": "Necklaces (Slug: necklaces)"
     }
   ]
 }
