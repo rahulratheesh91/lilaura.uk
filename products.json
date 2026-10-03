@@ -21,8 +21,8 @@
       "title": "Rings"
     },
     {
-      "id": "Earrings and studs",
-      "title": "Earrings"
+      "id": "Earrings and Studs (Slug: Earrings)",
+      "title": "Earrings and Studs"
     }
   ],
   "items": [
@@ -496,7 +496,7 @@
       "id": 35,
       "image": "https://i.etsystatic.com/40040678/r/il/2983e3/8475011895/il_1588xN.8475011895_pjmk.jpg",
       "sku": "SSER-MSH-35",
-      "category": "Earrings (Slug: Earrings and studs)"
+      "category": "Earrings and Studs (Slug: Earrings)"
     },
     {
       "imageHover": "https://i.etsystatic.com/40040678/r/il/8bb871/8395649320/il_1588xN.8395649320_h0nm.jpg",
@@ -508,7 +508,7 @@
       "id": 36,
       "image": "https://i.etsystatic.com/40040678/r/il/3f4713/8443532359/il_1588xN.8443532359_df96.jpg",
       "sku": "SSER-GLS-36",
-      "category": "Earrings (Slug: Earrings and studs)"
+      "category": "Earrings and Studs (Slug: Earrings)"
     },
     {
       "imageHover": "https://i.etsystatic.com/40040678/r/il/bd86af/8443392647/il_1588xN.8443392647_20y0.jpg",
@@ -520,7 +520,7 @@
       "id": 37,
       "image": "https://i.etsystatic.com/40040678/r/il/ff63d7/8387738976/il_1588xN.8387738976_hapt.jpg",
       "sku": "SSER-FPS-37",
-      "category": "Earrings (Slug: Earrings and studs)"
+      "category": "Earrings and Studs (Slug: Earrings)"
     }
   ]
 }
