@@ -17,12 +17,12 @@
       "title": "Traditional"
     },
     {
-      "id": "rings",
-      "title": "Rings"
-    },
-    {
       "id": "Earrings and Studs (Slug: Earrings)",
       "title": "Earrings and Studs"
+    },
+    {
+      "id": "rings",
+      "title": "Rings"
     }
   ],
   "items": [
