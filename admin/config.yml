@@ -8,16 +8,26 @@ public_folder: "/images/uploads"
 
 collections:
   - name: "store_data"
-    label: "Store Catalog"
+    label: "Store Catalog & Settings"
     delete: false
     editor:
       preview: false
     files:
       - name: "catalog"
-        label: "Products & Categories Database"
+        label: "Products & Promo Settings"
         file: "products.json"
         fields:
-          # CATEGORY BUILDER: Add, Edit, Delete categories
+          # PROMO MANAGEMENT SETTINGS (Prevents promo from resetting)
+          - label: "Promo & Sale Banner"
+            name: "promoConfig"
+            widget: "object"
+            fields:
+              - { label: "Enable Promo Banner?", name: "enabled", widget: "boolean", default: true }
+              - { label: "Promo Title", name: "title", widget: "string", hint: "e.g., Autumn Edit" }
+              - { label: "Discount Description", name: "discountText", widget: "string", hint: "e.g., 20% OFF selected anti-tarnish jewellery" }
+              - { label: "Promo End Date & Time", name: "endTime", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
+
+          # CATEGORY BUILDER
           - label: "Product Categories"
             name: "categories"
             widget: "list"
@@ -26,7 +36,7 @@ collections:
               - { label: "Category Key / Slug", name: "id", widget: "string", hint: "e.g. kadas, necklaces, rings, traditional" }
               - { label: "Display Title", name: "title", widget: "string", hint: "e.g. Kadas & Cuffs" }
 
-          # PRODUCT LIST: Add, Edit, Delete, Reorder, Stock toggle
+          # PRODUCT LIST
           - label: "Products"
             name: "items"
             widget: "list"
