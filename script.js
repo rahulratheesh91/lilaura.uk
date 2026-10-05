@@ -130,7 +130,16 @@ async function initStore() {
     }
 
     const shopGrid = document.getElementById('shop-grid');
-    if (shopGrid) renderShop(products);
+    if (shopGrid) {
+        // Check if a category query parameter is passed (e.g. shop.html?cat=traditional)
+        const params = new URLSearchParams(window.location.search);
+        const catParam = params.get('cat');
+        if (catParam) {
+            filterProducts(catParam.toLowerCase());
+        } else {
+            renderShop(products);
+        }
+    }
 
     const detailContainer = document.getElementById('product-detail-container');
     if (detailContainer) {
@@ -449,7 +458,41 @@ function triggerFomo() {
     }, 6000);
 }
 
-// 11. DYNAMIC CATEGORY TABS RENDERING & STRICT FILTERING
+// 11. CENTRALIZED FILTER LOGIC
+function filterProducts(f) {
+    const shopGrid = document.getElementById('shop-grid');
+    if (!shopGrid) return;
+
+    if (f === 'all' || !f) {
+        renderShop(products);
+    } else if (f === 'kadas') {
+        const wristwear = products.filter(p => 
+            p.category.toLowerCase().includes('kada') || 
+            p.category.toLowerCase().includes('bracelet') ||
+            p.name.toLowerCase().includes('cuff') ||
+            p.name.toLowerCase().includes('bangle')
+        );
+        renderShop(wristwear);
+    } else if (f === 'rings') {
+        const pureRings = products.filter(p => 
+            p.category.toLowerCase().includes('finger rings') || 
+            (p.name.toLowerCase().includes('ring') && !p.name.toLowerCase().includes('earring'))
+        );
+        renderShop(pureRings);
+    } else {
+        renderShop(products.filter(p => {
+            const cat = p.category.toLowerCase();
+            const name = p.name.toLowerCase();
+            if (f.includes('earring')) {
+                return (cat.includes('earring') || name.includes('earring') || name.includes('stud')) && 
+                       !cat.includes('traditional') && !name.includes('choker') && !name.includes('necklace set');
+            }
+            return cat.includes(f) || name.includes(f);
+        }));
+    }
+}
+
+// 12. DYNAMIC CATEGORY TABS RENDERING
 function renderCategoryTabs() {
     const tabsContainer = document.getElementById('shopTabs');
     if (!tabsContainer) return;
@@ -466,42 +509,29 @@ function renderCategoryTabs() {
         <button class="tab ${index === 0 ? 'active' : ''}" data-filter="${cat.id.toLowerCase()}">${cat.title}</button>
     `).join('');
 
+    // Highlight active tab if query param matches
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('cat');
+    if (catParam) {
+        $$('.tab').forEach(t => {
+            if (t.dataset.filter === catParam.toLowerCase()) {
+                t.classList.add('active');
+            } else {
+                t.classList.remove('active');
+            }
+        });
+    }
+
     $$('.tab').forEach(b => {         b.onclick = () => {$$
 ('.tab').forEach(x => x.classList.remove('active'));
             b.classList.add('active');
             const f = (b.dataset.filter || '').toLowerCase();
             
-            const shopGrid = document.getElementById('shop-grid');
-            if (!shopGrid) return;
+            // Update URL without reloading page for clean sharing
+            const newUrl = f === 'all' ? 'shop.html' : `shop.html?cat=${f}`;
+            window.history.replaceState(null, '', newUrl);
 
-            if (f === 'all' || !f) {
-                renderShop(products);
-            } else if (f === 'kadas') {
-                const wristwear = products.filter(p => 
-                    p.category.toLowerCase().includes('kada') || 
-                    p.category.toLowerCase().includes('bracelet') ||
-                    p.name.toLowerCase().includes('cuff') ||
-                    p.name.toLowerCase().includes('bangle')
-                );
-                renderShop(wristwear);
-            } else if (f === 'rings') {
-                const pureRings = products.filter(p => 
-                    p.category.toLowerCase().includes('finger rings') || 
-                    (p.name.toLowerCase().includes('ring') && !p.name.toLowerCase().includes('earring'))
-                );
-                renderShop(pureRings);
-            } else {
-                // Strict filtering to isolate categories like earrings from traditional sets
-                renderShop(products.filter(p => {
-                    const cat = p.category.toLowerCase();
-                    const name = p.name.toLowerCase();
-                    if (f.includes('earring')) {
-                        return (cat.includes('earring') || name.includes('earring') || name.includes('stud')) && 
-                               !cat.includes('traditional') && !name.includes('choker') && !name.includes('necklace set');
-                    }
-                    return cat.includes(f) || name.includes(f);
-                }));
-            }
+            filterProducts(f);
         };
     });
 }
