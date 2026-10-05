@@ -23,7 +23,7 @@
       "title": "Traditional"
     },
     {
-      "id": "earrings, studs",
+      "id": "earrings",
       "title": "Earrings and Studs"
     },
     {
@@ -526,7 +526,7 @@
       "id": 37,
       "image": "https://i.etsystatic.com/40040678/r/il/ff63d7/8387738976/il_1588xN.8387738976_hapt.jpg",
       "sku": "SSER-FPS-37",
-      "category": "Earrings"
+      "category": "earrings"
     }
   ]
 }
