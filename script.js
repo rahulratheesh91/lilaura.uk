@@ -1,4 +1,4 @@
-/* LILAURA APEX X™ UNIFIED ENGINE (Dynamic JSON Catalog & Promo Integration) */
+/* LILAURA APEX X™ UNIFIED ENGINE (Dynamic JSON Catalog & GA4 Analytics) */
 
 // 1. URL POLISH
 if (window.location.pathname.endsWith('.html') && window.location.pathname !== '/index.html') {
@@ -32,10 +32,19 @@ function renderRecent(){
     if (recentSection && recentGrid) {
         recentSection.classList.add('show');
         recentGrid.innerHTML = r.map(x => `
-        <div class="recent-card" onclick="window.location.href='product.html?id=${x.id}'">
+        <div class="recent-card" onclick="trackRecentClick(${x.id}, '${x.name.replace(/'/g, "\\'")}'); window.location.href='product.html?id=${x.id}'">
             <img src="${x.img}" alt="${x.name}">
             <p>${x.name}<br><small style="font-family:'Bodoni Moda', serif; font-size:15px; color:var(--gold); letter-spacing:0.05em;">£${(+x.price).toFixed(2)}</small></p>
         </div>`).join('');
+    }
+}
+
+function trackRecentClick(id, name) {
+    if (typeof gtag === 'function') {
+        gtag('event', 'select_item_recent', {
+            item_id: id,
+            item_name: name
+        });
     }
 }
 
@@ -69,21 +78,41 @@ function renderCart() {
     let total = cart.reduce((a, x) => a + x.price * x.qty, 0);
     
     let checkoutLink = 'https://www.etsy.com/uk/shop/LilauraElegance';
+    let singleProductName = "Multiple Items / General Shop";
     
     if (cart.length === 1) {
         const matchedProduct = products.find(p => p.name === cart[0].name);
         if (matchedProduct && matchedProduct.etsyLink) {
             checkoutLink = matchedProduct.etsyLink;
+            singleProductName = matchedProduct.name;
         }
     }
 
     bottom.innerHTML = `
         <div class="cart-total"><span>Total</span><span class="price-mod">£${total.toFixed(2)}</span></div>
-        <button class="checkout" onclick="window.open('${checkoutLink}', '_blank')">Checkout securely on Etsy</button>
+        <button class="checkout" onclick="trackEtsyCheckout('${singleProductName.replace(/'/g, "\\'")}', ${total}); window.open('${checkoutLink}', '_blank')">Checkout securely on Etsy</button>
         <button onclick="clearCart()" style="width:100%; border:0; background:none; padding:20px 0 0; font-family:'Proza Libre', sans-serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); cursor:pointer; text-decoration:underline; transition:color 0.3s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Empty Bag</button>`;
 }
 
+function trackEtsyCheckout(productName, totalValue) {
+    if (typeof gtag === 'function') {
+        gtag('event', 'click_etsy_checkout', {
+            currency: 'GBP',
+            value: totalValue,
+            item_name: productName
+        });
+    }
+}
+
 function removeItem(i) { 
+    const removed = cart[i];
+    if (removed && typeof gtag === 'function') {
+        gtag('event', 'remove_from_cart', {
+            currency: 'GBP',
+            value: removed.price * removed.qty,
+            items: [{ item_name: removed.name, price: removed.price, quantity: removed.qty }]
+        });
+    }
     cart.splice(i, 1); 
     saveCart(); 
     toast('Item removed from bag'); 
@@ -91,26 +120,58 @@ function removeItem(i) {
 
 function clearCart() {
     if (confirm("Are you sure you want to empty your bag?")) {
+        if (typeof gtag === 'function') {
+            gtag('event', 'clear_cart');
+        }
         cart = [];
         saveCart();
         toast('Bag has been emptied');
     }
 }
 
-function openDrawer() { $('#drawer')?.classList.add('open'); $('#overlay')?.classList.add('open'); document.body.classList.add('lock'); }
+function openDrawer() { 
+    $('#drawer')?.classList.add('open'); 
+    $('#overlay')?.classList.add('open'); 
+    document.body.classList.add('lock'); 
+    if (typeof gtag === 'function') {
+        gtag('event', 'open_cart_drawer');
+    }
+}
+
 function closeDrawer() { $('#drawer')?.classList.remove('open'); $('#overlay')?.classList.remove('open'); document.body.classList.remove('lock'); }
 
 function addToCart(id) {
     const p = products.find(x => x.id === id); if(!p) return;
     let item = cart.find(x => x.name === p.name);
     if(item) item.qty++; else cart.push({name: p.name, price: p.price, img: p.image, qty: 1});
-    saveCart(); toast(p.name + ' added to bag'); openDrawer();
+    saveCart(); 
+    
+    // GA4 Add to Cart Tracking
+    if (typeof gtag === 'function') {
+        gtag('event', 'add_to_cart', {
+            currency: 'GBP',
+            value: p.price,
+            items: [{ item_id: p.sku, item_name: p.name, price: p.price, quantity: 1 }]
+        });
+    }
+
+    toast(p.name + ' added to bag'); 
+    openDrawer();
 }
 
 function toggleWish(event, id) {
     event.stopPropagation(); const p = products.find(x => x.id === id); if(!p) return;
-    if(wishes.includes(p.name)) { wishes = wishes.filter(x => x !== p.name); toast('Removed from wishlist'); event.target.classList.remove('active'); } 
-    else { wishes.push(p.name); toast('Added to wishlist'); event.target.classList.add('active'); }
+    if(wishes.includes(p.name)) { 
+        wishes = wishes.filter(x => x !== p.name); 
+        toast('Removed from wishlist'); 
+        event.target.classList.remove('active'); 
+        if (typeof gtag === 'function') gtag('event', 'remove_from_wishlist', { item_name: p.name });
+    } else { 
+        wishes.push(p.name); 
+        toast('Added to wishlist'); 
+        event.target.classList.add('active'); 
+        if (typeof gtag === 'function') gtag('event', 'add_to_wishlist', { item_name: p.name });
+    }
     saveCart();
 }
 
@@ -131,7 +192,6 @@ async function initStore() {
 
     const shopGrid = document.getElementById('shop-grid');
     if (shopGrid) {
-        // Check if a category query parameter is passed (e.g. shop.html?cat=traditional)
         const params = new URLSearchParams(window.location.search);
         const catParam = params.get('cat');
         if (catParam) {
@@ -145,7 +205,17 @@ async function initStore() {
     if (detailContainer) {
         const params = new URLSearchParams(window.location.search);
         const p = products.find(x => x.id === parseInt(params.get('id'))) || products[0];
-        if (p) renderDetail(p);
+        if (p) {
+            renderDetail(p);
+            // GA4 View Item Tracking
+            if (typeof gtag === 'function') {
+                gtag('event', 'view_item', {
+                    currency: 'GBP',
+                    value: p.price,
+                    items: [{ item_id: p.sku, item_name: p.name, price: p.price }]
+                });
+            }
+        }
     }
 
     renderRecent();
@@ -298,6 +368,13 @@ function renderDetail(p) {
         if(!p.inStock) {
             toast('Item is currently out of stock.'); 
         } else {
+            if (typeof gtag === 'function') {
+                gtag('event', 'click_etsy_checkout', {
+                    currency: 'GBP',
+                    value: p.price,
+                    item_name: p.name
+                });
+            }
             window.open(p.etsyLink, '_blank'); 
         }
     };
@@ -331,7 +408,7 @@ function remember(p) {
     localStorage.setItem('lilauraRecent', JSON.stringify(r));
 }
 
-// 8. TIMERS (Pulls dynamically from admin panel configuration)
+// 8. TIMERS
 function updateTimer() {
     if (!promoConfig || !promoConfig.endTime) return;
 
@@ -446,7 +523,10 @@ function triggerFomo() {
     fomoPopup.style.transform = 'translateY(0)';
     fomoPopup.style.pointerEvents = 'auto';
 
-    fomoPopup.onclick = () => window.location.href = `product.html?id=${randomProduct.id}`;
+    fomoPopup.onclick = () => {
+        if (typeof gtag === 'function') gtag('event', 'select_item_fomo', { item_name: randomProduct.name });
+        window.location.href = `product.html?id=${randomProduct.id}`;
+    };
     fomoPopup.style.cursor = 'pointer';
 
     localStorage.setItem('lilauraFomoLastShown', Date.now().toString());
@@ -462,6 +542,10 @@ function triggerFomo() {
 function filterProducts(f) {
     const shopGrid = document.getElementById('shop-grid');
     if (!shopGrid) return;
+
+    if (typeof gtag === 'function') {
+        gtag('event', 'view_item_list', { item_category: f });
+    }
 
     if (f === 'all' || !f) {
         renderShop(products);
@@ -509,7 +593,6 @@ function renderCategoryTabs() {
         <button class="tab ${index === 0 ? 'active' : ''}" data-filter="${cat.id.toLowerCase()}">${cat.title}</button>
     `).join('');
 
-    // Highlight active tab if query param matches
     const params = new URLSearchParams(window.location.search);
     const catParam = params.get('cat');
     if (catParam) {
@@ -527,7 +610,6 @@ function renderCategoryTabs() {
             b.classList.add('active');
             const f = (b.dataset.filter || '').toLowerCase();
             
-            // Update URL without reloading page for clean sharing
             const newUrl = f === 'all' ? 'shop.html' : `shop.html?cat=${f}`;
             window.history.replaceState(null, '', newUrl);
 
