@@ -479,3 +479,57 @@ function triggerFomo() {
         fomoPopup.style.pointerEvents = 'none';
     }, 6000);
 }
+
+// Add this render function inside script.js
+function renderCategoryTabs() {
+    const tabsContainer = document.getElementById('shopTabs');
+    if (!tabsContainer) return;
+
+    // Fallback if categories array is empty
+    const list = categories.length ? categories : [
+        { id: 'all', title: 'All' },
+        { id: 'kadas', title: 'Kadas & Bracelets' },
+        { id: 'necklaces', title: 'Necklaces' },
+        { id: 'traditional', title: 'Traditional' },
+        { id: 'rings', title: 'Rings' }
+    ];
+
+    tabsContainer.innerHTML = list.map((cat, index) => `
+        <button class="tab ${index === 0 ? 'active' : ''}" data-filter="${cat.id.toLowerCase()}">${cat.title}</button>
+    `).join('');
+
+    // Re-bind filter event listeners to the dynamically rendered tabs
+    $$('.tab').forEach(b => {         b.onclick = () => {$$
+('.tab').forEach(x => x.classList.remove('active'));
+            b.classList.add('active');
+            const f = (b.dataset.filter || '').toLowerCase();
+            
+            const shopGrid = document.getElementById('shop-grid');
+            if (!shopGrid) return;
+
+            if (f === 'all' || !f) {
+                renderShop(products);
+            } else if (f === 'kadas') {
+                const wristwear = products.filter(p => 
+                    p.category.toLowerCase().includes('kada') || 
+                    p.category.toLowerCase().includes('bracelet') ||
+                    p.name.toLowerCase().includes('cuff') ||
+                    p.name.toLowerCase().includes('bangle')
+                );
+                renderShop(wristwear);
+            } else if (f === 'rings') {
+                const pureRings = products.filter(p => 
+                    p.category.toLowerCase().includes('finger rings') || 
+                    (p.name.toLowerCase().includes('ring') && !p.name.toLowerCase().includes('earring'))
+                );
+                renderShop(pureRings);
+            } else {
+                // Universal matching for admin-created categories like 'earrings', 'necklaces', etc.
+                renderShop(products.filter(p => 
+                    p.category.toLowerCase().includes(f) ||
+                    p.name.toLowerCase().includes(f)
+                ));
+            }
+        };
+    });
+}
