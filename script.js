@@ -1,4 +1,4 @@
-/* LILAURA APEX X™ UNIFIED ENGINE (Dynamic JSON Catalog & Cart UX) */
+/* LILAURA APEX X™ UNIFIED ENGINE (Dynamic JSON Catalog & Promo Integration) */
 
 // 1. URL POLISH
 if (window.location.pathname.endsWith('.html') && window.location.pathname !== '/index.html') {
@@ -10,6 +10,7 @@ if (window.location.pathname.endsWith('.html') && window.location.pathname !== '
 // 2. DYNAMIC CATALOG STORAGE
 let products = [];
 let categories = [];
+let promoConfig = { enabled: false, title: "", discountText: "", endTime: "" };
 
 // 3. CART & UI LOGIC
 const $= s => document.querySelector(s),$$ = s => document.querySelectorAll(s);
@@ -113,13 +114,16 @@ function toggleWish(event, id) {
     saveCart();
 }
 
-// 4. ASYNC INITIALIZATION & DOM MOUNTING
+// 4. ASYNC INITIALIZATION & PROMO RENDERING
 async function initStore() {
     try {
         const response = await fetch('/products.json?v=' + Date.now());
         const data = await response.json();
         products = data.items || [];
         categories = data.categories || [];
+        promoConfig = data.promoConfig || { enabled: false };
+
+        renderPromoBanner(promoConfig);
     } catch (e) {
         console.error("Failed loading products.json, retrying fallback...", e);
     }
@@ -135,6 +139,19 @@ async function initStore() {
     }
 
     renderRecent();
+}
+
+function renderPromoBanner(config) {
+    const announceBar = document.querySelector('.announce');
+    if (!announceBar) return;
+
+    if (!config.enabled) {
+        announceBar.style.display = 'none';
+        return;
+    }
+
+    announceBar.style.display = 'block';
+    announceBar.innerHTML = `${config.title || ''} · <b>${config.discountText || ''}</b> · Ends in <span id="miniTimer">--:--:--</span>`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -274,7 +291,6 @@ function renderDetail(p) {
     $('#p-name').innerText = p.name; $('#p-price').innerText = `£${p.price.toFixed(2)}`;
     $('#p-desc').innerText = p.desc;
     
-    // Reset index on render
     currentMobileImageIndex = 0;
     const indicator = document.getElementById('photoIndicator');
     if(indicator) indicator.textContent = '1 / 2 (Tap to view detail)';
@@ -294,7 +310,7 @@ function renderDetail(p) {
         hoverImg.src = p.imageHover; 
         hoverImg.classList.remove('active-img');
     } else {
-        if(indicator) indicator.style.display = 'none'; // Hide indicator if no second image
+        if(indicator) indicator.style.display = 'none';
     }
 
     const buyBtn = $('#buy-btn');
@@ -337,15 +353,12 @@ function remember(p) {
     localStorage.setItem('lilauraRecent', JSON.stringify(r));
 }
 
-// 8. TIMERS
+// 8. TIMERS (Pulls dynamically from admin panel configuration)
 function updateTimer() {
-    let endTime = localStorage.getItem('lilauraTimerEnd');
-    if (!endTime) {
-        endTime = Date.now() + (368 * 60 * 60 * 1000); 
-        localStorage.setItem('lilauraTimerEnd', endTime);
-    }
+    if (!promoConfig || !promoConfig.endTime) return;
 
-    let d = Math.max(0, parseInt(endTime) - Date.now());
+    let endTime = new Date(promoConfig.endTime).getTime();
+    let d = Math.max(0, endTime - Date.now());
     let s = Math.floor(d / 1000);
     
     let days = Math.floor(s / (3600 * 24));
