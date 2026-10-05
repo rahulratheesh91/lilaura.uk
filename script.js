@@ -124,7 +124,7 @@ async function initStore() {
         promoConfig = data.promoConfig || { enabled: false };
 
         renderPromoBanner(promoConfig);
-        renderCategoryTabs(); // <-- Successfully called right after data is fetched!
+        renderCategoryTabs(); 
     } catch (e) {
         console.error("Failed loading products.json, retrying fallback...", e);
     }
@@ -449,7 +449,7 @@ function triggerFomo() {
     }, 6000);
 }
 
-// 11. DYNAMIC CATEGORY TABS RENDERING
+// 11. DYNAMIC CATEGORY TABS RENDERING & STRICT FILTERING
 function renderCategoryTabs() {
     const tabsContainer = document.getElementById('shopTabs');
     if (!tabsContainer) return;
@@ -491,10 +491,16 @@ function renderCategoryTabs() {
                 );
                 renderShop(pureRings);
             } else {
-                renderShop(products.filter(p => 
-                    p.category.toLowerCase().includes(f) ||
-                    p.name.toLowerCase().includes(f)
-                ));
+                // Strict filtering to isolate categories like earrings from traditional sets
+                renderShop(products.filter(p => {
+                    const cat = p.category.toLowerCase();
+                    const name = p.name.toLowerCase();
+                    if (f.includes('earring')) {
+                        return (cat.includes('earring') || name.includes('earring') || name.includes('stud')) && 
+                               !cat.includes('traditional') && !name.includes('choker') && !name.includes('necklace set');
+                    }
+                    return cat.includes(f) || name.includes(f);
+                }));
             }
         };
     });
