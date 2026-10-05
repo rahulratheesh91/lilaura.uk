@@ -1,4 +1,10 @@
 {
+  "promoConfig": {
+    "enabled": true,
+    "title": "Autumn Edit",
+    "discountText": "20% OFF selected anti-tarnish jewellery",
+    "endTime": "2026-10-12T23:59:00Z"
+  },
   "categories": [
     {
       "id": "all",
@@ -17,7 +23,7 @@
       "title": "Traditional"
     },
     {
-      "id": "Earrings and Studs (Slug: Earrings)",
+      "id": "Earrings and Studs",
       "title": "Earrings and Studs"
     },
     {
@@ -396,7 +402,7 @@
       "name": "Gold Plated Lakshmi Coin Necklace with earstuds",
       "etsyLink": "https://www.etsy.com/uk/listing/4585922365/gold-plated-lakshmi-coin-necklace-with",
       "inStock": true,
-      "desc": "Elevate your traditional wardrobe with this timeless  Golden goddess lakshmi  Choker Set. Inspired by classic temple heritage, this set features a intricately detailed coin choker necklace adorned with a vibrant floral centerpiece and matching floral stud earrings set with ruby-red and emerald-green kemp-style stones.  \n\nProduct Details & Specifications-\nPackage Includes: 1 Choker Necklace + 1 Pair of Matching Stud Earrings  \nDesign: Traditional Kasu Mala (Lakshmi Coin Motif) with Floral Stone Centerpiece  \nMetal Finish: High-Quality Matte Gold Plated Brass/Alloy   Stone Type: Premium Ruby Red & Emerald Green CZ / Kemp Glass Stones  \nNecklace Closure: Adjustable drawstring / dori thread for a customizable, comfortable fit\nEarring Style: Push-back stud closure  ",
+      "desc": "Elevate your traditional wardrobe with this timeless  Golden goddess lakshmi  Choker Set. Inspired by classic temple heritage, this set features a intricately detailed coin choker necklace adorned with a vibrant floral centerpiece and matching floral stud earrings set with ruby-red and emerald-green kemp-style stones. \n\nProduct Details & Specifications-\nPackage Includes: 1 Choker Necklace + 1 Pair of Matching Stud Earrings \nDesign: Traditional Kasu Mala (Lakshmi Coin Motif) with Floral Stone Centerpiece \nMetal Finish: High-Quality Matte Gold Plated Brass/Alloy  Stone Type: Premium Ruby Red & Emerald Green CZ / Kemp Glass Stones \nNecklace Closure: Adjustable drawstring / dori thread for a customizable, comfortable fit\nEarring Style: Push-back stud closure ",
       "id": 27,
       "image": "/images/uploads/img_4852.jpg",
       "sku": "TRNK-LCN-27",
