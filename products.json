@@ -3,7 +3,7 @@
     "enabled": true,
     "title": "Autumn Edit",
     "discountText": "20% OFF selected anti-tarnish jewellery",
-    "endTime": "2026-10-12T23:59:00Z"
+    "endTime": "2026-10-05T23:59:00+01:00"
   },
   "categories": [
     {
@@ -23,7 +23,7 @@
       "title": "Traditional"
     },
     {
-      "id": "Earrings and Studs",
+      "id": "earrings,studs",
       "title": "Earrings and Studs"
     },
     {
