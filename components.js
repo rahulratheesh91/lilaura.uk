@@ -7,7 +7,6 @@ const LILAURA_UI = {
                 <div class="nav-left"><a href="index.html">Home</a><a href="shop.html">Collections</a><a href="about.html">Our Story</a></div>
                 <a class="logo" href="index.html">LilAura<small>Elegance Made Eternal</small></a>
                 <div class="nav-right">
-                    <!-- ACCESSIBILITY FIX: Added aria-label to the wish button -->
                     <button class="wish" aria-label="Wishlist" onclick="window.location.href='shop.html'">♡</button>
                     <button class="cart" id="cartBtn">Bag <span class="bubble" id="cartCount">0</span></button>
                 </div>
@@ -74,7 +73,6 @@ const LILAURA_UI = {
     renderDrawer: () => `
         <div class="overlay" id="overlay"></div>
         <aside class="drawer" id="drawer">
-            <!-- ACCESSIBILITY FIX: Added aria-label to the close button -->
             <div class="drawer-head"><h3>Your bag</h3><button class="close" id="closeDrawer" aria-label="Close cart">×</button></div>
             <div id="cartItems"></div>
             <div id="cartBottom"></div>
