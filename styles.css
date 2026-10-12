@@ -84,9 +84,31 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
 .ed-card { position: relative; overflow: hidden; background: var(--soft); aspect-ratio: 4/3; display: block; }
 .ed-card img, .ed-card video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: var(--transition-slow); }
 .ed-card:hover img, .ed-card:hover video { transform: scale(1.03); }
-.ed-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%); }
-.ed-copy { position: absolute; left: 32px; bottom: 32px; color: #fff; z-index: 2; }
-.ed-copy h3 { font-size: 38px; margin: 8px 0; }
+
+/* Updated gradient overlay for high text contrast on mobile and desktop */
+.ed-card::after { 
+    content: ""; 
+    position: absolute; 
+    inset: 0; 
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%); 
+}
+
+.ed-copy { 
+    position: absolute; 
+    left: 24px; 
+    right: 24px; 
+    bottom: 24px; 
+    color: #fff; 
+    z-index: 2; 
+}
+.ed-copy h3 { 
+    font-size: 38px; 
+    margin: 8px 0; 
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5); 
+}
+.ed-copy p {
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
 
 .tabs { display: flex; gap: 24px; overflow: auto; margin-bottom: 40px; border-bottom: 1px solid var(--line); padding-bottom: 15px; }
 .tab { white-space: nowrap; background: transparent; border: 0; color: var(--muted); padding: 0; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: color var(--transition-fast); position: relative; }
