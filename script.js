@@ -1,4 +1,4 @@
-/* LilAura storefront behaviour with clean URL path polishing and robust countdown timer. */
+/* LilAura storefront behaviour with clean URL paths, promo timer, and explicit featured-product curation. */
 (() => {
   'use strict';
 
@@ -157,8 +157,9 @@
     getVisibleProducts() {
       let items = [...this.products];
       if (this.isHome) {
-        const featured = items.filter(p => p.bestseller === true || p.newArrival === true);
-        items = (featured.length >= 4 ? featured : items).slice(0, 8);
+        // Explicitly filter for products where "featured" is checked true in admin
+        const explicitFeatured = items.filter(p => p.featured === true);
+        items = explicitFeatured.length > 0 ? explicitFeatured : items.slice(0, 8);
       }
       if (this.activeCategory !== 'all') items = items.filter(p => categoryFor(p) === this.activeCategory);
       return items;
@@ -203,7 +204,10 @@
       const hover = safeURL(product.imageHover, { internal: true });
       const category = categoryFor(product);
       const label = category === 'traditional' ? 'Traditional' : category === 'kadas' ? 'Kadas & Cuffs' : category === 'necklaces' ? 'Necklaces' : category === 'rings' ? 'Rings' : category === 'earrings' ? 'Earrings' : 'Jewellery';
-      const badge = product.bestseller ? '<span class="tag">Bestseller</span>' : product.newArrival ? '<span class="tag">New Arrival</span>' : '';
+      let badge = '';
+      if (product.bestseller) badge = '<span class="tag">Bestseller</span>';
+      else if (product.newArrival) badge = '<span class="tag">New Arrival</span>';
+      
       const hoverMarkup = hover ? ( /\.mp4(?:$|\?)/i.test(hover) ? `<video class="hover-img" src="${escapeHTML(hover)}" muted playsinline preload="none" aria-hidden="true"></video>` : `<img class="hover-img" src="${escapeHTML(hover)}" alt="" loading="lazy">`) : '';
       return `<article class="product" data-product-id="${id}"><div class="media"><a href="product?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHTML(product.name)}"><img class="base-img" src="${escapeHTML(image)}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async" width="600" height="600">${hoverMarkup}</a>${badge}<button class="heart ${this.wishlist.includes(product.id) ? 'active' : ''}" type="button" data-action="wishlist" data-id="${id}" aria-label="${this.wishlist.includes(product.id) ? 'Remove from' : 'Add to'} wishlist: ${escapeHTML(product.name)}" aria-pressed="${this.wishlist.includes(product.id)}">♡</button><div class="quickbar"><button type="button" data-action="view-product" data-id="${id}">View</button><button type="button" data-action="etsy-product" data-id="${id}">View on Etsy</button></div></div><div class="pinfo"><div class="pmeta">${escapeHTML(label)}</div><a class="pname" href="product?id=${encodeURIComponent(product.id)}">${escapeHTML(product.name)}</a><div class="price">${money(product.price)}</div>${product.inStock === false ? '<div class="pmeta" style="margin-top:6px">Currently unavailable</div>' : ''}</div></article>`;
     },
@@ -310,7 +314,6 @@
       const update = () => {
         const rawEnd = this.catalog?.promoConfig?.endTime;
         if (!rawEnd) return;
-        // Robust ISO date parsing ensuring correct local time calculation
         const endDate = new Date(rawEnd);
         const remaining = Math.max(0, endDate.getTime() - Date.now());
         const d = Math.floor(remaining / 86400000), h = Math.floor(remaining / 3600000) % 24, m = Math.floor(remaining / 60000) % 60, s = Math.floor(remaining / 1000) % 60;
