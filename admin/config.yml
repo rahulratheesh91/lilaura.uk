@@ -49,10 +49,11 @@ collections:
               - { label: "Price (£ GBP)", name: "price", widget: "number", value_type: "float", min: 0, step: 0.01 }
               - { label: "In Stock?", name: "inStock", widget: "boolean", default: true }
               
-              # --- BEST SELLER & NEW ARRIVAL TOGGLES ---
+              # --- BADGES & HOMEPAGE CURATION TOGGLES ---
+              - { label: "Featured on Homepage?", name: "featured", widget: "boolean", default: false, required: false, hint: "Check this to display the item in the 'Featured Pieces' grid on the homepage" }
               - { label: "Best Seller?", name: "bestseller", widget: "boolean", default: false, required: false, hint: "Displays a gold Best Seller badge over the product card" }
               - { label: "New Arrival?", name: "newArrival", widget: "boolean", default: false, required: false, hint: "Displays an emerald New Arrival badge over the product card" }
-              # -----------------------------------------
+              # -------------------------------------------
 
               - { label: "Image (Upload to GitHub or Etsy CDN URL)", name: "image", widget: "image", hint: "Upload image file directly OR enter image URL" }
               - { label: "Hover Visual (Upload image/video or URL)", name: "imageHover", widget: "file", required: false, hint: "Upload image / MP4 or paste URL" }
