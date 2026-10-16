@@ -65,6 +65,12 @@
             const btn = document.getElementById('submit-btn');
             const status = document.getElementById('form-status');
             
+            const accessKey = form.querySelector('[name="access_key"]')?.value || '';
+            if (!accessKey || accessKey.includes('YOUR_') || accessKey.includes('PLACEHOLDER')) {
+                status.style.color = "#8a4b08";
+                status.textContent = "The online contact form is not configured yet. Please email shop@lilaura.uk or contact us on WhatsApp.";
+                return;
+            }
             btn.disabled = true;
             btn.textContent = "Sending...";
             status.style.color = "var(--ink)";
