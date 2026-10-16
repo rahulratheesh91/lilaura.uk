@@ -1,94 +1,88 @@
-/* LILAURA APEX X™: GLOBAL COMPONENT FACTORY */
+// LilAura Shared Components & Layout Injection - Release 3
+const GA_MEASUREMENT_ID = 'G-82YQHC8Q3X';
 
-const LILAURA_UI = {
-    renderHeader: () => `
-        <header class="header">
-            <nav class="nav">
-                <div class="nav-left"><a href="index.html">Home</a><a href="shop.html">Collections</a><a href="about.html">Our Story</a></div>
-                <a class="logo" href="index.html">LilAura<small>Elegance Made Eternal</small></a>
-                <div class="nav-right">
-                    <button class="wish" aria-label="Wishlist" onclick="window.location.href='shop.html'">♡</button>
-                    <button class="cart" id="cartBtn">Bag <span class="bubble" id="cartCount">0</span></button>
-                </div>
-            </nav>
-            <div class="mega" id="mega">
-                <div class="mega-grid">
-                    <a class="mega-feature" href="shop.html"><span>New Season →</span></a>
-                    <div><h4>Shop</h4><a href="shop.html">New Arrivals</a><a href="shop.html">Bestsellers</a><a href="shop.html">Gift Edit</a><a href="shop.html">Under £35</a></div>
-                    <div><h4>Jewellery</h4><a href="shop.html">Necklaces</a><a href="shop.html">Earrings</a><a href="shop.html">Bracelets</a><a href="shop.html">Kadas & Cuffs</a></div>
-                    <div><h4>Collections</h4><a href="shop.html">Heritage Brass</a><a href="shop.html">Anti-Tarnish</a><a href="shop.html">Statement</a><a href="shop.html">Everyday</a></div>
-                    <div>
-                        <h4>Discover</h4>
-                        <a href="about.html">Our Story</a>
-                        <a href="care.html">Jewellery Care</a>
-                        <a href="reviews.html">Reviews</a>
-                        <a href="concierge.html">Concierge</a>
-                        <a href="policies.html">Legal & Policies</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-    `,
-    renderFooter: () => `
-        <footer>
-            <div class="foot" style="grid-template-columns: 1.5fr repeat(4, 1fr);">
-                <div>
-                    <div class="foot-logo">LilAura</div>
-                    <p style="max-width:300px;color:var(--soft); margin-top:15px; line-height: 1.8; font-size:14px;">Modern heritage jewellery. Designed to be lived in.</p>
-                </div>
-                <div>
-                    <h4>Shop</h4>
-                    <a href="shop.html">New arrivals</a>
-                    <a href="shop.html">Bestsellers</a>
-                    <a href="shop.html">Anti-tarnish</a>
-                    <a href="shop.html">Gift edit</a>
-                </div>
-                <div>
-                    <h4>Discover</h4>
-                    <a href="about.html">Our story</a>
-                    <a href="care.html">Jewellery care</a>
-                    <a href="reviews.html">Reviews</a>
-                    <a href="concierge.html">Concierge</a>
-                </div>
-                <div>
-                    <h4>Help & Legal</h4>
-                    <a href="contact.html">Contact Us</a>
-                    <a href="policies.html#returns">Returns Policy</a>
-                    <a href="policies.html#terms">Terms of Service</a>
-                    <a href="privacy.html">Privacy Notice</a>
-                </div>
-                <div>
-                    <h4>Connect</h4>
-                    <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank">Etsy Shop</a>
-                    <a href="https://instagram.com/lilaura.uk" target="_blank">Instagram</a>
-                    <a href="https://wa.me/447303179015" target="_blank">WhatsApp</a>
-                </div>
-            </div>
-            <div class="copy">
-                <span>© ${new Date().getFullYear()} LilAura UK. All rights reserved.</span>
-                <span>Modern heritage. Made to be worn.</span>
-            </div>
-        </footer>
-    `,
-    renderDrawer: () => `
-        <div class="overlay" id="overlay"></div>
-        <aside class="drawer" id="drawer">
-            <div class="drawer-head"><h3>Your bag</h3><button class="close" id="closeDrawer" aria-label="Close cart">×</button></div>
-            <div id="cartItems"></div>
-            <div id="cartBottom"></div>
-        </aside>
-        <div class="toast" id="toast"></div>
-    `
-};
+class LilAuraLayout {
+    static injectGA4() {
+        // Prevent duplicate injection
+        if (window.ga4Loaded || document.getElementById('ga4-script')) return;
+        window.ga4Loaded = true;
 
-// Injection Execution
-document.addEventListener('DOMContentLoaded', () => {
-    const headerMount = document.getElementById('lilaura-header-mount');
-    const footerMount = document.getElementById('lilaura-footer-mount');
-    
-    if (headerMount) headerMount.innerHTML = LILAURA_UI.renderHeader();
-    if (footerMount) {
-        footerMount.innerHTML = LILAURA_UI.renderFooter();
-        footerMount.insertAdjacentHTML('afterend', LILAURA_UI.renderDrawer());
+        // Default consent state (Denied until user explicitly accepts)
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+
+        gtatif('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 500
+        });
+
+        gtag('js', new Date());
+        gtag('config', GA_MEASUREMENT_ID, { 'send_page_view': true });
+
+        const script = document.createElement('script');
+        script.id = 'ga4-script';
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+        document.head.appendChild(script);
+
+        LilAuraLayout.checkExistingConsent();
     }
+
+    static checkExistingConsent() {
+        const savedConsent = localStorage.getItem('lilaura_cookie_consent');
+        if (savedConsent === 'accepted') {
+            LilAuraLayout.updateConsent(true);
+        } else if (savedConsent === 'rejected') {
+            LilAuraLayout.updateConsent(false);
+        } else {
+            LilAuraLayout.renderConsentBanner();
+        }
+    }
+
+    static updateConsent(accepted) {
+        localStorage.setItem('lilaura_cookie_consent', accepted ? 'accepted' : 'rejected');
+        if (window.gtag) {
+            window.gtag('consent', 'update', {
+                'analytics_storage': accepted ? 'granted' : 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied'
+            });
+        }
+        const banner = document.getElementById('lilaura-consent-banner');
+        if (banner) banner.remove();
+    }
+
+    static renderConsentBanner() {
+        if (document.getElementById('lilaura-consent-banner')) return;
+        const banner = document.createElement('div');
+        banner.id = 'lilaura-consent-banner';
+        banner.style.cssText = `
+            position: fixed; bottom: 0; left: 0; width: 100%; background: #111; color: #fff;
+            padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;
+            z-index: 10000; font-family: inherit; font-size: 14px; box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+        `;
+        banner.innerHTML = `
+            <div style="max-width: 800px; line-height: 1.5;">
+                We use analytics cookies to understand visitor interactions and improve your experience on LilAura. 
+                You can accept or reject optional analytics storage. Read our <a href="about.html" style="color: #d4af37; text-decoration: underline;">Privacy Policy</a>.
+            </div>
+            <div style="display: flex; gap: 12px;">
+                <button id="cookie-reject" style="background: transparent; border: 1px solid #fff; color: #fff; padding: 8px 16px; cursor: pointer; border-radius: 4px;">Reject</button>
+                <button id="cookie-accept" style="background: #d4af37; border: none; color: #111; padding: 8px 16px; cursor: pointer; border-radius: 4px; font-weight: 600;">Accept</button>
+            </div>
+        `;
+        document.body.appendChild(banner);
+
+        document.getElementById('cookie-accept').addEventListener('click', () => LilAuraLayout.updateConsent(true));
+        document.getElementById('cookie-reject').addEventListener('click', () => LilAuraLayout.updateConsent(false));
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    LilAuraLayout.injectGA4();
 });
