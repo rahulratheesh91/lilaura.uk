@@ -1,4 +1,4 @@
-/* LILAURA APEX X™ HARDENED PRODUCTION ENGINE (Dynamic Catalog, GA4 & Security) */
+/* LILAURA APEX X™ RELEASE 2 HARDENED CATALOG & COMMERCE ENGINE */
 
 // 1. URL POLISH
 if (window.location.pathname.endsWith('.html') && window.location.pathname !== '/index.html') {
@@ -15,12 +15,21 @@ let promoConfig = { enabled: false, title: "", discountText: "", endTime: "" };
 // 3. CART, WISHLIST & UI LOGIC
 const $= s => document.querySelector(s),$$ = s => document.querySelectorAll(s);
 
-// Defensive LocalStorage parsing with error recovery
+// Defensive LocalStorage parsing with error recovery & stable ID migration
 let cart = [];
 let wishes = [];
 try {
-    cart = JSON.parse(localStorage.getItem('lilauraCart') || '[]');
-    if (!Array.isArray(cart)) cart = [];
+    const rawCart = JSON.parse(localStorage.getItem('lilauraCart') || '[]');
+    if (Array.isArray(rawCart)) {
+        cart = rawCart.map(item => ({
+            id: item.id || item.productId || null,
+            sku: item.sku || '',
+            name: item.name || 'Jewellery Piece',
+            price: Number(item.price) || 0,
+            img: item.img || item.image || '',
+            qty: Number(item.qty) || 1
+        })).filter(item => item.id !== null);
+    }
 } catch (e) {
     console.warn("Corrupted cart storage reset:", e);
     cart = [];
@@ -114,7 +123,7 @@ function renderCart() {
     let singleProductName = "Multiple Items / General Shop";
     
     if (cart.length === 1) {
-        const matchedProduct = products.find(p => p.id === cart[0].id || p.name === cart[0].name);
+        const matchedProduct = products.find(p => p.id === cart[0].id);
         if (matchedProduct && matchedProduct.etsyLink) {
             checkoutLink = matchedProduct.etsyLink;
             singleProductName = matchedProduct.name;
@@ -123,6 +132,7 @@ function renderCart() {
 
     bottom.innerHTML = `
         <div class="cart-total"><span>Total</span><span class="price-mod">£${total.toFixed(2)}</span></div>
+        <p style="font-size:10px; color:var(--muted); margin:0 0 12px 0; line-height:1.4;">Note: Multi-item orders are finalized individually on our secure Etsy storefront.</p>
         <button class="checkout" onclick="trackEtsyCheckout('${escapeHtml(singleProductName).replace(/'/g, "\\'")}', ${total}); window.open('${checkoutLink}', '_blank')">Checkout securely on Etsy</button>
         <button onclick="clearCart()" style="width:100%; border:0; background:none; padding:20px 0 0; font-family:'Proza Libre', sans-serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); cursor:pointer; text-decoration:underline; transition:color 0.3s;" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">Empty Bag</button>`;
 }
@@ -177,13 +187,12 @@ function addToCart(id) {
     const p = products.find(x => x.id === id); 
     if(!p) return;
     
-    // Out-of-stock guard
     if(!p.inStock) {
         toast(p.name + ' is currently sold out.');
         return;
     }
 
-    let item = cart.find(x => x.id === p.id || x.name === p.name);
+    let item = cart.find(x => x.id === p.id);
     if(item) {
         item.qty = (item.qty || 1) + 1;
     } else {
@@ -208,13 +217,13 @@ function toggleWish(event, id) {
     const p = products.find(x => x.id === id); 
     if(!p) return;
     
-    if(wishes.includes(p.name)) { 
-        wishes = wishes.filter(x => x !== p.name); 
+    if(wishes.includes(p.id)) { 
+        wishes = wishes.filter(x => x !== p.id); 
         toast('Removed from wishlist'); 
         event.target.classList.remove('active'); 
         if (typeof gtag === 'function') gtag('event', 'remove_from_wishlist', { item_name: p.name });
     } else { 
-        wishes.push(p.name); 
+        wishes.push(p.id); 
         toast('Added to wishlist'); 
         event.target.classList.add('active'); 
         if (typeof gtag === 'function') gtag('event', 'add_to_wishlist', { item_name: p.name });
@@ -226,6 +235,7 @@ function toggleWish(event, id) {
 async function initStore() {
     try {
         const response = await fetch('/products.json?' + Date.now());
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
         products = data.items || [];
         categories = data.categories || [];
@@ -234,11 +244,15 @@ async function initStore() {
         renderPromoBanner(promoConfig);
         renderCategoryTabs(); 
     } catch (e) {
-        console.error("Failed loading products.json:", e);
+        console.error("Failed loading products.json catalogue:", e);
+        const shopGrid = document.getElementById('shop-grid');
+        if (shopGrid) {
+            shopGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 0; color:var(--muted);">Unable to load collection. Please refresh or try again later.</div>`;
+        }
     }
 
     const shopGrid = document.getElementById('shop-grid');
-    if (shopGrid) {
+    if (shopGrid && products.length > 0) {
         const params = new URLSearchParams(window.location.search);
         const catParam = params.get('cat');
         if (catParam) {
@@ -249,9 +263,12 @@ async function initStore() {
     }
 
     const detailContainer = document.getElementById('product-detail-container');
-    if (detailContainer) {
+    if (detailContainer && products.length > 0) {
         const params = new URLSearchParams(window.location.search);
-        const p = products.find(x => x.id === parseInt(params.get('id'))) || products[0];
+        const rawId = params.get('id');
+        const parsedId = parseInt(rawId, 10);
+        
+        const p = products.find(x => x.id === parsedId);
         if (p) {
             renderDetail(p);
             if (typeof gtag === 'function') {
@@ -261,6 +278,13 @@ async function initStore() {
                     items: [{ item_id: p.sku || p.id, item_name: p.name, price: p.price }]
                 });
             }
+        } else {
+            detailContainer.innerHTML = `
+                <div style="grid-column:1/-1; text-align:center; padding:100px 20px;">
+                    <h2 style="font-family:'Cormorant Garamond',serif; font-size:36px; margin-bottom:16px;">Product Not Found</h2>
+                    <p style="color:var(--muted); margin-bottom:30px;">The requested piece is no longer available or the link was invalid.</p>
+                    <a href="shop.html" class="btn">Return to Collection</a>
+                </div>`;
         }
     }
 
@@ -311,7 +335,7 @@ function renderShop(items) {
             badgeHTML = `<span class="tag" style="background:var(--emerald); color:var(--white);">New Arrival</span>`;
         }
 
-        const activeWish = wishes.includes(p.name) ? 'active' : '';
+        const activeWish = wishes.includes(p.id) ? 'active' : '';
 
         return `
         <article class="product" onclick="window.location.href='product.html?id=${p.id}'">
@@ -375,7 +399,7 @@ function toggleMobileImage() {
 // 6. PDP RENDERING & DIRECT ROUTING
 function renderDetail(p) {
     document.title = p.seoTitle || `${p.name} | LilAura UK`;
-    if($('#p-cat')) $('#p-cat.innerText = p.category; 
+    if($('#p-cat')) $('#p-cat').innerText = p.category; 
     if($('#p-sku')) $('#p-sku').innerText = `SKU: ${p.sku}`;
     if($('#p-name')) $('#p-name').innerText = p.name; 
     if($('#p-price')) $('#p-price').innerText = `£${(+p.price).toFixed(2)}`;
