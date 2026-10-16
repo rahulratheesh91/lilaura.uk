@@ -191,7 +191,6 @@ function addToCart(id) {
     }
     saveCart(); 
     
-    // GA4 Add to Cart Tracking
     if (typeof gtag === 'function') {
         gtag('event', 'add_to_cart', {
             currency: 'GBP',
@@ -226,7 +225,7 @@ function toggleWish(event, id) {
 // 4. ASYNC INITIALIZATION & PROMO RENDERING
 async function initStore() {
     try {
-        const response = await fetch('/products.json');
+        const response = await fetch('/products.json?' + Date.now());
         const data = await response.json();
         products = data.items || [];
         categories = data.categories || [];
@@ -376,7 +375,7 @@ function toggleMobileImage() {
 // 6. PDP RENDERING & DIRECT ROUTING
 function renderDetail(p) {
     document.title = p.seoTitle || `${p.name} | LilAura UK`;
-    if($('#p-cat')) $('#p-cat').innerText = p.category; 
+    if($('#p-cat')) $('#p-cat.innerText = p.category; 
     if($('#p-sku')) $('#p-sku').innerText = `SKU: ${p.sku}`;
     if($('#p-name')) $('#p-name').innerText = p.name; 
     if($('#p-price')) $('#p-price').innerText = `£${(+p.price).toFixed(2)}`;
