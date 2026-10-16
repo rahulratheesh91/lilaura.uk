@@ -618,42 +618,5 @@ function renderCategoryTabs() {
     });
 }
 
-// 13. CENTRALIZED STRICT FILTER LOGIC
-function filterProducts(f) {
-    const shopGrid = document.getElementById('shop-grid');
-    if (!shopGrid) return;
-
-    if (typeof gtag === 'function') {
-        gtag('event', 'view_item_list', { item_category: f });
-    }
-
-    if (f === 'all' || !f) {
-        renderShop(products);
-    } else {
-        // Strict category-based filtering matching the category ID/slug or category text
-        renderShop(products.filter(p => {
-            const cat = p.category.toLowerCase();
-            const name = p.name.toLowerCase();
-
-            if (f === 'rings') {
-                // Strictly require 'ring' in category and exclude bracelets/cuffs/earrings explicitly
-                return cat.includes('ring') && !cat.includes('kada') && !cat.includes('bracelet') && !cat.includes('cuff');
-            }
-            if (f === 'kadas') {
-                return cat.includes('kada') || cat.includes('bracelet') || cat.includes('cuff') || cat.includes('bangle');
-            }
-            if (f.includes('earring')) {
-                return (cat.includes('earring') || cat.includes('stud')) && !cat.includes('traditional');
-            }
-            if (f === 'traditional') {
-                return cat.includes('traditional') || cat.includes('palakka') || cat.includes('choker') || cat.includes('temple');
-            }
-            if (f === 'necklaces') {
-                return cat.includes('necklace') || cat.includes('chain') || cat.includes('pendant');
-            }
-
-            // Fallback for any other admin-created categories
-            return cat.includes(f) || name.includes(f);
-        }));
     }
 }
