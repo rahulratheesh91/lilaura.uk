@@ -1,8 +1,7 @@
-// LilAura Central Analytics & Tracking Layer - Release 3
+// LilAura Central Analytics & Tracking Layer - Release 4
 class LilAuraAnalytics {
     static trackEvent(eventName, params = {}) {
         if (!window.gtag) return;
-        // Strip any accidental PII
         const sanitizedParams = { ...params };
         delete sanitizedParams.email;
         delete sanitizedParams.phone;
