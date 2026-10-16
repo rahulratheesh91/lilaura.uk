@@ -1,14 +1,20 @@
-/* LilAura storefront behaviour. Kept as a vanilla-JavaScript static-site implementation. */
+/* LilAura storefront behaviour with clean URL path polishing and robust countdown timer. */
 (() => {
   'use strict';
+
+  // 1. URL POLISH (Clean URL paths without .html in address bar)
+  if (window.location.pathname.endsWith('.html') && window.location.pathname !== '/index.html') {
+    window.history.replaceState(null, '', window.location.pathname.replace(/\.html$/, '') + window.location.search);
+  } else if (window.location.pathname === '/index.html') {
+    window.history.replaceState(null, '', '/');
+  }
 
   const CATALOG_URL = 'products.json';
   const CART_KEY = 'lilauraCart';
   const WISHLIST_KEY = 'lilauraWish';
   const RECENT_KEY = 'lilauraRecentlyViewed';
   const money = value => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(Number(value) || 0);
-  const $ = (selector, root = document) => root.querySelector(selector);
-  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const $ = (selector, root = document) => root.querySelector(selector); const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
   const safeURL = (value, { internal = false } = {}) => {
     if (!value || typeof value !== 'string') return '';
@@ -126,12 +132,12 @@
       const header = $('#lilaura-header-mount');
       if (header && !header.dataset.mounted) {
         header.dataset.mounted = 'true';
-        header.innerHTML = `<header class="header"><nav class="nav" aria-label="Main navigation"><div class="nav-left"><a href="shop.html" aria-label="Open collection">Shop</a><a href="about.html">Our Story</a></div><a class="logo" href="index.html" aria-label="LilAura home">LilAura<small>JEWELLERY · UK</small></a><div class="nav-right"><a href="concierge.html">Concierge</a><button class="cart" type="button" data-action="open-cart" aria-label="Open bag">Bag <span class="bubble" id="cart-count">0</span></button><button type="button" class="menu-toggle" data-action="toggle-menu" aria-expanded="false" aria-controls="lilaura-menu" aria-label="Toggle navigation">☰</button></div></nav><div class="mega" id="lilaura-menu"><div class="mega-grid"><div><h4>Explore LilAura</h4><a href="shop.html">All Jewellery</a><a href="shop.html?cat=kadas">Kadas & Cuffs</a><a href="shop.html?cat=necklaces">Necklaces</a><a href="shop.html?cat=traditional">Traditional Jewellery</a><a href="shop.html?cat=earrings">Earrings & Studs</a><a href="shop.html?cat=rings">Rings</a></div><div><h4>Discover</h4><a href="about.html">Our Story</a><a href="care.html">Jewellery Care</a><a href="policies.html">Policies</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a></div></div></div></header>`;
+        header.innerHTML = `<header class="header"><nav class="nav" aria-label="Main navigation"><div class="nav-left"><a href="shop" aria-label="Open collection">Shop</a><a href="about">Our Story</a></div><a class="logo" href="index" aria-label="LilAura home">LilAura<small>JEWELLERY · UK</small></a><div class="nav-right"><a href="concierge">Concierge</a><button class="cart" type="button" data-action="open-cart" aria-label="Open bag">Bag <span class="bubble" id="cart-count">0</span></button><button type="button" class="menu-toggle" data-action="toggle-menu" aria-expanded="false" aria-controls="lilaura-menu" aria-label="Toggle navigation">☰</button></div></nav><div class="mega" id="lilaura-menu"><div class="mega-grid"><div><h4>Explore LilAura</h4><a href="shop">All Jewellery</a><a href="shop?cat=kadas">Kadas & Cuffs</a><a href="shop?cat=necklaces">Necklaces</a><a href="shop?cat=traditional">Traditional Jewellery</a><a href="shop?cat=earrings">Earrings & Studs</a><a href="shop?cat=rings">Rings</a></div><div><h4>Discover</h4><a href="about">Our Story</a><a href="care">Jewellery Care</a><a href="policies">Policies</a><a href="reviews">Reviews</a><a href="contact">Contact</a></div></div></div></header>`;
       }
       const footer = $('#lilaura-footer-mount');
       if (footer && !footer.dataset.mounted) {
         footer.dataset.mounted = 'true';
-        footer.innerHTML = `<footer><div class="foot"><div><div class="foot-logo">LilAura</div><p style="max-width:340px;line-height:1.8;color:rgba(255,255,255,.72);font-size:13px">Jewellery inspired by Indian heritage and modern everyday elegance.</p></div><div><h4>Explore</h4><a href="shop.html">Shop all</a><a href="shop.html?cat=traditional">Traditional jewellery</a><a href="shop.html?cat=kadas">Kadas & cuffs</a></div><div><h4>Customer care</h4><a href="care.html">Jewellery care</a><a href="policies.html">Policies</a><a href="contact.html">Contact us</a></div><div><h4>About LilAura</h4><a href="about.html">Our story</a><a href="reviews.html">Reviews</a><a href="privacy.html">Privacy</a><a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" rel="noopener noreferrer">Shop on Etsy ↗</a></div></div><div class="copy"><span>© ${new Date().getFullYear()} LilAura UK</span><span>Thoughtfully curated jewellery</span></div></footer>`;
+        footer.innerHTML = `<footer><div class="foot"><div><div class="foot-logo">LilAura</div><p style="max-width:340px;line-height:1.8;color:rgba(255,255,255,.72);font-size:13px">Jewellery inspired by Indian heritage and modern everyday elegance.</p></div><div><h4>Explore</h4><a href="shop">Shop all</a><a href="shop?cat=traditional">Traditional jewellery</a><a href="shop?cat=kadas">Kadas & cuffs</a></div><div><h4>Customer care</h4><a href="care">Jewellery care</a><a href="policies">Policies</a><a href="contact">Contact us</a></div><div><h4>About LilAura</h4><a href="about">Our story</a><a href="reviews">Reviews</a><a href="privacy">Privacy</a><a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" rel="noopener noreferrer">Shop on Etsy ↗</a></div></div><div class="copy"><span>© ${new Date().getFullYear()} LilAura UK</span><span>Thoughtfully curated jewellery</span></div></footer>`;
       }
       if (!$('#lilaura-cart-ui')) {
         const cartUI = document.createElement('div');
@@ -142,7 +148,7 @@
     },
     renderCurrentPage() {
       const path = window.location.pathname.toLowerCase();
-      this.isHome = path.endsWith('/') || path.endsWith('/index.html');
+      this.isHome = path.endsWith('/') || path.endsWith('/index') || path.endsWith('/index.html');
       if ($('#shop-grid')) this.renderProductGrid();
       if ($('#p-name')) this.renderProductDetail();
       if ($('#recentGrid')) this.renderRecent();
@@ -195,24 +201,22 @@
       const id = escapeHTML(product.id);
       const image = safeURL(product.image, { internal: true });
       const hover = safeURL(product.imageHover, { internal: true });
-      const etsy = safeEtsyURL(product.etsyLink);
       const category = categoryFor(product);
       const label = category === 'traditional' ? 'Traditional' : category === 'kadas' ? 'Kadas & Cuffs' : category === 'necklaces' ? 'Necklaces' : category === 'rings' ? 'Rings' : category === 'earrings' ? 'Earrings' : 'Jewellery';
       const badge = product.bestseller ? '<span class="tag">Bestseller</span>' : product.newArrival ? '<span class="tag">New Arrival</span>' : '';
       const hoverMarkup = hover ? ( /\.mp4(?:$|\?)/i.test(hover) ? `<video class="hover-img" src="${escapeHTML(hover)}" muted playsinline preload="none" aria-hidden="true"></video>` : `<img class="hover-img" src="${escapeHTML(hover)}" alt="" loading="lazy">`) : '';
-      return `<article class="product" data-product-id="${id}"><div class="media"><a href="product.html?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHTML(product.name)}"><img class="base-img" src="${escapeHTML(image)}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async" width="600" height="600">${hoverMarkup}</a>${badge}<button class="heart ${this.wishlist.includes(product.id) ? 'active' : ''}" type="button" data-action="wishlist" data-id="${id}" aria-label="${this.wishlist.includes(product.id) ? 'Remove from' : 'Add to'} wishlist: ${escapeHTML(product.name)}" aria-pressed="${this.wishlist.includes(product.id)}">♡</button><div class="quickbar"><button type="button" data-action="view-product" data-id="${id}">View</button><button type="button" data-action="etsy-product" data-id="${id}">View on Etsy</button></div></div><div class="pinfo"><div class="pmeta">${escapeHTML(label)}</div><a class="pname" href="product.html?id=${encodeURIComponent(product.id)}">${escapeHTML(product.name)}</a><div class="price">${money(product.price)}</div>${product.inStock === false ? '<div class="pmeta" style="margin-top:6px">Currently unavailable</div>' : ''}</div></article>`;
+      return `<article class="product" data-product-id="${id}"><div class="media"><a href="product?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHTML(product.name)}"><img class="base-img" src="${escapeHTML(image)}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async" width="600" height="600">${hoverMarkup}</a>${badge}<button class="heart ${this.wishlist.includes(product.id) ? 'active' : ''}" type="button" data-action="wishlist" data-id="${id}" aria-label="${this.wishlist.includes(product.id) ? 'Remove from' : 'Add to'} wishlist: ${escapeHTML(product.name)}" aria-pressed="${this.wishlist.includes(product.id)}">♡</button><div class="quickbar"><button type="button" data-action="view-product" data-id="${id}">View</button><button type="button" data-action="etsy-product" data-id="${id}">View on Etsy</button></div></div><div class="pinfo"><div class="pmeta">${escapeHTML(label)}</div><a class="pname" href="product?id=${encodeURIComponent(product.id)}">${escapeHTML(product.name)}</a><div class="price">${money(product.price)}</div>${product.inStock === false ? '<div class="pmeta" style="margin-top:6px">Currently unavailable</div>' : ''}</div></article>`;
     },
     renderProductDetail() {
       const id = new URLSearchParams(location.search).get('id');
       const product = this.products.find(item => item.id === String(id));
       const container = $('#product-detail-container');
       if (!product) {
-        if (container) container.innerHTML = '<div class="catalogue-message" role="status"><h1>Product not found</h1><p>This product link may be out of date.</p><a class="btn" href="shop.html">Return to the collection</a></div>';
+        if (container) container.innerHTML = '<div class="catalogue-message" role="status"><h1>Product not found</h1><p>This product link may be out of date.</p><a class="btn" href="shop">Return to the collection</a></div>';
         document.title = 'Product not found | LilAura';
         return;
       }
       document.title = `${product.seoTitle || product.name + ' | LilAura UK'}`;
-      const desc = product.metaDesc || product.desc || product.name;
       const setText = (selector, value) => { const element = $(selector); if (element) element.textContent = value; };
       setText('#p-cat', product.category || 'Jewellery');
       setText('#p-sku', product.sku ? `SKU: ${product.sku}` : '');
@@ -253,7 +257,7 @@
       const ids = this.normaliseIds(readJSON(RECENT_KEY, [])).filter(id => id !== new URLSearchParams(location.search).get('id'));
       const products = ids.map(id => this.products.find(p => p.id === id)).filter(Boolean).slice(0, 4);
       if (!products.length) { const section = $('#recent'); if (section) section.hidden = true; return; }
-      grid.innerHTML = products.map(p => `<a class="recent-card" href="product.html?id=${encodeURIComponent(p.id)}"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}" loading="lazy"><p>${escapeHTML(p.name)}<br><span style="font-size:14px">${money(p.price)}</span></p></a>`).join('');
+      grid.innerHTML = products.map(p => `<a class="recent-card" href="product?id=${encodeURIComponent(p.id)}"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}" loading="lazy"><p>${escapeHTML(p.name)}<br><span style="font-size:14px">${money(p.price)}</span></p></a>`).join('');
     },
     addToCart(id) {
       const product = this.products.find(p => p.id === String(id));
@@ -277,7 +281,7 @@
       const bubble = $('#cart-count'); if (bubble) bubble.textContent = String(count);
       const itemsEl = $('#cartItems');
       if (itemsEl) {
-        if (!this.cart.length) itemsEl.innerHTML = '<p style="color:var(--muted);line-height:1.8">Your bag is empty. Explore the collection to find your next favourite piece.</p><a class="btn" href="shop.html">Explore the collection</a>';
+        if (!this.cart.length) itemsEl.innerHTML = '<p style="color:var(--muted);line-height:1.8">Your bag is empty. Explore the collection to find your next favourite piece.</p><a class="btn" href="shop">Explore the collection</a>';
         else itemsEl.innerHTML = this.cart.map(row => { const p = this.products.find(product => product.id === row.id); if (!p) return ''; return `<div class="cart-item"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}"><div style="flex:1"><h4>${escapeHTML(p.name)}</h4><small class="price-mod">${money(p.price)}</small><div style="display:flex;align-items:center;gap:10px;margin-top:12px"><button type="button" data-action="qty-minus" data-id="${escapeHTML(p.id)}" aria-label="Decrease quantity">−</button><span>${row.quantity}</span><button type="button" data-action="qty-plus" data-id="${escapeHTML(p.id)}" aria-label="Increase quantity" ${p.inStock === false ? 'disabled' : ''}>+</button><button type="button" data-action="remove-cart" data-id="${escapeHTML(p.id)}" style="margin-left:auto">Remove</button></div></div></div>`; }).join('');
       }
       const subtotal = this.cart.reduce((sum, row) => { const p = this.products.find(product => product.id === row.id); return sum + (p ? p.price * row.quantity : 0); }, 0);
@@ -285,22 +289,13 @@
       const checkout = $('[data-action="cart-checkout"]'); if (checkout) checkout.disabled = !this.cart.length;
     },
     openCart() { $('.overlay')?.classList.add('open'); $('#cart-drawer')?.classList.add('open'); document.body.classList.add('lock'); $('.close')?.focus(); },
-    closeCart() { $('.overlay')?.classList.remove('open'); $('#cart-drawer')?.classList.remove('open'); document.body.classList.remove('lock'); $('[data-action="open-cart"]')?.focus(); },
-    toggleWishlist(id) {
-      const key = String(id); const exists = this.wishlist.includes(key);
-      this.wishlist = exists ? this.wishlist.filter(item => item !== key) : [...this.wishlist, key];
-      writeJSON(WISHLIST_KEY, this.wishlist); this.updateWishlistButtons();
-      const product = this.products.find(p => p.id === key);
-      if (!exists && product) window.LilAuraAnalytics?.trackAddToWishlist?.(product);
-    },
-    updateWishlistButtons() {
-      $$('[data-action="wishlist"]').forEach(button => { const active = this.wishlist.includes(String(button.dataset.id)); button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active)); button.setAttribute('aria-label', `${active ? 'Remove from' : 'Add to'} wishlist: ${button.closest('.product')?.querySelector('.pname')?.textContent || 'product'}`); button.textContent = active ? '♥' : '♡'; });
+    closeCart() { $('.overlay')?.classList.remove('open');$('#cart-drawer')?.classList.remove('open'); document.body.classList.remove('lock'); $('[data-action="open-cart"]')?.focus(); }, toggleWishlist(id) { const key = String(id); const exists = this.wishlist.includes(key); this.wishlist = exists ? this.wishlist.filter(item => item !== key) : [...this.wishlist, key]; writeJSON(WISHLIST_KEY, this.wishlist); this.updateWishlistButtons(); const product = this.products.find(p => p.id === key); if (!exists && product) window.LilAuraAnalytics?.trackAddToWishlist?.(product); }, updateWishlistButtons() { $$('[data-action="wishlist"]').forEach(button => { const active = this.wishlist.includes(String(button.dataset.id)); button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active)); button.setAttribute('aria-label', `${active ? 'Remove from' : 'Add to'} wishlist: ${button.closest('.product')?.querySelector('.pname')?.textContent || 'product'}`); button.textContent = active ? '♥' : '♡'; });
     },
     showPageError(message) {
       const grid = $('#shop-grid');
       if (grid && !this.products.length) grid.innerHTML = `<p class="catalogue-message" role="alert">${escapeHTML(message)} <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" rel="noopener noreferrer">Visit our Etsy shop</a>.</p>`;
       const container = $('#product-detail-container');
-      if (container && !this.products.length) container.innerHTML = `<div class="catalogue-message" role="alert">${escapeHTML(message)} <a href="shop.html">Return to the collection</a>.</div>`;
+      if (container && !this.products.length) container.innerHTML = `<div class="catalogue-message" role="alert">${escapeHTML(message)} <a href="shop">Return to the collection</a>.</div>`;
     },
     initAccordion() {
       document.addEventListener('click', event => {
@@ -313,17 +308,18 @@
     },
     initPromoTimer() {
       const update = () => {
-        const end = this.catalog?.promoConfig?.endTime;
-        if (!end) return;
-        const remaining = Math.max(0, new Date(end).getTime() - Date.now());
+        const rawEnd = this.catalog?.promoConfig?.endTime;
+        if (!rawEnd) return;
+        // Robust ISO date parsing ensuring correct local time calculation
+        const endDate = new Date(rawEnd);
+        const remaining = Math.max(0, endDate.getTime() - Date.now());
         const d = Math.floor(remaining / 86400000), h = Math.floor(remaining / 3600000) % 24, m = Math.floor(remaining / 60000) % 60, s = Math.floor(remaining / 1000) % 60;
         const set = (selector, value) => { const el = $(selector); if (el) el.textContent = String(value).padStart(2, '0'); };
         set('#days', d); set('#hours', h); set('#mins', m); set('#secs', s);
-        const mini = $('#miniTimer'); if (mini) mini.textContent = remaining ? `${String(h + d * 24).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}` : 'Offer ended';
+        const mini = $('#miniTimer'); if (mini) mini.textContent = remaining ? `${d > 0 ? d + 'd ' : ''}${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}` : 'Offer ended';
         if (!remaining) $$('.announce, .promo-countdown').forEach(el => { if (el.querySelector('#miniTimer') || el.classList.contains('promo-countdown')) el.hidden = true; });
       };
       this._promoInterval = window.setInterval(update, 1000);
-      // Also refresh promo data after catalogue loading.
       const originalRender = this.renderCurrentPage.bind(this);
       this.renderCurrentPage = () => { originalRender(); update(); };
       update();
@@ -347,7 +343,7 @@
       case 'close-cart': Store.closeCart(); break;
       case 'toggle-menu': { const menu = $('#lilaura-menu'); const open = menu?.classList.toggle('open'); button.setAttribute('aria-expanded', String(Boolean(open))); break; }
       case 'wishlist': event.preventDefault(); event.stopPropagation(); Store.toggleWishlist(id); break;
-      case 'view-product': location.href = `product.html?id=${encodeURIComponent(id)}`; break;
+      case 'view-product': location.href = `product?id=${encodeURIComponent(id)}`; break;
       case 'etsy-product': { const product = Store.products.find(p => p.id === String(id)); const url = product && safeEtsyURL(product.etsyLink); if (url) { window.LilAuraAnalytics?.trackOutboundEtsy?.({ type: 'product_listing', id: product.id, name: product.name }); window.open(url, '_blank', 'noopener,noreferrer'); } break; }
       case 'add-cart': Store.addToCart(id); break;
       case 'qty-minus': Store.changeQuantity(id, -1); break;
