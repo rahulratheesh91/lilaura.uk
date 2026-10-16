@@ -8,19 +8,70 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
     <link rel="stylesheet" href="styles.css?v=luxe">
+    <style>
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5vw;
+        }
+        .review {
+            padding: 50px 40px;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform var(--transition-fast);
+        }
+        .review:hover {
+            transform: translateY(-4px);
+        }
+        .review .stars {
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 6px;
+            margin-bottom: 24px;
+        }
+        .review p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            line-height: 1.5;
+            color: var(--ink);
+            font-style: italic;
+            margin-bottom: 36px;
+            font-weight: 400;
+        }
+        .review small {
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-family: 'Proza Libre', sans-serif;
+            font-weight: 500;
+        }
+        @media(max-width: 1024px) {
+            .review-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        }
+        @media(max-width: 768px) {
+            .review-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <!-- LILAURA APEX X™: HEADER MOUNT -->
     <div id="lilaura-header-mount"></div>
     <div class="announce">Autumn Edit · <b>20% OFF</b> selected anti-tarnish jewellery · Ends in <span id="miniTimer">--:--:--</span></div>
 
-    <div class="page-header">
+    <div class="page-header" style="padding: 120px 20px 50px; text-align: center;">
         <div class="eyebrow" style="color:var(--emerald); margin-bottom:15px">The LilAura Community</div>
-        <h1>What They're Saying</h1>
-        <p style="font-family:'Proza Libre', sans-serif; font-size:14px; color:var(--muted); max-width:600px; margin:0 auto">Real experiences from our customers wearing our anti-tarnish and traditional heritage collections.</p>
+        <h1 style="font-family:'Cormorant Garamond', serif; font-size: clamp(42px, 6vw, 70px); font-weight:400; margin-bottom:16px;">What They're Saying</h1>
+        <p style="font-family:'Proza Libre', sans-serif; font-size:15px; color:var(--muted); max-width:600px; margin:0 auto; line-height: 1.8;">Real experiences from our customers wearing our anti-tarnish and traditional heritage collections.</p>
     </div>
 
-    <section class="section reviews" style="padding-top: 20px; padding-bottom: 100px;">
+    <section class="section reviews" style="padding-top: 10px; padding-bottom: 120px;">
         <div class="review-grid">
             <article class="review">
                 <div class="stars">★★★★★</div>
