@@ -65,7 +65,12 @@
   <script>
     const STORAGE_KEY = 'decap-cms-user';
     const legacyKey = 'netlify-cms-user';
-    const userSession = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(legacyKey);
+    let userSession = null;
+    try {
+      userSession = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(legacyKey);
+    } catch (e) {
+      userSession = null;
+    }
 
     if (!userSession) {
       document.addEventListener('DOMContentLoaded', () => {
@@ -81,8 +86,12 @@
         return;
       }
       const payload = JSON.stringify({ token: token, backendName: 'github' });
-      localStorage.setItem(STORAGE_KEY, payload);
-      localStorage.setItem(legacyKey, payload);
+      try {
+        localStorage.setItem(STORAGE_KEY, payload);
+        localStorage.setItem(legacyKey, payload);
+      } catch (e) {
+        console.error("Storage error:", e);
+      }
       window.location.reload();
     }
   </script>
