@@ -7,15 +7,42 @@
     <meta name="description" content="Get in touch with LilAura. Speak to our WhatsApp concierge, email us, or send a message for order inquiries and styling advice.">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <link rel="stylesheet" href="styles.css?v=luxe">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5vw 120px;
+            align-items: start;
+        }
+        .contact-info h2 { font-size: 38px; color: var(--ink); margin: 0 0 20px 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+        .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 36px; font-size: 15px; font-family: 'Proza Libre', sans-serif; }
+        .contact-block { margin-bottom: 36px; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+        .contact-label { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--ink); margin-bottom: 8px; display: block; }
+        .contact-link { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--emerald); transition: var(--transition-fast); border-bottom: 1px solid var(--emerald); padding-bottom: 4px; display: inline-block; font-weight: 500; }
+        .contact-link:hover { color: var(--gold); border-color: var(--gold); }
+        .contact-form-box { background: var(--soft); padding: 60px 50px; border: 1px solid var(--line); }
+        .contact-form-box h2 { font-size: 36px; color: var(--ink); margin: 0 0 24px 0; font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+        .contact-input { padding: 18px 20px; border: 1px solid var(--line); outline: 0; background: var(--white); font-family: 'Proza Libre', sans-serif; width: 100%; margin-bottom: 16px; box-sizing: border-box; color: var(--ink); font-size: 13px; transition: border var(--transition-fast); }
+        .contact-input:focus { border-color: var(--ink); }
+        .contact-btn { background: var(--ink); color: var(--white); border: 1px solid var(--ink); padding: 18px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: var(--transition-fast); width: 100%; }
+        .contact-btn:hover { background: var(--emerald); border-color: var(--emerald); }
+        @media(max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 50px; padding: 40px 20px 80px; }
+            .contact-form-box { padding: 30px 20px; }
+        }
+    </style>
 </head>
 <body>
     <div id="lilaura-header-mount"></div>
     <div class="announce">Autumn Edit · <b>20% OFF</b> selected anti-tarnish jewellery · Ends in <span id="miniTimer">--:--:--</span></div>
 
-    <div class="page-header">
-        <div class="eyebrow">At Your Service</div>
-        <h1>Get in Touch</h1>
-        <p>Have a question about a piece, need styling advice, or require help with an order? We are here to assist you.</p>
+    <div class="page-header" style="padding: 100px 20px 40px; text-align: center;">
+        <div class="eyebrow" style="color: var(--emerald);">At Your Service</div>
+        <h1 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 5vw, 64px); font-weight: 400; margin-bottom: 16px;">Get in Touch</h1>
+        <p style="font-family:'Proza Libre', sans-serif; font-size:15px; color:var(--muted); max-width:550px; margin:0 auto; line-height: 1.8;">Have a question about a piece, need styling advice, or require help with an order? We are here to assist you.</p>
     </div>
 
     <main class="contact-grid">
@@ -33,9 +60,9 @@
                 <a href="mailto:shop@lilaura.uk" class="contact-link">shop@lilaura.uk</a>
             </div>
             
-            <div class="contact-block">
+            <div class="contact-block" style="border-bottom: 0;">
                 <span class="contact-label">Etsy Storefront</span>
-                <p style="margin-bottom: 12px;">All transactions and official returns are processed via our verified Etsy shop.</p>
+                <p style="margin-bottom: 12px; font-size: 14px;">All transactions and official returns are processed via our verified Etsy shop.</p>
                 <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" class="contact-link">Visit Shop &rarr;</a>
             </div>
         </div>
@@ -43,7 +70,6 @@
         <div class="contact-form-box">
             <h2>Send a Message</h2>
             <form action="https://api.web3forms.com/submit" method="POST" onsubmit="handleFormSubmit(event)">
-                <!-- Replace value with your active Web3Forms Access Key when ready -->
                 <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
                 <input type="text" name="name" placeholder="Your Name" required class="contact-input">
                 <input type="email" name="email" placeholder="Your Email Address" required class="contact-input">
