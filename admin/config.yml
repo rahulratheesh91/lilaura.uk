@@ -1,64 +1,37 @@
 backend:
   name: github
-  repo: rahulratheesh91/lilaura.uk
+  repo: RahulRatheesh1/lilaura  # Your GitHub repository
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "images"
+public_folder: "/images"
 
 collections:
-  - name: "store_data"
-    label: "Store Catalog & Settings"
-    delete: false
-    editor:
-      preview: false
+  - name: "products"
+    label: "Products"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product ID", name: "id", widget: "string", hint: "Unique product identifier, e.g. la-01" }
+      - { label: "Product Name", name: "name", widget: "string" }
+      - { label: "Price (£)", name: "price", widget: "number", value_type: "float" }
+      - { label: "Main Collection Line", name: "mainLine", widget: "select", options: [{label: "Anti-Tarnish Everyday Luxury", value: "anti-tarnish"}, {label: "Traditional Heritage", value: "traditional"}] }
+      - { label: "Sub-Category", name: "subCategory", widget: "select", options: [{label: "Necklaces", value: "necklaces"}, {label: "Kada's & Cuffs", value: "kadas"}, {label: "Earrings", value: "earrings"}, {label: "Finger Rings", value: "rings"}] }
+      - { label: "Primary Image URL", name: "image", widget: "string", hint: "Public HTTPS image URL" }
+      - { label: "Hover Image / Video URL", name: "imageHover", widget: "string", required: false }
+      - { label: "Etsy Listing URL", name: "etsyLink", widget: "string" }
+      - { label: "Featured on Homepage? (Max 4)", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Bestseller Tag", name: "bestseller", widget: "boolean", default: false, required: false }
+      - { label: "New Arrival Tag", name: "newArrival", widget: "boolean", default: false, required: false }
+      - { label: "Description", name: "desc", widget: "text", required: false }
+
+  - name: "settings"
+    label: "Store Settings"
     files:
-      - name: "catalog"
-        label: "Products & Promo Settings"
-        file: "products.json"
+      - name: "promo"
+        label: "Promo Banner Config"
+        file: "content/settings/promo.json"
         fields:
-          - label: "Promo & Sale Banner"
-            name: "promoConfig"
-            widget: "object"
-            fields:
-              - { label: "Enable Promo Banner?", name: "enabled", widget: "boolean", default: true }
-              - { label: "Promo Title", name: "title", widget: "string", hint: "e.g., Autumn Edit" }
-              - { label: "Discount Description", name: "discountText", widget: "string", hint: "e.g., 20% OFF selected anti-tarnish jewellery" }
-              - { label: "Promo End Date & Time", name: "endTime", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ" }
-
-          # STRUCTURED DUAL-TIER CATEGORIES
-          - label: "Product Categories"
-            name: "categories"
-            widget: "list"
-            summary: "{{fields.title}} (Line: {{fields.line}} / Type: {{fields.id}})"
-            fields:
-              - { label: "Main Line", name: "line", widget: "select", options: ["Anti-Tarnish Everyday", "Traditional Heritage"], default: "Anti-Tarnish Everyday" }
-              - { label: "Sub-Category Key", name: "id", widget: "select", options: ["necklaces", "kadas", "earrings", "rings"], hint: "Product sub-category" }
-              - { label: "Display Title", name: "title", widget: "string", hint: "e.g. Kadas & Cuffs" }
-
-          # PRODUCT LIST
-          - label: "Products"
-            name: "items"
-            widget: "list"
-            summary: "{{fields.name}} — £{{fields.price}} [{{fields.mainLine}} / {{fields.subCategory}}]"
-            fields:
-              - { label: "Product ID (Unique Integer)", name: "id", widget: "number", value_type: "int" }
-              - { label: "SKU", name: "sku", widget: "string" }
-              - { label: "Product Name", name: "name", widget: "string" }
-              
-              # --- STRUCTURED DROPDOWNS FOR ADMIN ---
-              - { label: "Main Collection Line", name: "mainLine", widget: "select", options: ["Anti-Tarnish Everyday", "Traditional Heritage"], default: "Anti-Tarnish Everyday", hint: "Select the overarching product category" }
-              - { label: "Sub-Category", name: "subCategory", widget: "select", options: ["Necklaces", "Kadas & Cuffs", "Earrings", "Finger Rings"], default: "Necklaces", hint: "Select the jewellery type" }
-              # --------------------------------------
-
-              - { label: "Price (£ GBP)", name: "price", widget: "number", value_type: "float", min: 0, step: 0.01 }
-              - { label: "In Stock?", name: "inStock", widget: "boolean", default: true }
-              - { label: "Featured on Homepage?", name: "featured", widget: "boolean", default: false, required: false }
-              - { label: "Best Seller?", name: "bestseller", widget: "boolean", default: false, required: false }
-              - { label: "New Arrival?", name: "newArrival", widget: "boolean", default: false, required: false }
-              - { label: "Image (Upload or URL)", name: "image", widget: "image" }
-              - { label: "Hover Visual (Optional)", name: "imageHover", widget: "file", required: false }
-              - { label: "Description", name: "desc", widget: "text" }
-              - { label: "Etsy Checkout Listing URL", name: "etsyLink", widget: "string" }
-              - { label: "SEO Meta Title", name: "seoTitle", widget: "string", required: false }
-              - { label: "SEO Meta Description", name: "metaDesc", widget: "text", required: false }
+          - { label: "Announcement Text", name: "text", widget: "string", default: "Autumn Edit · 20% OFF selected anti-tarnish jewellery" }
+          - { label: "Promo End Date & Time", name: "endTime", widget: "datetime" }
