@@ -65,7 +65,36 @@
       const header = document.querySelector('#lilaura-header-mount');
       if (header && !header.dataset.mounted) {
         header.dataset.mounted = 'true';
-        header.innerHTML = `<header class="header"><nav class="nav" aria-label="Main navigation"><div class="nav-left"><a href="about">Our Story</a></div><a class="logo" href="index">LilAura<small>Elegance Made Eternal</small></a><div class="nav-right"><button type="button" class="menu-toggle" id="menuBtn" aria-label="Toggle menu" style="display:none">☰</button></div></nav><div class="mega" id="mega"><div class="mega-grid"><a class="mega-feature" href="shop"><span>New Season →</span></a><div><h4>Shop</h4><a href="shop">New Arrivals</a><a href="shop?cat=anti-tarnish">Anti-Tarnish Everyday</a><a href="shop?cat=traditional">Traditional Heritage</a><a href="shop">Gift Edit</a></div><div><h4>Jewellery</h4><a href="shop?cat=necklaces">Necklaces</a><a href="shop?cat=earrings">Earrings</a><a href="shop?cat=kadas">Kadas & Cuffs</a><a href="shop?cat=rings">Rings</a></div><div><h4>Collections</h4><a href="shop?cat=traditional">Heritage Brass</a><a href="shop?cat=anti-tarnish">Anti-Tarnish</a><a href="shop">Statement</a><a href="shop">Everyday</a></div><div><h4>Discover</h4><a href="about">Our Story</a><a href="care">Jewellery Care</a><a href="reviews">Reviews</a><a href="concierge">Concierge</a><a href="policies">Legal & Policies</a></div></div></div></header>`;
+        header.innerHTML = `
+          <header class="header">
+            <nav class="nav" aria-label="Main navigation">
+              <div class="nav-left"><a href="about">Our Story</a></div>
+              <a class="logo" href="index">LilAura<small>Elegance Made Eternal</small></a>
+              <div class="nav-right">
+                <button type="button" class="menu-toggle" data-action="toggle-menu" aria-label="Toggle navigation">☰</button>
+              </div>
+            </nav>
+            <div class="mega" id="mega">
+              <div class="mega-grid">
+                <div>
+                  <h4>Collections</h4>
+                  <a href="shop">All Jewellery</a>
+                  <a href="shop?cat=anti-tarnish">Anti-Tarnish Everyday</a>
+                  <a href="shop?cat=traditional">Traditional Heritage</a>
+                </div>
+                <div>
+                  <h4>Customer Care</h4>
+                  <a href="care">Jewellery Care</a>
+                  <a href="privacy">Privacy</a>
+                  <a href="contact">Contact Us</a>
+                </div>
+                <div>
+                  <h4>Direct Link</h4>
+                  <a href="https://www.etsy.com/uk/shop/LilauraElegance" target="_blank" rel="noopener noreferrer">Etsy Shop ↗</a>
+                </div>
+              </div>
+            </div>
+          </header>`;
       }
       
       const footer = document.querySelector('#lilaura-footer-mount');
