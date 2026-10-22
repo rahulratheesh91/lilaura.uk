@@ -1,4 +1,4 @@
-/* LilAura storefront behaviour with two-tier filtering, clean URL paths, and promo timer. */
+/* LilAura storefront behaviour with dual-tier filtering, clean URL paths, and promo timer. */
 (() => {
   'use strict';
 
@@ -97,23 +97,25 @@
         const response = await fetch(CATALOG_URL, { headers: { Accept: 'application/json' }, cache: 'no-cache' });
         if (!response.ok) throw new Error(`Catalogue request failed (${response.status})`);
         const data = await response.json();
-        if (!data || !Array.isArray(data.items)) throw new Error('Catalogue has no valid items array');
+        
+        let rawItems = [];
+        if (Array.isArray(data)) rawItems = data;
+        else if (data && Array.isArray(data.items)) rawItems = data.items;
+        else rawItems = [];
+
         const seenIds = new Set();
-        this.products = data.items.filter(item => {
-          const valid = item && (typeof item.id === 'string' || Number.isFinite(Number(item.id))) && String(item.name || '').trim() && Number.isFinite(Number(item.price)) && Number(item.price) >= 0 && safeURL(item.image, { internal: true }) && safeEtsyURL(item.etsyLink);
+        this.products = rawItems.filter(item => {
+          const valid = item && (typeof item.id === 'string' || Number.isFinite(Number(item.id))) && String(item.name || '').trim() && Number.isFinite(Number(item.price)) && Number(item.price) >= 0;
           if (!valid || seenIds.has(String(item.id))) return false;
           seenIds.add(String(item.id));
           return true;
         }).map(item => ({ ...item, id: String(item.id), price: Number(item.price) }));
+        
         this.catalog = data;
         this.renderCurrentPage();
       } catch (error) {
         console.error('[LilAura] Could not load product catalogue:', error);
       }
-    },
-    normaliseIds(value) {
-      if (!Array.isArray(value)) return [];
-      return [...new Set(value.map(v => String(typeof v === 'object' && v ? v.id : v)).filter(v => v && v !== 'undefined'))];
     },
     renderCurrentPage() {
       const path = window.location.pathname.toLowerCase();
@@ -125,7 +127,6 @@
     getVisibleProducts() {
       let items = [...this.products];
       if (this.isHome) {
-        // Strict guard to guarantee a maximum of 4 featured items
         const explicitFeatured = items.filter(p => p.featured === true);
         return explicitFeatured.length > 0 ? explicitFeatured.slice(0, 4) : items.slice(0, 4);
       }
@@ -153,7 +154,6 @@
       this.activeSub = params.get('sub') || 'all';
 
       const tabs = $('#shopTabs');
-      // If #shopTabs doesn't exist (e.g. on homepage), it simply skips this block safely
       if (tabs) {
         tabs.innerHTML = `
           <div class="filter-container">
@@ -238,18 +238,6 @@
              window.open(etsy, '_blank', 'noopener,noreferrer'); 
         }};
       }
-    },
-    addRecentlyViewed(id) {
-      const ids = this.normaliseIds(readJSON(RECENT_KEY, [])).filter(existing => existing !== String(id));
-      ids.unshift(String(id)); writeJSON(RECENT_KEY, ids.slice(0, 5));
-    },
-    renderRecent() {
-      const grid = $('#recentGrid');
-      if (!grid) return;
-      const ids = this.normaliseIds(readJSON(RECENT_KEY, [])).filter(id => id !== new URLSearchParams(location.search).get('id'));
-      const products = ids.map(id => this.products.find(p => p.id === id)).filter(Boolean).slice(0, 4);
-      if (!products.length) { const section = $('#recent'); if (section) section.hidden = true; return; }
-      grid.innerHTML = products.map(p => `<a class="recent-card" href="product?id=${encodeURIComponent(p.id)}"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}" loading="lazy"><p>${escapeHTML(p.name)}<br><span style="font-size:14px">${money(p.price)}</span></p></a>`).join('');
     },
     initAccordion() {
       document.addEventListener('click', event => {
