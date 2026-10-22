@@ -1,4 +1,4 @@
-/* LilAura storefront behaviour with two-tier filtering, clean URL paths, promo timer, and dynamic scroll. */
+/* LilAura storefront behaviour with dual-tier filtering, clean URL paths, and promo timer. */
 (() => {
   'use strict';
 
@@ -41,7 +41,7 @@
   };
   const writeJSON = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (_) { return false; } };
 
-  // Helper to get Main Collection Line
+  // Determine Main Line (Anti-Tarnish vs Traditional Heritage)
   const getMainLine = product => {
     const ml = String(product?.mainLine || '').toLowerCase();
     const cat = String(product?.category || '').toLowerCase();
@@ -52,7 +52,7 @@
     return 'anti-tarnish';
   };
 
-  // Helper to get Sub-Category
+  // Determine Sub-Category
   const getSubCategory = product => {
     const sc = String(product?.subCategory || '').toLowerCase();
     const cat = String(product?.category || '').toLowerCase();
@@ -63,6 +63,27 @@
     if (sc.includes('kada') || sc.includes('cuff') || cat.includes('kada') || cat.includes('bracelet') || cat.includes('bangle') || /kada|cuff|bracelet|bangle/.test(name)) return 'kadas';
     return 'necklaces';
   };
+
+  class LilAuraAnalytics {
+    static trackEvent(name, params = {}) {
+      if (!window.gtag || window.LilAuraLayout?.safeReadConsent?.() !== 'accepted') return;
+      const clean = { ...params };
+      ['email','phone','name','address','message','form_data'].forEach(key => delete clean[key]);
+      window.gtag('event', name, clean);
+    }
+    static trackViewItem(product) {
+      if (!product) return;
+      this.trackEvent('view_item', { currency: 'GBP', value: Number(product.price) || 0, items: [{ item_id: String(product.id || product.sku || ''), item_name: product.name, item_category: product.category || 'Jewellery', price: Number(product.price) || 0, quantity: 1 }] });
+    }
+    static trackOutboundEtsy(context = {}) {
+      this.trackEvent('click_outbound_etsy', { destination_type: context.type || 'product_listing', item_id: String(context.id || 'general_shop'), item_name: context.name || 'Etsy Store' });
+    }
+    static trackAddToWishlist(product) {
+      if (!product) return;
+      this.trackEvent('add_to_wishlist', { currency: 'GBP', value: Number(product.price) || 0, items: [{ item_id: String(product.id || product.sku || ''), item_name: product.name, price: Number(product.price) || 0 }] });
+    }
+  }
+  window.LilAuraAnalytics = LilAuraAnalytics;
 
   const Store = {
     catalog: null,
@@ -187,7 +208,7 @@
 
           history.replaceState({}, '', url);
           this.renderProductGridItems();
-          this.renderProductGrid(); // Re-render filters to update active classes
+          this.renderProductGrid();
         };
       }
       this.renderProductGridItems();
@@ -265,7 +286,7 @@
     saveCart() { writeJSON(CART_KEY, this.cart); },
     updateCartUI() {
       const count = this.cart.reduce((sum, row) => sum + row.quantity, 0);
-      const bubble = $('#cart-count'); if (bubble) bubble.textContent = String(count);
+      const bubble = $('#cartCount'); if (bubble) bubble.textContent = String(count);
       const itemsEl = $('#cartItems');
       if (itemsEl) {
         if (!this.cart.length) itemsEl.innerHTML = '<p style="color:var(--muted);line-height:1.8">Your bag is empty. Explore the collection to find your next favourite piece.</p><a class="btn" href="shop">Explore the collection</a>';
@@ -274,8 +295,8 @@
       const subtotal = this.cart.reduce((sum, row) => { const p = this.products.find(product => product.id === row.id); return sum + (p ? p.price * row.quantity : 0); }, 0);
       const total = $('#cart-subtotal'); if (total) total.textContent = money(subtotal);
     },
-    openCart() { $('.overlay')?.classList.add('open'); $('#cart-drawer')?.classList.add('open'); document.body.classList.add('lock'); },
-    closeCart() { $('.overlay')?.classList.remove('open'); $('#cart-drawer')?.classList.remove('open'); document.body.classList.remove('lock'); },
+    openCart() { $('#overlay')?.classList.add('open'); $('#drawer')?.classList.add('open'); document.body.classList.add('lock'); },
+    closeCart() { $('#overlay')?.classList.remove('open'); $('#drawer')?.classList.remove('open'); document.body.classList.remove('lock'); },
     toggleWishlist(id) {
       const key = String(id); const exists = this.wishlist.includes(key);
       this.wishlist = exists ? this.wishlist.filter(item => item !== key) : [...this.wishlist, key];
@@ -298,8 +319,15 @@
         if (!rawEnd) return;
         const endDate = new Date(rawEnd);
         const remaining = Math.max(0, endDate.getTime() - Date.now());
-        const d = Math.floor(remaining / 86400000), h = Math.floor(remaining / 3600000) % 24, m = Math.floor(remaining / 60000) % 60, s = Math.floor(remaining / 1000) % 60;
-        const mini = $('#miniTimer'); if (mini) mini.textContent = remaining ? `${d > 0 ? d + 'd ' : ''}${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s` : 'Offer ended';
+        const d = Math.floor(remaining / 86400000);
+        const h = Math.floor(remaining / 3600000) % 24;
+        const m = Math.floor(remaining / 60000) % 60;
+        const s = Math.floor(remaining / 1000) % 60;
+        
+        const mini = $('#miniTimer'); 
+        if (mini) {
+          mini.textContent = remaining ? `${d > 0 ? d + 'd ' : ''}${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s` : 'Offer ended';
+        }
       };
       window.setInterval(update, 1000); update();
     },
@@ -333,7 +361,7 @@
     switch (button.dataset.action) {
       case 'open-cart': Store.openCart(); break;
       case 'close-cart': Store.closeCart(); break;
-      case 'toggle-menu': $('#lilaura-menu')?.classList.toggle('open'); break;
+      case 'toggle-menu': $('#mega')?.classList.toggle('open'); break;
       case 'wishlist': event.preventDefault(); event.stopPropagation(); Store.toggleWishlist(id); break;
       case 'view-product': location.href = `product?id=${encodeURIComponent(id)}`; break;
       case 'etsy-product': { const product = Store.products.find(p => p.id === String(id)); const url = product && safeEtsyURL(product.etsyLink); if (url) window.open(url, '_blank', 'noopener,noreferrer'); break; }
@@ -351,6 +379,10 @@
     main.classList.toggle('active-img');
     alternate.classList.toggle('active-img');
   };
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { Store.closeCart(); $('#mega')?.classList.remove('open'); }
+  });
 
   document.addEventListener('DOMContentLoaded', () => Store.init());
   window.LilAuraStore = Store;
