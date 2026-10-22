@@ -68,7 +68,7 @@
         header.innerHTML = `
           <header class="header">
             <nav class="nav" aria-label="Main navigation">
-              <div class="nav-left"><a href="about">Our Story</a></div>
+              <div class="nav-left"></div>
               <a class="logo" href="index">LilAura<small>Elegance Made Eternal</small></a>
               <div class="nav-right">
                 <button type="button" class="menu-toggle" data-action="toggle-menu" aria-label="Toggle navigation">☰</button>
@@ -83,7 +83,8 @@
                   <a href="shop?cat=traditional">Traditional Heritage</a>
                 </div>
                 <div>
-                  <h4>Customer Care</h4>
+                  <h4>Discover</h4>
+                  <a href="about">Our Story</a>
                   <a href="care">Jewellery Care</a>
                   <a href="privacy">Privacy</a>
                   <a href="contact">Contact Us</a>
