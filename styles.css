@@ -232,7 +232,7 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
 
 @media(max-width: 1024px) {
     .nav { grid-template-columns: auto 1fr auto; height: 70px; }
-    .mega-grid { grid-template-columns: 1fr 1fr; }
+    .mega-grid { grid-template-columns: 1fr 1fr !important; }
     .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
@@ -245,7 +245,7 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
     .scroll-action-btn { bottom: 20px; right: 20px; width: 44px; height: 44px; }
     .filter-row-primary { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; padding-bottom: 5px; }
     .filter-btn-primary { white-space: nowrap; flex-shrink: 0; padding: 10px 16px; }
-    .mega-grid { grid-template-columns: 1fr; gap: 20px; }
+    .mega-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
 }
 
 /* FOOTER */
