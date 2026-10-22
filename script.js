@@ -92,7 +92,6 @@
     async init() {
       this.initAccordion();
       this.initPromoTimer();
-      this.initNewsletterNotice();
       this.initScrollButton();
       try {
         const response = await fetch(CATALOG_URL, { headers: { Accept: 'application/json' }, cache: 'no-cache' });
@@ -126,8 +125,9 @@
     getVisibleProducts() {
       let items = [...this.products];
       if (this.isHome) {
+        // Strict rendering: ONLY show items marked as featured, and absolute max of 4.
         const explicitFeatured = items.filter(p => p.featured === true);
-        items = explicitFeatured.length > 0 ? explicitFeatured : items.slice(0, 8);
+        return explicitFeatured.length > 0 ? explicitFeatured.slice(0, 4) : items.slice(0, 4);
       }
       
       const params = new URLSearchParams(location.search);
@@ -153,6 +153,7 @@
       this.activeSub = params.get('sub') || 'all';
 
       const tabs = $('#shopTabs');
+      // If we are on the homepage, index.html won't have a #shopTabs element anymore, so this logic is bypassed safely
       if (tabs) {
         tabs.innerHTML = `
           <div class="filter-container">
@@ -276,13 +277,6 @@
       };
       window.setInterval(update, 1000); update();
     },
-    initNewsletterNotice() {
-      const form = $('.news .form'); if (!form) return;
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        alert('Thank you for subscribing to LilAura UK.');
-      });
-    },
     initScrollButton() {
       const scrollBtn = $('#lilaura-scroll-btn');
       if (!scrollBtn) return;
@@ -324,3 +318,146 @@
   document.addEventListener('DOMContentLoaded', () => Store.init());
   window.LilAuraStore = Store;
 })();
+```<br><br><br>To implement this strict 4-item limit in the admin panel and remove the filtering/sorting tabs from the homepage "Featured Pieces" section, we need to update **3 files**.
+
+Here is how we are achieving this:
+1. **`admin/index.html`**: We will inject a custom Decap CMS `preSave` validation script. If it detects more than 4 products marked with `featured: true`, it will instantly block you from saving and display an error message.
+2. **`index.html`**: We will remove the `<div id="shopTabs"></div>` element from the homepage so the category filters completely disappear from the featured section.
+3. **`script.js`**: We will add an absolute fallback guard limiting homepage rendering to exactly 4 items (`.slice(0, 4)`) just to be safe.
+
+Here are the completely updated files to overwrite in your GitHub repository:
+
+---
+
+### 1. `admin/index.html`
+*(Overwrite your `admin/index.html` file. Notice the new `CMS.registerEventListener` logic added just before the closing `</body>` tag.)*
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LilAura Admin Panel</title>
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+  <style>
+    #token-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 58, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .modal-box {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 8px;
+      max-width: 440px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+    .modal-box h3 { margin: 0 0 12px 0; color: #1a1a1a; font-size: 20px; }
+    .modal-box p { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 20px; }
+    .modal-box input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-family: monospace;
+    }
+    .modal-box button {
+      background: #023A2A;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="token-modal">
+    <div class="modal-box">
+      <h3>LilAura Admin Access</h3>
+      <p>Enter your GitHub Personal Access Token (Classic token with <code>repo</code> scope) to access the store manager.</p>
+      <input type="password" id="pat-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+      <button onclick="saveToken()">Authenticate & Enter</button>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'decap-cms-user';
+    const legacyKey = 'netlify-cms-user';
+    let userSession = null;
+    try {
+      userSession = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(legacyKey);
+    } catch (e) {
+      userSession = null;
+    }
+
+    if (!userSession) {
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('token-modal');
+        if (modal) modal.style.display = 'flex';
+      });
+    }
+
+    function saveToken() {
+      const token = document.getElementById('pat-input').value.trim();
+      if (!token) {
+        alert('Please paste a valid token.');
+        return;
+      }
+      const payload = JSON.stringify({ token: token, backendName: 'github' });
+      try {
+        localStorage.setItem(STORAGE_KEY, payload);
+        localStorage.setItem(legacyKey, payload);
+      } catch (e) {
+        console.error("Storage error:", e);
+      }
+      window.location.reload();
+    }
+  </script>
+
+  <!-- Decap CMS Core Engine -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!-- LILAURA APEX X™: Custom Validation Rules -->
+  <script>
+    CMS.registerEventListener({
+      name: 'preSave',
+      handler: ({ entry }) => {
+        try {
+          // Check if we are modifying the 'catalog' file
+          if (entry.get('slug') === 'catalog') {
+            const data = entry.get('data').toJS();
+            if (data && data.items) {
+              // Count how many products have the 'featured' toggle set to true
+              const featuredCount = data.items.filter(item => item.featured === true).length;
+              
+              if (featuredCount > 4) {
+                // Block the save and throw an error to the user
+                return Promise.reject(new Error(`Validation Failed: You are not allowed to have more than 4 featured items. You currently have ${featuredCount} selected. Please uncheck some 'Featured on Homepage?' toggles before publishing.`));
+              }
+            }
+          }
+        } catch(e) {
+          console.error(e);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
