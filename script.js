@@ -1,4 +1,4 @@
-/* LilAura storefront behaviour with dual-tier filtering, clean URL paths, and promo timer. */
+/* LilAura storefront behaviour with two-tier filtering, clean URL paths, and promo timer. (Cart & Wishlist Removed) */
 (() => {
   'use strict';
 
@@ -9,8 +9,6 @@
   }
 
   const CATALOG_URL = 'products.json';
-  const CART_KEY = 'lilauraCart';
-  const WISHLIST_KEY = 'lilauraWish';
   const RECENT_KEY = 'lilauraRecentlyViewed';
   const money = value => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(Number(value) || 0);
   const $ = (selector, root = document) => root.querySelector(selector); 
@@ -75,12 +73,12 @@
       if (!product) return;
       this.trackEvent('view_item', { currency: 'GBP', value: Number(product.price) || 0, items: [{ item_id: String(product.id || product.sku || ''), item_name: product.name, item_category: product.category || 'Jewellery', price: Number(product.price) || 0, quantity: 1 }] });
     }
+    static trackSelectItem(product, listName = 'Product Catalog') {
+      if (!product) return;
+      this.trackEvent('select_item', { item_list_name: listName, items: [{ item_id: String(product.id || product.sku || ''), item_name: product.name, item_category: product.category || 'Jewellery', price: Number(product.price) || 0 }] });
+    }
     static trackOutboundEtsy(context = {}) {
       this.trackEvent('click_outbound_etsy', { destination_type: context.type || 'product_listing', item_id: String(context.id || 'general_shop'), item_name: context.name || 'Etsy Store' });
-    }
-    static trackAddToWishlist(product) {
-      if (!product) return;
-      this.trackEvent('add_to_wishlist', { currency: 'GBP', value: Number(product.price) || 0, items: [{ item_id: String(product.id || product.sku || ''), item_name: product.name, price: Number(product.price) || 0 }] });
     }
   }
   window.LilAuraAnalytics = LilAuraAnalytics;
@@ -88,14 +86,10 @@
   const Store = {
     catalog: null,
     products: [],
-    cart: [],
-    wishlist: [],
     activeLine: 'all',
     activeSub: 'all',
     isHome: false,
     async init() {
-      this.cart = this.normaliseCart(readJSON(CART_KEY, []));
-      this.wishlist = this.normaliseIds(readJSON(WISHLIST_KEY, []));
       this.initAccordion();
       this.initPromoTimer();
       this.initNewsletterNotice();
@@ -113,10 +107,7 @@
           return true;
         }).map(item => ({ ...item, id: String(item.id), price: Number(item.price) }));
         this.catalog = data;
-        this.cart = this.cart.filter(row => this.products.some(p => p.id === row.id));
-        this.saveCart();
         this.renderCurrentPage();
-        this.updateCartUI();
       } catch (error) {
         console.error('[LilAura] Could not load product catalogue:', error);
       }
@@ -125,24 +116,12 @@
       if (!Array.isArray(value)) return [];
       return [...new Set(value.map(v => String(typeof v === 'object' && v ? v.id : v)).filter(v => v && v !== 'undefined'))];
     },
-    normaliseCart(value) {
-      if (!Array.isArray(value)) return [];
-      const rows = new Map();
-      value.forEach(row => {
-        if (!row || row.id == null) return;
-        const id = String(row.id);
-        const quantity = Math.max(1, Math.min(99, Math.floor(Number(row.quantity || row.qty) || 1)));
-        rows.set(id, { id, quantity: Math.min(99, (rows.get(id)?.quantity || 0) + quantity) });
-      });
-      return [...rows.values()];
-    },
     renderCurrentPage() {
       const path = window.location.pathname.toLowerCase();
       this.isHome = path.endsWith('/') || path.endsWith('/index') || path.endsWith('/index.html');
       if ($('#shop-grid')) this.renderProductGrid();
       if ($('#p-name')) this.renderProductDetail();
       if ($('#recentGrid')) this.renderRecent();
-      this.updateWishlistButtons();
     },
     getVisibleProducts() {
       let items = [...this.products];
@@ -231,7 +210,8 @@
       const label = line === 'traditional' ? 'Traditional Heritage' : 'Anti-Tarnish Luxury';
       const badge = product.bestseller ? '<span class="tag">Bestseller</span>' : product.newArrival ? '<span class="tag">New Arrival</span>' : '';
       const hoverMarkup = hover ? ( /\.mp4(?:$|\?)/i.test(hover) ? `<video class="hover-img" src="${escapeHTML(hover)}" muted playsinline preload="none" aria-hidden="true"></video>` : `<img class="hover-img" src="${escapeHTML(hover)}" alt="" loading="lazy">`) : '';
-      return `<article class="product" data-product-id="${id}"><div class="media"><a href="product?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHTML(product.name)}"><img class="base-img" src="${escapeHTML(image)}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async" width="600" height="600">${hoverMarkup}</a>${badge}<button class="heart ${this.wishlist.includes(product.id) ? 'active' : ''}" type="button" data-action="wishlist" data-id="${id}" aria-label="Wishlist" aria-pressed="${this.wishlist.includes(product.id)}">♡</button><div class="quickbar"><button type="button" data-action="view-product" data-id="${id}">View</button><button type="button" data-action="etsy-product" data-id="${id}">View on Etsy</button></div></div><div class="pinfo"><div class="pmeta">${escapeHTML(label)}</div><a class="pname" href="product?id=${encodeURIComponent(product.id)}">${escapeHTML(product.name)}</a><div class="price">${money(product.price)}</div></div></article>`;
+      
+      return `<article class="product" data-product-id="${id}"><div class="media"><a href="product?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHTML(product.name)}"><img class="base-img" src="${escapeHTML(image)}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async" width="600" height="600">${hoverMarkup}</a>${badge}<div class="quickbar"><button type="button" data-action="view-product" data-id="${id}">View</button><button type="button" data-action="etsy-product" data-id="${id}">View on Etsy</button></div></div><div class="pinfo"><div class="pmeta">${escapeHTML(label)}</div><a class="pname" href="product?id=${encodeURIComponent(product.id)}">${escapeHTML(product.name)}</a><div class="price">${money(product.price)}</div></div></article>`;
     },
     renderProductDetail() {
       const id = new URLSearchParams(location.search).get('id');
@@ -252,7 +232,10 @@
         buy.textContent = 'View on Etsy';
         buy.disabled = !etsy || product.inStock === false;
         if (product.inStock === false) buy.textContent = 'Currently unavailable';
-        buy.onclick = () => { if (etsy && product.inStock !== false) window.open(etsy, '_blank', 'noopener,noreferrer'); };
+        buy.onclick = () => { if (etsy && product.inStock !== false) {
+             window.LilAuraAnalytics?.trackOutboundEtsy?.({ type: 'product_listing', id: product.id, name: product.name });
+             window.open(etsy, '_blank', 'noopener,noreferrer'); 
+        }};
       }
     },
     addRecentlyViewed(id) {
@@ -266,44 +249,6 @@
       const products = ids.map(id => this.products.find(p => p.id === id)).filter(Boolean).slice(0, 4);
       if (!products.length) { const section = $('#recent'); if (section) section.hidden = true; return; }
       grid.innerHTML = products.map(p => `<a class="recent-card" href="product?id=${encodeURIComponent(p.id)}"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}" loading="lazy"><p>${escapeHTML(p.name)}<br><span style="font-size:14px">${money(p.price)}</span></p></a>`).join('');
-    },
-    addToCart(id) {
-      const product = this.products.find(p => p.id === String(id));
-      if (!product || product.inStock === false) return;
-      const row = this.cart.find(item => item.id === product.id);
-      if (row) row.quantity = Math.min(99, row.quantity + 1); else this.cart.push({ id: product.id, quantity: 1 });
-      this.saveCart(); this.updateCartUI(); this.openCart();
-    },
-    changeQuantity(id, delta) {
-      const row = this.cart.find(item => item.id === String(id));
-      if (!row) return;
-      row.quantity += delta;
-      if (row.quantity <= 0) this.cart = this.cart.filter(item => item.id !== row.id);
-      else row.quantity = Math.min(99, row.quantity);
-      this.saveCart(); this.updateCartUI();
-    },
-    removeCartItem(id) { this.cart = this.cart.filter(item => item.id !== String(id)); this.saveCart(); this.updateCartUI(); },
-    saveCart() { writeJSON(CART_KEY, this.cart); },
-    updateCartUI() {
-      const count = this.cart.reduce((sum, row) => sum + row.quantity, 0);
-      const bubble = $('#cartCount'); if (bubble) bubble.textContent = String(count);
-      const itemsEl = $('#cartItems');
-      if (itemsEl) {
-        if (!this.cart.length) itemsEl.innerHTML = '<p style="color:var(--muted);line-height:1.8">Your bag is empty. Explore the collection to find your next favourite piece.</p><a class="btn" href="shop">Explore the collection</a>';
-        else itemsEl.innerHTML = this.cart.map(row => { const p = this.products.find(product => product.id === row.id); if (!p) return ''; return `<div class="cart-item"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}"><div style="flex:1"><h4>${escapeHTML(p.name)}</h4><small class="price-mod">${money(p.price)}</small><div style="display:flex;align-items:center;gap:10px;margin-top:12px"><button type="button" data-action="qty-minus" data-id="${escapeHTML(p.id)}">−</button><span>${row.quantity}</span><button type="button" data-action="qty-plus" data-id="${escapeHTML(p.id)}">+</button><button type="button" data-action="remove-cart" data-id="${escapeHTML(p.id)}" style="margin-left:auto">Remove</button></div></div></div>`; }).join('');
-      }
-      const subtotal = this.cart.reduce((sum, row) => { const p = this.products.find(product => product.id === row.id); return sum + (p ? p.price * row.quantity : 0); }, 0);
-      const total = $('#cart-subtotal'); if (total) total.textContent = money(subtotal);
-    },
-    openCart() { $('#overlay')?.classList.add('open'); $('#drawer')?.classList.add('open'); document.body.classList.add('lock'); },
-    closeCart() { $('#overlay')?.classList.remove('open'); $('#drawer')?.classList.remove('open'); document.body.classList.remove('lock'); },
-    toggleWishlist(id) {
-      const key = String(id); const exists = this.wishlist.includes(key);
-      this.wishlist = exists ? this.wishlist.filter(item => item !== key) : [...this.wishlist, key];
-      writeJSON(WISHLIST_KEY, this.wishlist); this.updateWishlistButtons();
-    },
-    updateWishlistButtons() {
-      $$('[data-action="wishlist"]').forEach(button => { const active = this.wishlist.includes(String(button.dataset.id)); button.classList.toggle('active', active); button.textContent = active ? '♥' : '♡'; });
     },
     initAccordion() {
       document.addEventListener('click', event => {
@@ -359,17 +304,9 @@
     const button = event.target.closest('[data-action]'); if (!button) return;
     const id = button.dataset.id;
     switch (button.dataset.action) {
-      case 'open-cart': Store.openCart(); break;
-      case 'close-cart': Store.closeCart(); break;
       case 'toggle-menu': $('#mega')?.classList.toggle('open'); break;
-      case 'wishlist': event.preventDefault(); event.stopPropagation(); Store.toggleWishlist(id); break;
       case 'view-product': location.href = `product?id=${encodeURIComponent(id)}`; break;
       case 'etsy-product': { const product = Store.products.find(p => p.id === String(id)); const url = product && safeEtsyURL(product.etsyLink); if (url) window.open(url, '_blank', 'noopener,noreferrer'); break; }
-      case 'add-cart': Store.addToCart(id); break;
-      case 'qty-minus': Store.changeQuantity(id, -1); break;
-      case 'qty-plus': Store.changeQuantity(id, 1); break;
-      case 'remove-cart': Store.removeCartItem(id); break;
-      case 'cart-checkout': window.open('https://www.etsy.com/uk/shop/LilauraElegance', '_blank', 'noopener,noreferrer'); break;
     }
   });
 
@@ -381,7 +318,7 @@
   };
 
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') { Store.closeCart(); $('#mega')?.classList.remove('open'); }
+    if (event.key === 'Escape') { $('#mega')?.classList.remove('open'); }
   });
 
   document.addEventListener('DOMContentLoaded', () => Store.init());
