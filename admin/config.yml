@@ -1,3 +1,9 @@
+backend:
+  name: github
+  repo: rahulratheesh91/lilaura.uk
+  branch: main
+  auth_type: token
+
 media_folder: "images"
 public_folder: "/images"
 
