@@ -10,28 +10,28 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(2, 58, 42, 0.6);
+      background: rgba(2, 58, 42, 0.8);
       backdrop-filter: blur(4px);
-      z-index: 9999;
+      z-index: 99999;
       align-items: center;
       justify-content: center;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     .modal-box {
       background: #ffffff;
-      padding: 32px;
+      padding: 36px;
       border-radius: 8px;
       max-width: 440px;
       width: 90%;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
       text-align: center;
     }
-    .modal-box h3 { margin: 0 0 12px 0; color: #1a1a1a; font-size: 20px; }
-    .modal-box p { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 20px; }
+    .modal-box h3 { margin: 0 0 12px 0; color: #1a1a1a; font-size: 22px; font-family: serif; }
+    .modal-box p { font-size: 13.5px; color: #666; line-height: 1.6; margin-bottom: 20px; }
     .modal-box input {
       width: 100%;
       padding: 12px;
-      border: 1px solid #ddd;
+      border: 1px solid #ccc;
       border-radius: 4px;
       margin-bottom: 16px;
       box-sizing: border-box;
@@ -50,13 +50,14 @@
       cursor: pointer;
       width: 100%;
     }
+    .modal-box button:hover { background: #034d37; }
   </style>
 </head>
 <body>
   <div id="token-modal">
     <div class="modal-box">
       <h3>LilAura Admin Access</h3>
-      <p>Enter your GitHub Personal Access Token (Classic token with <code>repo</code> scope) to access the store manager.</p>
+      <p>Enter your GitHub Personal Access Token (Classic token with <code>repo</code> scope) to securely manage your store catalogue.</p>
       <input type="password" id="pat-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
       <button onclick="saveToken()">Authenticate & Enter</button>
     </div>
@@ -80,15 +81,19 @@
     }
 
     function saveToken() {
-      const token = document.getElementById('pat-input'].value.trim();
+      const token = document.getElementById('pat-input').value.trim();
       if (!token) {
-        alert('Please paste a valid token.');
+        alert('Please paste a valid GitHub personal access token.');
         return;
       }
-      const payload = JSON.stringify({ token: token, backendName: 'github' });
+      const authData = {
+        token: token,
+        backendName: 'github',
+        user: { name: 'Rahul Ratheesh', login: 'rahulratheesh91' }
+      };
       try {
-        localStorage.setItem(STORAGE_KEY, payload);
-        localStorage.setItem(legacyKey, payload);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(authData));
+        localStorage.setItem(legacyKey, JSON.stringify(authData));
       } catch (e) {
         console.error("Storage error:", e);
       }
@@ -99,22 +104,20 @@
   <!-- Decap CMS Core Engine -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
-  <!-- LILAURA APEX X™: Custom Validation Rules for Folder Collections -->
+  <!-- LILAURA APEX X™: Initialize CMS with direct GitHub Token Backend -->
   <script>
-    CMS.registerEventListener({
-      name: 'preSave',
-      handler: ({ entry, collection }) => {
-        try {
-          if (collection.get('name') === 'products') {
-            const data = entry.get('data').toJS();
-            // If this item is being saved with featured: true, we ensure it doesn't violate limits or we let store logic handle it.
-            if (data && data.featured === true) {
-              console.log('[LilAura CMS] Saving featured product:', data.name);
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.CMS) {
+        CMS.init({
+          config: {
+            backend: {
+              name: 'github',
+              repo: 'rahulratheesh91/lilaura.uk',
+              branch: 'main',
+              auth_type: 'token'
             }
           }
-        } catch(e) {
-          console.error(e);
-        }
+        });
       }
     });
   </script>
