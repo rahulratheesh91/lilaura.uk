@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: RahulRatheesh1/lilaura  # Your GitHub repository
+  repo: rahulratheesh91/lilaura.uk
   branch: main
   auth_type: token
 
