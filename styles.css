@@ -72,7 +72,7 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
 .promise div { text-align: center; padding: 24px 12px; border-right: 1px solid var(--line); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
 .promise div:last-child { border: 0; }
 
-.section { padding: 80px 5vw; }
+.section { padding: 100px 5vw; }
 .section-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 40px; }
 .section-head h2 { font-size: 46px; color: var(--ink); margin: 8px 0 0; }
 .under { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; border-bottom: 1px solid var(--ink); padding-bottom: 4px; color: var(--ink); transition: var(--transition-fast); }
@@ -86,9 +86,9 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
 .ed-copy { position: absolute; left: 24px; right: 24px; bottom: 24px; color: #fff; z-index: 2; }
 .ed-copy h3 { font-size: 38px; margin: 8px 0; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
 
-/* TWO-TIER FILTER SYSTEM STYLING WITH FULL MOBILE SCROLLING */
+/* TWO-TIER FILTER SYSTEM STYLING WITH HORIZONTAL MOBILE SCROLLING */
 .filter-container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto 50px auto;
     padding: 0 20px;
 }
@@ -103,7 +103,7 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
     background: transparent;
     border: 1px solid var(--line);
     color: var(--muted);
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -119,11 +119,11 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
 .filter-row-secondary {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 28px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     white-space: nowrap;
-    padding-bottom: 10px;
+    padding: 5px 10px 15px 10px;
     border-bottom: 1px solid var(--line);
     scrollbar-width: none;
 }
@@ -136,14 +136,14 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
     letter-spacing: 0.15em;
     text-transform: uppercase;
     cursor: pointer;
-    padding: 6px 0;
+    padding: 4px 0;
     position: relative;
     transition: color var(--transition-fast);
 }
 .filter-btn-secondary::after {
     content: "";
     position: absolute;
-    bottom: -10px;
+    bottom: -15px;
     left: 0;
     width: 100%;
     height: 1px;
@@ -230,4 +230,27 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
     .quickbar { transform: none; position: relative; opacity: 1; padding: 8px 0 0; background: transparent; }
     .quickbar button { min-height: 40px; font-size: 8px; padding: 8px 4px; }
     .scroll-action-btn { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+    .filter-row-primary { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; padding-bottom: 5px; }
+    .filter-btn-primary { white-space: nowrap; flex-shrink: 0; padding: 10px 16px; }
+}
+
+@media(max-width: 560px) {
+    .nav { height: 68px; padding: 0 20px; }
+    .logo { font-size: 24px; }
+    .logo small { display: none; }
+    .nav-left { display: none; }
+    .nav-right .menu-toggle { display: inline-flex !important; font-size: 22px !important; }
+}
+
+/* FOOTER & DRAWER RESTORATION */
+footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
+.foot { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 60px; }
+.foot-logo { font-size: 28px; letter-spacing: 0.15em; color: var(--white); margin-bottom: 20px; }
+.foot h4 { font-family: 'Proza Libre', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin-bottom: 24px; }
+.foot a { display: block; font-size: 14px; margin: 16px 0; color: rgba(255,255,255,0.8); transition: color var(--transition-fast); }
+.foot a:hover { color: var(--white); }
+.copy { border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 80px; padding-top: 30px; font-size: 11px; color: rgba(255, 255, 255, 0.5); display: flex; justify-content: space-between; text-transform: uppercase; letter-spacing: 0.1em; }
+
+@media(max-width: 900px) {
+    footer .foot { display: flex !important; flex-direction: column !important; gap: 40px !important; padding: 60px 24px !important; }
 }
