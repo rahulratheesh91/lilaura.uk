@@ -1,7 +1,8 @@
 backend:
   name: github
-  repo: RahulRatheesh1/lilaura  # Your GitHub repository
+  repo: RahulRatheesh91/lilaura.uk  # Your GitHub repository
   branch: main
+  auth_type: token
 
 media_folder: "images"
 public_folder: "/images"
