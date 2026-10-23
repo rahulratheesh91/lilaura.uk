@@ -5,8 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LilAura Admin Panel</title>
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+  <style>
+    /* CRITICAL: Hide the default Decap CMS login screen so Netlify is never called */
+    body:not(.logged-in) #nc-root { 
+      display: none !important; 
+    }
+
+    /* Our Custom Secure Login Screen */
+    #custom-login {
+      display: flex;
+      position: fixed;
+      inset: 0;
+      background: #F9F8F5;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      z-index: 99999;
+    }
+    .login-box {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .login-box h2 { margin: 0 0 10px; font-size: 24px; color: #1a1a1a; }
+    .login-box p { color: #666; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
+    .login-box input {
+      width: 100%; padding: 12px; border: 1px solid #ddd;
+      border-radius: 4px; margin-bottom: 20px; font-family: monospace; font-size: 14px; box-sizing: border-box;
+    }
+    .login-box button {
+      background: #023A2A; color: #fff; border: none; padding: 14px 20px;
+      width: 100%; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 12px;
+    }
+    .login-box button:hover { background: #034d37; }
+  </style>
 </head>
 <body>
+  
+  <div id="custom-login" style="display: none;">
+    <div class="login-box">
+      <h2>LilAura Secure Admin</h2>
+      <p>Enter your GitHub Personal Access Token (Classic) to manage your catalogue directly.</p>
+      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+      <button onclick="loginWithToken()">Authenticate</button>
+    </div>
+  </div>
+
+  <script>
+    const userKey = 'decap-cms-user';
+    const legacyKey = 'netlify-cms-user';
+    
+    // Check if user is already authenticated in local storage
+    const userSession = localStorage.getItem(userKey) || localStorage.getItem(legacyKey);
+
+    if (!userSession) {
+      // Show our custom login, keep Decap hidden
+      document.getElementById('custom-login').style.display = 'flex';
+    } else {
+      // User is logged in, allow Decap CMS to render the dashboard
+      document.body.classList.add('logged-in');
+    }
+
+    function loginWithToken() {
+      const token = document.getElementById('gh-token').value.trim();
+      if (!token) {
+        alert('Please enter a valid GitHub token.');
+        return;
+      }
+      
+      // Inject token directly into Decap's expected storage format
+      const authData = JSON.stringify({ 
+        token: token, 
+        backendName: 'github',
+        name: 'LilAura Admin',
+        login: 'rahulratheesh91'
+      });
+      
+      localStorage.setItem(userKey, authData);
+      localStorage.setItem(legacyKey, authData);
+      
+      // Reload page to let Decap boot up straight into the dashboard
+      window.location.reload();
+    }
+  </script>
+
   <!-- Decap CMS Core Engine -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
