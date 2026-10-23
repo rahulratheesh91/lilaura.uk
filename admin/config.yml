@@ -11,9 +11,31 @@ collections:
     label: "Store Catalog & Settings"
     files:
       - name: "catalog"
-        label: "Product Catalog (products.json)"
+        label: "Store Data (products.json)"
         file: "products.json"
         fields:
+          # 1. Promo Banner Config
+          - name: "promoConfig"
+            label: "Promo Banner Config"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Announcement Text", name: "text", widget: "string", required: false }
+              - { label: "Promo End Date & Time", name: "endTime", widget: "datetime", required: false }
+          
+          # 2. Product Categories
+          - name: "categories"
+            label: "Product Categories"
+            widget: "list"
+            collapsed: true
+            required: false
+            summary: '{{fields.displayTitle}}'
+            fields:
+              - { label: "Main Line", name: "mainLine", widget: "string", required: false }
+              - { label: "Sub-Category Key", name: "subCategory", widget: "string", required: false }
+              - { label: "Display Title", name: "displayTitle", widget: "string", required: false }
+
+          # 3. Product Items List
           - name: "items"
             label: "Products"
             widget: "list"
@@ -33,10 +55,3 @@ collections:
               - { label: "Bestseller Tag", name: "bestseller", widget: "boolean", default: false, required: false }
               - { label: "New Arrival Tag", name: "newArrival", widget: "boolean", default: false, required: false }
               - { label: "Description", name: "desc", widget: "text", required: false }
-
-      - name: "promo"
-        label: "Promo Banner Config"
-        file: "content/settings/promo.json"
-        fields:
-          - { label: "Announcement Text", name: "text", widget: "string", default: "Autumn Edit · 20% OFF selected anti-tarnish jewellery" }
-          - { label: "Promo End Date & Time", name: "endTime", widget: "datetime" }
