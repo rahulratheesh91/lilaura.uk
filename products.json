@@ -730,6 +730,16 @@
       "seoTitle": "Layered Gold Emerald Green Elakkathali Choker Necklace Set with Earstuds",
       "sku": "TRNK-LEC-45",
       "category": "Traditional"
+    },
+    {
+      "featured": false,
+      "bestseller": false,
+      "newArrival": false,
+      "id": "1566",
+      "name": "test",
+      "price": 15.99,
+      "mainLine": "anti-tarnish",
+      "subCategory": "necklaces"
     }
   ]
 }
