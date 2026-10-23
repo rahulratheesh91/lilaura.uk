@@ -69,6 +69,7 @@
       "bestseller": false,
       "price": 12.99,
       "name": "Charm Bracelet (Celestial & Floral Motifs)",
+      "mainLine": "anti-tarnish",
       "etsyLink": "https://www.etsy.com/uk/listing/4529459089/anti-tarnish-charm-bracelets-with",
       "inStock": true,
       "desc": "Delicate charm bracelet featuring intricate celestial and floral motifs on a durable stainless steel chain. 18K PVD gold-plated and highly resistant to water and sweat.",
@@ -78,7 +79,8 @@
       "image": "https://i.etsystatic.com/40040678/r/il/dc3ce4/8237168671/il_1140xN.8237168671_jfzc.jpg",
       "seoTitle": "Gold Plated Charm Bracelet | Stainless Steel Jewellery | LilAura",
       "sku": "SSBR-CHM-18",
-      "category": "Anti-tarnish Bracelets"
+      "category": "Anti-tarnish Bracelets",
+      "subCategory": "kadas"
     },
     {
       "imageHover": "",
