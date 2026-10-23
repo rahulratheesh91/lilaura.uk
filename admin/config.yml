@@ -31,8 +31,8 @@ collections:
             required: false
             summary: '{{fields.title}}'
             fields:
-              - { label: "Main Line", name: "mainLine", widget: "select", options: ["all", "anti-tarnish", "traditional"], required: false }
-              - { label: "Sub-Category Key", name: "subCategory", widget: "select", options: ["all", "necklaces", "kadas", "earrings", "rings"], required: false }
+              - { label: "Main Line", name: "mainLine", widget: "string", required: false, hint: "e.g., anti-tarnish, traditional, all" }
+              - { label: "Sub-Category Key", name: "subCategory", widget: "string", required: false, hint: "e.g., necklaces, kadas, earrings, rings, all" }
               - { label: "Display Title", name: "title", widget: "string", required: false, hint: "e.g. Kadas & Cuffs" }
 
           # 3. Product Items List
@@ -46,6 +46,7 @@ collections:
               - { label: "Product ID", name: "id", widget: "string", required: false, hint: "Unique product identifier, e.g. la-01" }
               - { label: "Product Name", name: "name", widget: "string", required: false }
               - { label: "Price (£)", name: "price", widget: "number", value_type: "float", required: false }
+              - { label: "In Stock?", name: "inStock", widget: "boolean", default: true, required: false }
               - { label: "Main Collection Line", name: "mainLine", widget: "select", options: ["anti-tarnish", "traditional"], required: false }
               - { label: "Sub-Category", name: "subCategory", widget: "select", options: ["necklaces", "kadas", "earrings", "rings"], required: false }
               - { label: "Primary Image URL", name: "image", widget: "string", required: false, hint: "Public HTTPS image URL" }
