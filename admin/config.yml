@@ -29,11 +29,11 @@ collections:
             widget: "list"
             collapsed: true
             required: false
-            summary: '{{fields.displayTitle}}'
+            summary: '{{fields.title}}'
             fields:
-              - { label: "Main Line", name: "mainLine", widget: "string", required: false }
-              - { label: "Sub-Category Key", name: "subCategory", widget: "string", required: false }
-              - { label: "Display Title", name: "displayTitle", widget: "string", required: false }
+              - { label: "Main Line", name: "mainLine", widget: "select", options: ["all", "anti-tarnish", "traditional"], required: false }
+              - { label: "Sub-Category Key", name: "subCategory", widget: "select", options: ["all", "necklaces", "kadas", "earrings", "rings"], required: false }
+              - { label: "Display Title", name: "title", widget: "string", required: false, hint: "e.g. Kadas & Cuffs" }
 
           # 3. Product Items List
           - name: "items"
