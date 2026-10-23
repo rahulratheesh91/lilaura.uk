@@ -219,14 +219,37 @@
       const product = this.products.find(item => item.id === String(id));
       if (!product) return;
       document.title = `${product.seoTitle || product.name + ' | LilAura UK'}`;
+      
       const setText = (selector, value) => { const el = $(selector); if (el) el.textContent = value; };
-      setText('#p-cat', product.category || 'Jewellery');
-      setText('#p-sku', product.sku ? `SKU: ${product.sku}` : '');
+      
+      const line = getMainLine(product);
+      const formattedLine = line === 'traditional' ? 'Traditional Heritage' : 'Anti-Tarnish Luxury';
+      
+      setText('#p-cat', formattedLine);
+      setText('#p-sku', product.sku ? `SKU: ${product.sku}` : `SKU: LA-${product.id}`);
       setText('#p-name', product.name);
       setText('#p-price', money(product.price));
-      setText('#p-desc', product.desc || 'Discover this piece from the LilAura collection.');
+      setText('#p-desc', product.desc || 'Discover this piece from the LilAura collection. Designed for modern elegance and timeless appeal.');
+      
       const image = $('#p-image');
-      if (image) { image.src = safeURL(product.image, { internal: true }); image.alt = product.name; image.classList.add('active-img'); }
+      const imageHover = $('#p-image-hover');
+      const hint = $('#gallery-hint');
+      
+      if (image) { 
+        image.src = safeURL(product.image, { internal: true }); 
+        image.alt = product.name; 
+        image.classList.add('active-img'); 
+      }
+      
+      if (imageHover && product.imageHover) {
+        imageHover.src = safeURL(product.imageHover, { internal: true });
+        imageHover.alt = product.name + " Alternate View";
+        if (hint) hint.style.display = 'block';
+      } else {
+        if (imageHover) imageHover.style.display = 'none';
+        if (hint) hint.style.display = 'none';
+      }
+
       const buy = $('#buy-btn');
       const etsy = safeEtsyURL(product.etsyLink);
       if (buy) {
@@ -238,13 +261,39 @@
              window.open(etsy, '_blank', 'noopener,noreferrer'); 
         }};
       }
+      this.addRecentlyViewed(product.id);
+    },
+    addRecentlyViewed(id) {
+      const ids = this.normaliseIds(readJSON(RECENT_KEY, [])).filter(existing => existing !== String(id));
+      ids.unshift(String(id)); writeJSON(RECENT_KEY, ids.slice(0, 4));
+    },
+    renderRecent() {
+      const grid = $('#recentGrid');
+      if (!grid) return;
+      const ids = this.normaliseIds(readJSON(RECENT_KEY, [])).filter(id => id !== new URLSearchParams(location.search).get('id'));
+      const products = ids.map(id => this.products.find(p => p.id === id)).filter(Boolean).slice(0, 4);
+      
+      if (!products.length) { 
+          const section = $('.recent-section'); 
+          if (section) section.style.display = 'none'; 
+          return; 
+      }
+      
+      grid.innerHTML = products.map(p => `<a class="recent-card" href="product?id=${encodeURIComponent(p.id)}"><div style="overflow:hidden; border-radius:2px;"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}" loading="lazy"></div><p>${escapeHTML(p.name)}<br><span>${money(p.price)}</span></p></a>`).join('');
     },
     initAccordion() {
       document.addEventListener('click', event => {
         const title = event.target.closest('.accordion-title'); if (!title) return;
         const accordion = title.closest('.accordion'); if (!accordion) return;
+        
+        // Toggle the clicked accordion
         accordion.classList.toggle('active');
-        const indicator = title.querySelector('span'); if (indicator) indicator.textContent = accordion.classList.contains('active') ? '−' : '+';
+        
+        // Update the +/- indicator safely
+        const indicator = title.querySelector('.indicator'); 
+        if (indicator) {
+            indicator.textContent = accordion.classList.contains('active') ? '−' : '+';
+        }
       });
     },
     initPromoTimer() {
@@ -294,7 +343,9 @@
 
   window.toggleMobileImage = () => {
     const main = $('#p-image'), alternate = $('#p-image-hover');
-    if (!main || !alternate || !alternate.getAttribute('src')) return;
+    if (!main || !alternate || alternate.style.display === 'none') return;
+    
+    // Simple toggle between the two absolute positioned images
     main.classList.toggle('active-img');
     alternate.classList.toggle('active-img');
   };
