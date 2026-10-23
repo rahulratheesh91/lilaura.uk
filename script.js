@@ -144,7 +144,13 @@
       if (sub !== 'all') {
         items = items.filter(p => getSubCategory(p) === sub);
       }
-      return items;
+
+      // PINNED PRODUCTS LOGIC: Force IDs 18-22 to the bottom of the grid
+      const bottomIds = ['18', '19', '20', '21', '22'];
+      const regularItems = items.filter(p => !bottomIds.includes(String(p.id)));
+      const pinnedItems = items.filter(p => bottomIds.includes(String(p.id)));
+      
+      return [...regularItems, ...pinnedItems];
     },
     renderProductGrid() {
       const grid = $('#shop-grid');
