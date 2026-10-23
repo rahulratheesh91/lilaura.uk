@@ -7,28 +7,33 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "products"
-    label: "Products"
-    folder: "content/products"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Product ID", name: "id", widget: "string", hint: "Unique product identifier, e.g. la-01" }
-      - { label: "Product Name", name: "name", widget: "string" }
-      - { label: "Price (£)", name: "price", widget: "number", value_type: "float" }
-      - { label: "Main Collection Line", name: "mainLine", widget: "select", options: [{label: "Anti-Tarnish Everyday Luxury", value: "anti-tarnish"}, {label: "Traditional Heritage", value: "traditional"}] }
-      - { label: "Sub-Category", name: "subCategory", widget: "select", options: [{label: "Necklaces", value: "necklaces"}, {label: "Kada's & Cuffs", value: "kadas"}, {label: "Earrings", value: "earrings"}, {label: "Finger Rings", value: "rings"}] }
-      - { label: "Primary Image URL", name: "image", widget: "string", hint: "Public HTTPS image URL" }
-      - { label: "Hover Image / Video URL", name: "imageHover", widget: "string", required: false }
-      - { label: "Etsy Listing URL", name: "etsyLink", widget: "string" }
-      - { label: "Featured on Homepage? (Max 4)", name: "featured", widget: "boolean", default: false, required: false }
-      - { label: "Bestseller Tag", name: "bestseller", widget: "boolean", default: false, required: false }
-      - { label: "New Arrival Tag", name: "newArrival", widget: "boolean", default: false, required: false }
-      - { label: "Description", name: "desc", widget: "text", required: false }
-
-  - name: "settings"
-    label: "Store Settings"
+  - name: "store_data"
+    label: "Store Catalog & Settings"
     files:
+      - name: "catalog"
+        label: "Product Catalog (products.json)"
+        file: "products.json"
+        fields:
+          - name: "items"
+            label: "Products"
+            widget: "list"
+            collapsed: true
+            minimize_collapsed: true
+            summary: '{{fields.name}} - £{{fields.price}}'
+            fields:
+              - { label: "Product ID", name: "id", widget: "string", hint: "Unique product identifier, e.g. la-01" }
+              - { label: "Product Name", name: "name", widget: "string" }
+              - { label: "Price (£)", name: "price", widget: "number", value_type: "float" }
+              - { label: "Main Collection Line", name: "mainLine", widget: "select", options: ["anti-tarnish", "traditional"] }
+              - { label: "Sub-Category", name: "subCategory", widget: "select", options: ["necklaces", "kadas", "earrings", "rings"] }
+              - { label: "Primary Image URL", name: "image", widget: "string", hint: "Public HTTPS image URL" }
+              - { label: "Hover Image / Video URL", name: "imageHover", widget: "string", required: false }
+              - { label: "Etsy Listing URL", name: "etsyLink", widget: "string" }
+              - { label: "Featured on Homepage? (Max 4)", name: "featured", widget: "boolean", default: false, required: false }
+              - { label: "Bestseller Tag", name: "bestseller", widget: "boolean", default: false, required: false }
+              - { label: "New Arrival Tag", name: "newArrival", widget: "boolean", default: false, required: false }
+              - { label: "Description", name: "desc", widget: "text", required: false }
+
       - name: "promo"
         label: "Promo Banner Config"
         file: "content/settings/promo.json"
