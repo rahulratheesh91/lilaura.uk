@@ -43,14 +43,14 @@ collections:
             minimize_collapsed: true
             summary: '{{fields.name}} - £{{fields.price}}'
             fields:
-              - { label: "Product ID", name: "id", widget: "string", hint: "Unique product identifier, e.g. la-01" }
-              - { label: "Product Name", name: "name", widget: "string" }
-              - { label: "Price (£)", name: "price", widget: "number", value_type: "float" }
-              - { label: "Main Collection Line", name: "mainLine", widget: "select", options: ["anti-tarnish", "traditional"] }
-              - { label: "Sub-Category", name: "subCategory", widget: "select", options: ["necklaces", "kadas", "earrings", "rings"] }
-              - { label: "Primary Image URL", name: "image", widget: "string", hint: "Public HTTPS image URL" }
+              - { label: "Product ID", name: "id", widget: "string", required: false, hint: "Unique product identifier, e.g. la-01" }
+              - { label: "Product Name", name: "name", widget: "string", required: false }
+              - { label: "Price (£)", name: "price", widget: "number", value_type: "float", required: false }
+              - { label: "Main Collection Line", name: "mainLine", widget: "select", options: ["anti-tarnish", "traditional"], required: false }
+              - { label: "Sub-Category", name: "subCategory", widget: "select", options: ["necklaces", "kadas", "earrings", "rings"], required: false }
+              - { label: "Primary Image URL", name: "image", widget: "string", required: false, hint: "Public HTTPS image URL" }
               - { label: "Hover Image / Video URL", name: "imageHover", widget: "string", required: false }
-              - { label: "Etsy Listing URL", name: "etsyLink", widget: "string" }
+              - { label: "Etsy Listing URL", name: "etsyLink", widget: "string", required: false }
               - { label: "Featured on Homepage? (Max 4)", name: "featured", widget: "boolean", default: false, required: false }
               - { label: "Bestseller Tag", name: "bestseller", widget: "boolean", default: false, required: false }
               - { label: "New Arrival Tag", name: "newArrival", widget: "boolean", default: false, required: false }
