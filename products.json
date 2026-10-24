@@ -37,6 +37,7 @@
       "bestseller": false,
       "price": 16.49,
       "name": "18K Gold Plated Stainless Steel Cuff Bracelet",
+      "mainLine": "anti-tarnish",
       "etsyLink": "https://www.etsy.com/uk/listing/4530558606/18k-gold-plated-stainless-steel-cuff",
       "inStock": true,
       "desc": "Premium 18K PVD gold-plated stainless steel cuff bracelet. Waterproof, sweat-resistant, and highly resistant to tarnishing for everyday luxury wear.",
@@ -46,7 +47,8 @@
       "image": "https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_1140xN.8197151304_btta.jpg",
       "seoTitle": "18K Gold Plated Cuff Bracelet | Waterproof Stainless Steel Kada | LilAura UK",
       "sku": "SSCF-ALBR-16",
-      "category": "Anti-tarnish Kada"
+      "category": "Anti-tarnish Kada",
+      "subCategory": "kadas"
     },
     {
       "imageHover": "",
