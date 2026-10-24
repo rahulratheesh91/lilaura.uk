@@ -117,10 +117,11 @@
       "category": "Traditional Jewellery"
     },
     {
-      "imageHover": "",
+      "imageHover": "https://v.etsystatic.com/c/video/upload/ac_none,du_15,q_auto:good/t6gxud7vwv08vdqimwdw.mp4",
       "bestseller": false,
       "price": 15.49,
       "name": "Gold Plated Emerald Pendant Necklace",
+      "mainLine": "anti-tarnish",
       "etsyLink": "https://www.etsy.com/uk/listing/4529214581/anti-tarnish-gold-plated-emerald-pendant",
       "inStock": true,
       "desc": "Exquisite geometric emerald-cut green stone pendant on an 18K PVD gold-plated chain. Simple, daily luxury made from robust stainless steel.",
@@ -130,7 +131,8 @@
       "image": "https://i.etsystatic.com/40040678/r/il/ffa352/8189114976/il_1140xN.8189114976_1kwd.jpg",
       "seoTitle": "Gold Plated Emerald Pendant | Stainless Steel Necklace | LilAura",
       "sku": "SSNK-EMR-20",
-      "category": "Anti-tarnish Necklaces"
+      "category": "Anti-tarnish Necklaces",
+      "subCategory": "necklaces"
     },
     {
       "imageHover": "",
