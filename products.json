@@ -135,10 +135,11 @@
       "subCategory": "necklaces"
     },
     {
-      "imageHover": "",
+      "imageHover": "https://i.etsystatic.com/40040678/r/il/9e3a42/8163583924/il_794xN.8163583924_iu7q.jpg",
       "bestseller": false,
       "price": 17.99,
       "name": "Gold Plated Stainless Steel Heart Pearl Bangle",
+      "mainLine": "anti-tarnish",
       "etsyLink": "https://www.etsy.com/uk/listing/4525317383/gold-plated-stainless-steel-heart-pearl",
       "inStock": true,
       "desc": "Romantic open cuff bangle featuring twin mother-of-pearl heart accents set in durable 18K PVD gold-plated stainless steel. Highly resistant to tarnishing.",
@@ -148,7 +149,8 @@
       "image": "https://i.etsystatic.com/40040678/r/il/8b2186/8160669462/il_1140xN.8160669462_1gej.jpg",
       "seoTitle": "Gold Plated Pearl Bangle | Stainless Steel Jewellery UK",
       "sku": "SSCF-HPR-21",
-      "category": "Anti-tarnish Kada"
+      "category": "Anti-tarnish Kada",
+      "subCategory": "kadas"
     },
     {
       "imageHover": "https://i.etsystatic.com/40040678/r/il/febf4b/8342363125/il_1588xN.8342363125_44u7.jpg",
