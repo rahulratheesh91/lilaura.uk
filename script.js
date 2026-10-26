@@ -1,4 +1,4 @@
-/* LilAura storefront behaviour with dual-tier filtering, clean URL paths, and promo timer. */
+/* LilAura storefront behaviour with dual-tier filtering, backward compatibility routing, pinned products, and promo timer. */
 (() => {
   'use strict';
 
@@ -124,6 +124,26 @@
       if ($('#p-name')) this.renderProductDetail();
       if ($('#recentGrid')) this.renderRecent();
     },
+
+    // Handles both new parameter logic and maps old ?cat= logic seamlessly
+    parseFilters() {
+      const params = new URLSearchParams(location.search);
+      let line = params.get('line');
+      let sub = params.get('sub');
+      let cat = params.get('cat');
+
+      if (cat) {
+        if (cat === 'anti-tarnish' || cat === 'traditional') {
+          line = cat;
+        } else if (cat !== 'all') {
+          sub = cat;
+        }
+      }
+
+      this.activeLine = line || 'all';
+      this.activeSub = sub || 'all';
+    },
+
     getVisibleProducts() {
       let items = [...this.products];
       if (this.isHome) {
@@ -131,18 +151,13 @@
         return explicitFeatured.length > 0 ? explicitFeatured.slice(0, 4) : items.slice(0, 4);
       }
       
-      const params = new URLSearchParams(location.search);
-      const line = params.get('line') || 'all';
-      const sub = params.get('sub') || 'all';
-      
-      this.activeLine = line;
-      this.activeSub = sub;
+      this.parseFilters();
 
-      if (line !== 'all') {
-        items = items.filter(p => getMainLine(p) === line);
+      if (this.activeLine !== 'all') {
+        items = items.filter(p => getMainLine(p) === this.activeLine);
       }
-      if (sub !== 'all') {
-        items = items.filter(p => getSubCategory(p) === sub);
+      if (this.activeSub !== 'all') {
+        items = items.filter(p => getSubCategory(p) === this.activeSub);
       }
 
       // PINNED PRODUCTS LOGIC: Force IDs 18-22 to the bottom of the grid
@@ -155,9 +170,8 @@
     renderProductGrid() {
       const grid = $('#shop-grid');
       if (!grid) return;
-      const params = new URLSearchParams(location.search);
-      this.activeLine = params.get('line') || 'all';
-      this.activeSub = params.get('sub') || 'all';
+      
+      this.parseFilters();
 
       const tabs = $('#shopTabs');
       if (tabs) {
@@ -183,6 +197,9 @@
           const secondaryBtn = e.target.closest('[data-sub]');
           const url = new URL(location.href);
 
+          // Strip the old 'cat' param if the user starts clicking new filters
+          url.searchParams.delete('cat');
+
           if (primaryBtn) {
             const line = primaryBtn.dataset.line;
             if (line === 'all') url.searchParams.delete('line'); else url.searchParams.set('line', line);
@@ -204,7 +221,7 @@
       if (!grid) return;
       const products = this.getVisibleProducts();
       if (!products.length) {
-        grid.innerHTML = '<p class="catalogue-message" role="status">No items match this specific selection. Please try adjusting your filters.</p>';
+        grid.innerHTML = '<p class="catalogue-message" role="status" style="grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 40px 0;">No items match this specific selection. Please try adjusting your filters.</p>';
         return;
       }
       grid.innerHTML = products.map(product => this.productCard(product)).join('');
@@ -292,10 +309,8 @@
         const title = event.target.closest('.accordion-title'); if (!title) return;
         const accordion = title.closest('.accordion'); if (!accordion) return;
         
-        // Toggle the clicked accordion
         accordion.classList.toggle('active');
         
-        // Update the +/- indicator safely
         const indicator = title.querySelector('.indicator'); 
         if (indicator) {
             indicator.textContent = accordion.classList.contains('active') ? '−' : '+';
@@ -350,8 +365,6 @@
   window.toggleMobileImage = () => {
     const main = $('#p-image'), alternate = $('#p-image-hover');
     if (!main || !alternate || alternate.style.display === 'none') return;
-    
-    // Simple toggle between the two absolute positioned images
     main.classList.toggle('active-img');
     alternate.classList.toggle('active-img');
   };
