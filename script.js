@@ -170,8 +170,8 @@
         items = items.filter(p => getSubCategory(p) === this.activeSub);
       }
 
-      // PINNED PRODUCTS LOGIC: Sort IDs 18, 19, 20, 21, 22 to the bottom of the grid
-      const bottomIds = ['18', '19', '20', '21', '22'];
+      // PINNED PRODUCTS LOGIC: Sort IDs 16,17,18, 19, 20, 21, 22 to the bottom of the grid
+      const bottomIds = ['16','17','18', '19', '20', '21', '22'];
       const regularItems = items.filter(p => !bottomIds.includes(String(p.id)));
       const pinnedItems = items.filter(p => bottomIds.includes(String(p.id)));
       
