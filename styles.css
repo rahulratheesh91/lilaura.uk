@@ -31,13 +31,13 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
 .price, .cart-item small.price-mod { font-family: 'Bodoni Moda', serif; }
 .eyebrow { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; font-weight: 500; }
 
-.announce { background: var(--ink); color: var(--white); text-align: center; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 15px; }
+.announce { background: var(--ink); color: var(--white); text-align: center; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 15px; }
 .announce b { color: var(--gold); font-weight: 500; }
 
 .header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid var(--line); transition: var(--transition-fast); }
 .nav { height: 80px; padding: 0 5vw; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
 .logo { font-size: 32px; letter-spacing: 0.15em; text-align: center; color: var(--ink); }
-.logo small { display: block; font-family: 'Proza Libre', sans-serif; font-size: 7.5px; letter-spacing: 0.45em; margin-top: 4px; color: var(--muted); }
+.logo small { display: block; font-family: 'Proza Libre', sans-serif; font-size: 9px; letter-spacing: 0.45em; margin-top: 4px; color: var(--muted); }
 .nav-left, .nav-right { display: flex; align-items: center; gap: 28px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
 .nav-right { justify-content: flex-end; }
 .nav button, .nav a { background: none; border: 0; cursor: pointer; color: var(--ink); transition: color var(--transition-fast); }
@@ -76,7 +76,7 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
 .mega a { display: block; font-size: 16px; margin: 12px 0; color: var(--ink); transition: var(--transition-fast); }
 .mega a:hover { color: var(--gold); padding-left: 4px; }
 
-.btn { border: 1px solid var(--ink); background: var(--ink); color: var(--white); padding: 16px 28px; font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast); text-align: center; display: inline-block; }
+.btn { border: 1px solid var(--ink); background: var(--ink); color: var(--white); padding: 16px 28px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast); text-align: center; display: inline-block; }
 .btn:hover { background: var(--emerald); border-color: var(--emerald); color: var(--white); }
 .btn.light { background: rgba(255, 255, 255, 0.9); color: var(--ink); border-color: transparent; }
 .btn.light:hover { background: #ffffff; border-color: #ffffff; color: var(--emerald); }
@@ -86,7 +86,7 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
 @keyframes heroZoom { to { transform: scale(1); } }
 .hero-content { position: absolute; left: 8vw; bottom: 15vh; color: #fff; max-width: 650px; }
 .hero h1 { font-size: clamp(52px, 7vw, 110px); line-height: 0.9; margin: 20px 0; }
-.hero p { font-size: 16px; line-height: 1.8; max-width: 480px; color: rgba(255,255,255,0.85); margin-bottom: 30px; }
+.hero p { font-size: 18px; line-height: 1.8; max-width: 500px; color: rgba(255,255,255,0.85); margin-bottom: 30px; }
 
 .promise { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--soft); color: var(--ink); border-bottom: 1px solid var(--line); }
 .promise div { text-align: center; padding: 24px 12px; border-right: 1px solid var(--line); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
