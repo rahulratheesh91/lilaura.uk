@@ -39,27 +39,34 @@
   };
   const writeJSON = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (_) { return false; } };
 
-  // Determine Main Line (Anti-Tarnish vs Traditional Heritage)
+  // SMART CATEGORIZATION: Determine Main Line (Anti-Tarnish vs Traditional Heritage)
   const getMainLine = product => {
     const ml = String(product?.mainLine || '').toLowerCase();
     const cat = String(product?.category || '').toLowerCase();
     const name = String(product?.name || '').toLowerCase();
-    if (ml.includes('traditional') || cat.includes('traditional') || /palakka|jhumka|temple jewellery|kasu mala|heritage|brass/.test(name)) {
+    
+    if (ml === 'traditional') return 'traditional';
+    if (ml === 'anti-tarnish') return 'anti-tarnish';
+    
+    // Safety Net: If CMS fields are empty, read the title/category for clues
+    if (cat.includes('traditional') || /palakka|jhumka|temple|kasu mala|heritage|brass|lakshmi|nagas|haram|ghungroo|meenakari/.test(name)) {
       return 'traditional';
     }
     return 'anti-tarnish';
   };
 
-  // Determine Sub-Category
+  // SMART CATEGORIZATION: Determine Sub-Category
   const getSubCategory = product => {
     const sc = String(product?.subCategory || '').toLowerCase();
     const cat = String(product?.category || '').toLowerCase();
     const name = String(product?.name || '').toLowerCase();
-    if (sc.includes('earring') || cat.includes('earring') || /earring|jhumka|studs?\b/.test(name)) return 'earrings';
-    if (sc.includes('ring') || cat.includes('ring') || /\bring\b/.test(name)) return 'rings';
-    if (sc.includes('necklace') || cat.includes('necklace') || /necklace|choker|pendant/.test(name)) return 'necklaces';
-    if (sc.includes('kada') || sc.includes('cuff') || cat.includes('kada') || cat.includes('bracelet') || cat.includes('bangle') || /kada|cuff|bracelet|bangle/.test(name)) return 'kadas';
-    return 'necklaces';
+    
+    if (sc === 'necklaces' || cat.includes('necklace') || /necklace|choker|pendant|haram|mala/.test(name)) return 'necklaces';
+    if (sc === 'kadas' || cat.includes('kada') || cat.includes('cuff') || /kada|cuff|bangle|bracelet/.test(name)) return 'kadas';
+    if (sc === 'earrings' || cat.includes('earring') || /earring|jhumka|stud/.test(name)) return 'earrings';
+    if (sc === 'rings' || cat.includes('ring') || /\bring\b/.test(name)) return 'rings';
+    
+    return 'necklaces'; // Default fallback
   };
 
   class LilAuraAnalytics {
@@ -125,7 +132,7 @@
       if ($('#recentGrid')) this.renderRecent();
     },
 
-    // Handles both new parameter logic and maps old ?cat= logic seamlessly
+    // BACKWARD COMPATIBILITY: Map old '?cat=' links cleanly to '?line=' or '?sub='
     parseFilters() {
       const params = new URLSearchParams(location.search);
       let line = params.get('line');
@@ -146,6 +153,8 @@
 
     getVisibleProducts() {
       let items = [...this.products];
+      
+      // Strict guard to guarantee a maximum of 4 featured items on homepage
       if (this.isHome) {
         const explicitFeatured = items.filter(p => p.featured === true);
         return explicitFeatured.length > 0 ? explicitFeatured.slice(0, 4) : items.slice(0, 4);
@@ -153,6 +162,7 @@
       
       this.parseFilters();
 
+      // Apply Dual-Tier Filtering
       if (this.activeLine !== 'all') {
         items = items.filter(p => getMainLine(p) === this.activeLine);
       }
@@ -160,13 +170,14 @@
         items = items.filter(p => getSubCategory(p) === this.activeSub);
       }
 
-      // PINNED PRODUCTS LOGIC: Force IDs 18-22 to the bottom of the grid
+      // PINNED PRODUCTS LOGIC: Sort IDs 18, 19, 20, 21, 22 to the bottom of the grid
       const bottomIds = ['18', '19', '20', '21', '22'];
       const regularItems = items.filter(p => !bottomIds.includes(String(p.id)));
       const pinnedItems = items.filter(p => bottomIds.includes(String(p.id)));
       
       return [...regularItems, ...pinnedItems];
     },
+
     renderProductGrid() {
       const grid = $('#shop-grid');
       if (!grid) return;
@@ -197,7 +208,7 @@
           const secondaryBtn = e.target.closest('[data-sub]');
           const url = new URL(location.href);
 
-          // Strip the old 'cat' param if the user starts clicking new filters
+          // Strip old '?cat=' parameter when using new UI filters
           url.searchParams.delete('cat');
 
           if (primaryBtn) {
@@ -216,6 +227,7 @@
       }
       this.renderProductGridItems();
     },
+
     renderProductGridItems() {
       const grid = $('#shop-grid');
       if (!grid) return;
@@ -226,6 +238,7 @@
       }
       grid.innerHTML = products.map(product => this.productCard(product)).join('');
     },
+
     productCard(product) {
       const id = escapeHTML(product.id);
       const image = safeURL(product.image, { internal: true });
@@ -237,6 +250,7 @@
       
       return `<article class="product" data-product-id="${id}"><div class="media"><a href="product?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHTML(product.name)}"><img class="base-img" src="${escapeHTML(image)}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async" width="600" height="600">${hoverMarkup}</a>${badge}<div class="quickbar"><button type="button" data-action="view-product" data-id="${id}">View</button><button type="button" data-action="etsy-product" data-id="${id}">View on Etsy</button></div></div><div class="pinfo"><div class="pmeta">${escapeHTML(label)}</div><a class="pname" href="product?id=${encodeURIComponent(product.id)}">${escapeHTML(product.name)}</a><div class="price">${money(product.price)}</div></div></article>`;
     },
+
     renderProductDetail() {
       const id = new URLSearchParams(location.search).get('id');
       const product = this.products.find(item => item.id === String(id));
@@ -286,10 +300,12 @@
       }
       this.addRecentlyViewed(product.id);
     },
+
     addRecentlyViewed(id) {
       const ids = this.normaliseIds(readJSON(RECENT_KEY, [])).filter(existing => existing !== String(id));
       ids.unshift(String(id)); writeJSON(RECENT_KEY, ids.slice(0, 4));
     },
+
     renderRecent() {
       const grid = $('#recentGrid');
       if (!grid) return;
@@ -304,6 +320,7 @@
       
       grid.innerHTML = products.map(p => `<a class="recent-card" href="product?id=${encodeURIComponent(p.id)}"><div style="overflow:hidden; border-radius:2px;"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}" loading="lazy"></div><p>${escapeHTML(p.name)}<br><span>${money(p.price)}</span></p></a>`).join('');
     },
+
     initAccordion() {
       document.addEventListener('click', event => {
         const title = event.target.closest('.accordion-title'); if (!title) return;
@@ -317,6 +334,7 @@
         }
       });
     },
+
     initPromoTimer() {
       const update = () => {
         const rawEnd = this.catalog?.promoConfig?.endTime;
@@ -335,6 +353,7 @@
       };
       window.setInterval(update, 1000); update();
     },
+
     initScrollButton() {
       const scrollBtn = $('#lilaura-scroll-btn');
       if (!scrollBtn) return;
