@@ -39,7 +39,7 @@
   };
   const writeJSON = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (_) { return false; } };
 
-  // SMART CATEGORIZATION: Determine Main Line (Anti-Tarnish vs Traditional Heritage)
+  // SMART CATEGORIZATION: Safely fall back to reading names/categories if fields are missing (Fixes ID 10 & 39)
   const getMainLine = product => {
     const ml = String(product?.mainLine || '').toLowerCase();
     const cat = String(product?.category || '').toLowerCase();
@@ -48,14 +48,12 @@
     if (ml === 'traditional') return 'traditional';
     if (ml === 'anti-tarnish') return 'anti-tarnish';
     
-    // Safety Net: If CMS fields are empty, read the title/category for clues
     if (cat.includes('traditional') || /palakka|jhumka|temple|kasu mala|heritage|brass|lakshmi|nagas|haram|ghungroo|meenakari/.test(name)) {
       return 'traditional';
     }
     return 'anti-tarnish';
   };
 
-  // SMART CATEGORIZATION: Determine Sub-Category
   const getSubCategory = product => {
     const sc = String(product?.subCategory || '').toLowerCase();
     const cat = String(product?.category || '').toLowerCase();
@@ -66,7 +64,7 @@
     if (sc === 'earrings' || cat.includes('earring') || /earring|jhumka|stud/.test(name)) return 'earrings';
     if (sc === 'rings' || cat.includes('ring') || /\bring\b/.test(name)) return 'rings';
     
-    return 'necklaces'; // Default fallback
+    return 'necklaces';
   };
 
   class LilAuraAnalytics {
@@ -154,7 +152,6 @@
     getVisibleProducts() {
       let items = [...this.products];
       
-      // Strict guard to guarantee a maximum of 4 featured items on homepage
       if (this.isHome) {
         const explicitFeatured = items.filter(p => p.featured === true);
         return explicitFeatured.length > 0 ? explicitFeatured.slice(0, 4) : items.slice(0, 4);
@@ -162,7 +159,6 @@
       
       this.parseFilters();
 
-      // Apply Dual-Tier Filtering
       if (this.activeLine !== 'all') {
         items = items.filter(p => getMainLine(p) === this.activeLine);
       }
@@ -170,8 +166,8 @@
         items = items.filter(p => getSubCategory(p) === this.activeSub);
       }
 
-      // PINNED PRODUCTS LOGIC: Sort IDs 16,17,18, 19, 20, 21, 22 to the bottom of the grid
-      const bottomIds = ['16','17','18', '19', '20', '21', '22'];
+      // PINNED PRODUCTS LOGIC: Sort IDs 18, 19, 20, 21, 22 to the bottom of the grid
+      const bottomIds = ['18', '19', '20', '21', '22'];
       const regularItems = items.filter(p => !bottomIds.includes(String(p.id)));
       const pinnedItems = items.filter(p => bottomIds.includes(String(p.id)));
       
@@ -208,7 +204,6 @@
           const secondaryBtn = e.target.closest('[data-sub]');
           const url = new URL(location.href);
 
-          // Strip old '?cat=' parameter when using new UI filters
           url.searchParams.delete('cat');
 
           if (primaryBtn) {
