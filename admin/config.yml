@@ -43,12 +43,14 @@ collections:
             minimize_collapsed: true
             summary: '{{fields.name}} - £{{fields.price}}'
             fields:
-              - { label: "Product ID", name: "id", widget: "string", required: false, hint: "Unique product identifier, e.g. la-01" }
+              - { label: "Product ID", name: "id", widget: "string", required: false, hint: "Unique product identifier, e.g. 16" }
+              - { label: "SKU", name: "sku", widget: "string", required: false, hint: "Stock Keeping Unit, e.g. SSCF-ALBR-16" }
               - { label: "Product Name", name: "name", widget: "string", required: false }
               - { label: "Price (£)", name: "price", widget: "number", value_type: "float", required: false }
               - { label: "In Stock?", name: "inStock", widget: "boolean", default: true, required: false }
               - { label: "Main Collection Line", name: "mainLine", widget: "select", options: ["anti-tarnish", "traditional"], required: false }
               - { label: "Sub-Category", name: "subCategory", widget: "select", options: ["necklaces", "kadas", "earrings", "rings"], required: false }
+              - { label: "Category (Internal)", name: "category", widget: "string", required: false }
               - { label: "Primary Image URL", name: "image", widget: "string", required: false, hint: "Public HTTPS image URL" }
               - { label: "Hover Image / Video URL", name: "imageHover", widget: "string", required: false }
               - { label: "Etsy Listing URL", name: "etsyLink", widget: "string", required: false }
@@ -56,3 +58,5 @@ collections:
               - { label: "Bestseller Tag", name: "bestseller", widget: "boolean", default: false, required: false }
               - { label: "New Arrival Tag", name: "newArrival", widget: "boolean", default: false, required: false }
               - { label: "Description", name: "desc", widget: "text", required: false }
+              - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+              - { label: "Meta Description", name: "metaDesc", widget: "text", required: false }
