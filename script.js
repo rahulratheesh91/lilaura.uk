@@ -1,4 +1,4 @@
-/* LilAura storefront behaviour with dual-tier filtering, backward compatibility routing, pinned products, and promo timer. */
+/* LilAura storefront behaviour with dual-tier filtering, backward compatibility routing, pinned products, and dynamic promo timer. */
 (() => {
   'use strict';
 
@@ -330,23 +330,43 @@
       });
     },
 
+    // DYNAMIC PROMO TIMER LOGIC
     initPromoTimer() {
       const update = () => {
-        const rawEnd = this.catalog?.promoConfig?.endTime;
-        if (!rawEnd) return;
-        const endDate = new Date(rawEnd);
+        const promo = this.catalog?.promoConfig;
+        const announceBar = $('.announce');
+        
+        if (!announceBar) return;
+        
+        // If promo is missing, explicitly disabled, or has no end time, clear the text
+        if (!promo || promo.enabled === false || !promo.endTime) {
+          announceBar.innerHTML = '';
+          return;
+        }
+
+        const endDate = new Date(promo.endTime);
         const remaining = Math.max(0, endDate.getTime() - Date.now());
+        
+        // If the countdown reaches zero, clear the text
+        if (remaining === 0) {
+          announceBar.innerHTML = '';
+          return;
+        }
+
+        // Calculate time
         const d = Math.floor(remaining / 86400000);
         const h = Math.floor(remaining / 3600000) % 24;
         const m = Math.floor(remaining / 60000) % 60;
         const s = Math.floor(remaining / 1000) % 60;
         
-        const mini = $('#miniTimer'); 
-        if (mini) {
-          mini.textContent = remaining ? `${d > 0 ? d + 'd ' : ''}${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s` : 'Offer ended';
-        }
+        const timeString = `${d > 0 ? d + 'd ' : ''}${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
+
+        // Inject the text dynamically from products.json
+        announceBar.innerHTML = `${escapeHTML(promo.title)} · <b>${escapeHTML(promo.discountText)}</b> · Ends in <span>${timeString}</span>`;
       };
-      window.setInterval(update, 1000); update();
+      
+      window.setInterval(update, 1000); 
+      update();
     },
 
     initScrollButton() {
