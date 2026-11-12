@@ -1,4 +1,4 @@
-/* LilAura storefront behaviour with dual-tier filtering, backward compatibility routing, pinned products, and dynamic promo timer. */
+/* LilAura storefront behaviour with dual-tier filtering, animations, and dynamic promo timer. */
 (() => {
   'use strict';
 
@@ -39,7 +39,7 @@
   };
   const writeJSON = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch (_) { return false; } };
 
-  // SMART CATEGORIZATION: Safely fall back to reading names/categories if fields are missing (Fixes ID 10 & 39)
+  // SMART CATEGORIZATION
   const getMainLine = product => {
     const ml = String(product?.mainLine || '').toLowerCase();
     const cat = String(product?.category || '').toLowerCase();
@@ -95,6 +95,7 @@
     activeSub: 'all',
     isHome: false,
     async init() {
+      this.initAnimations();
       this.initAccordion();
       this.initPromoTimer();
       this.initScrollButton();
@@ -122,15 +123,18 @@
         console.error('[LilAura] Could not load product catalogue:', error);
       }
     },
+    
     renderCurrentPage() {
       const path = window.location.pathname.toLowerCase();
       this.isHome = path.endsWith('/') || path.endsWith('/index') || path.endsWith('/index.html');
       if ($('#shop-grid')) this.renderProductGrid();
       if ($('#p-name')) this.renderProductDetail();
       if ($('#recentGrid')) this.renderRecent();
+      
+      // Re-trigger reveal observer for newly injected elements like the product grid
+      setTimeout(() => this.triggerScrollReveals(), 100);
     },
 
-    // BACKWARD COMPATIBILITY: Map old '?cat=' links cleanly to '?line=' or '?sub='
     parseFilters() {
       const params = new URLSearchParams(location.search);
       let line = params.get('line');
@@ -166,7 +170,6 @@
         items = items.filter(p => getSubCategory(p) === this.activeSub);
       }
 
-      // PINNED PRODUCTS LOGIC: Sort IDs 18, 19, 20, 21, 22 to the bottom of the grid
       const bottomIds = ['18', '19', '20', '21', '22'];
       const regularItems = items.filter(p => !bottomIds.includes(String(p.id)));
       const pinnedItems = items.filter(p => bottomIds.includes(String(p.id)));
@@ -231,19 +234,13 @@
         grid.innerHTML = '<p class="catalogue-message" role="status" style="grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 40px 0;">No items match this specific selection. Please try adjusting your filters.</p>';
         return;
       }
-      grid.innerHTML = products.map(product => this.productCard(product)).join('');
-    },
-
-    productCard(product) {
-      const id = escapeHTML(product.id);
-      const image = safeURL(product.image, { internal: true });
-      const hover = safeURL(product.imageHover, { internal: true });
-      const line = getMainLine(product);
-      const label = line === 'traditional' ? 'Traditional Heritage' : 'Anti-Tarnish Luxury';
-      const badge = product.bestseller ? '<span class="tag">Bestseller</span>' : product.newArrival ? '<span class="tag">New Arrival</span>' : '';
-      const hoverMarkup = hover ? ( /\.mp4(?:$|\?)/i.test(hover) ? `<video class="hover-img" src="${escapeHTML(hover)}" muted playsinline preload="none" aria-hidden="true"></video>` : `<img class="hover-img" src="${escapeHTML(hover)}" alt="" loading="lazy">`) : '';
+      grid.innerHTML = products.map((product, idx) => {
+          // Add staggered reveal delays to injected products
+          let delayClass = idx % 4 === 1 ? 'reveal-delay-1' : idx % 4 === 2 ? 'reveal-delay-2' : '';
+          return `<article class="product reveal ${delayClass}" data-product-id="${escapeHTML(product.id)}"><div class="media"><a href="product?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHTML(product.name)}"><img class="base-img" src="${escapeHTML(safeURL(product.image, { internal: true }))}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async" width="600" height="600">${safeURL(product.imageHover, { internal: true }) ? `<img class="hover-img" src="${escapeHTML(safeURL(product.imageHover, { internal: true }))}" alt="" loading="lazy">` : ''}</a>${product.bestseller ? '<span class="tag">Bestseller</span>' : product.newArrival ? '<span class="tag">New Arrival</span>' : ''}<div class="quickbar"><button type="button" data-action="view-product" data-id="${escapeHTML(product.id)}">View</button><button type="button" data-action="etsy-product" data-id="${escapeHTML(product.id)}">View on Etsy</button></div></div><div class="pinfo"><div class="pmeta">${escapeHTML(getMainLine(product) === 'traditional' ? 'Traditional Heritage' : 'Anti-Tarnish Luxury')}</div><a class="pname" href="product?id=${encodeURIComponent(product.id)}">${escapeHTML(product.name)}</a><div class="price">${money(product.price)}</div></div></article>`;
+      }).join('');
       
-      return `<article class="product" data-product-id="${id}"><div class="media"><a href="product?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHTML(product.name)}"><img class="base-img" src="${escapeHTML(image)}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async" width="600" height="600">${hoverMarkup}</a>${badge}<div class="quickbar"><button type="button" data-action="view-product" data-id="${id}">View</button><button type="button" data-action="etsy-product" data-id="${id}">View on Etsy</button></div></div><div class="pinfo"><div class="pmeta">${escapeHTML(label)}</div><a class="pname" href="product?id=${encodeURIComponent(product.id)}">${escapeHTML(product.name)}</a><div class="price">${money(product.price)}</div></div></article>`;
+      this.triggerScrollReveals();
     },
 
     renderProductDetail() {
@@ -313,7 +310,7 @@
           return; 
       }
       
-      grid.innerHTML = products.map(p => `<a class="recent-card" href="product?id=${encodeURIComponent(p.id)}"><div style="overflow:hidden; border-radius:2px;"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}" loading="lazy"></div><p>${escapeHTML(p.name)}<br><span>${money(p.price)}</span></p></a>`).join('');
+      grid.innerHTML = products.map(p => `<a class="recent-card reveal" href="product?id=${encodeURIComponent(p.id)}"><div style="overflow:hidden; border-radius:2px;"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}" loading="lazy"></div><p>${escapeHTML(p.name)}<br><span>${money(p.price)}</span></p></a>`).join('');
     },
 
     initAccordion() {
@@ -330,7 +327,6 @@
       });
     },
 
-    // DYNAMIC PROMO TIMER LOGIC
     initPromoTimer() {
       const update = () => {
         const promo = this.catalog?.promoConfig;
@@ -338,7 +334,6 @@
         
         if (!announceBar) return;
         
-        // If promo is missing, explicitly disabled, or has no end time, clear the text
         if (!promo || promo.enabled === false || !promo.endTime) {
           announceBar.innerHTML = '';
           return;
@@ -347,13 +342,11 @@
         const endDate = new Date(promo.endTime);
         const remaining = Math.max(0, endDate.getTime() - Date.now());
         
-        // If the countdown reaches zero, clear the text
         if (remaining === 0) {
           announceBar.innerHTML = '';
           return;
         }
 
-        // Calculate time
         const d = Math.floor(remaining / 86400000);
         const h = Math.floor(remaining / 3600000) % 24;
         const m = Math.floor(remaining / 60000) % 60;
@@ -361,12 +354,56 @@
         
         const timeString = `${d > 0 ? d + 'd ' : ''}${String(h).padStart(2,'0')}h ${String(m).padStart(2,'0')}m ${String(s).padStart(2,'0')}s`;
 
-        // Inject the text dynamically from products.json
         announceBar.innerHTML = `${escapeHTML(promo.title)} · <b>${escapeHTML(promo.discountText)}</b> · Ends in <span>${timeString}</span>`;
       };
       
       window.setInterval(update, 1000); 
       update();
+    },
+
+    // LILAURA APEX X™: ANIMATION ENGINE
+    initAnimations() {
+        // 1. Smooth Loader Fade Out
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.body.classList.remove('loading');
+                document.body.classList.add('loaded');
+                this.triggerScrollReveals(); // Trigger reveals for above-the-fold content immediately
+            }, 600);
+        });
+
+        // 2. Parallax Effect for Hero Image
+        const parallaxBg = $('.parallax-bg');
+        if (parallaxBg) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                // Move the background down slightly as user scrolls up
+                parallaxBg.style.transform = `translateY(${scrolled * 0.4}px) scale(1.05)`;
+            }, { passive: true });
+        }
+    },
+
+    // 3. Intersection Observer for Scroll Reveals
+    triggerScrollReveals() {
+        const revealElements = document.querySelectorAll('.reveal:not(.active)');
+        if (!revealElements.length) return;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -10% 0px', // Triggers when element is 10% from bottom of screen
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => observer.observe(el));
     },
 
     initScrollButton() {
@@ -406,6 +443,12 @@
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') { $('#mega')?.classList.remove('open'); }
   });
+
+  // Handle older IDs that might be saved in history without crashing
+  Store.normaliseIds = function(idsArray) {
+      if(!Array.isArray(idsArray)) return [];
+      return idsArray.map(id => String(id));
+  };
 
   document.addEventListener('DOMContentLoaded', () => Store.init());
   window.LilAuraStore = Store;
