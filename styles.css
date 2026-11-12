@@ -2,7 +2,7 @@
    LILAURA LUXURY ANIMATIONS & MICRO-INTERACTIONS
    ======================================================== */
 
-/* 1. Smooth Loader */
+/* 1. Smooth Loader (With Failsafe) */
 body.loading { overflow: hidden; height: 100vh; }
 #lilaura-loader {
     position: fixed;
@@ -13,6 +13,8 @@ body.loading { overflow: hidden; height: 100vh; }
     align-items: center;
     justify-content: center;
     transition: opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1), visibility 0.8s;
+    /* Strict Failsafe: Forces the loader to hide after 6 seconds even if JS catastrophically fails */
+    animation: forceLoaderHide 6s forwards; 
 }
 .loader-logo {
     font-family: 'Cormorant Garamond', serif;
@@ -27,6 +29,7 @@ body.loaded #lilaura-loader { opacity: 0; visibility: hidden; pointer-events: no
 
 @keyframes loaderUp { to { opacity: 1; transform: translateY(0); } }
 @keyframes pulseGlow { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes forceLoaderHide { 99% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; pointer-events: none; } }
 
 /* 2. Scroll Entrance Reveals */
 .reveal {
@@ -42,11 +45,15 @@ body.loaded #lilaura-loader { opacity: 0; visibility: hidden; pointer-events: no
 .reveal-delay-1 { transition-delay: 0.15s; }
 .reveal-delay-2 { transition-delay: 0.3s; }
 
-/* 3. Hero Parallax (Base Rule) */
-.hero { perspective: 1px; overflow: hidden; }
+/* Failsafe for older browsers or accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+   .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* 3. Hero Parallax */
+.hero { overflow: hidden; }
 .parallax-bg {
     will-change: transform;
-    /* Transformation is injected dynamically by script.js based on scroll */
 }
 
 /* 4. Micro-Interactions (Hover States) */
