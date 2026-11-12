@@ -1,4 +1,4 @@
-/* LilAura storefront behaviour with dual-tier filtering, animations, and dynamic promo timer. */
+/* LilAura storefront behaviour with dual-tier filtering, backward compatibility routing, animations, and dynamic promo timer. */
 (() => {
   'use strict';
 
@@ -94,6 +94,13 @@
     activeLine: 'all',
     activeSub: 'all',
     isHome: false,
+    
+    // UTILS
+    normaliseIds(idsArray) {
+      if(!Array.isArray(idsArray)) return [];
+      return idsArray.map(id => String(id));
+    },
+
     async init() {
       this.initAnimations();
       this.initAccordion();
@@ -121,6 +128,13 @@
         this.renderCurrentPage();
       } catch (error) {
         console.error('[LilAura] Could not load product catalogue:', error);
+      } finally {
+        // BUGFIX: Fades out the loader reliably the exact moment data is processed, bypassing load event races
+        setTimeout(() => {
+            document.body.classList.remove('loading');
+            document.body.classList.add('loaded');
+            this.triggerScrollReveals(); 
+        }, 200);
       }
     },
     
@@ -131,7 +145,6 @@
       if ($('#p-name')) this.renderProductDetail();
       if ($('#recentGrid')) this.renderRecent();
       
-      // Re-trigger reveal observer for newly injected elements like the product grid
       setTimeout(() => this.triggerScrollReveals(), 100);
     },
 
@@ -235,7 +248,6 @@
         return;
       }
       grid.innerHTML = products.map((product, idx) => {
-          // Add staggered reveal delays to injected products
           let delayClass = idx % 4 === 1 ? 'reveal-delay-1' : idx % 4 === 2 ? 'reveal-delay-2' : '';
           return `<article class="product reveal ${delayClass}" data-product-id="${escapeHTML(product.id)}"><div class="media"><a href="product?id=${encodeURIComponent(product.id)}" aria-label="View ${escapeHTML(product.name)}"><img class="base-img" src="${escapeHTML(safeURL(product.image, { internal: true }))}" alt="${escapeHTML(product.name)}" loading="lazy" decoding="async" width="600" height="600">${safeURL(product.imageHover, { internal: true }) ? `<img class="hover-img" src="${escapeHTML(safeURL(product.imageHover, { internal: true }))}" alt="" loading="lazy">` : ''}</a>${product.bestseller ? '<span class="tag">Bestseller</span>' : product.newArrival ? '<span class="tag">New Arrival</span>' : ''}<div class="quickbar"><button type="button" data-action="view-product" data-id="${escapeHTML(product.id)}">View</button><button type="button" data-action="etsy-product" data-id="${escapeHTML(product.id)}">View on Etsy</button></div></div><div class="pinfo"><div class="pmeta">${escapeHTML(getMainLine(product) === 'traditional' ? 'Traditional Heritage' : 'Anti-Tarnish Luxury')}</div><a class="pname" href="product?id=${encodeURIComponent(product.id)}">${escapeHTML(product.name)}</a><div class="price">${money(product.price)}</div></div></article>`;
       }).join('');
@@ -363,42 +375,37 @@
 
     // LILAURA APEX X™: ANIMATION ENGINE
     initAnimations() {
-        // 1. Smooth Loader Fade Out
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.body.classList.remove('loading');
-                document.body.classList.add('loaded');
-                this.triggerScrollReveals(); // Trigger reveals for above-the-fold content immediately
-            }, 600);
-        });
-
-        // 2. Parallax Effect for Hero Image
         const parallaxBg = $('.parallax-bg');
         if (parallaxBg) {
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
-                // Move the background down slightly as user scrolls up
-                parallaxBg.style.transform = `translateY(${scrolled * 0.4}px) scale(1.05)`;
+                // Safe Parallax: translates on Y axis without overriding the CSS scale animation
+                parallaxBg.style.transform = `translateY(${scrolled * 0.4}px)`;
             }, { passive: true });
         }
     },
 
-    // 3. Intersection Observer for Scroll Reveals
     triggerScrollReveals() {
         const revealElements = document.querySelectorAll('.reveal:not(.active)');
         if (!revealElements.length) return;
 
+        // Failsafe for older browsers without IntersectionObserver
+        if (!('IntersectionObserver' in window)) {
+            revealElements.forEach(el => el.classList.add('active'));
+            return;
+        }
+
         const observerOptions = {
             root: null,
-            rootMargin: '0px 0px -10% 0px', // Triggers when element is 10% from bottom of screen
+            rootMargin: '0px 0px -10% 0px',
             threshold: 0.1
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries, observerInstance) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
+                    observerInstance.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -443,12 +450,6 @@
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') { $('#mega')?.classList.remove('open'); }
   });
-
-  // Handle older IDs that might be saved in history without crashing
-  Store.normaliseIds = function(idsArray) {
-      if(!Array.isArray(idsArray)) return [];
-      return idsArray.map(id => String(id));
-  };
 
   document.addEventListener('DOMContentLoaded', () => Store.init());
   window.LilAuraStore = Store;
