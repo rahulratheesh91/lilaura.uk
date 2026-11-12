@@ -52,14 +52,19 @@
     }
     </script>
 </head>
-<body>
+<body class="loading">
+    <!-- SMOOTH ENTRANCE LOADER -->
+    <div id="lilaura-loader">
+        <h2 class="loader-logo">LilAura</h2>
+    </div>
+
     <!-- LILAURA APEX X™: GLOBAL HEADER COMPONENT -->
     <div id="lilaura-header-mount"></div>
     <div class="announce">Autumn Edit · <b>20% OFF</b> selected anti-tarnish jewellery · Ends in <span id="miniTimer">--:--:--</span></div>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-video"></div>
+    <!-- HERO SECTION (WITH PARALLAX) -->
+    <section class="hero reveal">
+        <div class="hero-video parallax-bg"></div>
         <div class="hero-content" style="max-width: 750px;">
             <div class="eyebrow" style="color: var(--gold);">INDIAN HERITAGE · MODERN ELEGANCE</div>
             <h1 style="font-size: clamp(36px, 5vw, 75px); line-height: 1.05;">Where Heritage Meets Modern Elegance.</h1>
@@ -72,7 +77,7 @@
     </section>
 
     <!-- PROMISE BAR -->
-    <section class="promise">
+    <section class="promise reveal reveal-delay-1">
         <div>UK Fast Dispatch</div>
         <div>18K PVD Anti-Tarnish</div>
         <div>Authentic Heritage Brass</div>
@@ -81,7 +86,7 @@
 
     <!-- FEATURED EDITORIAL SECTIONS -->
     <section class="section">
-        <div class="section-head">
+        <div class="section-head reveal">
             <div>
                 <div class="eyebrow">Curated Edits</div>
                 <h2>The Dual Expression.</h2>
@@ -90,7 +95,7 @@
         </div>
         
         <div class="editorial">
-            <a href="shop?line=traditional" class="ed-card">
+            <a href="shop?line=traditional" class="ed-card reveal">
                 <img src="https://i.etsystatic.com/40040678/r/il/a1210d/8348817959/il_1588xN.8348817959_chs4.jpg" alt="Traditional South Indian Kerala Palakka Choker Set in gold-coated brass">
                 <div class="ed-copy">
                     <div class="eyebrow" style="color:var(--gold);">HERITAGE</div>
@@ -99,7 +104,7 @@
                     <span class="under" style="display:inline-block; margin-top:12px; color:var(--gold);">EXPLORE HERITAGE</span>
                 </div>
             </a>
-            <a href="shop?line=anti-tarnish" class="ed-card">
+            <a href="shop?line=anti-tarnish" class="ed-card reveal reveal-delay-1">
                 <img src="https://i.etsystatic.com/40040678/r/il/43a595/8197151304/il_1140xN.8197151304_btta.jpg" alt="18K Gold Plated Waterproof Stainless Steel Cuff Bracelet">
                 <div class="ed-copy">
                     <div class="eyebrow" style="color:var(--gold);">EVERYDAY</div>
@@ -113,7 +118,7 @@
 
     <!-- CATALOG PREVIEW GRID -->
     <section class="section" style="padding-top: 0; padding-bottom: 120px;">
-        <div class="section-head">
+        <div class="section-head reveal">
             <div>
                 <div class="eyebrow">Handpicked Selection</div>
                 <h2>Featured Pieces.</h2>
@@ -121,7 +126,7 @@
             <a class="under" href="shop">Shop All Pieces</a>
         </div>
         
-        <div class="product-grid" id="shop-grid"></div>
+        <div class="product-grid reveal" id="shop-grid"></div>
     </section>
 
     <!-- LILAURA APEX X™: GLOBAL FOOTER MOUNT -->
