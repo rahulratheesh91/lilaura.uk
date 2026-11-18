@@ -1,4 +1,4 @@
-/* LilAura storefront behaviour with dual-tier filtering, backward compatibility routing, pinned products, dynamic promo timer, and hidden prices. */
+/* LilAura storefront behaviour with dual-tier filtering, backward compatibility routing, pinned products, dynamic promo timer, hidden prices, and homepage slideshows. */
 (() => {
   'use strict';
 
@@ -10,7 +10,6 @@
 
   const CATALOG_URL = 'products.json';
   const RECENT_KEY = 'lilauraRecentlyViewed';
-  // Money formatter kept as a utility for analytics, though prices are hidden from UI
   const money = value => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(Number(value) || 0);
   const $ = (selector, root = document) => root.querySelector(selector); 
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -132,6 +131,9 @@
     renderCurrentPage() {
       const path = window.location.pathname.toLowerCase();
       this.isHome = path.endsWith('/') || path.endsWith('/index') || path.endsWith('/index.html');
+      
+      if (this.isHome) this.initSlideshows();
+
       if ($('#shop-grid')) this.renderProductGrid();
       if ($('#p-name')) this.renderProductDetail();
       if ($('#recentGrid')) this.renderRecent();
@@ -174,7 +176,7 @@
         items = items.filter(p => getSubCategory(p) === this.activeSub);
       }
 
-      // PINNED PRODUCTS LOGIC: Sort IDs 18, 19, 20, 21, 22 to the bottom of the grid
+      // PINNED PRODUCTS LOGIC
       const bottomIds = ['18', '19', '20', '21', '22'];
       const regularItems = items.filter(p => !bottomIds.includes(String(p.id)));
       const pinnedItems = items.filter(p => bottomIds.includes(String(p.id)));
@@ -329,7 +331,6 @@
           return; 
       }
       
-      // Removed the price rendering entirely from the recently viewed cards
       grid.innerHTML = products.map(p => `<a class="recent-card reveal" href="product?id=${encodeURIComponent(p.id)}"><div style="overflow:hidden; border-radius:2px;"><img src="${escapeHTML(safeURL(p.image, { internal: true }))}" alt="${escapeHTML(p.name)}" loading="lazy"></div><p>${escapeHTML(p.name)}</p></a>`).join('');
     },
 
@@ -381,13 +382,52 @@
       update();
     },
     
+    // DYNAMIC HOMEPAGE SLIDESHOWS
+    initSlideshows() {
+      // Create separate pools of images based on the specific Main Line categories
+      const heritageImages = this.products.filter(p => getMainLine(p) === 'traditional' && p.image).map(p => safeURL(p.image, { internal: true }));
+      const everydayImages = this.products.filter(p => getMainLine(p) === 'anti-tarnish' && p.image).map(p => safeURL(p.image, { internal: true }));
+
+      const setup = (id, images) => {
+        const container = document.getElementById(id);
+        if (!container || images.length < 2) return;
+        
+        // Inject exactly two slide layers to handle the crossfade logic
+        container.innerHTML = `
+          <img src="${escapeHTML(images[0])}" class="slide-layer active" alt="" loading="lazy">
+          <img src="${escapeHTML(images[1])}" class="slide-layer" alt="" loading="lazy">
+        `;
+        
+        let currentIndex = 0;
+        const layers = container.querySelectorAll('.slide-layer');
+        
+        setInterval(() => {
+          const nextIndex = (currentIndex + 1) % images.length;
+          
+          const activeLayer = layers[0].classList.contains('active') ? layers[0] : layers[1];
+          const hiddenLayer = layers[0].classList.contains('active') ? layers[1] : layers[0];
+          
+          // Preload the next image on the hidden layer
+          hiddenLayer.src = escapeHTML(images[nextIndex]);
+          
+          // Trigger the smooth crossfade
+          hiddenLayer.classList.add('active');
+          activeLayer.classList.remove('active');
+          
+          currentIndex = nextIndex;
+        }, 5000); // 5 seconds per slide
+      };
+
+      setup('heritage-slideshow', heritageImages);
+      setup('everyday-slideshow', everydayImages);
+    },
+
     // LILAURA APEX X™: ANIMATION ENGINE
     initAnimations() {
         const parallaxBg = $('.parallax-bg');
         if (parallaxBg) {
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
-                // Safe Parallax: translates on Y axis
                 parallaxBg.style.transform = `translateY(${scrolled * 0.4}px)`;
             }, { passive: true });
         }
@@ -397,7 +437,6 @@
         const revealElements = document.querySelectorAll('.reveal:not(.active)');
         if (!revealElements.length) return;
 
-        // Failsafe for older browsers without IntersectionObserver
         if (!('IntersectionObserver' in window)) {
             revealElements.forEach(el => el.classList.add('active'));
             return;
@@ -405,7 +444,7 @@
 
         const observerOptions = {
             root: null,
-            rootMargin: '0px 0px -10% 0px', // Triggers when element is 10% from bottom of screen
+            rootMargin: '0px 0px -10% 0px', 
             threshold: 0.1
         };
 
