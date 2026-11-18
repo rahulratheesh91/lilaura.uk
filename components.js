@@ -1,7 +1,7 @@
 /* LILAURA APEX X™: GLOBAL COMPONENT FACTORY */
 (() => {
   'use strict';
-  const GA_MEASUREMENT_ID = 'G-82YQHC8Q3X';
+  const GTM_ID = 'GTM-TMRK9NNP';
   const CONSENT_KEY = 'lilaura_cookie_consent';
 
   class LilAuraLayout {
@@ -11,28 +11,38 @@
     static safeWriteConsent(value) {
       try { localStorage.setItem(CONSENT_KEY, value); } catch (error) { console.warn('[LilAura] Consent preference could not be saved.'); }
     }
-    static injectGA4() {
-      if (window.ga4Loaded || document.getElementById('ga4-script')) return;
-      window.ga4Loaded = true;
+    
+    static injectGTM() {
+      if (window.gtmLoaded || document.getElementById('gtm-script')) return;
+      window.gtmLoaded = true;
+      
       window.dataLayer = window.dataLayer || [];
+      // Initialize GTM
+      window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
       window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+      
+      // Strict GDPR Defaults: Deny tracking until user explicitly accepts
       window.gtag('consent', 'default', {
         analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500
       });
-      window.gtag('js', new Date());
-      window.gtag('config', GA_MEASUREMENT_ID, { send_page_view: false });
+      
+      // Inject the GTM Script dynamically
       const script = document.createElement('script');
-      script.id = 'ga4-script'; script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+      script.id = 'gtm-script'; 
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
       document.head.appendChild(script);
+      
       this.checkExistingConsent();
     }
+    
     static checkExistingConsent() {
       const saved = this.safeReadConsent();
       if (saved === 'accepted') this.updateConsent(true, false);
       else if (saved === 'rejected') this.updateConsent(false, false);
       else this.renderConsentBanner();
     }
+    
     static updateConsent(accepted, persist = true) {
       if (persist) this.safeWriteConsent(accepted ? 'accepted' : 'rejected');
       if (window.gtag) {
@@ -44,6 +54,7 @@
       }
       document.getElementById('lilaura-consent-banner')?.remove();
     }
+    
     static renderConsentBanner() {
       if (document.getElementById('lilaura-consent-banner') || !document.body) return;
       const banner = document.createElement('section');
@@ -60,7 +71,8 @@
   window.LilAuraLayout = LilAuraLayout;
 
   document.addEventListener('DOMContentLoaded', () => {
-      LilAuraLayout.injectGA4();
+      // Fire GTM injection
+      LilAuraLayout.injectGTM();
 
       const header = document.querySelector('#lilaura-header-mount');
       if (header && !header.dataset.mounted) {
