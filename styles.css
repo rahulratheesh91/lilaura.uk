@@ -98,12 +98,20 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
 .under { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; border-bottom: 1px solid var(--ink); padding-bottom: 4px; color: var(--ink); transition: var(--transition-fast); }
 .under:hover { color: var(--gold); border-color: var(--gold); }
 
-.editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; max-width: 1600px; margin: 0 auto; }
-.ed-card { position: relative; overflow: hidden; background: var(--soft); aspect-ratio: 4/3; display: block; }
-.ed-card img, .ed-card video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: var(--transition-slow); }
-.ed-card:hover img, .ed-card:hover video { transform: scale(1.03); }
-.ed-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%); }
-.ed-copy { position: absolute; left: 24px; right: 24px; bottom: 24px; color: #fff; z-index: 2; }
+/* FEATURED EDITORIAL SECTIONS (Updated for shorter layout & dynamic slideshows) */
+.editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; max-width: 1200px; margin: 0 auto; }
+.ed-card { position: relative; overflow: hidden; background: var(--soft); aspect-ratio: 16/10; display: block; }
+.ed-slideshow { position: absolute; inset: 0; width: 100%; height: 100%; }
+.slide-layer { 
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; 
+    opacity: 0; transition: opacity 1.5s ease-in-out, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+.slide-layer.active { opacity: 1; z-index: 1; }
+.ed-card:hover .slide-layer.active { transform: scale(1.05); }
+
+.ed-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%); z-index: 2; pointer-events: none;}
+.ed-copy { position: absolute; left: 24px; right: 24px; bottom: 24px; color: #fff; z-index: 3; pointer-events: none;}
 .ed-copy h3 { font-size: 38px; margin: 8px 0; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
 .ed-copy p { text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
 
@@ -285,6 +293,10 @@ h1, h2, h3, h4, .logo, .mega-feature span, .pname, .time b, .review p, .foot-log
     .product-layout { grid-template-columns: 1fr; gap: 40px; padding: 40px 5vw; }
     .recent-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     footer .foot { display: flex !important; flex-direction: column !important; gap: 40px !important; padding: 60px 24px !important; }
+    
+    /* Revert slides to tall portrait on small devices to fit text */
+    .editorial { grid-template-columns: 1fr; max-width: 600px; }
+    .ed-card { aspect-ratio: 4/3; }
 }
 
 /* MOBILE */
@@ -325,3 +337,96 @@ footer { background: var(--ink); color: var(--white); padding: 80px 5vw 30px; }
 .foot a { display: block; font-size: 14px; margin: 16px 0; color: rgba(255,255,255,0.8); transition: color var(--transition-fast); }
 .foot a:hover { color: var(--white); }
 .copy { border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 80px; padding-top: 30px; font-size: 11px; color: rgba(255, 255, 255, 0.5); display: flex; justify-content: space-between; text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* ========================================================
+   LILAURA LUXURY ANIMATIONS & MICRO-INTERACTIONS
+   ======================================================== */
+
+/* 1. Smooth Loader (With Failsafe) */
+body.loading { overflow: hidden; height: 100vh; }
+#lilaura-loader {
+    position: fixed;
+    inset: 0;
+    background: var(--paper);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1), visibility 0.8s;
+    /* Strict Failsafe: Forces the loader to hide after 6 seconds even if JS catastrophically fails */
+    animation: forceLoaderHide 6s forwards; 
+}
+.loader-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    letter-spacing: 0.25em;
+    color: var(--ink);
+    opacity: 0;
+    transform: translateY(15px);
+    animation: pulseGlow 2s infinite ease-in-out, loaderUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+body.loaded #lilaura-loader { opacity: 0; visibility: hidden; pointer-events: none; }
+
+@keyframes loaderUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes pulseGlow { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes forceLoaderHide { 99% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; pointer-events: none; } }
+
+/* 2. Scroll Entrance Reveals */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: opacity, transform;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+
+/* Failsafe for older browsers or accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+   .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* 3. Hero Parallax */
+.hero { overflow: hidden; }
+.parallax-bg {
+    will-change: transform;
+}
+
+/* 4. Micro-Interactions (Hover States) */
+.btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--emerald);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.ed-card img {
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.ed-card:hover img {
+    transform: scale(1.06);
+}
+
+.product {
+    transition: transform 0.4s var(--ease-fluid);
+}
+.product:hover {
+    transform: translateY(-4px);
+}
