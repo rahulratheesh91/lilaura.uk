@@ -3,8 +3,8 @@ backend:
   repo: rahulratheesh91/lilaura.uk
   branch: main
 
-media_folder: "images"
-public_folder: "/images"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "store_data"
@@ -20,9 +20,11 @@ collections:
             widget: "object"
             required: false
             fields:
-              - { label: "Announcement Text", name: "text", widget: "string", required: false }
+              - { label: "Enable Promo Banner?", name: "enabled", widget: "boolean", default: false, required: false }
+              - { label: "Promo Title", name: "title", widget: "string", required: false, hint: "e.g. Navaratri 2026" }
+              - { label: "Discount Text", name: "discountText", widget: "string", required: false, hint: "e.g. 20% OFF on all LilAura traditional jewellery on ETSY checkout" }
               - { label: "Promo End Date & Time", name: "endTime", widget: "datetime", required: false }
-          
+
           # 2. Product Categories
           - name: "categories"
             label: "Product Categories"
@@ -31,8 +33,7 @@ collections:
             required: false
             summary: '{{fields.title}}'
             fields:
-              - { label: "Main Line", name: "mainLine", widget: "string", required: false, hint: "e.g., anti-tarnish, traditional, all" }
-              - { label: "Sub-Category Key", name: "subCategory", widget: "string", required: false, hint: "e.g., necklaces, kadas, earrings, rings, all" }
+              - { label: "Category ID", name: "id", widget: "string", required: false, hint: "e.g. all, kadas, necklaces, traditional, earrings, rings" }
               - { label: "Display Title", name: "title", widget: "string", required: false, hint: "e.g. Kadas & Cuffs" }
 
           # 3. Product Items List
@@ -41,17 +42,17 @@ collections:
             widget: "list"
             collapsed: true
             minimize_collapsed: true
-            summary: '{{fields.name}} - £{{fields.price}}'
+            summary: '[#{{fields.id}}] {{fields.name}}'
             fields:
-              - { label: "Product ID", name: "id", widget: "string", required: false, hint: "Unique product identifier, e.g. 16" }
-              - { label: "SKU", name: "sku", widget: "string", required: false, hint: "Stock Keeping Unit, e.g. SSCF-ALBR-16" }
+              - { label: "Product ID (Auto-Generated)", name: "id", widget: "auto_id", required: false, hint: "Auto-incremented & locked — use this number in your SKU" }
+              - { label: "SKU", name: "sku", widget: "string", required: false, hint: "Stock Keeping Unit, e.g. TRNK-PN-49" }
               - { label: "Product Name", name: "name", widget: "string", required: false }
-              - { label: "Price (£)", name: "price", widget: "number", value_type: "float", required: false }
+              - { label: "Price (£) (Internal Reference)", name: "price", widget: "number", value_type: "float", required: false, hint: "Hidden on storefront; optional" }
               - { label: "In Stock?", name: "inStock", widget: "boolean", default: true, required: false }
               - { label: "Main Collection Line", name: "mainLine", widget: "select", options: ["anti-tarnish", "traditional"], required: false }
               - { label: "Sub-Category", name: "subCategory", widget: "select", options: ["necklaces", "kadas", "earrings", "rings"], required: false }
               - { label: "Category (Internal)", name: "category", widget: "string", required: false }
-              - { label: "Primary Image URL", name: "image", widget: "string", required: false, hint: "Public HTTPS image URL" }
+              - { label: "Primary Image URL", name: "image", widget: "string", required: false, hint: "Public HTTPS image URL or /images/uploads/ path" }
               - { label: "Hover Image / Video URL", name: "imageHover", widget: "string", required: false }
               - { label: "Etsy Listing URL", name: "etsyLink", widget: "string", required: false }
               - { label: "Featured on Homepage? (Max 4)", name: "featured", widget: "boolean", default: false, required: false }
