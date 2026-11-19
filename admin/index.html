@@ -6,12 +6,9 @@
   <title>LilAura Admin Panel</title>
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
   <style>
-    /* CRITICAL: Hides the default Decap CMS login screen so Netlify is never called */
     body:not(.logged-in) #nc-root { 
       display: none !important; 
     }
-
-    /* LilAura Custom Secure Login Screen */
     #custom-login {
       display: flex;
       position: fixed;
@@ -58,15 +55,11 @@
   <script>
     const userKey = 'decap-cms-user';
     const legacyKey = 'netlify-cms-user';
-    
-    // Check if user is already authenticated in local storage
     const userSession = localStorage.getItem(userKey) || localStorage.getItem(legacyKey);
 
     if (!userSession) {
-      // Show our custom login, keep Decap hidden
       document.getElementById('custom-login').style.display = 'flex';
     } else {
-      // User is logged in, allow Decap CMS to render the dashboard
       document.body.classList.add('logged-in');
     }
 
@@ -76,24 +69,73 @@
         alert('Please enter a valid GitHub token.');
         return;
       }
-      
-      // Inject token directly into Decap's expected storage format
       const authData = JSON.stringify({ 
         token: token, 
         backendName: 'github',
         name: 'LilAura Admin',
         login: 'rahulratheesh91'
       });
-      
       localStorage.setItem(userKey, authData);
       localStorage.setItem(legacyKey, authData);
-      
-      // Reload page to let Decap boot up straight into the dashboard
       window.location.reload();
     }
+
+    // Track the highest existing numeric Product ID from products.json
+    window.__LILAURA_MAX_ID__ = 0;
+    fetch('/products.json', { cache: 'no-cache' })
+      .then(res => res.json())
+      .then(data => {
+        const items = Array.isArray(data) ? data : (data?.items || []);
+        const maxId = items.reduce((max, item) => {
+          const num = parseInt(item?.id, 10);
+          return Number.isFinite(num) && num > max ? num : max;
+        }, 0);
+        window.__LILAURA_MAX_ID__ = maxId;
+      })
+      .catch(() => {});
   </script>
 
   <!-- Decap CMS Core Engine -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!-- Register Read-Only Auto-Increment Product ID Widget -->
+  <script>
+    if (window.CMS && window.createClass && window.h) {
+      const AutoIdControl = window.createClass({
+        componentDidMount: function () {
+          const currentVal = this.props.value;
+          if (!currentVal && currentVal !== 0) {
+            const nextId = (window.__LILAURA_MAX_ID__ || 0) + 1;
+            window.__LILAURA_MAX_ID__ = nextId;
+            this.props.onChange(String(nextId));
+          } else {
+            const num = parseInt(currentVal, 10);
+            if (Number.isFinite(num) && num > window.__LILAURA_MAX_ID__) {
+              window.__LILAURA_MAX_ID__ = num;
+            }
+          }
+        },
+        render: function () {
+          const val = this.props.value ? String(this.props.value) : '';
+          return window.h('input', {
+            type: 'text',
+            id: this.props.forID,
+            className: this.props.classNameWrapper,
+            value: val,
+            readOnly: true,
+            style: {
+              backgroundColor: '#f3f4f6',
+              color: '#374151',
+              cursor: 'not-allowed',
+              fontWeight: '600',
+              fontFamily: 'monospace'
+            }
+          });
+        }
+      });
+
+      window.CMS.registerWidget('auto_id', AutoIdControl);
+    }
+  </script>
 </body>
 </html>
