@@ -110,11 +110,11 @@
 
         const seenIds = new Set();
         this.products = rawItems.filter(item => {
-          const valid = item && (typeof item.id === 'string' || Number.isFinite(Number(item.id))) && String(item.name || '').trim() && Number.isFinite(Number(item.price)) && Number(item.price) >= 0;
+          const valid = item && (typeof item.id === 'string' || Number.isFinite(Number(item.id))) && String(item.name || '').trim();
           if (!valid || seenIds.has(String(item.id))) return false;
           seenIds.add(String(item.id));
           return true;
-        }).map(item => ({ ...item, id: String(item.id), price: Number(item.price) }));
+        }).map(item => ({ ...item, id: String(item.id), price: Number(item.price) || 0 }));
         
         this.catalog = data;
         this.renderCurrentPage();
@@ -275,7 +275,6 @@
       setText('#p-name', product.name);
       setText('#p-desc', product.desc || 'Discover this piece from the LilAura collection. Designed for modern elegance and timeless appeal.');
       
-      // Hide the price completely from the UI
       const priceElement = $('#p-price');
       if (priceElement) {
           priceElement.style.display = 'none';
@@ -384,7 +383,6 @@
     
     // DYNAMIC HOMEPAGE SLIDESHOWS
     initSlideshows() {
-      // Create separate pools of images based on the specific Main Line categories
       const heritageImages = this.products.filter(p => getMainLine(p) === 'traditional' && p.image).map(p => safeURL(p.image, { internal: true }));
       const everydayImages = this.products.filter(p => getMainLine(p) === 'anti-tarnish' && p.image).map(p => safeURL(p.image, { internal: true }));
 
@@ -392,7 +390,6 @@
         const container = document.getElementById(id);
         if (!container || images.length < 2) return;
         
-        // Inject exactly two slide layers to handle the crossfade logic
         container.innerHTML = `
           <img src="${escapeHTML(images[0])}" class="slide-layer active" alt="" loading="lazy">
           <img src="${escapeHTML(images[1])}" class="slide-layer" alt="" loading="lazy">
@@ -407,15 +404,12 @@
           const activeLayer = layers[0].classList.contains('active') ? layers[0] : layers[1];
           const hiddenLayer = layers[0].classList.contains('active') ? layers[1] : layers[0];
           
-          // Preload the next image on the hidden layer
           hiddenLayer.src = escapeHTML(images[nextIndex]);
-          
-          // Trigger the smooth crossfade
           hiddenLayer.classList.add('active');
           activeLayer.classList.remove('active');
           
           currentIndex = nextIndex;
-        }, 5000); // 5 seconds per slide
+        }, 5000);
       };
 
       setup('heritage-slideshow', heritageImages);
@@ -476,7 +470,6 @@
       });
     },
 
-    // UTILS
     normaliseIds(idsArray) {
       if(!Array.isArray(idsArray)) return [];
       return idsArray.map(id => String(id));
