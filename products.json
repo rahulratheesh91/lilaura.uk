@@ -11,16 +11,12 @@
       "title": "All"
     },
     {
-      "id": "kadas",
-      "title": "Kadas & Cuffs"
-    },
-    {
       "id": "necklaces",
       "title": "Anti-Tarnish Necklaces"
     },
     {
-      "id": "rings",
-      "title": "Rings"
+      "id": "kadas",
+      "title": "Kadas & Cuffs"
     },
     {
       "id": "traditional",
@@ -29,6 +25,10 @@
     {
       "id": "earrings",
       "title": "Earrings and Studs"
+    },
+    {
+      "id": "rings",
+      "title": "Rings"
     }
   ],
   "items": [
@@ -463,24 +463,6 @@
       "subCategory": "necklaces"
     },
     {
-      "imageHover": "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/jcndfbtklzpickvk6xz3.mp4",
-      "bestseller": false,
-      "price": 13.99,
-      "name": "Nail Cuff - 18K Gold Plated",
-      "mainLine": "anti-tarnish",
-      "etsyLink": "https://www.etsy.com/uk/listing/4560286618/18k-gold-plated-anti-tarnish-minimalist",
-      "inStock": true,
-      "desc": "Featuring an artistic, wavy melted-metal silhouette. This 18K PVD gold-plated stainless steel cuff blends contemporary sculptural design with classic sophistication.",
-      "metaDesc": "Bent Nail-metal silhouette cuff. 18K PVD gold-plated stainless steel jewellery.",
-      "newArrival": false,
-      "id": 25,
-      "image": "https://i.etsystatic.com/40040678/r/il/ba2a6f/8462317781/il_794xN.8462317781_jom8.jpg",
-      "seoTitle": "Gold Plated nail Cuff | Stainless Steel | LilAura UK",
-      "sku": "SSCF-BNC-25",
-      "category": "Anti-tarnish Kada",
-      "subCategory": "kadas"
-    },
-    {
       "imageHover": "https://i.etsystatic.com/40040678/r/il/97d040/8539603156/il_1588xN.8539603156_j0k8.jpg",
       "bestseller": false,
       "price": 16.49,
@@ -496,6 +478,24 @@
       "seoTitle": "Gold Plated Marble Heart Cuff | Stainless Steel Jewellery",
       "sku": "SSCF-MHB-26",
       "category": "Anti-tarnish kadas",
+      "subCategory": "kadas"
+    },
+    {
+      "imageHover": "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/jcndfbtklzpickvk6xz3.mp4",
+      "bestseller": false,
+      "price": 13.99,
+      "name": "Nail Cuff - 18K Gold Plated",
+      "mainLine": "anti-tarnish",
+      "etsyLink": "https://www.etsy.com/uk/listing/4560286618/18k-gold-plated-anti-tarnish-minimalist",
+      "inStock": true,
+      "desc": "Featuring an artistic, wavy melted-metal silhouette. This 18K PVD gold-plated stainless steel cuff blends contemporary sculptural design with classic sophistication.",
+      "metaDesc": "Bent Nail-metal silhouette cuff. 18K PVD gold-plated stainless steel jewellery.",
+      "newArrival": false,
+      "id": 25,
+      "image": "https://i.etsystatic.com/40040678/r/il/ba2a6f/8462317781/il_794xN.8462317781_jom8.jpg",
+      "seoTitle": "Gold Plated nail Cuff | Stainless Steel | LilAura UK",
+      "sku": "SSCF-BNC-25",
+      "category": "Anti-tarnish Kada",
       "subCategory": "kadas"
     },
     {
@@ -770,7 +770,7 @@
       "name": "Antique Gold Goddess Lakshmi  Jhumka Earrings",
       "mainLine": "traditional",
       "etsyLink": "https://www.etsy.com/uk/listing/4592162060/antique-gold-goddess-lakshmi-jhumka",
-      "inStock": true,
+      "inStock": false,
       "desc": "Add a touch of regal elegance to your ethnic ensemble with these exquisite Antique Gold Jhumka Earrings. Featuring a classic design inspired by traditional Indian temple art, these jhumkis showcase intricate filigree work paired with an exquisite Goddess Lakshmi motif at the stud, accented by a delicate red gemstone. A row of tiny golden ghungroo bells dangles gracefully from the dome, creating soft movement.  \n\nWhether you are dressing up for a South Asian wedding, a festive celebration, or looking to elevate a modern fusion look, these statement earrings deliver a timeless, heirloom-quality aesthetic.\n\nProduct Features:\n\nDesign: Traditional temple-style jhumka featuring a Goddess Lakshmi stud and ornate filigree detailing.  \nFinish: Rich, antique gold tone with subtle red stone accents.   Craftsmanship: Lightweight yet high-impact design for comfortable all-day wear during long events.\nVersatility: Perfect for weddings, Diwali, parties, cultural events, or as a thoughtful gift for someone special.\n",
       "metaDesc": "Shop these classic designed jhumkas inspired by traditional Indian temple art, these jhumkis showcase intricate filigree work paired with an exquisite Goddess Lakshmi motif at the stud, accented by a delicate red gemstone. A row of tiny golden ghungroo bells dangles gracefully from the dome, creating soft movement.  \n\nWhether you are dressing up for a South Asian wedding, a festive celebration, or looking to elevate a modern fusion look, these statement earrings deliver a timeless, heirloom-quality aesthetic.",
       "newArrival": false,
@@ -806,7 +806,7 @@
       "name": "Layered Gold Emerald Green Elakkathali Choker Necklace Set with Earstuds",
       "mainLine": "traditional",
       "etsyLink": "https://www.etsy.com/uk/listing/4595491457/layered-gold-elakkathali-choker-necklace",
-      "inStock": true,
+      "inStock": false,
       "desc": "Immerse yourself in timeless South Asian heritage with this exquisite Layered Elakkathali Choker Set. Handcrafted with classic Kerala jewelry traditions in mind, \"Elakkathali\" translates to shimmering \"shaking leaves\"—a design famous for the way its cascading leaf-shaped motifs flicker and shimmer delicately with every movement.\n\nKey Features\n\nAuthentic Heritage Design: Classic multi-layered Elakkathali silhouette embellished with emerald-green stones and dangling leaf charms (ila).\nShimmering Motion: Designed so that each leaf motif catches the light and creates a subtle, graceful movement.\nAdjustable Neckline Fit: Equipped with an adjustable drawstring back cord (dori) for a comfortable, snug fit on all neck sizes.\nComplete Set: Includes 1 layered Elakkathali choker necklace and 1 pair of matching drop-earstuds.\n",
       "newArrival": false,
       "id": 45,
